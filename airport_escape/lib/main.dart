@@ -1,118 +1,139 @@
 import 'package:flutter/material.dart';
 
-// Entry point of the app
-void main(){
-  runApp( MyApp() );
+const kPrimaryColor = Color.fromARGB(255, 18, 71, 156);
+const kBackgroundColor = Color(0xFFE0F7FA);
+
+void main() {
+  runApp(const MyApp());
 }
 
-// Root widget for the application
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  @override
   Widget build(BuildContext context) {
-    // MaterialApp sets up app-wide configuration
     return MaterialApp(
       title: 'Airport Escape',
       theme: ThemeData(
-        primarySwatch: Colors.blue, // Main color theme
+        primaryColor: kPrimaryColor,
+        scaffoldBackgroundColor: kBackgroundColor,
+        appBarTheme: const AppBarTheme(
+          backgroundColor: kPrimaryColor,
+          foregroundColor: Colors.white,
+        ),
       ),
-      home: const MyHomePage(), // Main screen of the app
+      home: const MyHomePage(),
     );
   }
 }
 
-// Home page widget
-class MyHomePage extends StatefulWidget {
+class MyHomePage extends StatelessWidget {
   const MyHomePage({super.key});
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-
-//class for the state of the home page
-class _MyHomePageState extends State<MyHomePage> {
-  @override
   Widget build(BuildContext context) {
-    // Scaffold provides the basic visual layout structure
     return Scaffold(
-      // Drawer widget for settings menu (slides in from the leftside of screen)
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: const <Widget>[
-            // Header for the settings drawer
-            DrawerHeader(
-              decoration: BoxDecoration(
-                color: Color.fromARGB(255, 18, 71, 156),
-              ),
-              child: Text('Settings', style: TextStyle(color: Colors.white, fontSize: 24)),
-            ),
-            // Settings options
-            ListTile(
-              leading: Icon(Icons.settings),
-              title: Text('General'),
-            ),
-            ListTile(
-              leading: Icon(Icons.security),
-              title: Text('Security'),
-            ),
-            // Add more settings options here
-          ],
-        ),
-      ),
-      appBar: AppBar(
-        // Settings cog button in upper left, opens drawer
-        leading: Builder(
-          builder: (context) => IconButton(
-            icon: const Icon(Icons.settings, color: Colors.white),
-            onPressed: () {
-              Scaffold.of(context).openDrawer();
-            },
-            tooltip: 'Open settings',
-          ),
-        ),
-        // Bold app title in the center of the AppBar
-        title: const Text('Airport Escape',
-            style: TextStyle(
-              fontWeight: FontWeight.bold, // Bold title text
-            )),
-        backgroundColor: const Color.fromARGB(255, 18, 71, 156), // Dark blue color for top bar
-        actions: [
-          // Account dropdown button in the top right corner
-          PopupMenuButton<String>(
-            icon: const Icon(Icons.account_circle, color: Colors.white,),
-            onSelected: (String value) {
-              // Handle account menu selection (Profile, Logout)
-              if (value == 'Profile') {
-                // Navigate to profile page or show profile
-              } else if (value == 'Logout') {
-                // Handle logout
-              }
-            },
-            itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
-              const PopupMenuItem<String>(
-                value: 'Profile',
-                child: Text('Profile'),
-              ),
-              const PopupMenuItem<String>(
-                value: 'Logout',
-                child: Text('Logout'),
+      drawer: const SettingsDrawer(),
+      appBar: const CustomAppBar(),
+      body: Center(
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 32),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(16),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black12,
+                blurRadius: 8,
+                offset: const Offset(0, 4),
               ),
             ],
           ),
+          child: const Text(
+            'Welcome to Airport Escape!',
+            style: TextStyle(
+              fontSize: 26,
+              fontWeight: FontWeight.bold,
+              color: kPrimaryColor,
+            ),
+            textAlign: TextAlign.center,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+
+class SettingsDrawer extends StatelessWidget {
+  const SettingsDrawer({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Drawer(
+      child: ListView(
+        padding: EdgeInsets.zero,
+        children: const <Widget>[
+          DrawerHeader(
+            decoration: BoxDecoration(
+              color: kPrimaryColor,
+            ),
+            child: Text('Settings', style: TextStyle(color: Colors.white, fontSize: 24)),
+          ),
+          ListTile(
+            leading: Icon(Icons.settings),
+            title: Text('General'),
+          ),
+          ListTile(
+            leading: Icon(Icons.security),
+            title: Text('Security'),
+          ),
         ],
       ),
-      backgroundColor: const Color(0xFFE0F7FA), // Light cyan background color
-      body: const Center( // Centered content in the body
-        child: Text('Welcome to Airport Escape!'), // Main welcome message in the center of the screen
+    );
+  }
+}
+
+class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
+  const CustomAppBar({super.key});
+
+  @override
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+
+  @override
+  Widget build(BuildContext context) {
+    return AppBar(
+      leading: Builder(
+        builder: (context) => IconButton(
+          icon: const Icon(Icons.settings, color: Colors.white),
+          onPressed: () {
+            Scaffold.of(context).openDrawer();
+          },
+          tooltip: 'Open settings',
+        ),
       ),
+      title: const Text(
+        'Airport Escape',
+        style: TextStyle(fontWeight: FontWeight.bold),
+      ),
+      actions: [
+        PopupMenuButton<String>(
+          icon: const Icon(Icons.account_circle, color: Colors.white),
+          onSelected: (String value) {
+            // Handle account menu selection (Profile, Logout)
+          },
+          itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
+            const PopupMenuItem<String>(
+              value: 'Profile',
+              child: Text('Profile'),
+            ),
+            const PopupMenuItem<String>(
+              value: 'Logout',
+              child: Text('Logout'),
+            ),
+          ],
+        ),
+      ],
     );
   }
 }
