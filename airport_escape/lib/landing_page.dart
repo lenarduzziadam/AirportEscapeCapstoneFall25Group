@@ -29,7 +29,7 @@ class MyHomePage extends StatelessWidget {
             ],
           ),
           child: const Text(
-            'Welcome to Airport Escape!', // Welcome message
+            'Welcome to Airport Escape!', 
             style: TextStyle(
               fontSize: 26,
               fontWeight: FontWeight.bold,
