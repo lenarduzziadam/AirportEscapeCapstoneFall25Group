@@ -1,1 +1,16 @@
+Airport Escape – Backend (Firebase Realtime Database)
+
+This backend uses Firebase Realtime Database to store and sync data for the Airport Escape app.
+It provides offline support and real-time updates with no custom server needed.
+
+URL to Database: https://airport-escape-default-rtdb.firebaseio.com/
+
+Current Data Structure:
+
+flights
+  testUser
+    flight1
+      airport: "ORD"
+      terminal: "3"
+      departureTime: "2025-02-01T14:00Z"
 
