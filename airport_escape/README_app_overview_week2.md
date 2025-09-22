@@ -8,23 +8,23 @@ This document explains the main structure and features of your Flutter app, focu
 
 ## Key Components
 
-### 1. Entry Point
+### Entry Point
 - `main()` function: Starts the app by running `MyApp`.
 
-### 2. MyApp Widget (main.dart)
+### MyApp Widget (main.dart)
 - Root widget for the app.
 - Sets up the overall theme (colors, styles) and specifies the home screen.
 
-### 3. MyHomePage Widget (landing_page.dart)
+### MyHomePage Widget (landing_page.dart)
 - Main screen of the app.
 - Uses a `Scaffold` to provide the basic layout: AppBar, Drawer, and Body.
 - The body displays a styled welcome message in the center.
 
-### 4. SettingsDrawer Widget (landing_page.dart)
+### SettingsDrawer Widget (landing_page.dart)
 - Custom drawer menu for settings.
 - Contains options like General and Security, with icons and a header.
 
-### 5. CustomAppBar Widget (landing_page.dart)
+### CustomAppBar Widget (landing_page.dart)
 - Custom app bar at the top of the screen.
 - Includes a settings button (opens the drawer), app title, and an account menu (Profile, Logout).
 
