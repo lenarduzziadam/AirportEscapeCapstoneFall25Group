@@ -3,6 +3,8 @@
         android:label="airport_escape"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+        <meta-data android:name="com.google.android.geo.API_KEY"
+               android:value="AIzaSyCKRpqjkTHDyRsdyvblswrafPldc3s2zEw"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"
