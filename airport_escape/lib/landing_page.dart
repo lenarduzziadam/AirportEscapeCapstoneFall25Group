@@ -1,5 +1,6 @@
 // Main landing page and widgets for Airport Escape app
 import 'package:flutter/material.dart';
+import 'search_bar_widget.dart';
 
 // App-wide color constants
 const kPrimaryColor = Color.fromARGB(255, 18, 71, 156);
@@ -15,27 +16,10 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  // Controller for the search bar input field
-  final TextEditingController _searchController = TextEditingController();
-
   // List of sample locations/keywords to search from
   final List<String> _sampleData = [
-    "Restaurant", "Entertainment", "Relax", "Massage", "Food", "Lounge", "Bar", "Gate A1", "Gate B2", "Coffee Shop"
+    "Restaurant", "Entertainment", "Relax", "Lounge", "Bar", "Gate A1", "Gate B2", "Coffee Shop"
   ];
-
-  // Stores the filtered results based on search input
-  List<String> _filteredResults = [];
-
-  // Filters _sampleData as user types in the search bar
-  // This function is called every time the search input changes
-  // It updates _filteredResults with items that contain the search query (case-insensitive)
-  void _filterResults(String query) {
-    setState(() {
-      _filteredResults = _sampleData
-          .where((location) => location.toLowerCase().contains(query.toLowerCase()))
-          .toList();
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,44 +29,20 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Column(
         children: [
           const SizedBox(height: 16.0),
-
-          /** Search bar at the top of the page 
-          Uses a TextField for user input
-          Calls _filterResults on every change to update the results. */
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: TextField(
-              controller: _searchController,
-              decoration: InputDecoration(
-                hintText: 'Search for locations or keywords...',
-                prefixIcon: Icon(Icons.search),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12),
-                ),
-              ),
-              onChanged: (value) {
-                // When the user types, filter the sample data
-                _filterResults(value);
-              },
-            ),
-          ),
-
-          // List of filtered search results
-          // - Only shows results that match the search query
-          // - Each result is a ListTile (can be made clickable for navigation)
+          // Use the reusable SearchBarWidget for search functionality
           Expanded(
-            child: ListView.builder(
-              itemCount: _filteredResults.length,
-              itemBuilder: (context, index) {
-                return ListTile(
-                  title: Text(_filteredResults[index]),
-                  // for easy adding of navigation or actions here for each result
+            child: SearchBarWidget(
+              data: _sampleData,
+              onResultTap: (result) {
+                // TODO: Add navigation or actions for each result
+                // For now, you can show a snackbar or print the result
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text('Selected: $result')),
                 );
               },
             ),
           ),
-
-          // Welcome message (can be shown when no search is active or results are empty)
+          // Welcome message (can be shown below or conditionally)
           Expanded(
             child: Center(
               child: Container(
