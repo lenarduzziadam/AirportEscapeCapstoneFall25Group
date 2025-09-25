@@ -1,5 +1,6 @@
 // Main landing page and widgets for Airport Escape app
 import 'package:flutter/material.dart';
+import 'layover_page.dart'; // 👈 import your page
 
 // App-wide color constants
 const kPrimaryColor = Color.fromARGB(255, 18, 71, 156);
@@ -15,28 +16,54 @@ class MyHomePage extends StatelessWidget {
       drawer: const SettingsDrawer(), // Side menu
       appBar: const CustomAppBar(),   // Top app bar
       body: Center(
-        child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 32),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(16),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black12,
-                blurRadius: 8,
-                offset: const Offset(0, 4),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 32),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(16),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black12,
+                    blurRadius: 8,
+                    offset: const Offset(0, 4),
+                  ),
+                ],
               ),
-            ],
-          ),
-          child: const Text(
-            'Welcome to Airport Escape!', 
-            style: TextStyle(
-              fontSize: 26,
-              fontWeight: FontWeight.bold,
-              color: kPrimaryColor,
+              child: const Text(
+                'Welcome to Airport Escape!',
+                style: TextStyle(
+                  fontSize: 26,
+                  fontWeight: FontWeight.bold,
+                  color: kPrimaryColor,
+                ),
+                textAlign: TextAlign.center,
+              ),
             ),
-            textAlign: TextAlign.center,
-          ),
+            const SizedBox(height: 30),
+
+            // 👇 Your new button
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: kPrimaryColor,
+                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+              ),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const LayoverPage(),
+                  ),
+                );
+              },
+              child: const Text(
+                "Plan My Layover",
+                style: TextStyle(fontSize: 18, color: Colors.white),
+              ),
+            ),
+          ],
         ),
       ),
     );
