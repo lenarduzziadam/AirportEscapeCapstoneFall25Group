@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "987633027135",
+    "firebase_url": "https://airport-escape-default-rtdb.firebaseio.com",
+    "project_id": "airport-escape",
+    "storage_bucket": "airport-escape.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:987633027135:android:b23a616b602c608815508a",
+        "android_client_info": {
+          "package_name": "com.example.airport_escape"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCIw5e75vXhUHJ5sJANykTunDdXZLT-zE0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
