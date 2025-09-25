@@ -2,17 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 
-class mapScreen extends StatefulWidget {
-  const mapScreen({super.key});
+class MapScreen extends StatefulWidget {
+  const MapScreen({super.key});
 
   @override
-  State<mapScreen> createState() => _mapScreenState();
+  State<MapScreen> createState() => _MapScreenState();
 }
 
-class _mapScreenState extends State<mapScreen> {
+class _MapScreenState extends State<MapScreen> {
   late GoogleMapController mapController;
 
-  final LatLng _center = const LatLng(45.521563, -122.677433);
+  final LatLng _center = const LatLng(45.521563, -122.677433); //I want this to be the slected current airport 
+
 
   void _onMapCreated(GoogleMapController controller) {
     mapController = controller;
@@ -23,10 +24,11 @@ class _mapScreenState extends State<mapScreen> {
     return MaterialApp(
       theme: ThemeData(
         useMaterial3: true,
+        colorSchemeSeed: Color.fromARGB(255, 18, 71, 156),
       ),
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Maps Sample App'),
+          title: const Text('Maps Page'),
           elevation: 2,
         ),
         body: GoogleMap(
