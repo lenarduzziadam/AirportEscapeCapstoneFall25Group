@@ -1,6 +1,5 @@
 // Main landing page and widgets for Airport Escape app
 import 'package:flutter/material.dart';
-import 'package:airport_escape/map_screen.dart';
 
 import 'search_bar_widget.dart';
 
@@ -103,23 +102,7 @@ class _MyHomePageState extends State<MyHomePage> {
               "Plan My Layover",
               style: TextStyle(fontSize: 18, color: Colors.white),
             ),
-          ),
-          ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              backgroundColor: kPrimaryColor,
-              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-            ),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const MapScreen()),
-              );
-            },
-            child: const Text(
-              "See Map",
-              style: TextStyle(fontSize: 18, color: Colors.white),
-            ),
-          ),
+          ), 
         ],
       ),
     );

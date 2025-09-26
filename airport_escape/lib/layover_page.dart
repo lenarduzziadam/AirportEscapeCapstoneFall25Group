@@ -1,3 +1,5 @@
+import 'package:airport_escape/main.dart';
+import 'package:airport_escape/map_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -108,6 +110,25 @@ class _LayoverPageState extends State<LayoverPage> {
                 onPressed: _openDirections,
                 icon: const Icon(Icons.directions),
                 label: const Text("Get Directions"),
+              ),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: kPrimaryColor,
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 24,
+                    vertical: 12,
+                  ),
+                ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const MapScreen()),
+                  );
+                },
+                child: const Text(
+                  "See Map",
+                  style: TextStyle(fontSize: 18, color: Colors.white),
+                ),
               ),
             ],
           ],
