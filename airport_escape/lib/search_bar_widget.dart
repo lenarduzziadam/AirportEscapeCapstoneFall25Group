@@ -23,6 +23,17 @@ class SearchBarWidget extends StatefulWidget {
 class _SearchBarWidgetState extends State<SearchBarWidget> {
   // Controller for the search bar input field
   final TextEditingController _searchController = TextEditingController();
+
+
+  //TODO: Replace the placeholder logic with actual keyword associations via api calls. 
+  // Map keywords to related terms (placeholder logic)
+  final Map<String, List<String>> keywordMap = {
+    "hamburger": ["Restaurant", "Bar", "Fast Food"],
+    "cryochamber": ["Spa"],
+    "pizza": ["Restaurant", "Bar"],
+    "coffee": ["Coffee Shop", "Cafe", "Lounge", "Bistro", "Restaurant"],
+    // Add more mappings as needed
+  };
   // Stores the filtered results based on search input
   List<String> _filteredResults = [];
 
@@ -37,9 +48,19 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
   // Only terms containing the query (case-insensitive) are shown
   void _filterResults(String query) {
     setState(() {
-      _filteredResults = widget.data
-          .where((item) => item.toLowerCase().contains(query.toLowerCase()))
-          .toList();
+      final lowerQuery = query.toLowerCase();
+      if (keywordMap.containsKey(lowerQuery)) {
+        // Show mapped terms if keyword matches
+        _filteredResults = keywordMap[lowerQuery]!;
+      } else if (lowerQuery.isNotEmpty) {
+        // Otherwise, filter normally
+        _filteredResults = widget.data
+            .where((item) => item.toLowerCase().contains(lowerQuery))
+            .toList();
+      } else {
+        // Show all terms if search box is empty
+        _filteredResults = widget.data;
+      }
     });
   }
 
