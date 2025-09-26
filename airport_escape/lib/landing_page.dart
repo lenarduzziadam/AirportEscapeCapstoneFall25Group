@@ -1,6 +1,10 @@
 // Main landing page and widgets for Airport Escape app
 import 'package:flutter/material.dart';
+
 import 'search_bar_widget.dart';
+
+import 'layover_page.dart'; // 👈 import your page
+
 
 // App-wide color constants
 const kPrimaryColor = Color.fromARGB(255, 18, 71, 156);
@@ -26,6 +30,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       drawer: const SettingsDrawer(), // Side menu
       appBar: const CustomAppBar(),   // Top app bar
+
       body: Column(
         children: [
           const SizedBox(height: 16.0),
@@ -69,8 +74,30 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
             ),
+            const SizedBox(height: 30),
+
+            // 👇 Your new button
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: kPrimaryColor,
+                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+              ),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const LayoverPage(),
+                  ),
+                );
+              },
+              child: const Text(
+                "Plan My Layover",
+                style: TextStyle(fontSize: 18, color: Colors.white),
+              ),
+            ),
           ),
         ],
+
       ),
     );
   }

@@ -2,6 +2,8 @@
 import 'package:flutter/material.dart';
 // Import main landing page and widgets
 import 'landing_page.dart';
+// Import your new layover page (needed because landing_page will use it)
+import 'layover_page.dart';
 
 // App-wide color constants
 const kPrimaryColor = Color.fromARGB(255, 18, 71, 156);
@@ -20,7 +22,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Airport Escape',
+      title: 'Airport Escape, for passengers by passengers',
       theme: ThemeData(
         primaryColor: kPrimaryColor,
         scaffoldBackgroundColor: kBackgroundColor,
@@ -29,7 +31,7 @@ class MyApp extends StatelessWidget {
           foregroundColor: Colors.white,
         ),
       ),
-      home: const MyHomePage(), // Main landing page
+      home: const MyHomePage(), // 👈 Keep the original landing page
     );
   }
 }
