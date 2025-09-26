@@ -37,6 +37,9 @@ dependencies:
   flame: ^1.32.0
   google_maps_flutter: ^2.13.1
 
+  # 👇 Added for launching Google Maps/directions
+  url_launcher: ^6.2.5
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
