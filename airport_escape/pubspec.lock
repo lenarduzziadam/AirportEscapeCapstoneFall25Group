@@ -104,7 +104,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-
   google_maps:
     dependency: transitive
     description:
@@ -161,7 +160,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.15.6"
-
   leak_tracker:
     dependency: transitive
     description:
@@ -242,7 +240,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.8"
-
   sanitize_html:
     dependency: transitive
     description:
@@ -251,7 +248,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.0"
-
   sky_engine:
     dependency: transitive
     description: flutter

@@ -6,7 +6,6 @@ import 'search_bar_widget.dart';
 
 import 'layover_page.dart'; // 👈 import your page
 
-
 // App-wide color constants
 const kPrimaryColor = Color.fromARGB(255, 18, 71, 156);
 const kBackgroundColor = Color(0xFFE0F7FA);
@@ -23,14 +22,21 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   // List of sample locations/keywords to search from
   final List<String> _sampleData = [
-    "Restaurant", "Entertainment", "Relax", "Lounge", "Bar", "Gate A1", "Gate B2", "Coffee Shop"
+    "Restaurant",
+    "Entertainment",
+    "Relax",
+    "Lounge",
+    "Bar",
+    "Gate A1",
+    "Gate B2",
+    "Coffee Shop",
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: const SettingsDrawer(), // Side menu
-      appBar: const CustomAppBar(),   // Top app bar
+      appBar: const CustomAppBar(), // Top app bar
 
       body: Column(
         children: [
@@ -42,9 +48,9 @@ class _MyHomePageState extends State<MyHomePage> {
               onResultTap: (result) {
                 // TODO: Add navigation or actions for each result
                 // For now, you can show a snackbar or print the result
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text('Selected: $result')),
-                );
+                ScaffoldMessenger.of(
+                  context,
+                ).showSnackBar(SnackBar(content: Text('Selected: $result')));
               },
             ),
           ),
@@ -52,7 +58,10 @@ class _MyHomePageState extends State<MyHomePage> {
           Expanded(
             child: Center(
               child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 32),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 24,
+                  vertical: 32,
+                ),
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(16),
@@ -76,48 +85,42 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
           ),
-            const SizedBox(height: 30),
+          const SizedBox(height: 30),
 
-            // 👇 Your new button
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: kPrimaryColor,
-                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-              ),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const LayoverPage(),
-                  ),
-                );
-              },
-              child: const Text(
-                "Plan My Layover",
-                style: TextStyle(fontSize: 18, color: Colors.white),
-              ),
+          // 👇 Your new button
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: kPrimaryColor,
+              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
             ),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const LayoverPage()),
+              );
+            },
+            child: const Text(
+              "Plan My Layover",
+              style: TextStyle(fontSize: 18, color: Colors.white),
+            ),
+          ),
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: kPrimaryColor,
+              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+            ),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const MapScreen()),
+              );
+            },
+            child: const Text(
+              "See Map",
+              style: TextStyle(fontSize: 18, color: Colors.white),
+            ),
+          ),
         ],
-    ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: kPrimaryColor,
-                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-              ),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const MapScreen(),
-                  ),
-                );
-              },
-              child: const Text(
-                "See Map",
-                style: TextStyle(fontSize: 18, color: Colors.white),
-              ),
-            ),
-          ],
-        ),
       ),
     );
   }
@@ -134,10 +137,11 @@ class SettingsDrawer extends StatelessWidget {
         padding: EdgeInsets.zero,
         children: const <Widget>[
           DrawerHeader(
-            decoration: BoxDecoration(
-              color: kPrimaryColor,
+            decoration: BoxDecoration(color: kPrimaryColor),
+            child: Text(
+              'Settings',
+              style: TextStyle(color: Colors.white, fontSize: 24),
             ),
-            child: Text('Settings', style: TextStyle(color: Colors.white, fontSize: 24)),
           ),
           ListTile(
             leading: Icon(Icons.settings), // General settings option
@@ -178,7 +182,10 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
       actions: [
         PopupMenuButton<String>(
-          icon: const Icon(Icons.account_circle, color: Colors.white), // Account icon
+          icon: const Icon(
+            Icons.account_circle,
+            color: Colors.white,
+          ), // Account icon
           onSelected: (String value) {
             // Handle account menu selection (Profile, Logout)
           },

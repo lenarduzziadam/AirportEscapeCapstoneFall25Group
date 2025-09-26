@@ -24,8 +24,7 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
   // Controller for the search bar input field
   final TextEditingController _searchController = TextEditingController();
 
-
-  //TODO: Replace the placeholder logic with actual keyword associations via api calls. 
+  //TODO: Replace the placeholder logic with actual keyword associations via api calls.
   // Map keywords to related terms (placeholder logic)
   final Map<String, List<String>> keywordMap = {
     "hamburger": ["Restaurant", "Bar", "Fast Food"],
@@ -90,7 +89,9 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
             itemBuilder: (context, index) {
               return ListTile(
                 title: Text(_filteredResults[index]),
-                onTap: () => widget.onResultTap(_filteredResults[index]), // Callback for result tap
+                onTap: () => widget.onResultTap(
+                  _filteredResults[index],
+                ), // Callback for result tap
               );
             },
           ),

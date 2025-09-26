@@ -17,7 +17,7 @@ class _LayoverPageState extends State<LayoverPage> {
     "Chicago O'Hare (ORD)",
     "Denver (DEN)",
     "Atlanta (ATL)",
-    "Dallas-Fort Worth (DFW)"
+    "Dallas-Fort Worth (DFW)",
   ];
 
   // Simple hardcoded activities near each airport
@@ -25,7 +25,7 @@ class _LayoverPageState extends State<LayoverPage> {
     "Chicago O'Hare (ORD)": "Millennium Park, Chicago",
     "Denver (DEN)": "Union Station, Denver",
     "Atlanta (ATL)": "Georgia Aquarium, Atlanta",
-    "Dallas-Fort Worth (DFW)": "AT&T Stadium, Arlington"
+    "Dallas-Fort Worth (DFW)": "AT&T Stadium, Arlington",
   };
 
   void _getSuggestions() {
@@ -40,7 +40,9 @@ class _LayoverPageState extends State<LayoverPage> {
     if (activity == null) return;
 
     final query = Uri.encodeComponent(activity);
-    final url = Uri.parse("https://www.google.com/maps/search/?api=1&query=$query");
+    final url = Uri.parse(
+      "https://www.google.com/maps/search/?api=1&query=$query",
+    );
 
     if (await canLaunchUrl(url)) {
       await launchUrl(url, mode: LaunchMode.externalApplication);
@@ -54,9 +56,7 @@ class _LayoverPageState extends State<LayoverPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Plan Your Layover"),
-      ),
+      appBar: AppBar(title: const Text("Plan Your Layover")),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -73,10 +73,10 @@ class _LayoverPageState extends State<LayoverPage> {
             DropdownButtonFormField<String>(
               value: _selectedAirport,
               items: airports
-                  .map((airport) => DropdownMenuItem(
-                        value: airport,
-                        child: Text(airport),
-                      ))
+                  .map(
+                    (airport) =>
+                        DropdownMenuItem(value: airport, child: Text(airport)),
+                  )
                   .toList(),
               onChanged: (value) {
                 setState(() {
@@ -97,7 +97,10 @@ class _LayoverPageState extends State<LayoverPage> {
             if (_suggestion.isNotEmpty) ...[
               Text(
                 _suggestion,
-                style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                style: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 12),
