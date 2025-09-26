@@ -74,6 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
             ),
+          ),
             const SizedBox(height: 30),
 
             // 👇 Your new button
@@ -95,7 +96,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 style: TextStyle(fontSize: 18, color: Colors.white),
               ),
             ),
-          ),
         ],
 
       ),
