@@ -73,7 +73,7 @@ class _LayoverPageState extends State<LayoverPage> {
             ),
             const SizedBox(height: 16),
             DropdownButtonFormField<String>(
-              value: _selectedAirport,
+              initialValue: _selectedAirport,
               items: airports
                   .map(
                     (airport) =>

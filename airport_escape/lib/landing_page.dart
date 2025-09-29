@@ -1,6 +1,4 @@
 // // Main landing page and widgets for Airport Escape app
-import 'package:airport_escape/login_page.dart';
-import 'package:airport_escape/user_account.dart';
 import 'package:flutter/material.dart';
 
 import 'search_bar_widget.dart';
@@ -177,6 +175,10 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             const PopupMenuItem<String>(
               value: 'Profile',
               child: Text('Profile'), // Profile option
+            ),
+            const PopupMenuItem<String>(
+              value: 'Favorites',
+              child: Text('Favorite Locations'), // Favorites option
             ),
             const PopupMenuItem<String>(
               value: 'Logout',
