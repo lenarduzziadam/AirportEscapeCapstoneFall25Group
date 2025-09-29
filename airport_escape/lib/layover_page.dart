@@ -83,6 +83,8 @@ class _LayoverPageState extends State<LayoverPage> {
               onChanged: (value) {
                 setState(() {
                   _selectedAirport = value!;
+
+                  _suggestion = "Suggested activity near $_selectedAirport: ${sampleActivities[_selectedAirport]}"; // Clear previous suggestion
                 });
               },
               decoration: const InputDecoration(
