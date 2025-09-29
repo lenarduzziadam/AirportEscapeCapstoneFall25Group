@@ -1,4 +1,6 @@
-// Main landing page and widgets for Airport Escape app
+// // Main landing page and widgets for Airport Escape app
+import 'package:airport_escape/login_page.dart';
+import 'package:airport_escape/user_account.dart';
 import 'package:flutter/material.dart';
 import 'search_bar_widget.dart';
 
@@ -7,7 +9,6 @@ const kPrimaryColor = Color.fromARGB(255, 18, 71, 156);
 const kBackgroundColor = Color(0xFFE0F7FA);
 
 // Main landing page widget
-// Main landing page widget with search bar skeleton
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
 
@@ -34,39 +35,42 @@ class _MyHomePageState extends State<MyHomePage> {
             child: SearchBarWidget(
               data: _sampleData,
               onResultTap: (result) {
-                // TODO: Add navigation or actions for each result
-                // For now, you can show a snackbar or print the result
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text('Selected: $result')),
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => LoginPage(
+                      onLogin: (username) {
+                        // Handle login, e.g., save username to state or user model
+                      },
+                    ),
+                  ),
                 );
               },
             ),
           ),
-          // Welcome message (can be shown below or conditionally)
-          Expanded(
-            child: Center(
-              child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 32),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(16),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black12,
-                      blurRadius: 8,
-                      offset: const Offset(0, 4),
-                    ),
-                  ],
-                ),
-                child: const Text(
-                  'Welcome to Airport Escape!', // Welcome message
-                  style: TextStyle(
-                    fontSize: 26,
-                    fontWeight: FontWeight.bold,
-                    color: kPrimaryColor,
+          // Welcome message (no Expanded here)
+          Center(
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 32),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(16),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black12,
+                    blurRadius: 8,
+                    offset: const Offset(0, 4),
                   ),
-                  textAlign: TextAlign.center,
+                ],
+              ),
+              child: const Text(
+                'Welcome to Airport Escape!', // Welcome message
+                style: TextStyle(
+                  fontSize: 26,
+                  fontWeight: FontWeight.bold,
+                  color: kPrimaryColor,
                 ),
+                textAlign: TextAlign.center,
               ),
             ),
           ),
