@@ -93,10 +93,7 @@ class _LayoverPageState extends State<LayoverPage> {
               ),
             ),
             const SizedBox(height: 16),
-            ElevatedButton(
-              onPressed: _getSuggestions,
-              child: const Text("Get Suggestions"),
-            ),
+            // Removed elevated button to get suggestions
             const SizedBox(height: 24),
             if (_suggestion.isNotEmpty) ...[
               Text(
