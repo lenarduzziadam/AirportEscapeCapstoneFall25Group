@@ -1,5 +1,6 @@
 // Flutter app entry point and theme setup
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 // Import main landing page and widgets
 import 'landing_page.dart';
 
@@ -8,9 +9,12 @@ const kPrimaryColor = Color.fromARGB(255, 18, 71, 156);
 const kBackgroundColor = Color(0xFFE0F7FA);
 
 // Main function: launches the app
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load(fileName: ".env");
   runApp(const MyApp());
 }
+
 
 // Root widget: sets up MaterialApp and theme
 class MyApp extends StatelessWidget {

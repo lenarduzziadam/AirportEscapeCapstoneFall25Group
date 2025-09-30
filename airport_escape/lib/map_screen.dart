@@ -4,7 +4,6 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:http/http.dart' as http;
 
-
 class MapScreen extends StatefulWidget {
   const MapScreen({super.key});
 
@@ -12,16 +11,19 @@ class MapScreen extends StatefulWidget {
   State<MapScreen> createState() => _MapScreenState();
 }
 
-
-
 class _MapScreenState extends State<MapScreen> {
   late GoogleMapController mapController;
-  final LatLng _startLocation = const LatLng(43.77474504822277,11.261909855167868);
+  final LatLng _startLocation = const LatLng(
+    43.77474504822277,
+    11.261909855167868,
+  );
 
-  final LatLng _endLocation = const LatLng(45.38002052011845, 12.342675855331597);
+  final LatLng _endLocation = const LatLng(
+    45.38002052011845,
+    12.342675855331597,
+  );
 
-  final Set<Polyline> _polylines = {}; 
-
+  final Set<Polyline> _polylines = {};
 
   List<LatLng> _decodePoly(String encoded) {
     List<LatLng> points = [];
@@ -59,7 +61,10 @@ class _MapScreenState extends State<MapScreen> {
 
   void _getDirections() async {
     final String apiKeyFromFile = dotenv.env['API_KEY'] ?? "";
-
+    if (apiKeyFromFile.isEmpty) {
+      print("API key not found — is .env loaded?");
+      return;
+    }
     const String mainApi =
         "https://maps.googleapis.com/maps/api/directions/json?origin=";
     final String startPosition =
@@ -71,7 +76,8 @@ class _MapScreenState extends State<MapScreen> {
     String apiKey = apiKeyFromFile;
 
     final Uri uri = Uri.parse(
-        mainApi + startPosition + destination + endPosition + key + apiKey);
+      mainApi + startPosition + destination + endPosition + key + apiKey,
+    );
     var response = await http.get(uri);
 
     Map data = json.decode(response.body);
@@ -102,33 +108,23 @@ class _MapScreenState extends State<MapScreen> {
     mapController = controller;
     _getDirections();
   }
+
+  @override
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        useMaterial3: true,
-        colorSchemeSeed: const Color.fromARGB(255, 18, 71, 156),
-      ),
-      home: Scaffold(
-        appBar: AppBar(title: const Text('Maps Page'), elevation: 2),
-        body: GoogleMap(
-          onMapCreated: _onMapCreated,
-          initialCameraPosition: CameraPosition(
-            target: _startLocation,
-            zoom: 7.0,
-          ),
-          polylines: _polylines,
-          markers: {
-            Marker(
-              markerId: const MarkerId("start"),
-              position: _startLocation,
-            ),
-            Marker(
-              markerId: const MarkerId("end"),
-              position: _endLocation,
-            )
-          },
+    return Scaffold(
+      appBar: AppBar(title: const Text('Maps Page'), elevation: 2),
+      body: GoogleMap(
+        onMapCreated: _onMapCreated,
+        initialCameraPosition: CameraPosition(
+          target: _startLocation,
+          zoom: 7.0,
         ),
+        polylines: _polylines,
+        markers: {
+          Marker(markerId: const MarkerId("start"), position: _startLocation),
+          Marker(markerId: const MarkerId("end"), position: _endLocation),
+        },
       ),
     );
   }
