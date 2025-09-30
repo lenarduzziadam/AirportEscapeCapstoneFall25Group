@@ -5,25 +5,24 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:http/http.dart' as http;
 
 class MapScreen extends StatefulWidget {
-  const MapScreen({super.key});
+  const MapScreen({super.key, required this.startLocation, required this.endLocation});
+  final LatLng startLocation ;
+
+  final LatLng endLocation;
 
   @override
-  State<MapScreen> createState() => _MapScreenState();
+  State<MapScreen> createState() => _MapScreenState(startLocation: startLocation, endLocation: endLocation);
 }
 
 class _MapScreenState extends State<MapScreen> {
   late GoogleMapController mapController;
-  final LatLng _startLocation = const LatLng(
-    43.77474504822277,
-    11.261909855167868,
-  );
+  final LatLng _startLocation ;
 
-  final LatLng _endLocation = const LatLng(
-    45.38002052011845,
-    12.342675855331597,
-  );
+  final LatLng _endLocation;
 
   final Set<Polyline> _polylines = {};
+
+  _MapScreenState({required LatLng startLocation, required LatLng endLocation}) : _startLocation = startLocation, _endLocation = endLocation;
 
   List<LatLng> _decodePoly(String encoded) {
     List<LatLng> points = [];
@@ -110,7 +109,6 @@ class _MapScreenState extends State<MapScreen> {
   }
 
   @override
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Maps Page'), elevation: 2),
@@ -118,7 +116,7 @@ class _MapScreenState extends State<MapScreen> {
         onMapCreated: _onMapCreated,
         initialCameraPosition: CameraPosition(
           target: _startLocation,
-          zoom: 7.0,
+          zoom: 10.0,
         ),
         polylines: _polylines,
         markers: {
