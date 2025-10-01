@@ -6,23 +6,19 @@ import 'package:http/http.dart' as http;
 
 class MapScreen extends StatefulWidget {
   const MapScreen({super.key, required this.startLocation, required this.endLocation});
-  final LatLng startLocation ;
+  final LatLng startLocation;
 
   final LatLng endLocation;
 
   @override
-  State<MapScreen> createState() => _MapScreenState(startLocation: startLocation, endLocation: endLocation);
+  State<MapScreen> createState() => _MapScreenState();
 }
 
 class _MapScreenState extends State<MapScreen> {
   late GoogleMapController mapController;
-  final LatLng _startLocation ;
-
-  final LatLng _endLocation;
-
+  
   final Set<Polyline> _polylines = {};
 
-  _MapScreenState({required LatLng startLocation, required LatLng endLocation}) : _startLocation = startLocation, _endLocation = endLocation;
 
   List<LatLng> _decodePoly(String encoded) {
     List<LatLng> points = [];
@@ -66,18 +62,16 @@ class _MapScreenState extends State<MapScreen> {
     }
     const String mainApi =
         "https://maps.googleapis.com/maps/api/directions/json?origin=";
-    final String startPosition =
-        "${_startLocation.latitude},${_startLocation.longitude}";
+    final String startPosition = "${widget.startLocation.latitude},${widget.startLocation.longitude}";
+    final String endPosition = "${widget.endLocation.latitude},${widget.endLocation.longitude}";
     const String destination = "&destination=";
-    final String endPosition =
-        "${_endLocation.latitude},${_endLocation.longitude}";
     const String key = "&key=";
     String apiKey = apiKeyFromFile;
 
     final Uri uri = Uri.parse(
       mainApi + startPosition + destination + endPosition + key + apiKey,
     );
-    var response = await http.get(uri);
+    final http.Response response = await http.get(uri);
 
     Map data = json.decode(response.body);
 
@@ -115,13 +109,13 @@ class _MapScreenState extends State<MapScreen> {
       body: GoogleMap(
         onMapCreated: _onMapCreated,
         initialCameraPosition: CameraPosition(
-          target: _startLocation,
+          target: widget.startLocation,
           zoom: 10.0,
         ),
         polylines: _polylines,
         markers: {
-          Marker(markerId: const MarkerId("start"), position: _startLocation),
-          Marker(markerId: const MarkerId("end"), position: _endLocation),
+          Marker(markerId: const MarkerId("start"), position: widget.startLocation),
+          Marker(markerId: const MarkerId("end"), position: widget.endLocation),
         },
       ),
     );

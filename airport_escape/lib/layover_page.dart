@@ -1,7 +1,6 @@
 import 'package:airport_escape/main.dart';
 import 'package:airport_escape/map_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class LayoverPage extends StatefulWidget {
@@ -41,6 +40,7 @@ class _LayoverPageState extends State<LayoverPage> {
     "Dallas-Fort Worth (DFW)": "AT&T Stadium, Arlington",
   };
 
+  // hardcoded LatLng vals for each activity
   final Map<String, LatLng> activityLocations = {
     "Millennium Park, Chicago": const LatLng(41.8825, -87.6225),
     "Union Station, Denver": const LatLng(39.753056, -105),
@@ -55,24 +55,6 @@ class _LayoverPageState extends State<LayoverPage> {
 
       _activityLoc = activityLocations[activity]!;
     });
-  }
-
-  Future<void> _openDirections() async {
-    final activity = sampleActivities[_selectedAirport];
-    if (activity == null) return;
-
-    final query = Uri.encodeComponent(activity);
-    final url = Uri.parse(
-      "https://www.google.com/maps/search/?api=1&query=$query",
-    );
-
-    if (await canLaunchUrl(url)) {
-      await launchUrl(url, mode: LaunchMode.externalApplication);
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("Could not launch Google Maps")),
-      );
-    }
   }
 
   @override
@@ -129,12 +111,8 @@ class _LayoverPageState extends State<LayoverPage> {
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 12),
+              
               ElevatedButton.icon(
-                onPressed: _openDirections,
-                icon: const Icon(Icons.directions),
-                label: const Text("Get Directions"),
-              ),
-              ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: kPrimaryColor,
                   padding: const EdgeInsets.symmetric(
@@ -153,8 +131,9 @@ class _LayoverPageState extends State<LayoverPage> {
                     ),
                   );
                 },
-                child: const Text(
-                  "See Map",
+                icon: const Icon(Icons.directions,color: Colors.white,),
+                label: const Text(
+                  "Get Directions",
                   style: TextStyle(fontSize: 18, color: Colors.white),
                 ),
               ),
