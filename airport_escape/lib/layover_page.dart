@@ -84,7 +84,7 @@ class _LayoverPageState extends State<LayoverPage> {
                 setState(() {
                   _selectedAirport = value!;
 
-                  _suggestion = "Suggested activity near $_selectedAirport: ${sampleActivities[_selectedAirport]}"; // Clear previous suggestion
+                  _suggestion = "Suggested activity near $_selectedAirport: ${sampleActivities[_selectedAirport]}"; // Update suggestion based on selected airport
                 });
               },
               decoration: const InputDecoration(
