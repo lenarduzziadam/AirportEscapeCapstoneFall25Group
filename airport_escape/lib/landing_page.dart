@@ -1,4 +1,4 @@
-// Main landing page and widgets for Airport Escape app
+// // Main landing page and widgets for Airport Escape app
 import 'package:flutter/material.dart';
 
 import 'search_bar_widget.dart';
@@ -10,7 +10,6 @@ const kPrimaryColor = Color.fromARGB(255, 18, 71, 156);
 const kBackgroundColor = Color(0xFFE0F7FA);
 
 // Main landing page widget
-// Main landing page widget with search bar skeleton
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
 
@@ -176,6 +175,10 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             const PopupMenuItem<String>(
               value: 'Profile',
               child: Text('Profile'), // Profile option
+            ),
+            const PopupMenuItem<String>(
+              value: 'Favorites',
+              child: Text('Favorite Locations'), // Favorites option
             ),
             const PopupMenuItem<String>(
               value: 'Logout',
