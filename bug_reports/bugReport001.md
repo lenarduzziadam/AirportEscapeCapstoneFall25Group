@@ -14,7 +14,14 @@
 
 **Testing Method:** Manual testing
 
-Env
+**Reproduction of Bug:** 1. Open App
+                        2. click "My layover" button
+                        3. As soon as you load in notice how the location/location is not showing up until after an option is selected.
+                        
 
-Flutter version: 3.35.2
-Dart version: 3.9.0
+__Enviorment:__
+
+    **Flutter version:** 3.35.2
+    **Dart version:** 3.9.0
+    **Sprint:** Sprint 3
+    **Commit:** 5df6536364b2ee2cebfa78d9b2d34bcd2ccd502f
