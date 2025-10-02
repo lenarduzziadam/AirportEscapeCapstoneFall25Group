@@ -1,5 +1,8 @@
-// Main landing page and widgets for Airport Escape app
+// // Main landing page and widgets for Airport Escape app
 import 'package:flutter/material.dart';
+
+import 'search_bar_widget.dart';
+
 import 'layover_page.dart'; // 👈 import your page
 
 // App-wide color constants
@@ -7,64 +10,99 @@ const kPrimaryColor = Color.fromARGB(255, 18, 71, 156);
 const kBackgroundColor = Color(0xFFE0F7FA);
 
 // Main landing page widget
-class MyHomePage extends StatelessWidget {
+class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
+
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  // List of sample locations/keywords to search from
+  final List<String> _sampleData = [
+    "Restaurant",
+    "Entertainment",
+    "Relax",
+    "Lounge",
+    "Bar",
+    "Gate A1",
+    "Gate B2",
+    "Coffee Shop",
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: const SettingsDrawer(), // Side menu
-      appBar: const CustomAppBar(),   // Top app bar
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 32),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(16),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black12,
-                    blurRadius: 8,
-                    offset: const Offset(0, 4),
-                  ),
-                ],
-              ),
-              child: const Text(
-                'Welcome to Airport Escape!',
-                style: TextStyle(
-                  fontSize: 26,
-                  fontWeight: FontWeight.bold,
-                  color: kPrimaryColor,
-                ),
-                textAlign: TextAlign.center,
-              ),
-            ),
-            const SizedBox(height: 30),
+      appBar: const CustomAppBar(), // Top app bar
 
-            // 👇 Your new button
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: kPrimaryColor,
-                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-              ),
-              onPressed: () {
-                Navigator.push(
+      body: Column(
+        children: [
+          const SizedBox(height: 16.0),
+          // Use the reusable SearchBarWidget for search functionality
+          Expanded(
+            child: SearchBarWidget(
+              data: _sampleData,
+              onResultTap: (result) {
+                // TODO: Add navigation or actions for each result
+                // For now, you can show a snackbar or print the result
+                ScaffoldMessenger.of(
                   context,
-                  MaterialPageRoute(
-                    builder: (context) => const LayoverPage(),
-                  ),
-                );
+                ).showSnackBar(SnackBar(content: Text('Selected: $result')));
               },
-              child: const Text(
-                "Plan My Layover",
-                style: TextStyle(fontSize: 18, color: Colors.white),
+            ),
+          ),
+          // Welcome message (can be shown below or conditionally)
+          Expanded(
+            child: Center(
+              child: Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 24,
+                  vertical: 32,
+                ),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(16),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black12,
+                      blurRadius: 8,
+                      offset: const Offset(0, 4),
+                    ),
+                  ],
+                ),
+                child: const Text(
+                  'Welcome to Airport Escape!', // Welcome message
+                  style: TextStyle(
+                    fontSize: 26,
+                    fontWeight: FontWeight.bold,
+                    color: kPrimaryColor,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
               ),
             ),
-          ],
-        ),
+          ),
+          const SizedBox(height: 30),
+
+          // 👇 Your new button
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: kPrimaryColor,
+              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+            ),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const LayoverPage()),
+              );
+            },
+            child: const Text(
+              "Plan My Layover",
+              style: TextStyle(fontSize: 18, color: Colors.white),
+            ),
+          ), 
+        ],
       ),
     );
   }
@@ -81,10 +119,11 @@ class SettingsDrawer extends StatelessWidget {
         padding: EdgeInsets.zero,
         children: const <Widget>[
           DrawerHeader(
-            decoration: BoxDecoration(
-              color: kPrimaryColor,
+            decoration: BoxDecoration(color: kPrimaryColor),
+            child: Text(
+              'Settings',
+              style: TextStyle(color: Colors.white, fontSize: 24),
             ),
-            child: Text('Settings', style: TextStyle(color: Colors.white, fontSize: 24)),
           ),
           ListTile(
             leading: Icon(Icons.settings), // General settings option
@@ -125,7 +164,10 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
       actions: [
         PopupMenuButton<String>(
-          icon: const Icon(Icons.account_circle, color: Colors.white), // Account icon
+          icon: const Icon(
+            Icons.account_circle,
+            color: Colors.white,
+          ), // Account icon
           onSelected: (String value) {
             // Handle account menu selection (Profile, Logout)
           },
@@ -133,6 +175,10 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             const PopupMenuItem<String>(
               value: 'Profile',
               child: Text('Profile'), // Profile option
+            ),
+            const PopupMenuItem<String>(
+              value: 'Favorites',
+              child: Text('Favorite Locations'), // Favorites option
             ),
             const PopupMenuItem<String>(
               value: 'Logout',

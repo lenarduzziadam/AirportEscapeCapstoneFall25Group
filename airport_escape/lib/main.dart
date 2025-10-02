@@ -2,8 +2,6 @@
 import 'package:flutter/material.dart';
 // Import main landing page and widgets
 import 'landing_page.dart';
-// Import your new layover page (needed because landing_page will use it)
-import 'layover_page.dart';
 
 // App-wide color constants
 const kPrimaryColor = Color.fromARGB(255, 18, 71, 156);
