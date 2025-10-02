@@ -14,9 +14,13 @@
 
 **Testing Method:** Manual testing
 
-**Reproduction of Bug:** 1. Open App
-                        2. click "My layover" button
-                        3. As soon as you load in notice how the location/location is not showing up until after an option is selected.
+__Reproduction of Bug:__
+    **Reproduction rate:** 10 out of 10 attempts (bug always produces itself (likely problem with code))
+    
+    **Steps of reproduction:**
+        1. Open App
+        2. click "My layover" button
+        3. As soon as you load in notice how the location/location is not showing up until after an option is selected.
                         
 
 __Enviorment:__
