@@ -60,6 +60,28 @@ You do NOT need to run flutterfire configure or add any extra Firebase keys.
 
 When the app runs, it will automatically initialize Firebase and connect to the provided Realtime Database.
 
+🔧 Firebase RTDB Test Page (Developer Only)
+
+We included a page called DatabaseTestPage to test Realtime Database read/write.
+
+By default, this page is disabled so the app runs normally.
+If you want to test RTDB functionality:
+
+Open lib/main.dart
+
+Find the home: line in MyApp:
+
+home: const MyHomePage(),
+
+
+Comment it out and enable the test page instead:
+
+// home: const MyHomePage(),
+home: const DatabaseTestPage(),
+
+
+Run the app. You will see a simple UI where you can send and read messages from Firebase.
+
 📝 Troubleshooting
 If VS Code doesn’t recognize Flutter commands, install the Flutter extension from the Extensions Marketplace.
 
