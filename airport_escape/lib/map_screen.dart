@@ -54,7 +54,7 @@ class _MapScreenState extends State<MapScreen> {
     return points;
   }
 
-  void _getDirections() async {
+  Future<void> _getDirections()  async {
     final String apiKeyFromFile = dotenv.env['API_KEY'] ?? "";
     if (apiKeyFromFile.isEmpty) {
       print("API key not found — is .env loaded?");
