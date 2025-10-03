@@ -43,10 +43,11 @@
 	</array>
 	<key>UIBackgroundModes</key>
 	<array>
+		<string>fetch</string>
 		<string>remote-notification</string>
 	</array>
 	<key>NSUserNotificationUsageDescription</key>
-	<string>This app needs notifications enabled to remind you.</string>
+	<string>This app needs notifications to alert you about updates.</string>
 	<key>CADisableMinimumFrameDurationOnPhone</key>
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>

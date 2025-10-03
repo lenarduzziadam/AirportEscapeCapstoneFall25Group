@@ -1,35 +1,35 @@
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 class NotificationService {
-  final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+  static final FlutterLocalNotificationsPlugin _notifications =
       FlutterLocalNotificationsPlugin();
 
-  Future<void> initNotifications() async {
-    const AndroidInitializationSettings androidSettings =
+  static Future<void> init() async {
+    const AndroidInitializationSettings androidInit =
         AndroidInitializationSettings('@mipmap/ic_launcher');
 
-    const DarwinInitializationSettings iosSettings =
-        DarwinInitializationSettings();
-
     const InitializationSettings settings =
-        InitializationSettings(android: androidSettings, iOS: iosSettings);
+        InitializationSettings(android: androidInit);
 
-    await flutterLocalNotificationsPlugin.initialize(settings);
+    await _notifications.initialize(settings);
   }
 
-  Future<void> showNotification(
-      {required int id, required String title, required String body}) async {
-    const AndroidNotificationDetails androidDetails = AndroidNotificationDetails(
-      'default_channel_id',
-      'Default Channel',
-      channelDescription: 'For general notifications',
-      importance: Importance.max,
-      priority: Priority.high,
-    );
+  static Future<void> showNotification(
+      {required String title, required String body}) async {
+    const AndroidNotificationDetails androidDetails =
+        AndroidNotificationDetails('channelId', 'channelName',
+            channelDescription: 'Test notifications',
+            importance: Importance.high,
+            priority: Priority.high);
 
-    const NotificationDetails details =
+    const NotificationDetails generalNotificationDetails =
         NotificationDetails(android: androidDetails);
 
-    await flutterLocalNotificationsPlugin.show(id, title, body, details);
+    await _notifications.show(
+      0,
+      title,
+      body,
+      generalNotificationDetails,
+    );
   }
 }

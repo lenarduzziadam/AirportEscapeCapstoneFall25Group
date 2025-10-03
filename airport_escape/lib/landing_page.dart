@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 
 import 'search_bar_widget.dart';
-
+import 'notification_test_page.dart';
 import 'layover_page.dart'; // 👈 import your page
 
 // App-wide color constants
@@ -84,6 +84,23 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ),
           const SizedBox(height: 30),
+
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: kPrimaryColor,
+              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+            ),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const NotificationTestPage()),
+              );
+            },
+            child: const Text(
+              "Test Notifications",
+              style: TextStyle(fontSize: 18, color: Colors.white),
+            ),
+          ),
 
           // 👇 Your new button
           ElevatedButton(
