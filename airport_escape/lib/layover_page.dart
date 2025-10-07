@@ -1,10 +1,12 @@
-import 'package:airport_escape/main.dart';
-import 'package:airport_escape/map_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'dart:math';
 
 class LayoverPage extends StatefulWidget {
-  const LayoverPage({super.key});
+  final String category; // 👈 category passed from landing page
+
+  const LayoverPage({super.key, required this.category});
 
   @override
   State<LayoverPage> createState() => _LayoverPageState();
@@ -21,7 +23,7 @@ class _LayoverPageState extends State<LayoverPage> {
     "Chicago O'Hare (ORD)",
     "Denver (DEN)",
     "Atlanta (ATL)",
-    "Dallas-Fort Worth (DFW)",
+    "Dallas-Fort Worth (DFW)"
   ];
 
   // hardcoded LatLng vals for each airport
@@ -38,6 +40,28 @@ class _LayoverPageState extends State<LayoverPage> {
     "Denver (DEN)": "Union Station, Denver",
     "Atlanta (ATL)": "Georgia Aquarium, Atlanta",
     "Dallas-Fort Worth (DFW)": "AT&T Stadium, Arlington",
+  // City → Category → Activities
+  final Map<String, Map<String, List<String>>> cityActivities = {
+    "Chicago O'Hare (ORD)": {
+      "Restaurant": ["Giordano's Pizza", "Portillo's Hot Dogs"],
+      "Entertainment": ["Millennium Park", "Navy Pier"],
+      "Shopping": ["Water Tower Place", "Fashion Outlets of Chicago"],
+    },
+    "Denver (DEN)": {
+      "Restaurant": ["Denver Central Market", "Snooze AM Eatery"],
+      "Entertainment": ["Red Rocks Amphitheatre", "Union Station"],
+      "Shopping": ["Cherry Creek Shopping Center", "16th Street Mall"],
+    },
+    "Atlanta (ATL)": {
+      "Restaurant": ["Mary Mac's Tea Room", "The Varsity"],
+      "Entertainment": ["Georgia Aquarium", "World of Coca-Cola"],
+      "Shopping": ["Lenox Square Mall", "Ponce City Market"],
+    },
+    "Dallas-Fort Worth (DFW)": {
+      "Restaurant": ["Pecan Lodge BBQ", "Joe T. Garcia's"],
+      "Entertainment": ["AT&T Stadium", "Sixth Floor Museum"],
+      "Shopping": ["Galleria Dallas", "NorthPark Center"],
+    },
   };
 
   // hardcoded LatLng vals for each activity
@@ -48,7 +72,7 @@ class _LayoverPageState extends State<LayoverPage> {
     "AT&T Stadium, Arlington": const LatLng(32.896801, -97.038002),
   };
 
-  void _getSuggestions() {
+  void _getSuggestionsKav() {
     setState(() {
       var activity = sampleActivities[_selectedAirport];
       _suggestion = "Suggested activity near $_selectedAirport: $activity";
@@ -56,11 +80,49 @@ class _LayoverPageState extends State<LayoverPage> {
       _activityLoc = activityLocations[activity]!;
     });
   }
+  void _getSuggestionsJohn() {
+    final activities = cityActivities[_selectedAirport]?[widget.category];
+    if (activities != null && activities.isNotEmpty) {
+      final random = Random();
+      final chosen = activities[random.nextInt(activities.length)];
+      setState(() {
+        _suggestion =
+            "Suggested ${widget.category} near $_selectedAirport: $chosen";
+      });
+    } else {
+      setState(() {
+        _suggestion =
+            "No ${widget.category} activities found for $_selectedAirport.";
+      });
+    }
+  }
+
+  Future<void> _openDirections() async {
+    if (_suggestion.isEmpty) return;
+
+    final activity = _suggestion.split(": ").last;
+    final query = Uri.encodeComponent(activity);
+    final origin = Uri.encodeComponent(_selectedAirport);
+
+    final url = Uri.parse(
+      "https://www.google.com/maps/dir/?api=1&origin=$origin&destination=$query",
+    );
+
+    if (await canLaunchUrl(url)) {
+      await launchUrl(url, mode: LaunchMode.externalApplication);
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("Could not launch Google Maps")),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Plan Your Layover")),
+      appBar: AppBar(
+        title: Text("Plan Your Layover: ${widget.category}"),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -77,10 +139,10 @@ class _LayoverPageState extends State<LayoverPage> {
             DropdownButtonFormField<String>(
               initialValue: _selectedAirport,
               items: airports
-                  .map(
-                    (airport) =>
-                        DropdownMenuItem(value: airport, child: Text(airport)),
-                  )
+                  .map((airport) => DropdownMenuItem(
+                        value: airport,
+                        child: Text(airport),
+                      ))
                   .toList(),
               onChanged: (value) {
                 setState(() {
@@ -97,17 +159,15 @@ class _LayoverPageState extends State<LayoverPage> {
             ),
             const SizedBox(height: 16),
             ElevatedButton(
-              onPressed: _getSuggestions,
+              onPressed: _getSuggestionsKav,
               child: const Text("Get Suggestions"),
             ),
             const SizedBox(height: 24),
             if (_suggestion.isNotEmpty) ...[
               Text(
                 _suggestion,
-                style: const TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                ),
+                style:
+                    const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 12),
@@ -136,6 +196,11 @@ class _LayoverPageState extends State<LayoverPage> {
                   "Get Directions",
                   style: TextStyle(fontSize: 18, color: Colors.white),
                 ),
+                ),
+           ElevatedButton.icon(
+                onPressed: _openDirections,
+                icon: const Icon(Icons.directions),
+                label: const Text("Get Directions"),
               ),
             ],
           ],
