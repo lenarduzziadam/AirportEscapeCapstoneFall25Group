@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'airport_dropdown.dart';
 import 'dart:math';
 
 class LayoverPage extends StatefulWidget {
@@ -103,29 +104,17 @@ class _LayoverPageState extends State<LayoverPage> {
               keyboardType: TextInputType.number,
             ),
             const SizedBox(height: 16),
-            DropdownButtonFormField<String>(
-              value: _selectedAirport,
-              items: airports
-                  .map((airport) => DropdownMenuItem(
-                        value: airport,
-                        child: Text(airport),
-                      ))
-                  .toList(),
-              onChanged: (value) {
+            buildAirportDropdown(
+              selectedAirport: _selectedAirport,
+              airports: airports,
+              onAirportChanged: (newAirport) {
                 setState(() {
-                  _selectedAirport = value!;
+                  _selectedAirport = newAirport;
                 });
+                _getSuggestions(); 
               },
-              decoration: const InputDecoration(
-                labelText: "Select Airport",
-                border: OutlineInputBorder(),
-              ),
             ),
             const SizedBox(height: 16),
-            ElevatedButton(
-              onPressed: _getSuggestions,
-              child: const Text("Get Suggestions"),
-            ),
             const SizedBox(height: 24),
             if (_suggestion.isNotEmpty) ...[
               Text(
