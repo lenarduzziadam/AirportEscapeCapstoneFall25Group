@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'airport_dropdown.dart';
 import 'dart:math';
@@ -15,7 +16,9 @@ class LayoverPage extends StatefulWidget {
 class _LayoverPageState extends State<LayoverPage> {
   final _durationController = TextEditingController();
   String _selectedAirport = "Chicago O'Hare (ORD)";
+  LatLng _selectedAirportLoc = LatLng(41.978600, -87.904800);
   String _suggestion = "";
+  LatLng _activityLoc = LatLng(0, 0);
 
   final List<String> airports = [
     "Chicago O'Hare (ORD)",
@@ -24,6 +27,20 @@ class _LayoverPageState extends State<LayoverPage> {
     "Dallas-Fort Worth (DFW)"
   ];
 
+  // hardcoded LatLng vals for each airport
+  final Map<String, LatLng> airportLocations = {
+    "Chicago O'Hare (ORD)": const LatLng(41.978600, -87.904800),
+    "Denver (DEN)": const LatLng(39.861698, -104.672997),
+    "Atlanta (ATL)": const LatLng(33.636700, -84.428101),
+    "Dallas-Fort Worth (DFW)": const LatLng(32.896801, -97.038002),
+  };
+
+  // Simple hardcoded activities near each airport
+  final Map<String, String> sampleActivities = {
+    "Chicago O'Hare (ORD)": "Millennium Park, Chicago",
+    "Denver (DEN)": "Union Station, Denver",
+    "Atlanta (ATL)": "Georgia Aquarium, Atlanta",
+    "Dallas-Fort Worth (DFW)": "AT&T Stadium, Arlington",
   // City → Category → Activities
   final Map<String, Map<String, List<String>>> cityActivities = {
     "Chicago O'Hare (ORD)": {
@@ -48,7 +65,23 @@ class _LayoverPageState extends State<LayoverPage> {
     },
   };
 
-  void _getSuggestions() {
+  // hardcoded LatLng vals for each activity
+  final Map<String, LatLng> activityLocations = {
+    "Millennium Park, Chicago": const LatLng(41.8825, -87.6225),
+    "Union Station, Denver": const LatLng(39.753056, -105),
+    "Georgia Aquarium, Atlanta": const LatLng(33.762778, -84.394722),
+    "AT&T Stadium, Arlington": const LatLng(32.896801, -97.038002),
+  };
+
+  void _getSuggestionsKav() {
+    setState(() {
+      var activity = sampleActivities[_selectedAirport];
+      _suggestion = "Suggested activity near $_selectedAirport: $activity";
+
+      _activityLoc = activityLocations[activity]!;
+    });
+  }
+  void _getSuggestionsJohn() {
     final activities = cityActivities[_selectedAirport]?[widget.category];
     if (activities != null && activities.isNotEmpty) {
       final random = Random();
@@ -125,7 +158,33 @@ class _LayoverPageState extends State<LayoverPage> {
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 12),
+              
               ElevatedButton.icon(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: kPrimaryColor,
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 24,
+                    vertical: 12,
+                  ),
+                ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => MapScreen(
+                        startLocation: _selectedAirportLoc,
+                        endLocation: _activityLoc,
+                      ),
+                    ),
+                  );
+                },
+                icon: const Icon(Icons.directions,color: Colors.white,),
+                label: const Text(
+                  "Get Directions",
+                  style: TextStyle(fontSize: 18, color: Colors.white),
+                ),
+                ),
+           ElevatedButton.icon(
                 onPressed: _openDirections,
                 icon: const Icon(Icons.directions),
                 label: const Text("Get Directions"),
