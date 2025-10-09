@@ -3,13 +3,12 @@ import 'package:flutter/material.dart';
 
 import 'search_bar_widget.dart';
 
-import 'layover_page.dart'; // 👈 import your page
+import 'layover_page.dart'; 
 
 // App-wide color constants
 const kPrimaryColor = Color.fromARGB(255, 18, 71, 156);
 const kBackgroundColor = Color(0xFFE0F7FA);
 
-// Main landing page widget
 // Main landing page widget with search bar skeleton
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
