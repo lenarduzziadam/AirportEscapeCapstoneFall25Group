@@ -111,10 +111,11 @@ class _LayoverPageState extends State<LayoverPage> {
                 setState(() {
                   _selectedAirport = newAirport;
                 });
-                _getSuggestions(); 
+                _getSuggestions(); // ← Add this line
               },
             ),
             const SizedBox(height: 16),
+
             const SizedBox(height: 24),
             if (_suggestion.isNotEmpty) ...[
               Text(

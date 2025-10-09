@@ -8,6 +8,7 @@ Widget buildAirportDropdown({
 }) {
   return DropdownButtonFormField<String>(
     value: selectedAirport,
+    hint: const Text("Select an airport"), // ← Grayed out placeholder
     items: airports
         .map((airport) => DropdownMenuItem(
               value: airport,
