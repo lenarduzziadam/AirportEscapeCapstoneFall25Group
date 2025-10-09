@@ -4,7 +4,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'dart:math';
 
 class LayoverPage extends StatefulWidget {
-  final String category; // 👈 category passed from landing page
+  final String category; // passed from landing page
 
   const LayoverPage({super.key, required this.category});
 
@@ -17,6 +17,7 @@ class _LayoverPageState extends State<LayoverPage> {
   String _selectedAirport = "Chicago O'Hare (ORD)";
   LatLng _selectedAirportLoc = LatLng(41.978600, -87.904800);
   String _suggestion = "";
+  String _distanceNote = "";
   LatLng _activityLoc = LatLng(0, 0);
 
   final List<String> airports = [
@@ -26,6 +27,8 @@ class _LayoverPageState extends State<LayoverPage> {
     "Dallas-Fort Worth (DFW)"
   ];
 
+  // Expanded city -> category -> activities (name + distance in miles)
+  final Map<String, Map<String, List<Map<String, dynamic>>>> cityActivities = {
   // hardcoded LatLng vals for each airport
   final Map<String, LatLng> airportLocations = {
     "Chicago O'Hare (ORD)": const LatLng(41.978600, -87.904800),
@@ -43,26 +46,104 @@ class _LayoverPageState extends State<LayoverPage> {
   // City → Category → Activities
   final Map<String, Map<String, List<String>>> cityActivities = {
     "Chicago O'Hare (ORD)": {
-      "Restaurant": ["Giordano's Pizza", "Portillo's Hot Dogs"],
-      "Entertainment": ["Millennium Park", "Navy Pier"],
-      "Shopping": ["Water Tower Place", "Fashion Outlets of Chicago"],
+      "Restaurant": [
+        {"name": "Giordano's Pizza", "distance": 15},
+        {"name": "Portillo's Hot Dogs", "distance": 8},
+        {"name": "Lou Malnati's Pizzeria", "distance": 16},
+        {"name": "The Purple Pig", "distance": 18},
+      ],
+      "Entertainment": [
+        {"name": "Millennium Park", "distance": 17},
+        {"name": "Navy Pier", "distance": 19},
+        {"name": "Art Institute of Chicago", "distance": 17},
+        {"name": "Chicago Riverwalk", "distance": 18},
+      ],
+      "Shopping": [
+        {"name": "Water Tower Place", "distance": 18},
+        {"name": "Fashion Outlets of Chicago", "distance": 4},
+        {"name": "Magnificent Mile", "distance": 17},
+        {"name": "Block 37", "distance": 18},
+      ],
     },
     "Denver (DEN)": {
-      "Restaurant": ["Denver Central Market", "Snooze AM Eatery"],
-      "Entertainment": ["Red Rocks Amphitheatre", "Union Station"],
-      "Shopping": ["Cherry Creek Shopping Center", "16th Street Mall"],
+      "Restaurant": [
+        {"name": "Denver Central Market", "distance": 23},
+        {"name": "Snooze AM Eatery", "distance": 15},
+        {"name": "Root Down", "distance": 14},
+        {"name": "The Cherry Cricket", "distance": 17},
+      ],
+      "Entertainment": [
+        {"name": "Red Rocks Amphitheatre", "distance": 25},
+        {"name": "Union Station", "distance": 19},
+        {"name": "Denver Art Museum", "distance": 18},
+        {"name": "Downtown Aquarium", "distance": 20},
+      ],
+      "Shopping": [
+        {"name": "Cherry Creek Shopping Center", "distance": 21},
+        {"name": "16th Street Mall", "distance": 18},
+        {"name": "Stanley Marketplace", "distance": 10},
+        {"name": "Denver Pavilions", "distance": 17},
+      ],
     },
     "Atlanta (ATL)": {
-      "Restaurant": ["Mary Mac's Tea Room", "The Varsity"],
-      "Entertainment": ["Georgia Aquarium", "World of Coca-Cola"],
-      "Shopping": ["Lenox Square Mall", "Ponce City Market"],
+      "Restaurant": [
+        {"name": "Mary Mac's Tea Room", "distance": 12},
+        {"name": "The Varsity", "distance": 10},
+        {"name": "South City Kitchen", "distance": 13},
+        {"name": "Busy Bee Cafe", "distance": 11},
+      ],
+      "Entertainment": [
+        {"name": "Georgia Aquarium", "distance": 14},
+        {"name": "World of Coca-Cola", "distance": 13},
+        {"name": "Centennial Olympic Park", "distance": 12},
+        {"name": "Fox Theatre", "distance": 13},
+      ],
+      "Shopping": [
+        {"name": "Lenox Square Mall", "distance": 16},
+        {"name": "Ponce City Market", "distance": 12},
+        {"name": "Atlantic Station", "distance": 13},
+        {"name": "Perimeter Mall", "distance": 20},
+      ],
     },
     "Dallas-Fort Worth (DFW)": {
-      "Restaurant": ["Pecan Lodge BBQ", "Joe T. Garcia's"],
-      "Entertainment": ["AT&T Stadium", "Sixth Floor Museum"],
-      "Shopping": ["Galleria Dallas", "NorthPark Center"],
+      "Restaurant": [
+        {"name": "Pecan Lodge BBQ", "distance": 23},
+        {"name": "Joe T. Garcia's", "distance": 17},
+        {"name": "Velvet Taco", "distance": 18},
+        {"name": "Truck Yard", "distance": 20},
+      ],
+      "Entertainment": [
+        {"name": "AT&T Stadium", "distance": 15},
+        {"name": "Sixth Floor Museum", "distance": 22},
+        {"name": "Dallas Arboretum", "distance": 19},
+        {"name": "Fort Worth Stockyards", "distance": 21},
+      ],
+      "Shopping": [
+        {"name": "Galleria Dallas", "distance": 19},
+        {"name": "NorthPark Center", "distance": 20},
+        {"name": "Shops at Clearfork", "distance": 18},
+        {"name": "Grapevine Mills", "distance": 8},
+      ],
     },
   };
+
+  int _getDistanceLimit(double hours) {
+    if (hours <= 3) return 10;
+    if (hours <= 6) return 20;
+    return 999;
+  }
+
+  void _getSuggestions() {
+    final durationText = _durationController.text;
+    if (durationText.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("Please enter your layover duration.")),
+      );
+      return;
+    }
+
+    final hours = double.tryParse(durationText) ?? 0;
+    final distanceLimit = _getDistanceLimit(hours);
 
   // hardcoded LatLng vals for each activity
   final Map<String, LatLng> activityLocations = {
@@ -82,17 +163,34 @@ class _LayoverPageState extends State<LayoverPage> {
   }
   void _getSuggestionsJohn() {
     final activities = cityActivities[_selectedAirport]?[widget.category];
-    if (activities != null && activities.isNotEmpty) {
-      final random = Random();
-      final chosen = activities[random.nextInt(activities.length)];
-      setState(() {
-        _suggestion =
-            "Suggested ${widget.category} near $_selectedAirport: $chosen";
-      });
-    } else {
+    if (activities == null || activities.isEmpty) {
       setState(() {
         _suggestion =
             "No ${widget.category} activities found for $_selectedAirport.";
+        _distanceNote = "";
+      });
+      return;
+    }
+
+    final filtered = activities
+        .where((a) => (a["distance"] as int) <= distanceLimit)
+        .toList();
+
+    if (filtered.isEmpty) {
+      setState(() {
+        _suggestion =
+            "No ${widget.category} options within ${distanceLimit} miles of $_selectedAirport.";
+        _distanceNote =
+            "Showing places within $distanceLimit miles for a ${hours.toStringAsFixed(1)}-hour layover.";
+      });
+    } else {
+      final random = Random();
+      final chosen = filtered[random.nextInt(filtered.length)]["name"];
+      setState(() {
+        _suggestion =
+            "Suggested ${widget.category} near $_selectedAirport: $chosen";
+        _distanceNote =
+            "Showing places within $distanceLimit miles for a ${hours.toStringAsFixed(1)}-hour layover.";
       });
     }
   }
@@ -162,6 +260,17 @@ class _LayoverPageState extends State<LayoverPage> {
               onPressed: _getSuggestionsKav,
               child: const Text("Get Suggestions"),
             ),
+            const SizedBox(height: 10),
+            if (_distanceNote.isNotEmpty)
+              Text(
+                _distanceNote,
+                style: const TextStyle(
+                  fontSize: 14,
+                  fontStyle: FontStyle.italic,
+                  color: Colors.black54,
+                ),
+                textAlign: TextAlign.center,
+              ),
             const SizedBox(height: 24),
             if (_suggestion.isNotEmpty) ...[
               Text(
