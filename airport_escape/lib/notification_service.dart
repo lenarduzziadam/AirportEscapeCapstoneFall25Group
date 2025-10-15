@@ -1,18 +1,26 @@
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
+
 class NotificationService {
   static final FlutterLocalNotificationsPlugin _notifications =
       FlutterLocalNotificationsPlugin();
 
   static Future<void> init() async {
-    const AndroidInitializationSettings androidInit =
-        AndroidInitializationSettings('@mipmap/ic_launcher');
+  const AndroidInitializationSettings androidInit =
+      AndroidInitializationSettings('@mipmap/ic_launcher');
 
-    const InitializationSettings settings =
-        InitializationSettings(android: androidInit);
+  const InitializationSettings settings =
+      InitializationSettings(android: androidInit);
 
-    await _notifications.initialize(settings);
+  await _notifications.initialize(settings);
+
+  // ✅ Request permission on Android 13+
+  final androidPlugin = _notifications
+      .resolvePlatformSpecificImplementation<
+          AndroidFlutterLocalNotificationsPlugin>();
+  await androidPlugin?.requestNotificationsPermission();
   }
+
 
   static Future<void> showNotification(
       {required String title, required String body}) async {
