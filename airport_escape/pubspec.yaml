@@ -41,6 +41,7 @@ dependencies:
   # 👇 Added for launching Google Maps/directions
   url_launcher: ^6.2.5
   flutter_dotenv: ^6.0.0
+  geolocator: ^14.0.2
 
 dev_dependencies:
   flutter_test:
