@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'airport_dropdown.dart';
 import 'dart:math';
 
 class LayoverPage extends StatefulWidget {
@@ -234,26 +235,15 @@ class _LayoverPageState extends State<LayoverPage> {
               keyboardType: TextInputType.number,
             ),
             const SizedBox(height: 16),
-            DropdownButtonFormField<String>(
-              initialValue: _selectedAirport,
-              items: airports
-                  .map((airport) => DropdownMenuItem(
-                        value: airport,
-                        child: Text(airport),
-                      ))
-                  .toList(),
-              onChanged: (value) {
+            buildAirportDropdown(
+              selectedAirport: _selectedAirport,
+              airports: airports,
+              onAirportChanged: (newAirport) {
                 setState(() {
-                  _selectedAirport = value!;
-                  _selectedAirportLoc = airportLocations[_selectedAirport]!;
-                  _suggestion = "";
-                  _activityLoc = LatLng(0, 0);
+                  _selectedAirport = newAirport;
                 });
+                _getSuggestions(); // ← Add this line
               },
-              decoration: const InputDecoration(
-                labelText: "Select Airport",
-                border: OutlineInputBorder(),
-              ),
             ),
             const SizedBox(height: 16),
             ElevatedButton(
