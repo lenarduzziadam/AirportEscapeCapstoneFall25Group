@@ -131,6 +131,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         style: TextStyle(fontWeight: FontWeight.bold),
       ),
       actions: [
+        const LiveTipButton(), // ← tiny lightbulb button
         PopupMenuButton<String>(
           icon: const Icon(Icons.account_circle, color: Colors.white),
           onSelected: (String value) {
