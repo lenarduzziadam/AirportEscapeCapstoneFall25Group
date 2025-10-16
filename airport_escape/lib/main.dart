@@ -14,7 +14,12 @@ const kBackgroundColor = Color(0xFFE0F7FA);
 // Main function: initializes Firebase and loads tne .env file then launches the app
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  try {
   await dotenv.load(fileName: ".env");
+} catch (e) {
+  debugPrint("No .env file found, skipping dotenv load");
+}
+
 
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
