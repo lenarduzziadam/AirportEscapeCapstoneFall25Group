@@ -246,8 +246,6 @@ class _LayoverPageState extends State<LayoverPage> {
                 setState(() {
                   _selectedAirport = value!;
                   _selectedAirportLoc = airportLocations[_selectedAirport]!;
-                  _suggestion = "";
-                  _activityLoc = LatLng(0, 0);
                 });
               },
               decoration: const InputDecoration(
