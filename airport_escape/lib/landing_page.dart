@@ -1,6 +1,9 @@
 // Main landing page and widgets for Airport Escape app
 import 'package:flutter/material.dart';
-import 'layover_page.dart'; // 👈 import the layover page
+
+import 'search_bar_widget.dart';
+
+import 'layover_page.dart'; 
 
 // App-wide color constants
 const kPrimaryColor = Color.fromARGB(255, 18, 71, 156);
