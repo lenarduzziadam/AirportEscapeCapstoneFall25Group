@@ -75,7 +75,7 @@ class MyHomePage extends StatelessWidget {
 }
 
 
-//New settings page widget
+// Replace your existing SettingsDrawer class with this:
 class SettingsDrawer extends StatelessWidget {
   const SettingsDrawer({super.key});
 
