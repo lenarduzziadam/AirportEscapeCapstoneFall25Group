@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 
 import 'search_bar_widget.dart';
-
+import 'settings_menu.dart';
 import 'layover_page.dart'; 
 
 // App-wide color constants
@@ -74,7 +74,8 @@ class MyHomePage extends StatelessWidget {
   }
 }
 
-// Drawer widget for settings menu
+
+// Replace your existing SettingsDrawer class with this:
 class SettingsDrawer extends StatelessWidget {
   const SettingsDrawer({super.key});
 
@@ -83,8 +84,8 @@ class SettingsDrawer extends StatelessWidget {
     return Drawer(
       child: ListView(
         padding: EdgeInsets.zero,
-        children: const <Widget>[
-          DrawerHeader(
+        children: <Widget>[
+          const DrawerHeader(
             decoration: BoxDecoration(
               color: kPrimaryColor,
             ),
@@ -92,12 +93,25 @@ class SettingsDrawer extends StatelessWidget {
                 style: TextStyle(color: Colors.white, fontSize: 24)),
           ),
           ListTile(
-            leading: Icon(Icons.settings),
-            title: Text('General'),
+            leading: const Icon(Icons.settings),
+            title: const Text('General Settings'),
+            onTap: () {
+              Navigator.pop(context); // Close drawer first
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const SettingsPage(),
+                ),
+              );
+            },
           ),
           ListTile(
-            leading: Icon(Icons.security),
-            title: Text('Security'),
+            leading: const Icon(Icons.security),
+            title: const Text('Security'),
+            onTap: () {
+              Navigator.pop(context);
+              // Add security page later if needed
+            },
           ),
         ],
       ),
