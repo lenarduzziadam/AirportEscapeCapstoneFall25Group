@@ -24,8 +24,12 @@ class _SettingsPageState extends State<SettingsPage> {
     'French',
     'German',
     'Italian',
-    'Japanese',
-    'Chinese'
+    'العربية (Arabic)', // Arabic
+    'Русский (Russian)', // Russian
+    '한국어 (Korean)', // Korean
+    '日本語 (Japanese)', // Japanese
+    '中文 (Chinese)', // Chinese
+    'हिन्दी (Hindi)', // Hindi
   ];
 
   @override
@@ -125,7 +129,7 @@ class _SettingsPageState extends State<SettingsPage> {
           _buildSectionHeader('About'),
           _buildInfoTile(
             title: 'Version',
-            subtitle: '1.0.0',
+            subtitle: '0.4.2',
             icon: Icons.info,
             onTap: () => _showVersionDialog(),
           ),
@@ -297,11 +301,11 @@ class _SettingsPageState extends State<SettingsPage> {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Version: 1.0.0'),
-              Text('Build: 2024.10.17'),
+              Text('Version: 0.4.2'),
+              Text('Build: 2025.10.15'),
               SizedBox(height: 16),
               Text('Developed by Team Airport Escape'),
-              Text('© 2024 All rights reserved'),
+              Text('© 2025 All rights reserved'),
             ],
           ),
           actions: [
