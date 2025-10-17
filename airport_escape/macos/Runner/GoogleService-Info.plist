@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyBtGrYW3j6rJoQt8bubMg-tDuC9S5sBJ-E</string>
+	<key>GCM_SENDER_ID</key>
+	<string>987633027135</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.airportEscape</string>
+	<key>PROJECT_ID</key>
+	<string>airport-escape</string>
+	<key>STORAGE_BUCKET</key>
+	<string>airport-escape.firebasestorage.app</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:987633027135:ios:08ad55e9573c0d3915508a</string>
+	<key>DATABASE_URL</key>
+	<string>https://airport-escape-default-rtdb.firebaseio.com</string>
+</dict>
+</plist>
