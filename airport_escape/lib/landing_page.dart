@@ -108,7 +108,7 @@ class SettingsDrawer extends StatelessWidget {
           ),
           ListTile(
             leading: const Icon(Icons.security),
-            title: const Text('Security'),
+            title: Text(AppLocalizations.of(context)!.security),
             onTap: () {
               Navigator.pop(context);
               // Add security page later if needed
@@ -139,8 +139,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           tooltip: 'Open settings',
         ),
       ),
-      title: const Text(
-        'Airport Escape',
+      title: Text(AppLocalizations.of(context)!.airport_escape,
         style: TextStyle(fontWeight: FontWeight.bold),
       ),
       actions: [
