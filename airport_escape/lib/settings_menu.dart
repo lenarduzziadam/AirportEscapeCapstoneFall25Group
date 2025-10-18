@@ -48,7 +48,7 @@ class _SettingsPageState extends State<SettingsPage> {
           // General Section
           _buildSectionHeader('General'),
           _buildSwitchTile(
-            title: 'Dark Mode',
+            title: AppLocalizations.of(context)!.dark_mode,
             subtitle: 'Enable dark theme',
             value: context.watch<ThemeProvider>().isDarkMode, // use provider
             icon: Icons.dark_mode,
@@ -65,7 +65,7 @@ class _SettingsPageState extends State<SettingsPage> {
           // Notifications Section
           _buildSectionHeader('Notifications'),
           _buildSwitchTile(
-            title: 'Enable Notifications',
+            title: AppLocalizations.of(context)!.notifications,
             subtitle: 'Receive layover suggestions and updates',
             value: _notificationsEnabled,
             icon: Icons.notifications,
@@ -82,7 +82,7 @@ class _SettingsPageState extends State<SettingsPage> {
           // Privacy Section
           _buildSectionHeader('Privacy & Data'),
           _buildSwitchTile(
-            title: 'Location Services',
+            title: AppLocalizations.of(context)!.location_services,
             subtitle: 'Allow app to access your location',
             value: _locationEnabled,
             icon: Icons.location_on,
@@ -335,7 +335,7 @@ class _SettingsPageState extends State<SettingsPage> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('Airport Escape'),
+          title: Text(AppLocalizations.of(context)!.airport_escape),
           content: const Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,

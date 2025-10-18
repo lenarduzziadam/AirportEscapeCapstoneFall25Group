@@ -149,13 +149,13 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             // Handle account menu selection (Profile, Logout)
           },
           itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
-            const PopupMenuItem<String>(
+            PopupMenuItem<String>(
               value: 'Profile',
-              child: Text('Profile'),
+              child: Text(AppLocalizations.of(context)!.profile),
             ),
-            const PopupMenuItem<String>(
+            PopupMenuItem<String>(
               value: 'Logout',
-              child: Text('Logout'),
+              child: Text(AppLocalizations.of(context)!.logout),
             ),
           ],
         ),
