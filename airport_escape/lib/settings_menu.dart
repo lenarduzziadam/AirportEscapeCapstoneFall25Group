@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart'; 
+import 'settings/theme_toggle.dart'; 
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
@@ -12,7 +14,6 @@ class _SettingsPageState extends State<SettingsPage> {
   // Settings state variables
   bool _notificationsEnabled = true;
   bool _locationEnabled = true;
-  bool _darkModeEnabled = false;
   double _brightness = 0.8;
   String _selectedLanguage = 'English';
   bool _autoRefresh = true;
@@ -37,7 +38,7 @@ class _SettingsPageState extends State<SettingsPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Settings'),
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        backgroundColor: Theme.of(context).primaryColor, 
       ),
       body: ListView(
         padding: const EdgeInsets.all(16.0),
@@ -47,13 +48,10 @@ class _SettingsPageState extends State<SettingsPage> {
           _buildSwitchTile(
             title: 'Dark Mode',
             subtitle: 'Enable dark theme',
-            value: _darkModeEnabled,
+            value: context.watch<ThemeProvider>().isDarkMode, // use provider
             icon: Icons.dark_mode,
             onChanged: (value) {
-              setState(() {
-                _darkModeEnabled = value;
-              });
-              // You can implement theme switching here
+              context.read<ThemeProvider>().setDarkMode(value); // set via provider
               _showSnackBar('Dark mode ${value ? 'enabled' : 'disabled'}');
             },
           ),
@@ -390,12 +388,13 @@ class _SettingsPageState extends State<SettingsPage> {
                 setState(() {
                   _notificationsEnabled = true;
                   _locationEnabled = true;
-                  _darkModeEnabled = false;
                   _brightness = 0.8;
                   _selectedLanguage = 'English';
                   _autoRefresh = true;
                   _saveSearchHistory = true;
                 });
+                // Reset theme to light
+                context.read<ThemeProvider>().setDarkMode(false);
                 Navigator.of(context).pop();
                 _showSnackBar('All settings reset to defaults');
               },
