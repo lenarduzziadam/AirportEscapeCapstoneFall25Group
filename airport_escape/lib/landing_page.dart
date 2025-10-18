@@ -45,8 +45,7 @@ class MyHomePage extends StatelessWidget {
                   ),
                 ],
               ),
-              child: const Text(
-                'Welcome to Airport Escape!',
+              child: Text(AppLocalizations.of(context)!.welcome_message,
                 style: TextStyle(
                   fontSize: 26,
                   fontWeight: FontWeight.bold,
@@ -86,11 +85,11 @@ class SettingsDrawer extends StatelessWidget {
       child: ListView(
         padding: EdgeInsets.zero,
         children: <Widget>[
-          const DrawerHeader(
+          DrawerHeader(
             decoration: BoxDecoration(
               color: kPrimaryColor,
             ),
-            child: Text('Settings',
+            child: Text(AppLocalizations.of(context)!.settings,
                 style: TextStyle(color: Colors.white, fontSize: 24)),
           ),
           ListTile(
