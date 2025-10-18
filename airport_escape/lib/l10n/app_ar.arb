@@ -1,0 +1,15 @@
+{
+  "@@locale": "ar",
+  "settings": "الإعدادات",
+  "dark_mode": "الوضع الداكن",
+  "language": "اللغة",
+  "notifications": "إشعارات الدفع",
+  "location_services": "خدمات الموقع",
+  "brightness": "سطوع",
+  "reset_all_settings": "إعادة تعيين جميع الإعدادات",
+  "version": "الإصدار",
+  "privacy_policy": "سياسة الخصوصية",
+  "terms_of_service": "شروط الخدمة",
+  "clear_all_data": "مسح كل البيانات",
+  "welcome_message": "مرحبًا بك في Airport Escape!"
+}

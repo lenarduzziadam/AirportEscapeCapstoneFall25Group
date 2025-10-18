@@ -1,0 +1,15 @@
+{
+  "@@locale": "fr",
+  "settings": "Paramètres",
+  "dark_mode": "Mode sombre",
+  "language": "Langue",
+  "notifications": "Notifications",
+  "location_services": "Services de localisation",
+  "brightness": "Luminosité",
+  "reset_all_settings": "Réinitialiser tous les paramètres",
+  "version": "Version",
+  "privacy_policy": "Politique de confidentialité",
+  "terms_of_service": "Conditions d'utilisation",
+  "clear_all_data": "Effacer toutes les données",
+  "welcome_message": "Bienvenue sur Airport Escape!"
+}

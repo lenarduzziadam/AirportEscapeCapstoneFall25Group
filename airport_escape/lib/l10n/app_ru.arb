@@ -1,0 +1,15 @@
+{
+  "@@locale": "ru",
+  "settings": "Настройки",
+  "dark_mode": "Тёмная тема",
+  "language": "Язык",
+  "notifications": "Push‑уведомления",
+  "location_services": "Службы определения местоположения",
+  "brightness": "Яркость",
+  "reset_all_settings": "Сброс всех настроек",
+  "version": "Версия",
+  "privacy_policy": "Политика конфиденциальности",
+  "terms_of_service": "Условия использования",
+  "clear_all_data": "Удалить все данные",
+  "welcome_message": "Добро пожаловать в Airport Escape!"
+}

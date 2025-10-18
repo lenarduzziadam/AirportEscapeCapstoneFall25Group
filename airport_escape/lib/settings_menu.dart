@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart'; 
+import 'settings/locale_provider.dart';
 import 'settings/theme_toggle.dart'; 
 
 class SettingsPage extends StatefulWidget {
@@ -238,12 +239,51 @@ class _SettingsPageState extends State<SettingsPage> {
               setState(() {
                 _selectedLanguage = newValue;
               });
+
+              // Map displayed language to a Locale and notify provider
+              final locale = _localeFromLanguage(newValue);
+              context.read<LocaleProvider>().setLocale(locale);
+
               _showSnackBar('Language changed to $newValue');
             }
           },
         ),
       ),
     );
+  }
+
+  // helper to map display string to the correct locale
+  Locale _localeFromLanguage(String language) {
+    switch (language) {
+      case 'العربية (Arabic)':
+      case 'العربية':
+        return const Locale('ar');
+      case 'Русский (Russian)':
+      case 'Русский':
+        return const Locale('ru');
+      case '한국어 (Korean)':
+      case '한국어':
+        return const Locale('ko');
+      case '日本語 (Japanese)':
+      case '日本語':
+        return const Locale('ja');
+      case '中文 (Chinese)':
+      case '中文':
+        return const Locale('zh');
+      case 'हिन्दी (Hindi)':
+      case 'हिन्दी':
+        return const Locale('hi');
+      case 'Spanish':
+        return const Locale('es');
+      case 'French':
+        return const Locale('fr');
+      case 'German':
+        return const Locale('de');
+      case 'Italian':
+        return const Locale('it');
+      default:
+        return const Locale('en');
+    }
   }
 
   Widget _buildInfoTile({

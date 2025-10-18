@@ -7,9 +7,13 @@
   "location_services": "Location Services",
   "brightness": "Brightness",
   "reset_all_settings": "Reset All Settings",
-  "version": "Version",
-  "privacy_policy": "Privacy Policy",
-  "terms_of_service": "Terms of Service",
-  "clear_all_data": "Clear All Data",
-  "welcome_message": "Welcome to Airport Escape!"
+  "welcome_message": "Welcome to Airport Escape!",
+  "restaurant": "Restaurant",
+  "entertainment": "Entertainment",
+  "shopping": "Shopping",
+  "profile": "Profile",
+  "logout": "Logout",
+  "security": "Security",
+  "general_settings": "General Settings",
+  "airport_escape": "Airport Escape"
 }
