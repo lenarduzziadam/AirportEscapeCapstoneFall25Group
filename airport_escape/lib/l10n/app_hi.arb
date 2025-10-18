@@ -7,9 +7,13 @@
   "location_services": "स्थान सेवाएं",
   "brightness": "चमक",
   "reset_all_settings": "सभी सेटिंग्स रीसेट करें",
-  "version": "संस्करण",
-  "privacy_policy": "गोपनीयता नीति",
-  "terms_of_service": "सेवा की शर्तें",
-  "clear_all_data": "सभी डेटा हटाएं",
-  "welcome_message": "Airport Escape में आपका स्वागत है!"
+  "welcome_message": "Airport Escape में आपका स्वागत है!",
+  "restaurant": "रेस्टोरेंट",
+  "entertainment": "मनोरंजन",
+  "shopping": "खरीदारी",
+  "profile": "प्रोफ़ाइल",
+  "logout": "लॉग आउट",
+  "security": "सुरक्षा",
+  "general_settings": "सामान्य सेटिंग्स",
+  "airport_escape": "Airport Escape"
 }

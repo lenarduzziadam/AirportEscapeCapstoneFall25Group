@@ -7,9 +7,13 @@
   "location_services": "Servizi di localizzazione",
   "brightness": "Luminosità",
   "reset_all_settings": "Ripristina tutte le impostazioni",
-  "version": "Versione",
-  "privacy_policy": "Informativa sulla privacy",
-  "terms_of_service": "Termini di servizio",
-  "clear_all_data": "Cancella tutti i dati",
-  "welcome_message": "Benvenuto in Airport Escape!"
+  "welcome_message": "Benvenuto in Airport Escape!",
+  "restaurant": "Ristorante",
+  "entertainment": "Intrattenimento",
+  "shopping": "Shopping",
+  "profile": "Profilo",
+  "logout": "Disconnetti",
+  "security": "Sicurezza",
+  "general_settings": "Impostazioni generali",
+  "airport_escape": "Airport Escape"
 }

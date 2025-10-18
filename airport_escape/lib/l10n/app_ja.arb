@@ -7,9 +7,13 @@
   "location_services": "位置情報サービス",
   "brightness": "明るさ",
   "reset_all_settings": "すべての設定をリセット",
-  "version": "バージョン",
-  "privacy_policy": "プライバシーポリシー",
-  "terms_of_service": "利用規約",
-  "clear_all_data": "すべてのデータを消去",
-  "welcome_message": "Airport Escapeへようこそ！"
+  "welcome_message": "Airport Escapeへようこそ！",
+  "restaurant": "レストラン",
+  "entertainment": "エンターテインメント",
+  "shopping": "ショッピング",
+  "profile": "プロフィール",
+  "logout": "ログアウト",
+  "security": "セキュリティ",
+  "general_settings": "一般設定",
+  "airport_escape": "Airport Escape"
 }

@@ -7,9 +7,13 @@
   "location_services": "위치 서비스",
   "brightness": "밝기",
   "reset_all_settings": "모든 설정 초기화",
-  "version": "버전",
-  "privacy_policy": "개인정보 처리방침",
-  "terms_of_service": "이용 약관",
-  "clear_all_data": "모든 데이터 삭제",
-  "welcome_message": "Airport Escape에 오신 것을 환영합니다!"
+  "welcome_message": "Airport Escape에 오신 것을 환영합니다!",
+  "restaurant": "레스토랑",
+  "entertainment": "엔터테인먼트",
+  "shopping": "쇼핑",
+  "profile": "프로필",
+  "logout": "로그아웃",
+  "security": "보안",
+  "general_settings": "일반 설정",
+  "airport_escape": "Airport Escape"
 }

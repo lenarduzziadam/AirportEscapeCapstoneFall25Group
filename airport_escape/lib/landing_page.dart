@@ -1,4 +1,5 @@
 // Main landing page and widgets for Airport Escape app
+import 'package:airport_escape/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 
 import 'search_bar_widget.dart';
@@ -94,7 +95,7 @@ class SettingsDrawer extends StatelessWidget {
           ),
           ListTile(
             leading: const Icon(Icons.settings),
-            title: const Text('General Settings'),
+            title: Text(AppLocalizations.of(context)!.general_settings),
             onTap: () {
               Navigator.pop(context); // Close drawer first
               Navigator.push(

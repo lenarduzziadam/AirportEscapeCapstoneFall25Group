@@ -67,6 +67,7 @@ class MyApp extends StatelessWidget {
           themeMode: themeProvider.themeMode, // line that enables darkmode!
           locale: locale,
           localizationsDelegates: const [
+            AppLocalizations.delegate,
             GlobalMaterialLocalizations.delegate,
             GlobalWidgetsLocalizations.delegate,
             GlobalCupertinoLocalizations.delegate,

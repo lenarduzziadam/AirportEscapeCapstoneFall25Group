@@ -1,3 +1,4 @@
+import 'package:airport_escape/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart'; 
@@ -64,7 +65,7 @@ class _SettingsPageState extends State<SettingsPage> {
           // Notifications Section
           _buildSectionHeader('Notifications'),
           _buildSwitchTile(
-            title: 'Push Notifications',
+            title: 'Enable Notifications',
             subtitle: 'Receive layover suggestions and updates',
             value: _notificationsEnabled,
             icon: Icons.notifications,
@@ -150,7 +151,7 @@ class _SettingsPageState extends State<SettingsPage> {
           // Reset Section
           _buildSectionHeader('Reset'),
           _buildDangerTile(
-            title: 'Clear All Data',
+            title: AppLocalizations.of(context)!.reset_all_settings,
             subtitle: 'Reset app to default settings',
             icon: Icons.delete_forever,
             onTap: () => _showResetDialog(),
@@ -196,7 +197,7 @@ class _SettingsPageState extends State<SettingsPage> {
     return Card(
       child: ListTile(
         leading: const Icon(Icons.brightness_6),
-        title: const Text('Brightness'),
+        title: Text(AppLocalizations.of(context)!.brightness),
         subtitle: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -223,7 +224,7 @@ class _SettingsPageState extends State<SettingsPage> {
     return Card(
       child: ListTile(
         leading: const Icon(Icons.language),
-        title: const Text('Language'),
+        title: Text(AppLocalizations.of(context)!.language),
         subtitle: DropdownButton<String>(
           value: _selectedLanguage,
           isExpanded: true,

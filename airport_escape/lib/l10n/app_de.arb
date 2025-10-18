@@ -3,13 +3,17 @@
   "settings": "Einstellungen",
   "dark_mode": "Dunkler Modus",
   "language": "Sprache",
-  "notifications": "Push‑Benachrichtigungen",
+  "notifications": "Push-Benachrichtigungen",
   "location_services": "Standortdienste",
   "brightness": "Helligkeit",
   "reset_all_settings": "Alle Einstellungen zurücksetzen",
-  "version": "Version",
-  "privacy_policy": "Datenschutzerklärung",
-  "terms_of_service": "Nutzungsbedingungen",
-  "clear_all_data": "Alle Daten löschen",
-  "welcome_message": "Willkommen bei Airport Escape!"
+  "welcome_message": "Willkommen bei Airport Escape!",
+  "restaurant": "Restaurant",
+  "entertainment": "Unterhaltung",
+  "shopping": "Einkaufen",
+  "profile": "Profil",
+  "logout": "Abmelden",
+  "security": "Sicherheit",
+  "general_settings": "Allgemeine Einstellungen",
+  "airport_escape": "Airport Escape"
 }
