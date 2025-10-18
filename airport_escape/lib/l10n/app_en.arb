@@ -1,0 +1,15 @@
+{
+  "@@locale": "en",
+  "settings": "Settings",
+  "dark_mode": "Dark Mode",
+  "language": "Language",
+  "notifications": "Push Notifications",
+  "location_services": "Location Services",
+  "brightness": "Brightness",
+  "reset_all_settings": "Reset All Settings",
+  "version": "Version",
+  "privacy_policy": "Privacy Policy",
+  "terms_of_service": "Terms of Service",
+  "clear_all_data": "Clear All Data",
+  "welcome_message": "Welcome to Airport Escape!"
+}

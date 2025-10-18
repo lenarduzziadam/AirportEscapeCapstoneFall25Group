@@ -1,3 +1,7 @@
+// theme_toggle.dart
+// Provides a ThemeProvider to manage light/dark mode toggling across the app
+
+
 import 'package:flutter/material.dart';
 
 class ThemeProvider extends ChangeNotifier {
@@ -10,7 +14,7 @@ class ThemeProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  // Allow setting explicit value
+  // This allows for the transition to be set directly
   void setDarkMode(bool value) {
     if (_isDarkMode == value) return;
     _isDarkMode = value;

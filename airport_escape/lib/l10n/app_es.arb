@@ -1,0 +1,15 @@
+{
+  "@@locale": "es",
+  "settings": "Configuración",
+  "dark_mode": "Modo oscuro",
+  "language": "Idioma",
+  "notifications": "Notificaciones push",
+  "location_services": "Servicios de ubicación",
+  "brightness": "Brillo",
+  "reset_all_settings": "Restablecer todos los ajustes",
+  "version": "Versión",
+  "privacy_policy": "Política de privacidad",
+  "terms_of_service": "Términos de servicio",
+  "clear_all_data": "Borrar todos los datos",
+  "welcome_message": "¡Bienvenido a Airport Escape!"
+}
