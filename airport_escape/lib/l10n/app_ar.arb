@@ -15,5 +15,11 @@
   "logout": "تسجيل الخروج",
   "security": "الأمان",
   "general_settings": "الإعدادات العامة",
-  "airport_escape": "Airport Escape"
+  "airport_escape": "Airport Escape",
+  "plan_your_layover": "Plan Your Layover: {category}",
+  "layover_duration_label": "Layover Duration (hours)",
+  "select_airport": "Select Airport",
+  "please_enter_duration": "Please enter your layover duration.",
+  "could_not_launch_maps": "Could not launch Google Maps",
+  "suggested_activity_near": "Suggested activity near {airport}: {activity}"
 }

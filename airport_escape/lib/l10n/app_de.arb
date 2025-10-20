@@ -15,5 +15,11 @@
   "logout": "Abmelden",
   "security": "Sicherheit",
   "general_settings": "Allgemeine Einstellungen",
-  "airport_escape": "Airport Escape"
+  "airport_escape": "Airport Escape",
+  "plan_your_layover": "Planen Sie Ihren Zwischenstopp: {category}",
+  "layover_duration_label": "Zwischenstopp-Dauer (Stunden)",
+  "select_airport": "Flughafen auswählen",
+  "please_enter_duration": "Bitte geben Sie Ihre Zwischenstopp-Dauer ein.",
+  "could_not_launch_maps": "Google Maps konnte nicht gestartet werden",
+  "suggested_activity_near": "Vorgeschlagene Aktivität in der Nähe von {airport}: {activity}"
 }

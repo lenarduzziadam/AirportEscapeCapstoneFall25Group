@@ -15,5 +15,11 @@
   "logout": "Cerrar sesión",
   "security": "Seguridad",
   "general_settings": "Configuración general",
-  "airport_escape": "Airport Escape"
+  "airport_escape": "Airport Escape",
+  "plan_your_layover": "Planifica tu escala: {category}",
+  "layover_duration_label": "Duración de la escala (horas)",
+  "select_airport": "Selecciona aeropuerto",
+  "please_enter_duration": "Por favor, ingresa la duración de tu escala.",
+  "could_not_launch_maps": "No se pudo abrir Google Maps",
+  "suggested_activity_near": "Actividad sugerida cerca de {airport}: {activity}"
 }

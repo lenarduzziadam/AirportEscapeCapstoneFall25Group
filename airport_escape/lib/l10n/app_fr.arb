@@ -15,5 +15,11 @@
   "logout": "Déconnexion",
   "security": "Sécurité",
   "general_settings": "Paramètres généraux",
-  "airport_escape": "Airport Escape"
+  "airport_escape": "Airport Escape",
+  "plan_your_layover": "Planifiez votre escale : {category}",
+  "layover_duration_label": "Durée de l'escale (heures)",
+  "select_airport": "Sélectionnez l'aéroport",
+  "please_enter_duration": "Veuillez entrer la durée de votre escale.",
+  "could_not_launch_maps": "Impossible d’ouvrir Google Maps",
+  "suggested_activity_near": "Activité suggérée près de {airport} : {activity}"
 }

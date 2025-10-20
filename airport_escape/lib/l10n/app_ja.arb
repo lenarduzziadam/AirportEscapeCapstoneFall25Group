@@ -15,5 +15,11 @@
   "logout": "ログアウト",
   "security": "セキュリティ",
   "general_settings": "一般設定",
-  "airport_escape": "Airport Escape"
+  "airport_escape": "Airport Escape",
+  "plan_your_layover": "乗り継ぎを計画する: {category}",
+  "layover_duration_label": "乗り継ぎ時間（時間）",
+  "select_airport": "空港を選択",
+  "please_enter_duration": "乗り継ぎ時間を入力してください。",
+  "could_not_launch_maps": "Googleマップを開けませんでした",
+  "suggested_activity_near": "{airport}付近のおすすめアクティビティ: {activity}"
 }

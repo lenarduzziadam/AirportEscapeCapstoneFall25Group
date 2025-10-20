@@ -15,5 +15,11 @@
   "logout": "Выйти",
   "security": "Безопасность",
   "general_settings": "Общие настройки",
-  "airport_escape": "Airport Escape"
+  "airport_escape": "Airport Escape",
+  "plan_your_layover": "Планируйте свою пересадку: {category}",
+  "layover_duration_label": "Длительность пересадки (часы)",
+  "select_airport": "Выберите аэропорт",
+  "please_enter_duration": "Пожалуйста, введите длительность пересадки.",
+  "could_not_launch_maps": "Не удалось открыть Google Maps",
+  "suggested_activity_near": "Рекомендуемое занятие рядом с {airport}: {activity}"
 }

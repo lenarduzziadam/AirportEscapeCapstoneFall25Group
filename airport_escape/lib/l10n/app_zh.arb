@@ -15,5 +15,11 @@
   "logout": "退出登录",
   "security": "安全",
   "general_settings": "常规设置",
-  "airport_escape": "Airport Escape"
+  "airport_escape": "Airport Escape",
+  "plan_your_layover": "规划您的中转：{category}",
+  "layover_duration_label": "中转时长（小时）",
+  "select_airport": "选择机场",
+  "please_enter_duration": "请输入您的中转时长。",
+  "could_not_launch_maps": "无法打开谷歌地图",
+  "suggested_activity_near": "{airport}附近推荐活动：{activity}"
 }
