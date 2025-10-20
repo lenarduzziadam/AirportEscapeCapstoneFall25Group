@@ -58,24 +58,24 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String plan_your_layover(Object category) {
-    return 'Plan Your Layover: $category';
+    return 'خطط لفترة التوقف: $category';
   }
 
   @override
-  String get layover_duration_label => 'Layover Duration (hours)';
+  String get layover_duration_label => 'مدة التوقف (ساعات)';
 
   @override
-  String get select_airport => 'Select Airport';
+  String get select_airport => 'اختر المطار';
 
   @override
-  String get please_enter_duration => 'Please enter your layover duration.';
+  String get please_enter_duration => 'يرجى إدخال مدة التوقف الخاصة بك.';
 
   @override
-  String get could_not_launch_maps => 'Could not launch Google Maps';
+  String get could_not_launch_maps => 'تعذر فتح خرائط Google';
 
   @override
   String suggested_activity_near(Object activity, Object airport) {
-    return 'Suggested activity near $airport: $activity';
+    return 'نشاط مقترح بالقرب من $airport: $activity';
   }
 
   @override

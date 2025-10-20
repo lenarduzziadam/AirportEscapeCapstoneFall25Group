@@ -16,11 +16,11 @@
   "security": "الأمان",
   "general_settings": "الإعدادات العامة",
   "airport_escape": "Airport Escape",
-  "plan_your_layover": "Plan Your Layover: {category}",
-  "layover_duration_label": "Layover Duration (hours)",
-  "select_airport": "Select Airport",
-  "please_enter_duration": "Please enter your layover duration.",
-  "could_not_launch_maps": "Could not launch Google Maps",
-  "suggested_activity_near": "Suggested activity near {airport}: {activity}",
+  "plan_your_layover": "خطط لفترة التوقف: {category}",
+  "layover_duration_label": "مدة التوقف (ساعات)",
+  "select_airport": "اختر المطار",
+  "please_enter_duration": "يرجى إدخال مدة التوقف الخاصة بك.",
+  "could_not_launch_maps": "تعذر فتح خرائط Google",
+  "suggested_activity_near": "نشاط مقترح بالقرب من {airport}: {activity}",
   "get_directions": "الحصول على الاتجاهات"
 }

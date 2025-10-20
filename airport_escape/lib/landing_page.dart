@@ -56,15 +56,15 @@ class MyHomePage extends StatelessWidget {
             ),
             const SizedBox(height: 30),
             ElevatedButton(
-              onPressed: () => _openLayoverPage(context, "Restaurant"),
+              onPressed: () => _openLayoverPage(context, AppLocalizations.of(context)!.restaurant),
               child: Text(AppLocalizations.of(context)!.restaurant),
             ),
             ElevatedButton(
-              onPressed: () => _openLayoverPage(context, "Entertainment"),
+              onPressed: () => _openLayoverPage(context, AppLocalizations.of(context)!.entertainment),
               child: Text(AppLocalizations.of(context)!.entertainment),
             ),
             ElevatedButton(
-              onPressed: () => _openLayoverPage(context, "Shopping"),
+              onPressed: () => _openLayoverPage(context, AppLocalizations.of(context)!.shopping),
               child: Text(AppLocalizations.of(context)!.shopping),
             ),
           ],
