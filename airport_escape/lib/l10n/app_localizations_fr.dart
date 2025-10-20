@@ -81,4 +81,34 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get get_directions => 'Obtenir l\'itinéraire';
+
+  @override
+  String get save_search_history => 'Enregistrer l\'historique des recherches';
+
+  @override
+  String get auto_refresh => 'Actualisation automatique';
+
+  @override
+  String get privacy_policy => 'Politique de confidentialité';
+
+  @override
+  String get terms_of_service => 'Conditions d\'utilisation';
+
+  @override
+  String get section_privacy_and_data => 'Confidentialité et données';
+
+  @override
+  String get section_notifications => 'Notifications';
+
+  @override
+  String get section_app_behavior => 'Comportement de l\'application';
+
+  @override
+  String get section_about => 'À propos';
+
+  @override
+  String get section_reset => 'Réinitialiser';
+
+  @override
+  String get section_general => 'Général';
 }

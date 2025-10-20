@@ -81,4 +81,34 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get get_directions => 'Построить маршрут';
+
+  @override
+  String get save_search_history => 'Сохранить историю поиска';
+
+  @override
+  String get auto_refresh => 'Автообновление';
+
+  @override
+  String get privacy_policy => 'Политика конфиденциальности';
+
+  @override
+  String get terms_of_service => 'Условия использования';
+
+  @override
+  String get section_privacy_and_data => 'Конфиденциальность и данные';
+
+  @override
+  String get section_notifications => 'Уведомления';
+
+  @override
+  String get section_app_behavior => 'Поведение приложения';
+
+  @override
+  String get section_about => 'О приложении';
+
+  @override
+  String get section_reset => 'Сброс';
+
+  @override
+  String get section_general => 'Общие';
 }

@@ -22,5 +22,15 @@
   "please_enter_duration": "Пожалуйста, введите длительность пересадки.",
   "could_not_launch_maps": "Не удалось открыть Google Maps",
   "suggested_activity_near": "Рекомендуемое занятие рядом с {airport}: {activity}",
-  "get_directions": "Построить маршрут"
+  "get_directions": "Построить маршрут",
+  "save_search_history": "Сохранить историю поиска",
+  "auto_refresh": "Автообновление",
+  "privacy_policy": "Политика конфиденциальности",
+  "terms_of_service": "Условия использования",
+  "section_privacy_and_data": "Конфиденциальность и данные",
+  "section_notifications": "Уведомления",
+  "section_app_behavior": "Поведение приложения",
+  "section_about": "О приложении",
+  "section_reset": "Сброс",
+  "section_general": "Общие"
 }

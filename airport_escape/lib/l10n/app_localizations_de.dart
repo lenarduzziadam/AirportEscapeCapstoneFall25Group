@@ -82,4 +82,34 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get get_directions => 'Wegbeschreibung';
+
+  @override
+  String get save_search_history => 'Suchverlauf speichern';
+
+  @override
+  String get auto_refresh => 'Automatische Aktualisierung';
+
+  @override
+  String get privacy_policy => 'Datenschutzerklärung';
+
+  @override
+  String get terms_of_service => 'Nutzungsbedingungen';
+
+  @override
+  String get section_privacy_and_data => 'Datenschutz & Daten';
+
+  @override
+  String get section_notifications => 'Benachrichtigungen';
+
+  @override
+  String get section_app_behavior => 'App-Verhalten';
+
+  @override
+  String get section_about => 'Über';
+
+  @override
+  String get section_reset => 'Zurücksetzen';
+
+  @override
+  String get section_general => 'Allgemein';
 }

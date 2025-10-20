@@ -80,4 +80,34 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get get_directions => '길찾기';
+
+  @override
+  String get save_search_history => '검색 기록 저장';
+
+  @override
+  String get auto_refresh => '자동 새로고침';
+
+  @override
+  String get privacy_policy => '개인정보 처리방침';
+
+  @override
+  String get terms_of_service => '서비스 약관';
+
+  @override
+  String get section_privacy_and_data => '개인정보 및 데이터';
+
+  @override
+  String get section_notifications => '알림';
+
+  @override
+  String get section_app_behavior => '앱 동작';
+
+  @override
+  String get section_about => '정보';
+
+  @override
+  String get section_reset => '초기화';
+
+  @override
+  String get section_general => '일반';
 }

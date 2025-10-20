@@ -22,5 +22,15 @@
   "please_enter_duration": "Veuillez entrer la durée de votre escale.",
   "could_not_launch_maps": "Impossible d’ouvrir Google Maps",
   "suggested_activity_near": "Activité suggérée près de {airport} : {activity}",
-  "get_directions": "Obtenir l'itinéraire"
+  "get_directions": "Obtenir l'itinéraire",
+  "save_search_history": "Enregistrer l'historique des recherches",
+  "auto_refresh": "Actualisation automatique",
+  "privacy_policy": "Politique de confidentialité",
+  "terms_of_service": "Conditions d'utilisation",
+  "section_privacy_and_data": "Confidentialité et données",
+  "section_notifications": "Notifications",
+  "section_app_behavior": "Comportement de l'application",
+  "section_about": "À propos",
+  "section_reset": "Réinitialiser",
+  "section_general": "Général"
 }

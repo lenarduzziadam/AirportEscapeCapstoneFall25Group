@@ -22,5 +22,15 @@
   "please_enter_duration": "환승 시간을 입력하세요.",
   "could_not_launch_maps": "Google 지도 실행에 실패했습니다",
   "suggested_activity_near": "{airport} 근처 추천 활동: {activity}",
-  "get_directions": "길찾기"
+  "get_directions": "길찾기",
+  "save_search_history": "검색 기록 저장",
+  "auto_refresh": "자동 새로고침",
+  "privacy_policy": "개인정보 처리방침",
+  "terms_of_service": "서비스 약관",
+  "section_privacy_and_data": "개인정보 및 데이터",
+  "section_notifications": "알림",
+  "section_app_behavior": "앱 동작",
+  "section_about": "정보",
+  "section_reset": "초기화",
+  "section_general": "일반"
 }

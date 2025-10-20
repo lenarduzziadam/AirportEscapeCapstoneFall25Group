@@ -80,4 +80,34 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get get_directions => 'الحصول على الاتجاهات';
+
+  @override
+  String get save_search_history => 'حفظ سجل البحث';
+
+  @override
+  String get auto_refresh => 'التحديث التلقائي';
+
+  @override
+  String get privacy_policy => 'سياسة الخصوصية';
+
+  @override
+  String get terms_of_service => 'شروط الخدمة';
+
+  @override
+  String get section_privacy_and_data => 'الخصوصية والبيانات';
+
+  @override
+  String get section_notifications => 'الإشعارات';
+
+  @override
+  String get section_app_behavior => 'سلوك التطبيق';
+
+  @override
+  String get section_about => 'حول';
+
+  @override
+  String get section_reset => 'إعادة تعيين';
+
+  @override
+  String get section_general => 'عام';
 }

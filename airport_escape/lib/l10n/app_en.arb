@@ -22,5 +22,15 @@
   "please_enter_duration": "Please enter your layover duration.",
   "could_not_launch_maps": "Could not launch Google Maps",
   "suggested_activity_near": "Suggested activity near {airport}: {activity}",
-  "get_directions": "Get Directions"
+  "get_directions": "Get Directions",
+  "save_search_history": "Save search history",
+  "auto_refresh": "Auto refresh",
+  "privacy_policy": "Privacy Policy",
+  "terms_of_service": "Terms of Service",
+  "section_privacy_and_data": "Privacy & Data",
+  "section_notifications": "Notifications",
+  "section_app_behavior": "App Behavior",
+  "section_about": "About",
+  "section_reset": "Reset",
+  "section_general": "General"
 }

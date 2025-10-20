@@ -80,4 +80,34 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get get_directions => 'दिशा प्राप्त करें';
+
+  @override
+  String get save_search_history => 'खोज इतिहास सहेजें';
+
+  @override
+  String get auto_refresh => 'स्वचालित ताज़ा';
+
+  @override
+  String get privacy_policy => 'गोपनीयता नीति';
+
+  @override
+  String get terms_of_service => 'सेवा की शर्तें';
+
+  @override
+  String get section_privacy_and_data => 'गोपनीयता और डेटा';
+
+  @override
+  String get section_notifications => 'सूचनाएं';
+
+  @override
+  String get section_app_behavior => 'ऐप व्यवहार';
+
+  @override
+  String get section_about => 'जानकारी';
+
+  @override
+  String get section_reset => 'रीसेट';
+
+  @override
+  String get section_general => 'सामान्य';
 }

@@ -81,4 +81,34 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get get_directions => 'Obtener direcciones';
+
+  @override
+  String get save_search_history => 'Guardar historial de búsqueda';
+
+  @override
+  String get auto_refresh => 'Actualización automática';
+
+  @override
+  String get privacy_policy => 'Política de privacidad';
+
+  @override
+  String get terms_of_service => 'Términos de servicio';
+
+  @override
+  String get section_privacy_and_data => 'Privacidad y datos';
+
+  @override
+  String get section_notifications => 'Notificaciones';
+
+  @override
+  String get section_app_behavior => 'Comportamiento de la aplicación';
+
+  @override
+  String get section_about => 'Acerca de';
+
+  @override
+  String get section_reset => 'Restablecer';
+
+  @override
+  String get section_general => 'General';
 }

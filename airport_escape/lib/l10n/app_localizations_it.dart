@@ -80,4 +80,34 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get get_directions => 'Indicazioni';
+
+  @override
+  String get save_search_history => 'Salva cronologia ricerche';
+
+  @override
+  String get auto_refresh => 'Aggiornamento automatico';
+
+  @override
+  String get privacy_policy => 'Informativa sulla privacy';
+
+  @override
+  String get terms_of_service => 'Termini di servizio';
+
+  @override
+  String get section_privacy_and_data => 'Privacy e dati';
+
+  @override
+  String get section_notifications => 'Notifiche';
+
+  @override
+  String get section_app_behavior => 'Comportamento dell\'app';
+
+  @override
+  String get section_about => 'Informazioni';
+
+  @override
+  String get section_reset => 'Ripristina';
+
+  @override
+  String get section_general => 'Generale';
 }

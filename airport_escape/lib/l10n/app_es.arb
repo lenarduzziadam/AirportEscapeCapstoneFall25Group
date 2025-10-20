@@ -22,5 +22,15 @@
   "please_enter_duration": "Por favor, ingresa la duración de tu escala.",
   "could_not_launch_maps": "No se pudo abrir Google Maps",
   "suggested_activity_near": "Actividad sugerida cerca de {airport}: {activity}",
-  "get_directions": "Obtener direcciones"
+  "get_directions": "Obtener direcciones",
+  "save_search_history": "Guardar historial de búsqueda",
+  "auto_refresh": "Actualización automática",
+  "privacy_policy": "Política de privacidad",
+  "terms_of_service": "Términos de servicio",
+  "section_privacy_and_data": "Privacidad y datos",
+  "section_notifications": "Notificaciones",
+  "section_app_behavior": "Comportamiento de la aplicación",
+  "section_about": "Acerca de",
+  "section_reset": "Restablecer",
+  "section_general": "General"
 }

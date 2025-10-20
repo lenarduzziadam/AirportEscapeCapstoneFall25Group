@@ -22,5 +22,15 @@
   "please_enter_duration": "乗り継ぎ時間を入力してください。",
   "could_not_launch_maps": "Googleマップを開けませんでした",
   "suggested_activity_near": "{airport}付近のおすすめアクティビティ: {activity}",
-  "get_directions": "ルートを表示"
+  "get_directions": "ルートを表示",
+  "save_search_history": "検索履歴を保存",
+  "auto_refresh": "自動更新",
+  "privacy_policy": "プライバシーポリシー",
+  "terms_of_service": "利用規約",
+  "section_privacy_and_data": "プライバシーとデータ",
+  "section_notifications": "通知",
+  "section_app_behavior": "アプリの動作",
+  "section_about": "約",
+  "section_reset": "リセット",
+  "section_general": "一般"
 }

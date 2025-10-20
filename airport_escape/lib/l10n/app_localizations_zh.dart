@@ -80,4 +80,34 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get get_directions => '获取路线';
+
+  @override
+  String get save_search_history => '保存搜索历史';
+
+  @override
+  String get auto_refresh => '自动刷新';
+
+  @override
+  String get privacy_policy => '隐私政策';
+
+  @override
+  String get terms_of_service => '服务条款';
+
+  @override
+  String get section_privacy_and_data => '隐私与数据';
+
+  @override
+  String get section_notifications => '通知';
+
+  @override
+  String get section_app_behavior => '应用行为';
+
+  @override
+  String get section_about => '关于';
+
+  @override
+  String get section_reset => '重置';
+
+  @override
+  String get section_general => '常规';
 }

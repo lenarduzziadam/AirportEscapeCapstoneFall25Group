@@ -22,5 +22,15 @@
   "please_enter_duration": "请输入您的中转时长。",
   "could_not_launch_maps": "无法打开谷歌地图",
   "suggested_activity_near": "{airport}附近推荐活动：{activity}",
-  "get_directions": "获取路线"
+  "get_directions": "获取路线",
+  "save_search_history": "保存搜索历史",
+  "auto_refresh": "自动刷新",
+  "privacy_policy": "隐私政策",
+  "terms_of_service": "服务条款",
+  "section_privacy_and_data": "隐私与数据",
+  "section_notifications": "通知",
+  "section_app_behavior": "应用行为",
+  "section_about": "关于",
+  "section_reset": "重置",
+  "section_general": "常规"
 }

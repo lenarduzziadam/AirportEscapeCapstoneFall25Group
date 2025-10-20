@@ -22,5 +22,15 @@
   "please_enter_duration": "Bitte geben Sie Ihre Zwischenstopp-Dauer ein.",
   "could_not_launch_maps": "Google Maps konnte nicht gestartet werden",
   "suggested_activity_near": "Vorgeschlagene Aktivität in der Nähe von {airport}: {activity}",
-  "get_directions": "Wegbeschreibung"
+  "get_directions": "Wegbeschreibung",
+  "save_search_history": "Suchverlauf speichern",
+  "auto_refresh": "Automatische Aktualisierung",
+  "privacy_policy": "Datenschutzerklärung",
+  "terms_of_service": "Nutzungsbedingungen",
+  "section_privacy_and_data": "Datenschutz & Daten",
+  "section_notifications": "Benachrichtigungen",
+  "section_app_behavior": "App-Verhalten",
+  "section_about": "Über",
+  "section_reset": "Zurücksetzen",
+  "section_general": "Allgemein"
 }

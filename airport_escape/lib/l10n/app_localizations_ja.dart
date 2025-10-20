@@ -80,4 +80,34 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get get_directions => 'ルートを表示';
+
+  @override
+  String get save_search_history => '検索履歴を保存';
+
+  @override
+  String get auto_refresh => '自動更新';
+
+  @override
+  String get privacy_policy => 'プライバシーポリシー';
+
+  @override
+  String get terms_of_service => '利用規約';
+
+  @override
+  String get section_privacy_and_data => 'プライバシーとデータ';
+
+  @override
+  String get section_notifications => '通知';
+
+  @override
+  String get section_app_behavior => 'アプリの動作';
+
+  @override
+  String get section_about => '約';
+
+  @override
+  String get section_reset => 'リセット';
+
+  @override
+  String get section_general => '一般';
 }

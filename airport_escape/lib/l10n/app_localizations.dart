@@ -253,6 +253,66 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Get Directions'**
   String get get_directions;
+
+  /// No description provided for @save_search_history.
+  ///
+  /// In en, this message translates to:
+  /// **'Save search history'**
+  String get save_search_history;
+
+  /// No description provided for @auto_refresh.
+  ///
+  /// In en, this message translates to:
+  /// **'Auto refresh'**
+  String get auto_refresh;
+
+  /// No description provided for @privacy_policy.
+  ///
+  /// In en, this message translates to:
+  /// **'Privacy Policy'**
+  String get privacy_policy;
+
+  /// No description provided for @terms_of_service.
+  ///
+  /// In en, this message translates to:
+  /// **'Terms of Service'**
+  String get terms_of_service;
+
+  /// No description provided for @section_privacy_and_data.
+  ///
+  /// In en, this message translates to:
+  /// **'Privacy & Data'**
+  String get section_privacy_and_data;
+
+  /// No description provided for @section_notifications.
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications'**
+  String get section_notifications;
+
+  /// No description provided for @section_app_behavior.
+  ///
+  /// In en, this message translates to:
+  /// **'App Behavior'**
+  String get section_app_behavior;
+
+  /// No description provided for @section_about.
+  ///
+  /// In en, this message translates to:
+  /// **'About'**
+  String get section_about;
+
+  /// No description provided for @section_reset.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset'**
+  String get section_reset;
+
+  /// No description provided for @section_general.
+  ///
+  /// In en, this message translates to:
+  /// **'General'**
+  String get section_general;
 }
 
 class _AppLocalizationsDelegate

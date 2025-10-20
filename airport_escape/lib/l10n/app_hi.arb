@@ -22,5 +22,15 @@
   "please_enter_duration": "कृपया अपनी लेओवर अवधि दर्ज करें।",
   "could_not_launch_maps": "Google Maps लॉन्च नहीं किया जा सका",
   "suggested_activity_near": "{airport} के पास सुझाई गई गतिविधि: {activity}",
-  "get_directions": "दिशा प्राप्त करें"
+  "get_directions": "दिशा प्राप्त करें",
+  "save_search_history": "खोज इतिहास सहेजें",
+  "auto_refresh": "स्वचालित ताज़ा",
+  "privacy_policy": "गोपनीयता नीति",
+  "terms_of_service": "सेवा की शर्तें",
+  "section_privacy_and_data": "गोपनीयता और डेटा",
+  "section_notifications": "सूचनाएं",
+  "section_app_behavior": "ऐप व्यवहार",
+  "section_about": "जानकारी",
+  "section_reset": "रीसेट",
+  "section_general": "सामान्य"
 }

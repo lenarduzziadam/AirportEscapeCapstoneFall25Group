@@ -80,4 +80,34 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get get_directions => 'Get Directions';
+
+  @override
+  String get save_search_history => 'Save search history';
+
+  @override
+  String get auto_refresh => 'Auto refresh';
+
+  @override
+  String get privacy_policy => 'Privacy Policy';
+
+  @override
+  String get terms_of_service => 'Terms of Service';
+
+  @override
+  String get section_privacy_and_data => 'Privacy & Data';
+
+  @override
+  String get section_notifications => 'Notifications';
+
+  @override
+  String get section_app_behavior => 'App Behavior';
+
+  @override
+  String get section_about => 'About';
+
+  @override
+  String get section_reset => 'Reset';
+
+  @override
+  String get section_general => 'General';
 }

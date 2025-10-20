@@ -233,8 +233,8 @@ class _LayoverPageState extends State<LayoverPage> {
           children: [
             TextField(
               controller: _durationController,
-              decoration: const InputDecoration(
-                labelText: "Layover Duration (hours)",
+              decoration: InputDecoration(
+                labelText: AppLocalizations.of(context)!.layover_duration_label,
                 border: OutlineInputBorder(),
               ),
               keyboardType: TextInputType.number,

@@ -22,5 +22,15 @@
   "please_enter_duration": "يرجى إدخال مدة التوقف الخاصة بك.",
   "could_not_launch_maps": "تعذر فتح خرائط Google",
   "suggested_activity_near": "نشاط مقترح بالقرب من {airport}: {activity}",
-  "get_directions": "الحصول على الاتجاهات"
+  "get_directions": "الحصول على الاتجاهات",
+  "save_search_history": "حفظ سجل البحث",
+  "auto_refresh": "التحديث التلقائي",
+  "privacy_policy": "سياسة الخصوصية",
+  "terms_of_service": "شروط الخدمة",
+  "section_privacy_and_data": "الخصوصية والبيانات",
+  "section_notifications": "الإشعارات",
+  "section_app_behavior": "سلوك التطبيق",
+  "section_about": "حول",
+  "section_reset": "إعادة تعيين",
+  "section_general": "عام"
 }
