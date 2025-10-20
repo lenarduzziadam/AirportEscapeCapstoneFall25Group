@@ -55,4 +55,26 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get airport_escape => 'Airport Escape';
+
+  @override
+  String plan_your_layover(Object category) {
+    return '规划您的中转：$category';
+  }
+
+  @override
+  String get layover_duration_label => '中转时长（小时）';
+
+  @override
+  String get select_airport => '选择机场';
+
+  @override
+  String get please_enter_duration => '请输入您的中转时长。';
+
+  @override
+  String get could_not_launch_maps => '无法打开谷歌地图';
+
+  @override
+  String suggested_activity_near(Object activity, Object airport) {
+    return '$airport附近推荐活动：$activity';
+  }
 }

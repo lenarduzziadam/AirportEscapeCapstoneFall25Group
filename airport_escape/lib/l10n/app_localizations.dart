@@ -211,6 +211,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Airport Escape'**
   String get airport_escape;
+
+  /// No description provided for @plan_your_layover.
+  ///
+  /// In en, this message translates to:
+  /// **'Plan Your Layover: {category}'**
+  String plan_your_layover(Object category);
+
+  /// No description provided for @layover_duration_label.
+  ///
+  /// In en, this message translates to:
+  /// **'Layover Duration (hours)'**
+  String get layover_duration_label;
+
+  /// No description provided for @select_airport.
+  ///
+  /// In en, this message translates to:
+  /// **'Select Airport'**
+  String get select_airport;
+
+  /// No description provided for @please_enter_duration.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter your layover duration.'**
+  String get please_enter_duration;
+
+  /// No description provided for @could_not_launch_maps.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not launch Google Maps'**
+  String get could_not_launch_maps;
+
+  /// No description provided for @suggested_activity_near.
+  ///
+  /// In en, this message translates to:
+  /// **'Suggested activity near {airport}: {activity}'**
+  String suggested_activity_near(Object activity, Object airport);
 }
 
 class _AppLocalizationsDelegate

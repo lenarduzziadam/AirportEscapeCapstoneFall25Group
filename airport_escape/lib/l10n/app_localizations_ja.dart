@@ -55,4 +55,26 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get airport_escape => 'Airport Escape';
+
+  @override
+  String plan_your_layover(Object category) {
+    return '乗り継ぎを計画する: $category';
+  }
+
+  @override
+  String get layover_duration_label => '乗り継ぎ時間（時間）';
+
+  @override
+  String get select_airport => '空港を選択';
+
+  @override
+  String get please_enter_duration => '乗り継ぎ時間を入力してください。';
+
+  @override
+  String get could_not_launch_maps => 'Googleマップを開けませんでした';
+
+  @override
+  String suggested_activity_near(Object activity, Object airport) {
+    return '$airport付近のおすすめアクティビティ: $activity';
+  }
 }

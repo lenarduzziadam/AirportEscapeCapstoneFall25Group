@@ -55,4 +55,26 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get airport_escape => 'Airport Escape';
+
+  @override
+  String plan_your_layover(Object category) {
+    return '환승 계획하기: $category';
+  }
+
+  @override
+  String get layover_duration_label => '환승 시간 (시간)';
+
+  @override
+  String get select_airport => '공항 선택';
+
+  @override
+  String get please_enter_duration => '환승 시간을 입력하세요.';
+
+  @override
+  String get could_not_launch_maps => 'Google 지도 실행에 실패했습니다';
+
+  @override
+  String suggested_activity_near(Object activity, Object airport) {
+    return '$airport 근처 추천 활동: $activity';
+  }
 }

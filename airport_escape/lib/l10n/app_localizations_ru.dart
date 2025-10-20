@@ -55,4 +55,27 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get airport_escape => 'Airport Escape';
+
+  @override
+  String plan_your_layover(Object category) {
+    return 'Планируйте свою пересадку: $category';
+  }
+
+  @override
+  String get layover_duration_label => 'Длительность пересадки (часы)';
+
+  @override
+  String get select_airport => 'Выберите аэропорт';
+
+  @override
+  String get please_enter_duration =>
+      'Пожалуйста, введите длительность пересадки.';
+
+  @override
+  String get could_not_launch_maps => 'Не удалось открыть Google Maps';
+
+  @override
+  String suggested_activity_near(Object activity, Object airport) {
+    return 'Рекомендуемое занятие рядом с $airport: $activity';
+  }
 }

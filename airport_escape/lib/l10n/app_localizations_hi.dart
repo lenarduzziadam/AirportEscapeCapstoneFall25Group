@@ -55,4 +55,26 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get airport_escape => 'Airport Escape';
+
+  @override
+  String plan_your_layover(Object category) {
+    return 'अपनी लेओवर योजना बनाएं: $category';
+  }
+
+  @override
+  String get layover_duration_label => 'लेओवर अवधि (घंटे)';
+
+  @override
+  String get select_airport => 'हवाई अड्डा चुनें';
+
+  @override
+  String get please_enter_duration => 'कृपया अपनी लेओवर अवधि दर्ज करें।';
+
+  @override
+  String get could_not_launch_maps => 'Google Maps लॉन्च नहीं किया जा सका';
+
+  @override
+  String suggested_activity_near(Object activity, Object airport) {
+    return '$airport के पास सुझाई गई गतिविधि: $activity';
+  }
 }

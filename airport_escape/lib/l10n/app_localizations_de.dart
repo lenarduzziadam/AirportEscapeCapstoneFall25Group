@@ -55,4 +55,28 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get airport_escape => 'Airport Escape';
+
+  @override
+  String plan_your_layover(Object category) {
+    return 'Planen Sie Ihren Zwischenstopp: $category';
+  }
+
+  @override
+  String get layover_duration_label => 'Zwischenstopp-Dauer (Stunden)';
+
+  @override
+  String get select_airport => 'Flughafen auswählen';
+
+  @override
+  String get please_enter_duration =>
+      'Bitte geben Sie Ihre Zwischenstopp-Dauer ein.';
+
+  @override
+  String get could_not_launch_maps =>
+      'Google Maps konnte nicht gestartet werden';
+
+  @override
+  String suggested_activity_near(Object activity, Object airport) {
+    return 'Vorgeschlagene Aktivität in der Nähe von $airport: $activity';
+  }
 }
