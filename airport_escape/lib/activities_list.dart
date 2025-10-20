@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:airport_escape/l10n/app_localizations.dart';
 import 'package:airport_escape/map_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -112,8 +113,8 @@ class ActivitiesListState extends State<ActivitiesList> {
                       );
                     },
                     icon: const Icon(Icons.directions, color: Colors.white),
-                    label: const Text(
-                      "Get Directions",
+                    label: Text(
+                      AppLocalizations.of(context)!.get_directions,
                       style: TextStyle(fontSize: 18, color: Colors.white),
                     ),
                   ),

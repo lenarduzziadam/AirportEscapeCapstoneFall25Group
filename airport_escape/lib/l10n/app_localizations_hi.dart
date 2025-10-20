@@ -77,4 +77,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String suggested_activity_near(Object activity, Object airport) {
     return '$airport के पास सुझाई गई गतिविधि: $activity';
   }
+
+  @override
+  String get get_directions => 'दिशा प्राप्त करें';
 }

@@ -21,5 +21,6 @@
   "select_airport": "空港を選択",
   "please_enter_duration": "乗り継ぎ時間を入力してください。",
   "could_not_launch_maps": "Googleマップを開けませんでした",
-  "suggested_activity_near": "{airport}付近のおすすめアクティビティ: {activity}"
+  "suggested_activity_near": "{airport}付近のおすすめアクティビティ: {activity}",
+  "get_directions": "ルートを表示"
 }

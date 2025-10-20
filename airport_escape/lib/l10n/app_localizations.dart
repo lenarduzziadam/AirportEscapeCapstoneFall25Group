@@ -247,6 +247,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Suggested activity near {airport}: {activity}'**
   String suggested_activity_near(Object activity, Object airport);
+
+  /// No description provided for @get_directions.
+  ///
+  /// In en, this message translates to:
+  /// **'Get Directions'**
+  String get get_directions;
 }
 
 class _AppLocalizationsDelegate

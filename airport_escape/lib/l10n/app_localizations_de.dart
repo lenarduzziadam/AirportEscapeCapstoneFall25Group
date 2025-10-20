@@ -79,4 +79,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String suggested_activity_near(Object activity, Object airport) {
     return 'Vorgeschlagene Aktivität in der Nähe von $airport: $activity';
   }
+
+  @override
+  String get get_directions => 'Wegbeschreibung';
 }

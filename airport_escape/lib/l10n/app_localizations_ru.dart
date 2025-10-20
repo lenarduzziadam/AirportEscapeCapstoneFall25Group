@@ -78,4 +78,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String suggested_activity_near(Object activity, Object airport) {
     return 'Рекомендуемое занятие рядом с $airport: $activity';
   }
+
+  @override
+  String get get_directions => 'Построить маршрут';
 }

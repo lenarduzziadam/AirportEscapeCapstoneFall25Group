@@ -21,5 +21,6 @@
   "select_airport": "Flughafen auswählen",
   "please_enter_duration": "Bitte geben Sie Ihre Zwischenstopp-Dauer ein.",
   "could_not_launch_maps": "Google Maps konnte nicht gestartet werden",
-  "suggested_activity_near": "Vorgeschlagene Aktivität in der Nähe von {airport}: {activity}"
+  "suggested_activity_near": "Vorgeschlagene Aktivität in der Nähe von {airport}: {activity}",
+  "get_directions": "Wegbeschreibung"
 }

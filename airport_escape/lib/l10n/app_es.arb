@@ -21,5 +21,6 @@
   "select_airport": "Selecciona aeropuerto",
   "please_enter_duration": "Por favor, ingresa la duración de tu escala.",
   "could_not_launch_maps": "No se pudo abrir Google Maps",
-  "suggested_activity_near": "Actividad sugerida cerca de {airport}: {activity}"
+  "suggested_activity_near": "Actividad sugerida cerca de {airport}: {activity}",
+  "get_directions": "Obtener direcciones"
 }

@@ -21,5 +21,6 @@
   "select_airport": "选择机场",
   "please_enter_duration": "请输入您的中转时长。",
   "could_not_launch_maps": "无法打开谷歌地图",
-  "suggested_activity_near": "{airport}附近推荐活动：{activity}"
+  "suggested_activity_near": "{airport}附近推荐活动：{activity}",
+  "get_directions": "获取路线"
 }

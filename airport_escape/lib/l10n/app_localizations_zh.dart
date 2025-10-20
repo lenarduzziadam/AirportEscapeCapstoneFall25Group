@@ -77,4 +77,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String suggested_activity_near(Object activity, Object airport) {
     return '$airport附近推荐活动：$activity';
   }
+
+  @override
+  String get get_directions => '获取路线';
 }

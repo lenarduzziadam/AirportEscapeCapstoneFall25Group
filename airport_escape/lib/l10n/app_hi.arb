@@ -21,5 +21,6 @@
   "select_airport": "हवाई अड्डा चुनें",
   "please_enter_duration": "कृपया अपनी लेओवर अवधि दर्ज करें।",
   "could_not_launch_maps": "Google Maps लॉन्च नहीं किया जा सका",
-  "suggested_activity_near": "{airport} के पास सुझाई गई गतिविधि: {activity}"
+  "suggested_activity_near": "{airport} के पास सुझाई गई गतिविधि: {activity}",
+  "get_directions": "दिशा प्राप्त करें"
 }

@@ -77,4 +77,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String suggested_activity_near(Object activity, Object airport) {
     return '$airport付近のおすすめアクティビティ: $activity';
   }
+
+  @override
+  String get get_directions => 'ルートを表示';
 }

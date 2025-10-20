@@ -77,4 +77,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String suggested_activity_near(Object activity, Object airport) {
     return 'Suggested activity near $airport: $activity';
   }
+
+  @override
+  String get get_directions => 'الحصول على الاتجاهات';
 }

@@ -77,4 +77,7 @@ class AppLocalizationsKo extends AppLocalizations {
   String suggested_activity_near(Object activity, Object airport) {
     return '$airport 근처 추천 활동: $activity';
   }
+
+  @override
+  String get get_directions => '길찾기';
 }

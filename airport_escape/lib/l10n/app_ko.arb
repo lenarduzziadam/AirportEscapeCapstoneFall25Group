@@ -21,5 +21,6 @@
   "select_airport": "공항 선택",
   "please_enter_duration": "환승 시간을 입력하세요.",
   "could_not_launch_maps": "Google 지도 실행에 실패했습니다",
-  "suggested_activity_near": "{airport} 근처 추천 활동: {activity}"
+  "suggested_activity_near": "{airport} 근처 추천 활동: {activity}",
+  "get_directions": "길찾기"
 }

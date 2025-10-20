@@ -21,5 +21,6 @@
   "select_airport": "Select Airport",
   "please_enter_duration": "Please enter your layover duration.",
   "could_not_launch_maps": "Could not launch Google Maps",
-  "suggested_activity_near": "Suggested activity near {airport}: {activity}"
+  "suggested_activity_near": "Suggested activity near {airport}: {activity}",
+  "get_directions": "Get Directions"
 }
