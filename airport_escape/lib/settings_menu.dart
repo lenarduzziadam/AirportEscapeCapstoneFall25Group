@@ -162,15 +162,22 @@ class _SettingsPageState extends State<SettingsPage> {
   }
 
   Widget _buildSectionHeader(String title) {
+    final theme = Theme.of(context);
+    final headerColor = theme.colorScheme.onSurface.withOpacity(0.70);
+
     return Padding(
       padding: const EdgeInsets.only(top: 16.0, bottom: 8.0),
       child: Text(
         title,
-        style: TextStyle(
-          fontSize: 18,
-          fontWeight: FontWeight.bold,
-          color: Theme.of(context).primaryColor,
-        ),
+        style: theme.textTheme.titleMedium?.copyWith(
+              fontWeight: FontWeight.bold,
+              color: headerColor,
+            ) ??
+            TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+              color: headerColor,
+            ),
       ),
     );
   }
