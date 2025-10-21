@@ -12,6 +12,10 @@ import 'package:provider/provider.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'settings/locale_provider.dart';
 // If you need AppLocalizations, enable Flutter's gen_l10n in pubspec.yaml and run `flutter gen-l10n`.
+
+// Import RTDB test page (dev only, not active by default)
+import 'database_test_page.dart';
+
 // App-wide color constants
 const kPrimaryColor = Color.fromARGB(255, 18, 71, 156);
 const kBackgroundColor = Color(0xFFE0F7FA);
@@ -26,10 +30,10 @@ Future<void> main() async {
   );
 
   // DEV ONLY: log RTDB connection status
-FirebaseDatabase.instance.ref('.info/connected').onValue.listen((e) {
-  // ignore: avoid_print
-  print('RTDB connected: ${e.snapshot.value == true}');
-});
+  FirebaseDatabase.instance.ref('.info/connected').onValue.listen((e) {
+    // ignore: avoid_print
+    print('RTDB connected: ${e.snapshot.value == true}');
+  });
 
   runApp(
     MultiProvider(
