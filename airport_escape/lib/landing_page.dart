@@ -1,4 +1,5 @@
 // Main landing page and widgets for Airport Escape app
+import 'package:airport_escape/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 
 import 'search_bar_widget.dart';
@@ -46,8 +47,7 @@ class MyHomePage extends StatelessWidget {
                   ),
                 ],
               ),
-              child: const Text(
-                'Welcome to Airport Escape!',
+              child: Text(AppLocalizations.of(context)!.welcome_message,
                 style: TextStyle(
                   fontSize: 26,
                   fontWeight: FontWeight.bold,
@@ -58,16 +58,16 @@ class MyHomePage extends StatelessWidget {
             ),
             const SizedBox(height: 30),
             ElevatedButton(
-              onPressed: () => _openLayoverPage(context, "Restaurant"),
-              child: const Text("Restaurant"),
+              onPressed: () => _openLayoverPage(context, AppLocalizations.of(context)!.restaurant),
+              child: Text(AppLocalizations.of(context)!.restaurant),
             ),
             ElevatedButton(
-              onPressed: () => _openLayoverPage(context, "Entertainment"),
-              child: const Text("Entertainment"),
+              onPressed: () => _openLayoverPage(context, AppLocalizations.of(context)!.entertainment),
+              child: Text(AppLocalizations.of(context)!.entertainment),
             ),
             ElevatedButton(
-              onPressed: () => _openLayoverPage(context, "Shopping"),
-              child: const Text("Shopping"),
+              onPressed: () => _openLayoverPage(context, AppLocalizations.of(context)!.shopping),
+              child: Text(AppLocalizations.of(context)!.shopping),
             ),
           ],
         ),
@@ -87,16 +87,16 @@ class SettingsDrawer extends StatelessWidget {
       child: ListView(
         padding: EdgeInsets.zero,
         children: <Widget>[
-          const DrawerHeader(
+          DrawerHeader(
             decoration: BoxDecoration(
               color: kPrimaryColor,
             ),
-            child: Text('Settings',
+            child: Text(AppLocalizations.of(context)!.settings,
                 style: TextStyle(color: Colors.white, fontSize: 24)),
           ),
           ListTile(
             leading: const Icon(Icons.settings),
-            title: const Text('General Settings'),
+            title: Text(AppLocalizations.of(context)!.general_settings),
             onTap: () {
               Navigator.pop(context); // Close drawer first
               Navigator.push(
@@ -109,7 +109,7 @@ class SettingsDrawer extends StatelessWidget {
           ),
           ListTile(
             leading: const Icon(Icons.security),
-            title: const Text('Security'),
+            title: Text(AppLocalizations.of(context)!.security),
             onTap: () {
               Navigator.pop(context);
               // Add security page later if needed
@@ -140,8 +140,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           tooltip: 'Open settings',
         ),
       ),
-      title: const Text(
-        'Airport Escape',
+      title: Text(AppLocalizations.of(context)!.airport_escape,
         style: TextStyle(fontWeight: FontWeight.bold),
       ),
       actions: [
@@ -152,13 +151,13 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             // Handle account menu selection (Profile, Logout)
           },
           itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
-            const PopupMenuItem<String>(
+            PopupMenuItem<String>(
               value: 'Profile',
-              child: Text('Profile'),
+              child: Text(AppLocalizations.of(context)!.profile),
             ),
-            const PopupMenuItem<String>(
+            PopupMenuItem<String>(
               value: 'Logout',
-              child: Text('Logout'),
+              child: Text(AppLocalizations.of(context)!.logout),
             ),
           ],
         ),

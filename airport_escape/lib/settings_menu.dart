@@ -1,6 +1,8 @@
+import 'package:airport_escape/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart'; 
+import 'settings/locale_provider.dart';
 import 'settings/theme_toggle.dart'; 
 
 class SettingsPage extends StatefulWidget {
@@ -37,16 +39,16 @@ class _SettingsPageState extends State<SettingsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Settings'),
+        title: Text(AppLocalizations.of(context)!.settings),
         backgroundColor: Theme.of(context).primaryColor, 
       ),
       body: ListView(
         padding: const EdgeInsets.all(16.0),
         children: [
           // General Section
-          _buildSectionHeader('General'),
+          _buildSectionHeader(AppLocalizations.of(context)!.general_settings),
           _buildSwitchTile(
-            title: 'Dark Mode',
+            title: AppLocalizations.of(context)!.dark_mode,
             subtitle: 'Enable dark theme',
             value: context.watch<ThemeProvider>().isDarkMode, // use provider
             icon: Icons.dark_mode,
@@ -61,9 +63,9 @@ class _SettingsPageState extends State<SettingsPage> {
           const SizedBox(height: 20),
           
           // Notifications Section
-          _buildSectionHeader('Notifications'),
+          _buildSectionHeader(AppLocalizations.of(context)!.section_notifications),
           _buildSwitchTile(
-            title: 'Push Notifications',
+            title: AppLocalizations.of(context)!.notifications,
             subtitle: 'Receive layover suggestions and updates',
             value: _notificationsEnabled,
             icon: Icons.notifications,
@@ -78,9 +80,9 @@ class _SettingsPageState extends State<SettingsPage> {
           const SizedBox(height: 20),
           
           // Privacy Section
-          _buildSectionHeader('Privacy & Data'),
+          _buildSectionHeader(AppLocalizations.of(context)!.section_privacy_and_data),
           _buildSwitchTile(
-            title: 'Location Services',
+            title: AppLocalizations.of(context)!.location_services,
             subtitle: 'Allow app to access your location',
             value: _locationEnabled,
             icon: Icons.location_on,
@@ -92,7 +94,7 @@ class _SettingsPageState extends State<SettingsPage> {
             },
           ),
           _buildSwitchTile(
-            title: 'Save Search History',
+            title: AppLocalizations.of(context)!.save_search_history,
             subtitle: 'Remember your recent searches',
             value: _saveSearchHistory,
             icon: Icons.history,
@@ -107,9 +109,9 @@ class _SettingsPageState extends State<SettingsPage> {
           const SizedBox(height: 20),
           
           // App Behavior Section
-          _buildSectionHeader('App Behavior'),
+          _buildSectionHeader(AppLocalizations.of(context)!.section_app_behavior),
           _buildSwitchTile(
-            title: 'Auto Refresh',
+            title: AppLocalizations.of(context)!.auto_refresh,
             subtitle: 'Automatically refresh activity suggestions',
             value: _autoRefresh,
             icon: Icons.refresh,
@@ -124,21 +126,21 @@ class _SettingsPageState extends State<SettingsPage> {
           const SizedBox(height: 20),
           
           // About Section
-          _buildSectionHeader('About'),
+          _buildSectionHeader(AppLocalizations.of(context)!.section_about),
           _buildInfoTile(
-            title: 'Version',
+            title: AppLocalizations.of(context)!.version,
             subtitle: '0.4.2',
             icon: Icons.info,
             onTap: () => _showVersionDialog(),
           ),
           _buildInfoTile(
-            title: 'Privacy Policy',
+            title: AppLocalizations.of(context)!.privacy_policy,
             subtitle: 'View our privacy policy',
             icon: Icons.privacy_tip,
             onTap: () => _showPrivacyPolicy(),
           ),
           _buildInfoTile(
-            title: 'Terms of Service',
+            title: AppLocalizations.of(context)!.terms_of_service,
             subtitle: 'View terms and conditions',
             icon: Icons.description,
             onTap: () => _showTermsOfService(),
@@ -147,9 +149,9 @@ class _SettingsPageState extends State<SettingsPage> {
           const SizedBox(height: 20),
           
           // Reset Section
-          _buildSectionHeader('Reset'),
+          _buildSectionHeader(AppLocalizations.of(context)!.section_reset),
           _buildDangerTile(
-            title: 'Clear All Data',
+            title: AppLocalizations.of(context)!.reset_all_settings,
             subtitle: 'Reset app to default settings',
             icon: Icons.delete_forever,
             onTap: () => _showResetDialog(),
@@ -160,15 +162,22 @@ class _SettingsPageState extends State<SettingsPage> {
   }
 
   Widget _buildSectionHeader(String title) {
+    final theme = Theme.of(context);
+    final headerColor = theme.colorScheme.onSurface.withOpacity(0.70);
+
     return Padding(
       padding: const EdgeInsets.only(top: 16.0, bottom: 8.0),
       child: Text(
         title,
-        style: TextStyle(
-          fontSize: 18,
-          fontWeight: FontWeight.bold,
-          color: Theme.of(context).primaryColor,
-        ),
+        style: theme.textTheme.titleMedium?.copyWith(
+              fontWeight: FontWeight.bold,
+              color: headerColor,
+            ) ??
+            TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+              color: headerColor,
+            ),
       ),
     );
   }
@@ -195,7 +204,7 @@ class _SettingsPageState extends State<SettingsPage> {
     return Card(
       child: ListTile(
         leading: const Icon(Icons.brightness_6),
-        title: const Text('Brightness'),
+        title: Text(AppLocalizations.of(context)!.brightness),
         subtitle: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -222,7 +231,7 @@ class _SettingsPageState extends State<SettingsPage> {
     return Card(
       child: ListTile(
         leading: const Icon(Icons.language),
-        title: const Text('Language'),
+        title: Text(AppLocalizations.of(context)!.language),
         subtitle: DropdownButton<String>(
           value: _selectedLanguage,
           isExpanded: true,
@@ -238,12 +247,51 @@ class _SettingsPageState extends State<SettingsPage> {
               setState(() {
                 _selectedLanguage = newValue;
               });
+
+              // Map displayed language to a Locale and notify provider
+              final locale = _localeFromLanguage(newValue);
+              context.read<LocaleProvider>().setLocale(locale);
+
               _showSnackBar('Language changed to $newValue');
             }
           },
         ),
       ),
     );
+  }
+
+  // helper to map display string to the correct locale
+  Locale _localeFromLanguage(String language) {
+    switch (language) {
+      case 'العربية (Arabic)':
+      case 'العربية':
+        return const Locale('ar');
+      case 'Русский (Russian)':
+      case 'Русский':
+        return const Locale('ru');
+      case '한국어 (Korean)':
+      case '한국어':
+        return const Locale('ko');
+      case '日本語 (Japanese)':
+      case '日本語':
+        return const Locale('ja');
+      case '中文 (Chinese)':
+      case '中文':
+        return const Locale('zh');
+      case 'हिन्दी (Hindi)':
+      case 'हिन्दी':
+        return const Locale('hi');
+      case 'Spanish':
+        return const Locale('es');
+      case 'French':
+        return const Locale('fr');
+      case 'German':
+        return const Locale('de');
+      case 'Italian':
+        return const Locale('it');
+      default:
+        return const Locale('en');
+    }
   }
 
   Widget _buildInfoTile({
@@ -294,22 +342,19 @@ class _SettingsPageState extends State<SettingsPage> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('Airport Escape'),
-          content: const Column(
+          title: Text(AppLocalizations.of(context)!.airport_escape),
+          content: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Version: 0.4.2'),
-              Text('Build: 2025.10.15'),
-              SizedBox(height: 16),
-              Text('Developed by Team Airport Escape'),
-              Text('© 2025 All rights reserved'),
+              Text(AppLocalizations.of(context)!.version_info),
+              const SizedBox(height: 16),
             ],
           ),
           actions: [
             TextButton(
               onPressed: () => Navigator.of(context).pop(),
-              child: const Text('OK'),
+              child: Text(AppLocalizations.of(context)!.ok),
             ),
           ],
         );
@@ -322,19 +367,16 @@ class _SettingsPageState extends State<SettingsPage> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('Privacy Policy'),
-          content: const SingleChildScrollView(
+          title: Text(AppLocalizations.of(context)!.privacy_policy),
+          content: SingleChildScrollView(
             child: Text(
-              'Airport Escape Privacy Policy\n\n'
-              'We collect location data to provide personalized layover suggestions. '
-              'Your data is stored locally and never shared with third parties without consent.\n\n'
-              'For full privacy policy, visit our website.',
+              AppLocalizations.of(context)!.privacy_policy_content,
             ),
           ),
           actions: [
             TextButton(
               onPressed: () => Navigator.of(context).pop(),
-              child: const Text('Close'),
+              child: Text(AppLocalizations.of(context)!.close),
             ),
           ],
         );
@@ -347,20 +389,17 @@ class _SettingsPageState extends State<SettingsPage> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('Terms of Service'),
-          content: const SingleChildScrollView(
+          title: Text(AppLocalizations.of(context)!.terms_of_service),
+          content: SingleChildScrollView(
             child: Text(
-              'Airport Escape Terms of Service\n\n'
-              'By using this app, you agree to our terms and conditions. '
-              'The app provides suggestions for entertainment during layovers. '
-              'We are not responsible for any issues that may arise from following our suggestions.\n\n'
-              'For full terms, visit our website.',
+              //added localization here (just added so making todo comment for tracking purposes)
+              AppLocalizations.of(context)!.terms_of_service_content,
             ),
           ),
           actions: [
             TextButton(
               onPressed: () => Navigator.of(context).pop(),
-              child: const Text('Close'),
+              child: Text(AppLocalizations.of(context)!.close),
             ),
           ],
         );
@@ -373,15 +412,15 @@ class _SettingsPageState extends State<SettingsPage> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('Reset All Settings'),
-          content: const Text(
+          title: Text(AppLocalizations.of(context)!.reset_all_settings),
+          content: Text(
             'This will reset all settings to their default values. '
             'This action cannot be undone. Are you sure?',
           ),
           actions: [
             TextButton(
               onPressed: () => Navigator.of(context).pop(),
-              child: const Text('Cancel'),
+              child: Text(AppLocalizations.of(context)!.cancel),
             ),
             TextButton(
               onPressed: () {
@@ -399,7 +438,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 _showSnackBar('All settings reset to defaults');
               },
               style: TextButton.styleFrom(foregroundColor: Colors.red),
-              child: const Text('Reset'),
+              child: Text(AppLocalizations.of(context)!.section_reset),
             ),
           ],
         );

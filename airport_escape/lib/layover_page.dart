@@ -1,4 +1,5 @@
 import 'package:airport_escape/activities_list.dart';
+import 'package:airport_escape/l10n/app_localizations.dart';
 import 'package:airport_escape/main.dart';
 import 'package:airport_escape/map_screen.dart';
 import 'package:flutter/material.dart';
@@ -225,15 +226,15 @@ class _LayoverPageState extends State<LayoverPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Plan Your Layover: ${widget.category}")),
+      appBar: AppBar(title: Text(AppLocalizations.of(context)!.plan_your_layover(widget.category))),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
             TextField(
               controller: _durationController,
-              decoration: const InputDecoration(
-                labelText: "Layover Duration (hours)",
+              decoration: InputDecoration(
+                labelText: AppLocalizations.of(context)!.layover_duration_label,
                 border: OutlineInputBorder(),
               ),
               keyboardType: TextInputType.number,
@@ -253,8 +254,8 @@ class _LayoverPageState extends State<LayoverPage> {
                   _selectedAirportLoc = airportLocations[_selectedAirport]!;
                 });
               },
-              decoration: const InputDecoration(
-                labelText: "Select Airport",
+              decoration: InputDecoration(
+                labelText: AppLocalizations.of(context)!.select_airport,
                 border: OutlineInputBorder(),
               ),
             ),
