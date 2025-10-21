@@ -46,7 +46,7 @@ class _SettingsPageState extends State<SettingsPage> {
         padding: const EdgeInsets.all(16.0),
         children: [
           // General Section
-          _buildSectionHeader('General'),
+          _buildSectionHeader(AppLocalizations.of(context)!.general_settings),
           _buildSwitchTile(
             title: AppLocalizations.of(context)!.dark_mode,
             subtitle: 'Enable dark theme',
@@ -80,7 +80,7 @@ class _SettingsPageState extends State<SettingsPage> {
           const SizedBox(height: 20),
           
           // Privacy Section
-          _buildSectionHeader('Privacy & Data'),
+          _buildSectionHeader(AppLocalizations.of(context)!.section_privacy_and_data),
           _buildSwitchTile(
             title: AppLocalizations.of(context)!.location_services,
             subtitle: 'Allow app to access your location',
@@ -94,7 +94,7 @@ class _SettingsPageState extends State<SettingsPage> {
             },
           ),
           _buildSwitchTile(
-            title: 'Save Search History',
+            title: AppLocalizations.of(context)!.save_search_history,
             subtitle: 'Remember your recent searches',
             value: _saveSearchHistory,
             icon: Icons.history,
@@ -109,9 +109,9 @@ class _SettingsPageState extends State<SettingsPage> {
           const SizedBox(height: 20),
           
           // App Behavior Section
-          _buildSectionHeader('App Behavior'),
+          _buildSectionHeader(AppLocalizations.of(context)!.section_app_behavior),
           _buildSwitchTile(
-            title: 'Auto Refresh',
+            title: AppLocalizations.of(context)!.auto_refresh,
             subtitle: 'Automatically refresh activity suggestions',
             value: _autoRefresh,
             icon: Icons.refresh,
@@ -126,7 +126,7 @@ class _SettingsPageState extends State<SettingsPage> {
           const SizedBox(height: 20),
           
           // About Section
-          _buildSectionHeader('About'),
+          _buildSectionHeader(AppLocalizations.of(context)!.section_about),
           _buildInfoTile(
             title: 'Version',
             subtitle: '0.4.2',
@@ -134,13 +134,13 @@ class _SettingsPageState extends State<SettingsPage> {
             onTap: () => _showVersionDialog(),
           ),
           _buildInfoTile(
-            title: 'Privacy Policy',
+            title: AppLocalizations.of(context)!.privacy_policy,
             subtitle: 'View our privacy policy',
             icon: Icons.privacy_tip,
             onTap: () => _showPrivacyPolicy(),
           ),
           _buildInfoTile(
-            title: 'Terms of Service',
+            title: AppLocalizations.of(context)!.terms_of_service,
             subtitle: 'View terms and conditions',
             icon: Icons.description,
             onTap: () => _showTermsOfService(),
@@ -149,7 +149,7 @@ class _SettingsPageState extends State<SettingsPage> {
           const SizedBox(height: 20),
           
           // Reset Section
-          _buildSectionHeader('Reset'),
+          _buildSectionHeader(AppLocalizations.of(context)!.section_reset),
           _buildDangerTile(
             title: AppLocalizations.of(context)!.reset_all_settings,
             subtitle: 'Reset app to default settings',
@@ -363,8 +363,8 @@ class _SettingsPageState extends State<SettingsPage> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('Privacy Policy'),
-          content: const SingleChildScrollView(
+          title: Text(AppLocalizations.of(context)!.privacy_policy),
+          content: SingleChildScrollView(
             child: Text(
               'Airport Escape Privacy Policy\n\n'
               'We collect location data to provide personalized layover suggestions. '
@@ -388,8 +388,8 @@ class _SettingsPageState extends State<SettingsPage> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('Terms of Service'),
-          content: const SingleChildScrollView(
+          title: Text(AppLocalizations.of(context)!.terms_of_service),
+          content: SingleChildScrollView(
             child: Text(
               'Airport Escape Terms of Service\n\n'
               'By using this app, you agree to our terms and conditions. '
@@ -414,8 +414,8 @@ class _SettingsPageState extends State<SettingsPage> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('Reset All Settings'),
-          content: const Text(
+          title: Text(AppLocalizations.of(context)!.reset_all_settings),
+          content: Text(
             'This will reset all settings to their default values. '
             'This action cannot be undone. Are you sure?',
           ),
@@ -440,7 +440,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 _showSnackBar('All settings reset to defaults');
               },
               style: TextButton.styleFrom(foregroundColor: Colors.red),
-              child: const Text('Reset'),
+              child: Text(AppLocalizations.of(context)!.section_reset),
             ),
           ],
         );
