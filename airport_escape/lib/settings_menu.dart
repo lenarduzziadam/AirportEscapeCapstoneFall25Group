@@ -128,7 +128,7 @@ class _SettingsPageState extends State<SettingsPage> {
           // About Section
           _buildSectionHeader(AppLocalizations.of(context)!.section_about),
           _buildInfoTile(
-            title: 'Version',
+            title: AppLocalizations.of(context)!.version,
             subtitle: '0.4.2',
             icon: Icons.info,
             onTap: () => _showVersionDialog(),
@@ -336,21 +336,18 @@ class _SettingsPageState extends State<SettingsPage> {
       builder: (BuildContext context) {
         return AlertDialog(
           title: Text(AppLocalizations.of(context)!.airport_escape),
-          content: const Column(
+          content: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Version: 0.4.2'),
-              Text('Build: 2025.10.15'),
-              SizedBox(height: 16),
-              Text('Developed by Team Airport Escape'),
-              Text('© 2025 All rights reserved'),
+              Text(AppLocalizations.of(context)!.version_info),
+              const SizedBox(height: 16),
             ],
           ),
           actions: [
             TextButton(
               onPressed: () => Navigator.of(context).pop(),
-              child: const Text('OK'),
+              child: Text(AppLocalizations.of(context)!.ok),
             ),
           ],
         );
@@ -366,16 +363,13 @@ class _SettingsPageState extends State<SettingsPage> {
           title: Text(AppLocalizations.of(context)!.privacy_policy),
           content: SingleChildScrollView(
             child: Text(
-              'Airport Escape Privacy Policy\n\n'
-              'We collect location data to provide personalized layover suggestions. '
-              'Your data is stored locally and never shared with third parties without consent.\n\n'
-              'For full privacy policy, visit our website.',
+              AppLocalizations.of(context)!.privacy_policy_content,
             ),
           ),
           actions: [
             TextButton(
               onPressed: () => Navigator.of(context).pop(),
-              child: const Text('Close'),
+              child: Text(AppLocalizations.of(context)!.close),
             ),
           ],
         );
@@ -391,17 +385,14 @@ class _SettingsPageState extends State<SettingsPage> {
           title: Text(AppLocalizations.of(context)!.terms_of_service),
           content: SingleChildScrollView(
             child: Text(
-              'Airport Escape Terms of Service\n\n'
-              'By using this app, you agree to our terms and conditions. '
-              'The app provides suggestions for entertainment during layovers. '
-              'We are not responsible for any issues that may arise from following our suggestions.\n\n'
-              'For full terms, visit our website.',
+              //added localization here (just added so making todo comment for tracking purposes)
+              AppLocalizations.of(context)!.terms_of_service_content,
             ),
           ),
           actions: [
             TextButton(
               onPressed: () => Navigator.of(context).pop(),
-              child: const Text('Close'),
+              child: Text(AppLocalizations.of(context)!.close),
             ),
           ],
         );
@@ -422,7 +413,7 @@ class _SettingsPageState extends State<SettingsPage> {
           actions: [
             TextButton(
               onPressed: () => Navigator.of(context).pop(),
-              child: const Text('Cancel'),
+              child: Text(AppLocalizations.of(context)!.cancel),
             ),
             TextButton(
               onPressed: () {
