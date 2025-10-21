@@ -32,5 +32,13 @@
   "section_app_behavior": "应用行为",
   "section_about": "关于",
   "section_reset": "重置",
-  "section_general": "常规"
+  "section_general": "常规",
+  "version": "版本",
+  "version_info": "版本：0.4.7\n构建：2025.10.20\n开发：Team Airport Escape\n© 2025 版权所有",
+  "privacy_policy_content": "我们收集位置信息以提供个性化的中转建议。\n\n数据会本地存储，未经同意不会共享。\n\n完整政策请访问我们的网站。",
+  "terms_of_service_content": "使用本应用即表示您同意我们的服务条款。\n\n该应用提供中转期间的娱乐建议。\n\n对于因遵循建议而产生的问题，我们不承担责任。\n\n完整条款请访问我们的网站。",
+  "about_content": "Airport Escape 帮助乘客规划中转期间的活动。\n\n由 Team Airport Escape 开发。\n\n© 2025 Team Airport Escape.",
+  "ok": "确定",
+  "close": "关闭",
+  "cancel": "取消"
 }

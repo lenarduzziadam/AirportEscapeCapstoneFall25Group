@@ -111,4 +111,32 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get section_general => 'Общие';
+
+  @override
+  String get version => 'Версия';
+
+  @override
+  String get version_info =>
+      'Версия: 0.4.7\nСборка: 2025.10.20\nРазработано: Team Airport Escape\n© 2025 Все права защищены';
+
+  @override
+  String get privacy_policy_content =>
+      'Мы собираем данные о местоположении, чтобы предоставлять персонализированные рекомендации для пересадок.\n\nДанные хранятся локально и не передаются без согласия.\n\nПолную политику можно найти на нашем сайте.';
+
+  @override
+  String get terms_of_service_content =>
+      'Используя это приложение, вы соглашаетесь с нашими условиями.\n\nПриложение предоставляет рекомендации по развлечениям во время пересадок.\n\nМы не несем ответственности за проблемы, возникшие в результате следования рекомендациям.\n\nПолные условия доступны на нашем сайте.';
+
+  @override
+  String get about_content =>
+      'Airport Escape помогает пассажирам планировать занятия во время пересадок.\n\nРазработано Team Airport Escape.\n\n© 2025 Team Airport Escape.';
+
+  @override
+  String get ok => 'ОК';
+
+  @override
+  String get close => 'Закрыть';
+
+  @override
+  String get cancel => 'Отмена';
 }

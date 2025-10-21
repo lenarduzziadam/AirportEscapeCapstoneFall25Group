@@ -32,5 +32,13 @@
   "section_app_behavior": "Comportamiento de la aplicación",
   "section_about": "Acerca de",
   "section_reset": "Restablecer",
-  "section_general": "General"
+  "section_general": "General",
+  "version": "Versión",
+  "version_info": "Versión: 0.4.7\nBuild: 2025.10.20\nDesarrollado por Team Airport Escape\n© 2025 Todos los derechos reservados",
+  "privacy_policy_content": "Recopilamos datos de ubicación para ofrecer sugerencias de escala personalizadas.\n\nLos datos se almacenan localmente y no se comparten sin consentimiento.\n\nPara ver la política completa, visite nuestro sitio web.",
+  "terms_of_service_content": "Al usar esta aplicación acepta nuestros términos.\n\nLa aplicación proporciona sugerencias de entretenimiento durante las escalas.\n\nNo somos responsables de problemas resultantes de seguir las sugerencias.\n\nPara ver los términos completos, visite nuestro sitio web.",
+  "about_content": "Airport Escape ayuda a los pasajeros a planificar actividades durante las escalas.\n\nDesarrollado por Team Airport Escape.\n\n© 2025 Team Airport Escape.",
+  "ok": "Aceptar",
+  "close": "Cerrar",
+  "cancel": "Cancelar"
 }

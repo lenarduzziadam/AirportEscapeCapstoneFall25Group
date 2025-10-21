@@ -313,6 +313,54 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'General'**
   String get section_general;
+
+  /// No description provided for @version.
+  ///
+  /// In en, this message translates to:
+  /// **'Version'**
+  String get version;
+
+  /// No description provided for @version_info.
+  ///
+  /// In en, this message translates to:
+  /// **'Version: 0.4.7\nBuild: 2025.10.20\nDeveloped by Team Airport Escape\n© 2025 All rights reserved'**
+  String get version_info;
+
+  /// No description provided for @privacy_policy_content.
+  ///
+  /// In en, this message translates to:
+  /// **'We collect location data to provide personalized layover suggestions.\n\nData is stored locally and not shared without consent.\n\nFor full policy, visit our website.'**
+  String get privacy_policy_content;
+
+  /// No description provided for @terms_of_service_content.
+  ///
+  /// In en, this message translates to:
+  /// **'By using this app you agree to our terms.\n\nThe app provides suggestions for entertainment during layovers.\n\nWe are not responsible for issues resulting from following suggestions.\n\nFor full terms, visit our website.'**
+  String get terms_of_service_content;
+
+  /// No description provided for @about_content.
+  ///
+  /// In en, this message translates to:
+  /// **'Airport Escape helps passengers plan activities during layovers.\n\nBuilt by Team Airport Escape.\n\n© 2025 Team Airport Escape.'**
+  String get about_content;
+
+  /// No description provided for @ok.
+  ///
+  /// In en, this message translates to:
+  /// **'OK'**
+  String get ok;
+
+  /// No description provided for @close.
+  ///
+  /// In en, this message translates to:
+  /// **'Close'**
+  String get close;
+
+  /// No description provided for @cancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get cancel;
 }
 
 class _AppLocalizationsDelegate

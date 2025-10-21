@@ -110,4 +110,32 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get section_general => 'सामान्य';
+
+  @override
+  String get version => 'संस्करण';
+
+  @override
+  String get version_info =>
+      'संस्करण: 0.4.7\nबिल्ड: 2025.10.20\nविकसित: Team Airport Escape\n© 2025 सर्वाधिकार सुरक्षित';
+
+  @override
+  String get privacy_policy_content =>
+      'हम स्थान डेटा एकत्र करते हैं ताकि व्यक्तिगत लेओवर सुझाव प्रदान किए जा सकें।\n\nडेटा स्थानीय रूप से संग्रहीत किया जाता है और सहमति के बिना साझा नहीं किया जाता।\n\nपूर्ण नीति के लिए हमारी वेबसाइट देखें।';
+
+  @override
+  String get terms_of_service_content =>
+      'इस ऐप का उपयोग करके आप हमारी शर्तों से सहमत होते हैं।\n\nयह ऐप लेओवर के दौरान मनोरंजन के सुझाव प्रदान करता है।\n\nसुझावों का पालन करने से उत्पन्न किसी भी समस्या के लिए हम जिम्मेदार नहीं हैं।\n\nपूर्ण शर्तें हमारी वेबसाइट पर देखें।';
+
+  @override
+  String get about_content =>
+      'Airport Escape यात्रियों को लेओवर के दौरान गतिविधियाँ योजनाबद्ध करने में मदद करता है।\n\nTeam Airport Escape द्वारा विकसित।\n\n© 2025 Team Airport Escape.';
+
+  @override
+  String get ok => 'ठीक है';
+
+  @override
+  String get close => 'बंद करें';
+
+  @override
+  String get cancel => 'रद्द करें';
 }

@@ -110,4 +110,32 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get section_general => 'General';
+
+  @override
+  String get version => 'Version';
+
+  @override
+  String get version_info =>
+      'Version: 0.4.7\nBuild: 2025.10.20\nDeveloped by Team Airport Escape\n© 2025 All rights reserved';
+
+  @override
+  String get privacy_policy_content =>
+      'We collect location data to provide personalized layover suggestions.\n\nData is stored locally and not shared without consent.\n\nFor full policy, visit our website.';
+
+  @override
+  String get terms_of_service_content =>
+      'By using this app you agree to our terms.\n\nThe app provides suggestions for entertainment during layovers.\n\nWe are not responsible for issues resulting from following suggestions.\n\nFor full terms, visit our website.';
+
+  @override
+  String get about_content =>
+      'Airport Escape helps passengers plan activities during layovers.\n\nBuilt by Team Airport Escape.\n\n© 2025 Team Airport Escape.';
+
+  @override
+  String get ok => 'OK';
+
+  @override
+  String get close => 'Close';
+
+  @override
+  String get cancel => 'Cancel';
 }

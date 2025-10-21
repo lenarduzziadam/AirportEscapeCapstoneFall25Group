@@ -110,4 +110,32 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get section_general => 'عام';
+
+  @override
+  String get version => 'الإصدار';
+
+  @override
+  String get version_info =>
+      'الإصدار: 0.4.7\nالبناء: 2025.10.20\nتطوير: Team Airport Escape\n© 2025 جميع الحقوق محفوظة';
+
+  @override
+  String get privacy_policy_content =>
+      'نقوم بجمع بيانات الموقع لتقديم اقتراحات مخصصة لفترات التوقف.\n\nيتم تخزين البيانات محليًا ولا تتم مشاركتها دون موافقة.\n\nللاطلاع على السياسة الكاملة، قم بزيارة موقعنا الإلكتروني.';
+
+  @override
+  String get terms_of_service_content =>
+      'باستخدام هذا التطبيق، فإنك توافق على شروطنا.\n\nيقدّم التطبيق اقتراحات للترفيه أثناء فترات التوقف.\n\nلسنا مسؤولين عن المشاكل الناتجة عن اتباع الاقتراحات.\n\nللاطّلاع على الشروط الكاملة، قم بزيارة موقعنا الإلكتروني.';
+
+  @override
+  String get about_content =>
+      'يساعد Airport Escape الركاب على تخطيط الأنشطة أثناء فترات التوقف.\n\nطوّره Team Airport Escape.\n\n© 2025 Team Airport Escape.';
+
+  @override
+  String get ok => 'حسناً';
+
+  @override
+  String get close => 'إغلاق';
+
+  @override
+  String get cancel => 'إلغاء';
 }

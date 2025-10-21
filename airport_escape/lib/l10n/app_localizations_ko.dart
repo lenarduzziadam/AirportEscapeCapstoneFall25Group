@@ -110,4 +110,32 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get section_general => '일반';
+
+  @override
+  String get version => '버전';
+
+  @override
+  String get version_info =>
+      '버전: 0.4.7\n빌드: 2025.10.20\n개발: Team Airport Escape\n© 2025 판권 소유';
+
+  @override
+  String get privacy_policy_content =>
+      '환승 제안을 개인화하기 위해 위치 데이터를 수집합니다.\n\n데이터는 로컬에 저장되며 동의 없이 공유되지 않습니다.\n\n전체 정책은 웹사이트를 참조하세요.';
+
+  @override
+  String get terms_of_service_content =>
+      '이 앱을 사용하면 이용약관에 동의하는 것으로 간주됩니다.\n\n앱은 환승 중 즐길거리에 대한 제안을 제공합니다.\n\n제안을 따른 결과 발생한 문제에 대해 책임지지 않습니다.\n\n전체 약관은 웹사이트에서 확인하세요.';
+
+  @override
+  String get about_content =>
+      'Airport Escape는 환승 중 활동을 계획하는 데 도움을 줍니다.\n\nTeam Airport Escape 개발.\n\n© 2025 Team Airport Escape.';
+
+  @override
+  String get ok => '확인';
+
+  @override
+  String get close => '닫기';
+
+  @override
+  String get cancel => '취소';
 }

@@ -112,4 +112,32 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get section_general => 'Allgemein';
+
+  @override
+  String get version => 'Version';
+
+  @override
+  String get version_info =>
+      'Version: 0.4.7\nBuild: 2025.10.20\nEntwickelt von Team Airport Escape\n© 2025 Alle Rechte vorbehalten';
+
+  @override
+  String get privacy_policy_content =>
+      'Wir erfassen Standortdaten, um personalisierte Zwischenstopp‑Vorschläge bereitzustellen.\n\nDaten werden lokal gespeichert und nicht ohne Zustimmung weitergegeben.\n\nFür die vollständige Richtlinie besuchen Sie unsere Website.';
+
+  @override
+  String get terms_of_service_content =>
+      'Durch die Nutzung dieser App stimmen Sie unseren Bedingungen zu.\n\nDie App bietet Vorschläge zur Unterhaltung während Zwischenstopps.\n\nWir übernehmen keine Verantwortung für Probleme, die sich aus der Befolgung der Vorschläge ergeben.\n\nFür die vollständigen Bedingungen besuchen Sie unsere Website.';
+
+  @override
+  String get about_content =>
+      'Airport Escape hilft Passagieren, Aktivitäten während Zwischenstopps zu planen.\n\nEntwickelt von Team Airport Escape.\n\n© 2025 Team Airport Escape.';
+
+  @override
+  String get ok => 'OK';
+
+  @override
+  String get close => 'Schließen';
+
+  @override
+  String get cancel => 'Abbrechen';
 }

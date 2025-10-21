@@ -63,7 +63,7 @@ class _SettingsPageState extends State<SettingsPage> {
           const SizedBox(height: 20),
           
           // Notifications Section
-          _buildSectionHeader('Notifications'),
+          _buildSectionHeader(AppLocalizations.of(context)!.section_notifications),
           _buildSwitchTile(
             title: AppLocalizations.of(context)!.notifications,
             subtitle: 'Receive layover suggestions and updates',
