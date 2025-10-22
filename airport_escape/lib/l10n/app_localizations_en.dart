@@ -1,0 +1,141 @@
+// ignore: unused_import
+import 'package:intl/intl.dart' as intl;
+import 'app_localizations.dart';
+
+// ignore_for_file: type=lint
+
+/// The translations for English (`en`).
+class AppLocalizationsEn extends AppLocalizations {
+  AppLocalizationsEn([String locale = 'en']) : super(locale);
+
+  @override
+  String get settings => 'Settings';
+
+  @override
+  String get dark_mode => 'Dark Mode';
+
+  @override
+  String get language => 'Language';
+
+  @override
+  String get notifications => 'Push Notifications';
+
+  @override
+  String get location_services => 'Location Services';
+
+  @override
+  String get brightness => 'Brightness';
+
+  @override
+  String get reset_all_settings => 'Reset All Settings';
+
+  @override
+  String get welcome_message => 'Welcome to Airport Escape!';
+
+  @override
+  String get restaurant => 'Restaurant';
+
+  @override
+  String get entertainment => 'Entertainment';
+
+  @override
+  String get shopping => 'Shopping';
+
+  @override
+  String get profile => 'Profile';
+
+  @override
+  String get logout => 'Logout';
+
+  @override
+  String get security => 'Security';
+
+  @override
+  String get general_settings => 'General Settings';
+
+  @override
+  String get airport_escape => 'Airport Escape';
+
+  @override
+  String plan_your_layover(Object category) {
+    return 'Plan Your Layover: $category';
+  }
+
+  @override
+  String get layover_duration_label => 'Layover Duration (hours)';
+
+  @override
+  String get select_airport => 'Select Airport';
+
+  @override
+  String get please_enter_duration => 'Please enter your layover duration.';
+
+  @override
+  String get could_not_launch_maps => 'Could not launch Google Maps';
+
+  @override
+  String suggested_activity_near(Object activity, Object airport) {
+    return 'Suggested activity near $airport: $activity';
+  }
+
+  @override
+  String get get_directions => 'Get Directions';
+
+  @override
+  String get save_search_history => 'Save search history';
+
+  @override
+  String get auto_refresh => 'Auto refresh';
+
+  @override
+  String get privacy_policy => 'Privacy Policy';
+
+  @override
+  String get terms_of_service => 'Terms of Service';
+
+  @override
+  String get section_privacy_and_data => 'Privacy & Data';
+
+  @override
+  String get section_notifications => 'Notifications';
+
+  @override
+  String get section_app_behavior => 'App Behavior';
+
+  @override
+  String get section_about => 'About';
+
+  @override
+  String get section_reset => 'Reset';
+
+  @override
+  String get section_general => 'General';
+
+  @override
+  String get version => 'Version';
+
+  @override
+  String get version_info =>
+      'Version: 0.4.7\nBuild: 2025.10.20\nDeveloped by Team Airport Escape\n© 2025 All rights reserved';
+
+  @override
+  String get privacy_policy_content =>
+      'We collect location data to provide personalized layover suggestions.\n\nData is stored locally and not shared without consent.\n\nFor full policy, visit our website.';
+
+  @override
+  String get terms_of_service_content =>
+      'By using this app you agree to our terms.\n\nThe app provides suggestions for entertainment during layovers.\n\nWe are not responsible for issues resulting from following suggestions.\n\nFor full terms, visit our website.';
+
+  @override
+  String get about_content =>
+      'Airport Escape helps passengers plan activities during layovers.\n\nBuilt by Team Airport Escape.\n\n© 2025 Team Airport Escape.';
+
+  @override
+  String get ok => 'OK';
+
+  @override
+  String get close => 'Close';
+
+  @override
+  String get cancel => 'Cancel';
+}
