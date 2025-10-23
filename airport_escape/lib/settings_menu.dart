@@ -208,7 +208,7 @@ class _SettingsPageState extends State<SettingsPage> {
         subtitle: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Adjust screen brightness: ${(_brightness * 100).round()}%'),
+            Text(AppLocalizations.of(context)!.adjust_screen_brightness('${(_brightness * 100).round()}')),
             Slider(
               value: _brightness,
               onChanged: (value) {
@@ -219,7 +219,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 HapticFeedback.selectionClick();
               },
               divisions: 10,
-              label: '${(_brightness * 100).round()}%',
+              label: '${(_brightness * 100).round()}',
             ),
           ],
         ),
