@@ -1,3 +1,7 @@
+import 'package:airport_escape/activities_list.dart';
+import 'package:airport_escape/l10n/app_localizations.dart';
+import 'package:airport_escape/main.dart';
+import 'package:airport_escape/map_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -25,11 +29,11 @@ class _LayoverPageState extends State<LayoverPage> {
     "Chicago O'Hare (ORD)",
     "Denver (DEN)",
     "Atlanta (ATL)",
-    "Dallas-Fort Worth (DFW)"
+    "Dallas-Fort Worth (DFW)",
   ];
 
   // Expanded city -> category -> activities (name + distance in miles)
-  final Map<String, Map<String, List<Map<String, dynamic>>>> cityActivities = {
+
   // hardcoded LatLng vals for each airport
   final Map<String, LatLng> airportLocations = {
     "Chicago O'Hare (ORD)": const LatLng(41.978600, -87.904800),
@@ -44,8 +48,9 @@ class _LayoverPageState extends State<LayoverPage> {
     "Denver (DEN)": "Union Station, Denver",
     "Atlanta (ATL)": "Georgia Aquarium, Atlanta",
     "Dallas-Fort Worth (DFW)": "AT&T Stadium, Arlington",
+  };
   // City → Category → Activities
-  final Map<String, Map<String, List<String>>> cityActivities = {
+  final Map<String, Map<String, List<Map<String, Object>>>> cityActivities = {
     "Chicago O'Hare (ORD)": {
       "Restaurant": [
         {"name": "Giordano's Pizza", "distance": 15},
@@ -145,6 +150,7 @@ class _LayoverPageState extends State<LayoverPage> {
 
     final hours = double.tryParse(durationText) ?? 0;
     final distanceLimit = _getDistanceLimit(hours);
+  }
 
   // hardcoded LatLng vals for each activity
   final Map<String, LatLng> activityLocations = {
@@ -162,6 +168,8 @@ class _LayoverPageState extends State<LayoverPage> {
       _activityLoc = activityLocations[activity]!;
     });
   }
+
+  /*
   void _getSuggestionsJohn() {
     final activities = cityActivities[_selectedAirport]?[widget.category];
     if (activities == null || activities.isEmpty) {
@@ -195,7 +203,7 @@ class _LayoverPageState extends State<LayoverPage> {
       });
     }
   }
-
+*/
   Future<void> _openDirections() async {
     if (_suggestion.isEmpty) return;
 
@@ -219,17 +227,15 @@ class _LayoverPageState extends State<LayoverPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Plan Your Layover: ${widget.category}"),
-      ),
+      appBar: AppBar(title: Text(AppLocalizations.of(context)!.plan_your_layover(widget.category))),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
             TextField(
               controller: _durationController,
-              decoration: const InputDecoration(
-                labelText: "Layover Duration (hours)",
+              decoration: InputDecoration(
+                labelText: AppLocalizations.of(context)!.layover_duration_label,
                 border: OutlineInputBorder(),
               ),
               keyboardType: TextInputType.number,
@@ -246,62 +252,10 @@ class _LayoverPageState extends State<LayoverPage> {
               },
             ),
             const SizedBox(height: 16),
-            ElevatedButton(
-              onPressed: _getSuggestionsKav,
-              child: const Text("Get Suggestions"),
-            ),
-            const SizedBox(height: 10),
-            if (_distanceNote.isNotEmpty)
-              Text(
-                _distanceNote,
-                style: const TextStyle(
-                  fontSize: 14,
-                  fontStyle: FontStyle.italic,
-                  color: Colors.black54,
-                ),
-                textAlign: TextAlign.center,
-              ),
-            const SizedBox(height: 24),
-            if (_suggestion.isNotEmpty) ...[
-              Text(
-                _suggestion,
-                style:
-                    const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(height: 12),
-              
-              ElevatedButton.icon(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: kPrimaryColor,
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 24,
-                    vertical: 12,
-                  ),
-                ),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => MapScreen(
-                        startLocation: _selectedAirportLoc,
-                        endLocation: _activityLoc,
-                      ),
-                    ),
-                  );
-                },
-                icon: const Icon(Icons.directions,color: Colors.white,),
-                label: const Text(
-                  "Get Directions",
-                  style: TextStyle(fontSize: 18, color: Colors.white),
-                ),
-                ),
-           ElevatedButton.icon(
-                onPressed: _openDirections,
-                icon: const Icon(Icons.directions),
-                label: const Text("Get Directions"),
-              ),
-            ],
+            ActivitiesList(
+              key: ValueKey(_selectedAirport),
+              airportCords: _selectedAirportLoc,),
+
           ],
         ),
       ),
