@@ -241,25 +241,15 @@ class _LayoverPageState extends State<LayoverPage> {
               keyboardType: TextInputType.number,
             ),
             const SizedBox(height: 16),
-            DropdownButtonFormField<String>(
-              initialValue: _selectedAirport,
-              items: airports
-                  .map(
-                    (airport) =>
-                        DropdownMenuItem(value: airport, child: Text(airport)),
-                  )
-                  .toList(),
-              onChanged: (value) {
+            buildAirportDropdown(
+              selectedAirport: _selectedAirport,
+              airports: airports,
+              onAirportChanged: (newAirport) {
                 setState(() {
-                  _selectedAirport = value!;
-                  _selectedAirportLoc = airportLocations[_selectedAirport]!;
+                  _selectedAirport = newAirport;
                 });
                 _getSuggestions(); // ← Add this line
               },
-              decoration: InputDecoration(
-                labelText: AppLocalizations.of(context)!.select_airport,
-                border: OutlineInputBorder(),
-              ),
             ),
             const SizedBox(height: 16),
             ActivitiesList(
