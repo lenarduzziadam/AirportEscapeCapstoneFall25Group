@@ -27,6 +27,11 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
+    final welcomeColor = isDark
+        ? theme.colorScheme.onBackground.withOpacity(0.85) // off-gray in dark
+        : kPrimaryColor;
     return Scaffold(
       drawer: const SettingsDrawer(),
       appBar: const CustomAppBar(),
@@ -37,21 +42,23 @@ class MyHomePage extends StatelessWidget {
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 32),
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: isDark ? Colors.transparent : Colors.white,
                 borderRadius: BorderRadius.circular(16),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black12,
-                    blurRadius: 8,
-                    offset: const Offset(0, 4),
-                  ),
-                ],
+                boxShadow: isDark
+                      ? []
+                      : [
+                          BoxShadow(
+                            color: Colors.black12,
+                            blurRadius: 8,
+                            offset: const Offset(0, 4),
+                          ),
+                        ],
               ),
               child: Text(AppLocalizations.of(context)!.welcome_message,
                 style: TextStyle(
                   fontSize: 26,
                   fontWeight: FontWeight.bold,
-                  color: kPrimaryColor,
+                  color: welcomeColor,
                 ),
                 textAlign: TextAlign.center,
               ),
