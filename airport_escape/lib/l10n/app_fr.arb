@@ -40,5 +40,17 @@
   "about_content": "Airport Escape aide les passagers à planifier des activités pendant les escales.\n\nConçu par Team Airport Escape.\n\n© 2025 Team Airport Escape.",
   "ok": "OK",
   "close": "Fermer",
-  "cancel": "Annuler"
+  "cancel": "Annuler",
+  "adjust_screen_brightness": "Ajuster la luminosité de l'écran : {percent}%",
+  "enable_dark_theme_subtitle": "Activer le mode sombre",
+  "receive_suggestions_subtitle": "Recevoir des suggestions et mises à jour pour l'escale",
+  "allow_location_subtitle": "Autoriser l'application à accéder à votre position",
+  "remember_searches_subtitle": "Se souvenir de vos recherches récentes",
+  "auto_refresh_subtitle": "Actualiser automatiquement les suggestions d'activités",
+  "view_privacy_policy_subtitle": "Voir notre politique de confidentialité",
+  "view_terms_subtitle": "Voir les conditions d'utilisation",
+  "reset_app_subtitle": "Réinitialiser l'application aux paramètres par défaut",
+  "reset_dialog_content": "Cela réinitialisera tous les paramètres à leurs valeurs par défaut.\n\nCette action est irréversible. Êtes-vous sûr ?",
+  "reset_confirm_button": "Réinitialiser",
+  "reset_success_snackbar": "Tous les paramètres ont été réinitialisés aux valeurs par défaut"
 }

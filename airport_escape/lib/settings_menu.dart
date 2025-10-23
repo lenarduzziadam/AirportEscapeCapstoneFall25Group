@@ -49,7 +49,7 @@ class _SettingsPageState extends State<SettingsPage> {
           _buildSectionHeader(AppLocalizations.of(context)!.general_settings),
           _buildSwitchTile(
             title: AppLocalizations.of(context)!.dark_mode,
-            subtitle: 'Enable dark theme',
+            subtitle: AppLocalizations.of(context)!.enable_dark_theme_subtitle,
             value: context.watch<ThemeProvider>().isDarkMode, // use provider
             icon: Icons.dark_mode,
             onChanged: (value) {
@@ -66,7 +66,8 @@ class _SettingsPageState extends State<SettingsPage> {
           _buildSectionHeader(AppLocalizations.of(context)!.section_notifications),
           _buildSwitchTile(
             title: AppLocalizations.of(context)!.notifications,
-            subtitle: 'Receive layover suggestions and updates',
+            // Slightly modified subtitle for localization (now says "Suggestions and Updates")
+            subtitle: AppLocalizations.of(context)!.receive_suggestions_subtitle,
             value: _notificationsEnabled,
             icon: Icons.notifications,
             onChanged: (value) {
@@ -83,7 +84,7 @@ class _SettingsPageState extends State<SettingsPage> {
           _buildSectionHeader(AppLocalizations.of(context)!.section_privacy_and_data),
           _buildSwitchTile(
             title: AppLocalizations.of(context)!.location_services,
-            subtitle: 'Allow app to access your location',
+            subtitle: AppLocalizations.of(context)!.allow_location_subtitle,
             value: _locationEnabled,
             icon: Icons.location_on,
             onChanged: (value) {
@@ -95,7 +96,7 @@ class _SettingsPageState extends State<SettingsPage> {
           ),
           _buildSwitchTile(
             title: AppLocalizations.of(context)!.save_search_history,
-            subtitle: 'Remember your recent searches',
+            subtitle: AppLocalizations.of(context)!.remember_searches_subtitle,
             value: _saveSearchHistory,
             icon: Icons.history,
             onChanged: (value) {
@@ -112,7 +113,7 @@ class _SettingsPageState extends State<SettingsPage> {
           _buildSectionHeader(AppLocalizations.of(context)!.section_app_behavior),
           _buildSwitchTile(
             title: AppLocalizations.of(context)!.auto_refresh,
-            subtitle: 'Automatically refresh activity suggestions',
+            subtitle: AppLocalizations.of(context)!.auto_refresh_subtitle,
             value: _autoRefresh,
             icon: Icons.refresh,
             onChanged: (value) {
@@ -135,13 +136,13 @@ class _SettingsPageState extends State<SettingsPage> {
           ),
           _buildInfoTile(
             title: AppLocalizations.of(context)!.privacy_policy,
-            subtitle: 'View our privacy policy',
+            subtitle: AppLocalizations.of(context)!.view_privacy_policy_subtitle,
             icon: Icons.privacy_tip,
             onTap: () => _showPrivacyPolicy(),
           ),
           _buildInfoTile(
             title: AppLocalizations.of(context)!.terms_of_service,
-            subtitle: 'View terms and conditions',
+            subtitle: AppLocalizations.of(context)!.view_terms_subtitle,
             icon: Icons.description,
             onTap: () => _showTermsOfService(),
           ),
@@ -152,7 +153,7 @@ class _SettingsPageState extends State<SettingsPage> {
           _buildSectionHeader(AppLocalizations.of(context)!.section_reset),
           _buildDangerTile(
             title: AppLocalizations.of(context)!.reset_all_settings,
-            subtitle: 'Reset app to default settings',
+            subtitle: AppLocalizations.of(context)!.reset_app_subtitle,
             icon: Icons.delete_forever,
             onTap: () => _showResetDialog(),
           ),
@@ -208,7 +209,7 @@ class _SettingsPageState extends State<SettingsPage> {
         subtitle: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Adjust screen brightness: ${(_brightness * 100).round()}%'),
+            Text(AppLocalizations.of(context)!.adjust_screen_brightness('${(_brightness * 100).round()}')),
             Slider(
               value: _brightness,
               onChanged: (value) {
@@ -219,7 +220,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 HapticFeedback.selectionClick();
               },
               divisions: 10,
-              label: '${(_brightness * 100).round()}%',
+              label: '${(_brightness * 100).round()}',
             ),
           ],
         ),
@@ -413,10 +414,7 @@ class _SettingsPageState extends State<SettingsPage> {
       builder: (BuildContext context) {
         return AlertDialog(
           title: Text(AppLocalizations.of(context)!.reset_all_settings),
-          content: Text(
-            'This will reset all settings to their default values. '
-            'This action cannot be undone. Are you sure?',
-          ),
+          content: Text(AppLocalizations.of(context)!.reset_dialog_content),
           actions: [
             TextButton(
               onPressed: () => Navigator.of(context).pop(),
@@ -435,7 +433,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 // Reset theme to light
                 context.read<ThemeProvider>().setDarkMode(false);
                 Navigator.of(context).pop();
-                _showSnackBar('All settings reset to defaults');
+                _showSnackBar(AppLocalizations.of(context)!.reset_success_snackbar);
               },
               style: TextButton.styleFrom(foregroundColor: Colors.red),
               child: Text(AppLocalizations.of(context)!.section_reset),

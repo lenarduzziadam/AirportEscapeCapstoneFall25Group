@@ -139,4 +139,48 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get cancel => 'Отмена';
+
+  @override
+  String adjust_screen_brightness(Object percent) {
+    return 'Настроить яркость экрана: $percent%';
+  }
+
+  @override
+  String get enable_dark_theme_subtitle => 'Включить тёмную тему';
+
+  @override
+  String get receive_suggestions_subtitle =>
+      'Получать предложения и обновления для пересадки';
+
+  @override
+  String get allow_location_subtitle =>
+      'Разрешить приложению доступ к вашему местоположению';
+
+  @override
+  String get remember_searches_subtitle => 'Запоминать историю поисков';
+
+  @override
+  String get auto_refresh_subtitle => 'Автоматически обновлять рекомендации';
+
+  @override
+  String get view_privacy_policy_subtitle =>
+      'Просмотреть нашу политику конфиденциальности';
+
+  @override
+  String get view_terms_subtitle => 'Просмотреть условия обслуживания';
+
+  @override
+  String get reset_app_subtitle =>
+      'Сбросить приложение к настройкам по умолчанию';
+
+  @override
+  String get reset_dialog_content =>
+      'Это сбросит все настройки до значений по умолчанию.\n\nЭто действие нельзя отменить. Вы уверены?';
+
+  @override
+  String get reset_confirm_button => 'Сбросить';
+
+  @override
+  String get reset_success_snackbar =>
+      'Все настройки сброшены к значениям по умолчанию';
 }

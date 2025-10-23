@@ -139,4 +139,50 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get cancel => 'Annuler';
+
+  @override
+  String adjust_screen_brightness(Object percent) {
+    return 'Ajuster la luminosité de l\'écran : $percent%';
+  }
+
+  @override
+  String get enable_dark_theme_subtitle => 'Activer le mode sombre';
+
+  @override
+  String get receive_suggestions_subtitle =>
+      'Recevoir des suggestions et mises à jour pour l\'escale';
+
+  @override
+  String get allow_location_subtitle =>
+      'Autoriser l\'application à accéder à votre position';
+
+  @override
+  String get remember_searches_subtitle =>
+      'Se souvenir de vos recherches récentes';
+
+  @override
+  String get auto_refresh_subtitle =>
+      'Actualiser automatiquement les suggestions d\'activités';
+
+  @override
+  String get view_privacy_policy_subtitle =>
+      'Voir notre politique de confidentialité';
+
+  @override
+  String get view_terms_subtitle => 'Voir les conditions d\'utilisation';
+
+  @override
+  String get reset_app_subtitle =>
+      'Réinitialiser l\'application aux paramètres par défaut';
+
+  @override
+  String get reset_dialog_content =>
+      'Cela réinitialisera tous les paramètres à leurs valeurs par défaut.\n\nCette action est irréversible. Êtes-vous sûr ?';
+
+  @override
+  String get reset_confirm_button => 'Réinitialiser';
+
+  @override
+  String get reset_success_snackbar =>
+      'Tous les paramètres ont été réinitialisés aux valeurs par défaut';
 }

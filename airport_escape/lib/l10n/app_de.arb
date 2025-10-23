@@ -40,5 +40,17 @@
   "about_content": "Airport Escape hilft Passagieren, Aktivitäten während Zwischenstopps zu planen.\n\nEntwickelt von Team Airport Escape.\n\n© 2025 Team Airport Escape.",
   "ok": "OK",
   "close": "Schließen",
-  "cancel": "Abbrechen"
+  "cancel": "Abbrechen",
+  "adjust_screen_brightness": "Bildschirmhelligkeit anpassen: {percent}%",
+  "enable_dark_theme_subtitle": "Dunklen Modus aktivieren",
+  "receive_suggestions_subtitle": "Zwischenstopp‑Vorschläge und Updates erhalten",
+  "allow_location_subtitle": "App den Zugriff auf Ihren Standort erlauben",
+  "remember_searches_subtitle": "Ihre letzten Suchanfragen speichern",
+  "auto_refresh_subtitle": "Aktivitätsempfehlungen automatisch aktualisieren",
+  "view_privacy_policy_subtitle": "Unsere Datenschutzerklärung ansehen",
+  "view_terms_subtitle": "Nutzungsbedingungen anzeigen",
+  "reset_app_subtitle": "App auf Standardeinstellungen zurücksetzen",
+  "reset_dialog_content": "Dies setzt alle Einstellungen auf ihre Standardwerte zurück.\n\nDiese Aktion kann nicht rückgängig gemacht werden. Sind Sie sicher?",
+  "reset_confirm_button": "Zurücksetzen",
+  "reset_success_snackbar": "Alle Einstellungen wurden auf die Standardwerte zurückgesetzt"
 }

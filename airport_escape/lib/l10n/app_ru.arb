@@ -40,5 +40,17 @@
   "about_content": "Airport Escape помогает пассажирам планировать занятия во время пересадок.\n\nРазработано Team Airport Escape.\n\n© 2025 Team Airport Escape.",
   "ok": "ОК",
   "close": "Закрыть",
-  "cancel": "Отмена"
+  "cancel": "Отмена",
+  "adjust_screen_brightness": "Настроить яркость экрана: {percent}%",
+  "enable_dark_theme_subtitle": "Включить тёмную тему",
+  "receive_suggestions_subtitle": "Получать предложения и обновления для пересадки",
+  "allow_location_subtitle": "Разрешить приложению доступ к вашему местоположению",
+  "remember_searches_subtitle": "Запоминать историю поисков",
+  "auto_refresh_subtitle": "Автоматически обновлять рекомендации",
+  "view_privacy_policy_subtitle": "Просмотреть нашу политику конфиденциальности",
+  "view_terms_subtitle": "Просмотреть условия обслуживания",
+  "reset_app_subtitle": "Сбросить приложение к настройкам по умолчанию",
+  "reset_dialog_content": "Это сбросит все настройки до значений по умолчанию.\n\nЭто действие нельзя отменить. Вы уверены?",
+  "reset_confirm_button": "Сбросить",
+  "reset_success_snackbar": "Все настройки сброшены к значениям по умолчанию"
 }

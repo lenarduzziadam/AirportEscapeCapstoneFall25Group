@@ -138,4 +138,49 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get cancel => 'Annulla';
+
+  @override
+  String adjust_screen_brightness(Object percent) {
+    return 'Regola la luminosità dello schermo: $percent%';
+  }
+
+  @override
+  String get enable_dark_theme_subtitle => 'Attiva modalità scura';
+
+  @override
+  String get receive_suggestions_subtitle =>
+      'Ricevi suggerimenti e aggiornamenti per la sosta';
+
+  @override
+  String get allow_location_subtitle =>
+      'Consenti all\'app di accedere alla tua posizione';
+
+  @override
+  String get remember_searches_subtitle => 'Ricorda le tue ricerche recenti';
+
+  @override
+  String get auto_refresh_subtitle =>
+      'Aggiorna automaticamente i suggerimenti delle attività';
+
+  @override
+  String get view_privacy_policy_subtitle =>
+      'Visualizza la nostra privacy policy';
+
+  @override
+  String get view_terms_subtitle => 'Visualizza termini e condizioni';
+
+  @override
+  String get reset_app_subtitle =>
+      'Reimposta l\'app alle impostazioni predefinite';
+
+  @override
+  String get reset_dialog_content =>
+      'Questo reimposterà tutte le impostazioni ai valori predefiniti.\n\nQuesta azione non può essere annullata. Sei sicuro?';
+
+  @override
+  String get reset_confirm_button => 'Reimposta';
+
+  @override
+  String get reset_success_snackbar =>
+      'Tutte le impostazioni sono state reimpostate ai valori predefiniti';
 }

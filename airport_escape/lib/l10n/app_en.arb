@@ -40,5 +40,17 @@
   "about_content": "Airport Escape helps passengers plan activities during layovers.\n\nBuilt by Team Airport Escape.\n\n© 2025 Team Airport Escape.",
   "ok": "OK",
   "close": "Close",
-  "cancel": "Cancel"
+  "cancel": "Cancel",
+  "adjust_screen_brightness": "Adjust screen brightness: {percent}%",
+  "enable_dark_theme_subtitle": "Enable dark theme",
+  "receive_suggestions_subtitle": "Receive layover suggestions and updates",
+  "allow_location_subtitle": "Allow app to access your location",
+  "remember_searches_subtitle": "Remember your recent searches",
+  "auto_refresh_subtitle": "Automatically refresh activity suggestions",
+  "view_privacy_policy_subtitle": "View our privacy policy",
+  "view_terms_subtitle": "View terms and conditions",
+  "reset_app_subtitle": "Reset app to default settings",
+  "reset_dialog_content": "This will reset all settings to their default values.\n\nThis action cannot be undone. Are you sure?",
+  "reset_confirm_button": "Reset",
+  "reset_success_snackbar": "All settings reset to defaults"
 }

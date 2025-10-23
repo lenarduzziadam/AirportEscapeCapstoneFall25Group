@@ -40,5 +40,17 @@
   "about_content": "Airport Escape 帮助乘客规划中转期间的活动。\n\n由 Team Airport Escape 开发。\n\n© 2025 Team Airport Escape.",
   "ok": "确定",
   "close": "关闭",
-  "cancel": "取消"
+  "cancel": "取消",
+  "adjust_screen_brightness": "调整屏幕亮度：{percent}%",
+  "enable_dark_theme_subtitle": "启用深色模式",
+  "receive_suggestions_subtitle": "接收中转建议和更新",
+  "allow_location_subtitle": "允许应用访问您的位置",
+  "remember_searches_subtitle": "记住您的最近搜索",
+  "auto_refresh_subtitle": "自动刷新活动建议",
+  "view_privacy_policy_subtitle": "查看我们的隐私政策",
+  "view_terms_subtitle": "查看服务条款",
+  "reset_app_subtitle": "将应用重置为默认设置",
+  "reset_dialog_content": "这将把所有设置重置为默认值。\n\n此操作无法撤销。确定要继续吗？",
+  "reset_confirm_button": "重置",
+  "reset_success_snackbar": "所有设置已重置为默认值"
 }

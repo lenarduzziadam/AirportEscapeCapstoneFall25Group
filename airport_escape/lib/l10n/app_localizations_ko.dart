@@ -138,4 +138,43 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get cancel => '취소';
+
+  @override
+  String adjust_screen_brightness(Object percent) {
+    return '화면 밝기 조정: $percent%';
+  }
+
+  @override
+  String get enable_dark_theme_subtitle => '다크 모드 활성화';
+
+  @override
+  String get receive_suggestions_subtitle => '환승 추천 및 업데이트 받기';
+
+  @override
+  String get allow_location_subtitle => '앱이 위치에 접근하도록 허용';
+
+  @override
+  String get remember_searches_subtitle => '최근 검색을 저장';
+
+  @override
+  String get auto_refresh_subtitle => '활동 추천 자동 새로고침';
+
+  @override
+  String get view_privacy_policy_subtitle => '개인정보 처리방침 보기';
+
+  @override
+  String get view_terms_subtitle => '약관 보기';
+
+  @override
+  String get reset_app_subtitle => '앱을 기본 설정으로 재설정';
+
+  @override
+  String get reset_dialog_content =>
+      '모든 설정이 기본값으로 재설정됩니다.\n\n이 작업은 되돌릴 수 없습니다. 계속하시겠습니까?';
+
+  @override
+  String get reset_confirm_button => '재설정';
+
+  @override
+  String get reset_success_snackbar => '모든 설정이 기본값으로 재설정되었습니다';
 }
