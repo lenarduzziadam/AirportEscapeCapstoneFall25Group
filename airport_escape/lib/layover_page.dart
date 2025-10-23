@@ -242,6 +242,7 @@ class _LayoverPageState extends State<LayoverPage> {
             ),
             const SizedBox(height: 16),
             buildAirportDropdown(
+              context: context,
               selectedAirport: _selectedAirport,
               airports: airports,
               onAirportChanged: (newAirport) {
