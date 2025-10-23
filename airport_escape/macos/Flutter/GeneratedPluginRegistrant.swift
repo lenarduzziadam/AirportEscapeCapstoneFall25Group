@@ -8,6 +8,8 @@ import Foundation
 import firebase_auth
 import firebase_core
 import firebase_database
+import geolocator_apple
+import package_info_plus
 import url_launcher_macos
 
 func RegisterGeneratedPlugins(registry: FlutterPluginRegistry) {
