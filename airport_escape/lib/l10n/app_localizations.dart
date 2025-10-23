@@ -361,6 +361,78 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Cancel'**
   String get cancel;
+
+  /// No description provided for @adjust_screen_brightness.
+  ///
+  /// In en, this message translates to:
+  /// **'Adjust screen brightness: {percent}%'**
+  String adjust_screen_brightness(Object percent);
+
+  /// No description provided for @enable_dark_theme_subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Enable dark theme'**
+  String get enable_dark_theme_subtitle;
+
+  /// No description provided for @receive_suggestions_subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Receive layover suggestions and updates'**
+  String get receive_suggestions_subtitle;
+
+  /// No description provided for @allow_location_subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Allow app to access your location'**
+  String get allow_location_subtitle;
+
+  /// No description provided for @remember_searches_subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Remember your recent searches'**
+  String get remember_searches_subtitle;
+
+  /// No description provided for @auto_refresh_subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Automatically refresh activity suggestions'**
+  String get auto_refresh_subtitle;
+
+  /// No description provided for @view_privacy_policy_subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'View our privacy policy'**
+  String get view_privacy_policy_subtitle;
+
+  /// No description provided for @view_terms_subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'View terms and conditions'**
+  String get view_terms_subtitle;
+
+  /// No description provided for @reset_app_subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset app to default settings'**
+  String get reset_app_subtitle;
+
+  /// No description provided for @reset_dialog_content.
+  ///
+  /// In en, this message translates to:
+  /// **'This will reset all settings to their default values.\n\nThis action cannot be undone. Are you sure?'**
+  String get reset_dialog_content;
+
+  /// No description provided for @reset_confirm_button.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset'**
+  String get reset_confirm_button;
+
+  /// No description provided for @reset_success_snackbar.
+  ///
+  /// In en, this message translates to:
+  /// **'All settings reset to defaults'**
+  String get reset_success_snackbar;
 }
 
 class _AppLocalizationsDelegate

@@ -138,4 +138,42 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get cancel => '取消';
+
+  @override
+  String adjust_screen_brightness(Object percent) {
+    return '调整屏幕亮度：$percent%';
+  }
+
+  @override
+  String get enable_dark_theme_subtitle => '启用深色模式';
+
+  @override
+  String get receive_suggestions_subtitle => '接收中转建议和更新';
+
+  @override
+  String get allow_location_subtitle => '允许应用访问您的位置';
+
+  @override
+  String get remember_searches_subtitle => '记住您的最近搜索';
+
+  @override
+  String get auto_refresh_subtitle => '自动刷新活动建议';
+
+  @override
+  String get view_privacy_policy_subtitle => '查看我们的隐私政策';
+
+  @override
+  String get view_terms_subtitle => '查看服务条款';
+
+  @override
+  String get reset_app_subtitle => '将应用重置为默认设置';
+
+  @override
+  String get reset_dialog_content => '这将把所有设置重置为默认值。\n\n此操作无法撤销。确定要继续吗？';
+
+  @override
+  String get reset_confirm_button => '重置';
+
+  @override
+  String get reset_success_snackbar => '所有设置已重置为默认值';
 }

@@ -138,4 +138,47 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get cancel => 'रद्द करें';
+
+  @override
+  String adjust_screen_brightness(Object percent) {
+    return 'स्क्रीन चमक समायोजित करें: $percent%';
+  }
+
+  @override
+  String get enable_dark_theme_subtitle => 'डार्क मोड सक्षम करें';
+
+  @override
+  String get receive_suggestions_subtitle =>
+      'लेओवर सुझाव और अपडेट प्राप्त करें';
+
+  @override
+  String get allow_location_subtitle =>
+      'ऐप को आपके स्थान तक पहुंच की अनुमति दें';
+
+  @override
+  String get remember_searches_subtitle => 'आपकी हाल की खोज को याद रखें';
+
+  @override
+  String get auto_refresh_subtitle =>
+      'गतिविधि सुझाव स्वचालित रूप से ताज़ा करें';
+
+  @override
+  String get view_privacy_policy_subtitle => 'हमारी गोपनीयता नीति देखें';
+
+  @override
+  String get view_terms_subtitle => 'नियम और शर्तें देखें';
+
+  @override
+  String get reset_app_subtitle => 'ऐप को डिफ़ॉल्ट सेटिंग्स पर रीसेट करें';
+
+  @override
+  String get reset_dialog_content =>
+      'यह सभी सेटिंग्स को उनके डिफ़ॉल्ट मानों पर रीसेट कर देगा।\n\nइस क्रिया को पूर्ववत नहीं किया जा सकता। क्या आप सुनिश्चित हैं?';
+
+  @override
+  String get reset_confirm_button => 'रीसेट';
+
+  @override
+  String get reset_success_snackbar =>
+      'सभी सेटिंग्स डिफ़ॉल्ट मानों पर रीसेट कर दी गईं';
 }

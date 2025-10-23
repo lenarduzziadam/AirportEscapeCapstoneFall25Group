@@ -40,5 +40,17 @@
   "about_content": "Airport Escape는 환승 중 활동을 계획하는 데 도움을 줍니다.\n\nTeam Airport Escape 개발.\n\n© 2025 Team Airport Escape.",
   "ok": "확인",
   "close": "닫기",
-  "cancel": "취소"
+  "cancel": "취소",
+  "adjust_screen_brightness": "화면 밝기 조정: {percent}%",
+  "enable_dark_theme_subtitle": "다크 모드 활성화",
+  "receive_suggestions_subtitle": "환승 추천 및 업데이트 받기",
+  "allow_location_subtitle": "앱이 위치에 접근하도록 허용",
+  "remember_searches_subtitle": "최근 검색을 저장",
+  "auto_refresh_subtitle": "활동 추천 자동 새로고침",
+  "view_privacy_policy_subtitle": "개인정보 처리방침 보기",
+  "view_terms_subtitle": "약관 보기",
+  "reset_app_subtitle": "앱을 기본 설정으로 재설정",
+  "reset_dialog_content": "모든 설정이 기본값으로 재설정됩니다.\n\n이 작업은 되돌릴 수 없습니다. 계속하시겠습니까?",
+  "reset_confirm_button": "재설정",
+  "reset_success_snackbar": "모든 설정이 기본값으로 재설정되었습니다"
 }

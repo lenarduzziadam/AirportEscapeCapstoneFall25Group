@@ -138,4 +138,45 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get cancel => 'Cancel';
+
+  @override
+  String adjust_screen_brightness(Object percent) {
+    return 'Adjust screen brightness: $percent%';
+  }
+
+  @override
+  String get enable_dark_theme_subtitle => 'Enable dark theme';
+
+  @override
+  String get receive_suggestions_subtitle =>
+      'Receive layover suggestions and updates';
+
+  @override
+  String get allow_location_subtitle => 'Allow app to access your location';
+
+  @override
+  String get remember_searches_subtitle => 'Remember your recent searches';
+
+  @override
+  String get auto_refresh_subtitle =>
+      'Automatically refresh activity suggestions';
+
+  @override
+  String get view_privacy_policy_subtitle => 'View our privacy policy';
+
+  @override
+  String get view_terms_subtitle => 'View terms and conditions';
+
+  @override
+  String get reset_app_subtitle => 'Reset app to default settings';
+
+  @override
+  String get reset_dialog_content =>
+      'This will reset all settings to their default values.\n\nThis action cannot be undone. Are you sure?';
+
+  @override
+  String get reset_confirm_button => 'Reset';
+
+  @override
+  String get reset_success_snackbar => 'All settings reset to defaults';
 }

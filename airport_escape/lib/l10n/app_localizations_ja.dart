@@ -138,4 +138,43 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get cancel => 'キャンセル';
+
+  @override
+  String adjust_screen_brightness(Object percent) {
+    return '画面の明るさを調整: $percent%';
+  }
+
+  @override
+  String get enable_dark_theme_subtitle => 'ダークモードを有効にする';
+
+  @override
+  String get receive_suggestions_subtitle => '乗り継ぎの提案と更新を受け取る';
+
+  @override
+  String get allow_location_subtitle => 'アプリが位置情報にアクセスすることを許可';
+
+  @override
+  String get remember_searches_subtitle => '最近の検索を保存する';
+
+  @override
+  String get auto_refresh_subtitle => 'アクティビティの提案を自動更新';
+
+  @override
+  String get view_privacy_policy_subtitle => 'プライバシーポリシーを見る';
+
+  @override
+  String get view_terms_subtitle => '利用規約を見る';
+
+  @override
+  String get reset_app_subtitle => 'アプリをデフォルト設定にリセット';
+
+  @override
+  String get reset_dialog_content =>
+      'これにより、すべての設定がデフォルト値にリセットされます。\n\nこの操作は元に戻せません。本当に実行しますか？';
+
+  @override
+  String get reset_confirm_button => 'リセット';
+
+  @override
+  String get reset_success_snackbar => 'すべての設定がデフォルトにリセットされました';
 }

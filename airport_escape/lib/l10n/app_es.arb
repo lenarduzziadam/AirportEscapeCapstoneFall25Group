@@ -40,5 +40,17 @@
   "about_content": "Airport Escape ayuda a los pasajeros a planificar actividades durante las escalas.\n\nDesarrollado por Team Airport Escape.\n\n© 2025 Team Airport Escape.",
   "ok": "Aceptar",
   "close": "Cerrar",
-  "cancel": "Cancelar"
+  "cancel": "Cancelar",
+  "adjust_screen_brightness": "Ajustar el brillo de la pantalla: {percent}%",
+  "enable_dark_theme_subtitle": "Activar tema oscuro",
+  "receive_suggestions_subtitle": "Recibir sugerencias y actualizaciones de la escala",
+  "allow_location_subtitle": "Permitir que la aplicación acceda a tu ubicación",
+  "remember_searches_subtitle": "Recordar tus búsquedas recientes",
+  "auto_refresh_subtitle": "Actualizar automáticamente las sugerencias de actividades",
+  "view_privacy_policy_subtitle": "Ver nuestra política de privacidad",
+  "view_terms_subtitle": "Ver términos y condiciones",
+  "reset_app_subtitle": "Restablecer la aplicación a la configuración predeterminada",
+  "reset_dialog_content": "Esto restablecerá todas las configuraciones a sus valores predeterminados.\n\nEsta acción no se puede deshacer. ¿Estás seguro?",
+  "reset_confirm_button": "Restablecer",
+  "reset_success_snackbar": "Todas las configuraciones restablecidas a los valores predeterminados"
 }

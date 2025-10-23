@@ -40,5 +40,17 @@
   "about_content": "يساعد Airport Escape الركاب على تخطيط الأنشطة أثناء فترات التوقف.\n\nطوّره Team Airport Escape.\n\n© 2025 Team Airport Escape.",
   "ok": "حسناً",
   "close": "إغلاق",
-  "cancel": "إلغاء"
+  "cancel": "إلغاء",
+  "adjust_screen_brightness": "ضبط سطوع الشاشة: {percent}%",
+  "enable_dark_theme_subtitle": "تمكين الوضع الداكن",
+  "receive_suggestions_subtitle": "استلام اقتراحات وتحديثات التوقف",
+  "allow_location_subtitle": "السماح للتطبيق بالوصول إلى موقعك",
+  "remember_searches_subtitle": "تذكّر عمليات البحث الأخيرة",
+  "auto_refresh_subtitle": "تحديث الاقتراحات تلقائيًا",
+  "view_privacy_policy_subtitle": "عرض سياسة الخصوصية الخاصة بنا",
+  "view_terms_subtitle": "عرض الشروط والأحكام",
+  "reset_app_subtitle": "إعادة التطبيق إلى إعدادات المصنع",
+  "reset_dialog_content": "سيؤدي ذلك إلى إعادة جميع الإعدادات إلى قيمها الافتراضية.\n\nلا يمكن التراجع عن هذا الإجراء. هل أنت متأكد؟",
+  "reset_confirm_button": "إعادة تعيين",
+  "reset_success_snackbar": "تمت إعادة جميع الإعدادات إلى القيم الافتراضية"
 }
