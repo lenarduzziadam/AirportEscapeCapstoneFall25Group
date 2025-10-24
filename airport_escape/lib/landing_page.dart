@@ -1,11 +1,8 @@
 // Main landing page and widgets for Airport Escape app
 import 'package:airport_escape/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
-
-import 'search_bar_widget.dart';
 import 'settings_menu.dart';
-import 'layover_page.dart'; 
-
+import 'layover_page.dart';
 import 'widgets/live_tip_button.dart';
 
 // App-wide color constants
@@ -19,9 +16,7 @@ class MyHomePage extends StatelessWidget {
   void _openLayoverPage(BuildContext context, String category) {
     Navigator.push(
       context,
-      MaterialPageRoute(
-        builder: (context) => LayoverPage(category: category),
-      ),
+      MaterialPageRoute(builder: (context) => LayoverPage(category: category)),
     );
   }
 
@@ -54,7 +49,8 @@ class MyHomePage extends StatelessWidget {
                           ),
                         ],
               ),
-              child: Text(AppLocalizations.of(context)!.welcome_message,
+              child: Text(
+                AppLocalizations.of(context)!.welcome_message,
                 style: TextStyle(
                   fontSize: 26,
                   fontWeight: FontWeight.bold,
@@ -65,15 +61,24 @@ class MyHomePage extends StatelessWidget {
             ),
             const SizedBox(height: 30),
             ElevatedButton(
-              onPressed: () => _openLayoverPage(context, AppLocalizations.of(context)!.restaurant),
+              onPressed: () => _openLayoverPage(
+                context,
+                AppLocalizations.of(context)!.restaurant,
+              ),
               child: Text(AppLocalizations.of(context)!.restaurant),
             ),
             ElevatedButton(
-              onPressed: () => _openLayoverPage(context, AppLocalizations.of(context)!.entertainment),
+              onPressed: () => _openLayoverPage(
+                context,
+                AppLocalizations.of(context)!.entertainment,
+              ),
               child: Text(AppLocalizations.of(context)!.entertainment),
             ),
             ElevatedButton(
-              onPressed: () => _openLayoverPage(context, AppLocalizations.of(context)!.shopping),
+              onPressed: () => _openLayoverPage(
+                context,
+                AppLocalizations.of(context)!.shopping,
+              ),
               child: Text(AppLocalizations.of(context)!.shopping),
             ),
           ],
@@ -82,7 +87,6 @@ class MyHomePage extends StatelessWidget {
     );
   }
 }
-
 
 // Replace your existing SettingsDrawer class with this:
 class SettingsDrawer extends StatelessWidget {
@@ -95,11 +99,11 @@ class SettingsDrawer extends StatelessWidget {
         padding: EdgeInsets.zero,
         children: <Widget>[
           DrawerHeader(
-            decoration: BoxDecoration(
-              color: kPrimaryColor,
+            decoration: BoxDecoration(color: kPrimaryColor),
+            child: Text(
+              AppLocalizations.of(context)!.settings,
+              style: TextStyle(color: Colors.white, fontSize: 24),
             ),
-            child: Text(AppLocalizations.of(context)!.settings,
-                style: TextStyle(color: Colors.white, fontSize: 24)),
           ),
           ListTile(
             leading: const Icon(Icons.settings),
@@ -108,9 +112,7 @@ class SettingsDrawer extends StatelessWidget {
               Navigator.pop(context); // Close drawer first
               Navigator.push(
                 context,
-                MaterialPageRoute(
-                  builder: (context) => const SettingsPage(),
-                ),
+                MaterialPageRoute(builder: (context) => const SettingsPage()),
               );
             },
           ),
@@ -147,7 +149,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           tooltip: 'Open settings',
         ),
       ),
-      title: Text(AppLocalizations.of(context)!.airport_escape,
+      title: Text(
+        AppLocalizations.of(context)!.airport_escape,
         style: TextStyle(fontWeight: FontWeight.bold),
       ),
       actions: [

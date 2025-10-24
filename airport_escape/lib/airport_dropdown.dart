@@ -9,12 +9,12 @@ Widget buildAirportDropdown({
   required Function(String) onAirportChanged,
 }) {
   return DropdownButtonFormField<String>(
-    value: selectedAirport,
+    initialValue: selectedAirport,
     hint: Text(AppLocalizations.of(context)!.select_airport), // ← Grayed out placeholder
     items: airports
         .map((airport) => DropdownMenuItem(
               value: airport,
-              child: Text(airport),
+              child: Text(airport), 
             ))
         .toList(),
     onChanged: (value) {
