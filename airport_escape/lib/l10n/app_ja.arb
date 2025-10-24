@@ -40,5 +40,17 @@
   "about_content": "Airport Escapeは乗り継ぎ中の活動を計画する手助けをします。\n\nTeam Airport Escapeによる開発。\n\n© 2025 Team Airport Escape.",
   "ok": "OK",
   "close": "閉じる",
-  "cancel": "キャンセル"
+  "cancel": "キャンセル",
+  "adjust_screen_brightness": "画面の明るさを調整: {percent}%",
+  "enable_dark_theme_subtitle": "ダークモードを有効にする",
+  "receive_suggestions_subtitle": "乗り継ぎの提案と更新を受け取る",
+  "allow_location_subtitle": "アプリが位置情報にアクセスすることを許可",
+  "remember_searches_subtitle": "最近の検索を保存する",
+  "auto_refresh_subtitle": "アクティビティの提案を自動更新",
+  "view_privacy_policy_subtitle": "プライバシーポリシーを見る",
+  "view_terms_subtitle": "利用規約を見る",
+  "reset_app_subtitle": "アプリをデフォルト設定にリセット",
+  "reset_dialog_content": "これにより、すべての設定がデフォルト値にリセットされます。\n\nこの操作は元に戻せません。本当に実行しますか？",
+  "reset_confirm_button": "リセット",
+  "reset_success_snackbar": "すべての設定がデフォルトにリセットされました"
 }

@@ -40,5 +40,17 @@
   "about_content": "Airport Escape यात्रियों को लेओवर के दौरान गतिविधियाँ योजनाबद्ध करने में मदद करता है।\n\nTeam Airport Escape द्वारा विकसित।\n\n© 2025 Team Airport Escape.",
   "ok": "ठीक है",
   "close": "बंद करें",
-  "cancel": "रद्द करें"
+  "cancel": "रद्द करें",
+  "adjust_screen_brightness": "स्क्रीन चमक समायोजित करें: {percent}%",
+  "enable_dark_theme_subtitle": "डार्क मोड सक्षम करें",
+  "receive_suggestions_subtitle": "लेओवर सुझाव और अपडेट प्राप्त करें",
+  "allow_location_subtitle": "ऐप को आपके स्थान तक पहुंच की अनुमति दें",
+  "remember_searches_subtitle": "आपकी हाल की खोज को याद रखें",
+  "auto_refresh_subtitle": "गतिविधि सुझाव स्वचालित रूप से ताज़ा करें",
+  "view_privacy_policy_subtitle": "हमारी गोपनीयता नीति देखें",
+  "view_terms_subtitle": "नियम और शर्तें देखें",
+  "reset_app_subtitle": "ऐप को डिफ़ॉल्ट सेटिंग्स पर रीसेट करें",
+  "reset_dialog_content": "यह सभी सेटिंग्स को उनके डिफ़ॉल्ट मानों पर रीसेट कर देगा।\n\nइस क्रिया को पूर्ववत नहीं किया जा सकता। क्या आप सुनिश्चित हैं?",
+  "reset_confirm_button": "रीसेट",
+  "reset_success_snackbar": "सभी सेटिंग्स डिफ़ॉल्ट मानों पर रीसेट कर दी गईं"
 }

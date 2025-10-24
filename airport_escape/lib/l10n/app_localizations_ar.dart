@@ -138,4 +138,44 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get cancel => 'إلغاء';
+
+  @override
+  String adjust_screen_brightness(Object percent) {
+    return 'ضبط سطوع الشاشة: $percent%';
+  }
+
+  @override
+  String get enable_dark_theme_subtitle => 'تمكين الوضع الداكن';
+
+  @override
+  String get receive_suggestions_subtitle => 'استلام اقتراحات وتحديثات التوقف';
+
+  @override
+  String get allow_location_subtitle => 'السماح للتطبيق بالوصول إلى موقعك';
+
+  @override
+  String get remember_searches_subtitle => 'تذكّر عمليات البحث الأخيرة';
+
+  @override
+  String get auto_refresh_subtitle => 'تحديث الاقتراحات تلقائيًا';
+
+  @override
+  String get view_privacy_policy_subtitle => 'عرض سياسة الخصوصية الخاصة بنا';
+
+  @override
+  String get view_terms_subtitle => 'عرض الشروط والأحكام';
+
+  @override
+  String get reset_app_subtitle => 'إعادة التطبيق إلى إعدادات المصنع';
+
+  @override
+  String get reset_dialog_content =>
+      'سيؤدي ذلك إلى إعادة جميع الإعدادات إلى قيمها الافتراضية.\n\nلا يمكن التراجع عن هذا الإجراء. هل أنت متأكد؟';
+
+  @override
+  String get reset_confirm_button => 'إعادة تعيين';
+
+  @override
+  String get reset_success_snackbar =>
+      'تمت إعادة جميع الإعدادات إلى القيم الافتراضية';
 }

@@ -1,14 +1,16 @@
+import 'package:airport_escape/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 
 /// Creates a reusable airport dropdown widget with automatic suggestion updates
 Widget buildAirportDropdown({
+  required BuildContext context,
   required String selectedAirport,
   required List<String> airports,
   required Function(String) onAirportChanged,
 }) {
   return DropdownButtonFormField<String>(
     initialValue: selectedAirport,
-    hint: const Text("Select an airport"), // ← Grayed out placeholder
+    hint: Text(AppLocalizations.of(context)!.select_airport), // ← Grayed out placeholder
     items: airports
         .map((airport) => DropdownMenuItem(
               value: airport,
@@ -20,8 +22,8 @@ Widget buildAirportDropdown({
         onAirportChanged(value);
       }
     },
-    decoration: const InputDecoration(
-      labelText: "Select Airport",
+    decoration: InputDecoration(
+      labelText: AppLocalizations.of(context)!.select_airport,
       border: OutlineInputBorder(),
     ),
   );
