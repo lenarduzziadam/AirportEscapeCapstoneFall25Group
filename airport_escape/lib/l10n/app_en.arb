@@ -52,5 +52,8 @@
   "reset_app_subtitle": "Reset app to default settings",
   "reset_dialog_content": "This will reset all settings to their default values.\n\nThis action cannot be undone. Are you sure?",
   "reset_confirm_button": "Reset",
-  "reset_success_snackbar": "All settings reset to defaults"
+  "reset_success_snackbar": "All settings reset to defaults",
+  "login": "Login",
+  "username": "Username",
+  "login_to_your_account": "Login to your account"
 }
