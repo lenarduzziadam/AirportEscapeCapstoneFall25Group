@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'settings_menu.dart';
 import 'layover_page.dart';
 import 'widgets/live_tip_button.dart';
+import 'package:airport_escape/login_page.dart';
 
 // App-wide color constants
 const kPrimaryColor = Color.fromARGB(255, 18, 71, 156);
@@ -158,7 +159,25 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         PopupMenuButton<String>(
           icon: const Icon(Icons.account_circle, color: Colors.white),
           onSelected: (String value) {
-            // Handle account menu selection (Profile, Logout)
+            if (value == 'Profile') {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => LoginPage(
+                    onLogin: (username) {
+                      // handle successful login (update auth state, persist, etc.)
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text('Logged in as $username')),
+                      );
+                      // TODO: replace with your auth state update (Provider/SharedPreferences)
+                    },
+                  ),
+                ),
+              );
+            } else if (value == 'Logout') {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(content: Text(AppLocalizations.of(context)!.logout)),
+              );
+            }
           },
           itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
             PopupMenuItem<String>(
