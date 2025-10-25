@@ -2,7 +2,6 @@ import 'package:airport_escape/widgets/activities_list.dart';
 import 'package:airport_escape/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'airport_dropdown.dart';
 import 'widgets/search_bar_widget.dart';
 
 class LayoverPage extends StatefulWidget {
@@ -55,17 +54,12 @@ class _LayoverPageState extends State<LayoverPage> {
               keyboardType: TextInputType.number,
             ),
             const SizedBox(height: 16),
-            buildAirportDropdown(
-              context: context,
-              selectedAirport: _selectedAirport,
-              airports: airports,
-              onAirportChanged: (newAirport) {
-                setState(() {
+            AirportSearchBarWidget(onAirportChanged:(newAirport,newAirportLoc){
+              setState(() {
                   _selectedAirport = newAirport;
                   _selectedAirportLoc = airportLocations[newAirport]!;
                 });
-              },
-            ),
+            },),
             const SizedBox(height: 16),
             ActivitiesList(
               key: ValueKey(_selectedAirport),
