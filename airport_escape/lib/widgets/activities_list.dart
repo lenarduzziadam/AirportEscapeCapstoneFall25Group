@@ -74,11 +74,13 @@ Future<List<dynamic>> _fetchNearbyActivities(
 class ActivitiesList extends StatefulWidget {
   final LatLng airportCords;
   final String category;
+  final int hoursInLayover;
 
   const ActivitiesList({
     super.key,
     required this.airportCords,
     required this.category,
+    required this.hoursInLayover,
   });
 
   @override
