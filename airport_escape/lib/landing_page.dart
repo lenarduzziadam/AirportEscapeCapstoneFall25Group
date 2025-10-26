@@ -1,91 +1,66 @@
-// // Main landing page and widgets for Airport Escape app
+// Main landing page and widgets for Airport Escape app
+import 'package:airport_escape/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
-
-import 'search_bar_widget.dart';
-import 'notification_test_page.dart';
-import 'layover_page.dart'; // 👈 import your page
+import 'settings_menu.dart';
+import 'notification_test_page.dart';import 'layover_page.dart';
+import 'widgets/live_tip_button.dart';
 
 // App-wide color constants
 const kPrimaryColor = Color.fromARGB(255, 18, 71, 156);
 const kBackgroundColor = Color(0xFFE0F7FA);
 
 // Main landing page widget
-class MyHomePage extends StatefulWidget {
+class MyHomePage extends StatelessWidget {
   const MyHomePage({super.key});
 
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  // List of sample locations/keywords to search from
-  final List<String> _sampleData = [
-    "Restaurant",
-    "Entertainment",
-    "Relax",
-    "Lounge",
-    "Bar",
-    "Gate A1",
-    "Gate B2",
-    "Coffee Shop",
-  ];
+  void _openLayoverPage(BuildContext context, String category) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => LayoverPage(category: category)),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
+    final welcomeColor = isDark
+        ? theme.colorScheme.onBackground.withOpacity(0.85) // off-gray in dark
+        : kPrimaryColor;
     return Scaffold(
-      drawer: const SettingsDrawer(), // Side menu
-      appBar: const CustomAppBar(), // Top app bar
-
-      body: Column(
-        children: [
-          const SizedBox(height: 16.0),
-          // Use the reusable SearchBarWidget for search functionality
-          Expanded(
-            child: SearchBarWidget(
-              data: _sampleData,
-              onResultTap: (result) {
-                // TODO: Add navigation or actions for each result
-                // For now, you can show a snackbar or print the result
-                ScaffoldMessenger.of(
-                  context,
-                ).showSnackBar(SnackBar(content: Text('Selected: $result')));
-              },
-            ),
-          ),
-          // Welcome message (can be shown below or conditionally)
-          Expanded(
-            child: Center(
-              child: Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 24,
-                  vertical: 32,
+      drawer: const SettingsDrawer(),
+      appBar: const CustomAppBar(),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 32),
+              decoration: BoxDecoration(
+                color: isDark ? Colors.transparent : Colors.white,
+                borderRadius: BorderRadius.circular(16),
+                boxShadow: isDark
+                      ? []
+                      : [
+                          BoxShadow(
+                            color: Colors.black12,
+                            blurRadius: 8,
+                            offset: const Offset(0, 4),
+                          ),
+                        ],
+              ),
+              child: Text(
+                AppLocalizations.of(context)!.welcome_message,
+                style: TextStyle(
+                  fontSize: 26,
+                  fontWeight: FontWeight.bold,
+                  color: welcomeColor,
                 ),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(16),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black12,
-                      blurRadius: 8,
-                      offset: const Offset(0, 4),
-                    ),
-                  ],
-                ),
-                child: const Text(
-                  'Welcome to Airport Escape!', // Welcome message
-                  style: TextStyle(
-                    fontSize: 26,
-                    fontWeight: FontWeight.bold,
-                    color: kPrimaryColor,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
+                textAlign: TextAlign.center,
               ),
             ),
-          ),
-          const SizedBox(height: 30),
-
-          ElevatedButton(
+            const SizedBox(height: 30),
+            ElevatedButton(
             style: ElevatedButton.styleFrom(
               backgroundColor: kPrimaryColor,
               padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
@@ -101,31 +76,51 @@ class _MyHomePageState extends State<MyHomePage> {
               style: TextStyle(fontSize: 18, color: Colors.white),
             ),
           ),
-
-          // 👇 Your new button
+            ElevatedButton(
+              onPressed: () => _openLayoverPage(
+                context,
+                AppLocalizations.of(context)!.restaurant,
+              ),
+              child: Text(AppLocalizations.of(context)!.restaurant),
+            ),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const NotificationTestPage()),
+              );
+            },
+            child: const Text(
+              "Test Notifications",
+              style: TextStyle(fontSize: 18, color: Colors.white),
+            ),
+          ),
           ElevatedButton(
             style: ElevatedButton.styleFrom(
               backgroundColor: kPrimaryColor,
               padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
             ),
-            onPressed: () {
-              Navigator.push(
+            ElevatedButton(
+              onPressed: () => _openLayoverPage(
                 context,
-                MaterialPageRoute(builder: (context) => const LayoverPage()),
-              );
-            },
-            child: const Text(
-              "Plan My Layover",
-              style: TextStyle(fontSize: 18, color: Colors.white),
+                AppLocalizations.of(context)!.entertainment,
+              ),
+              child: Text(AppLocalizations.of(context)!.entertainment),
             ),
-          ), 
-        ],
+            ElevatedButton(
+              onPressed: () => _openLayoverPage(
+                context,
+                AppLocalizations.of(context)!.shopping,
+              ),
+              child: Text(AppLocalizations.of(context)!.shopping),
+            ),
+          ],
+        ),
       ),
     );
   }
 }
 
-// Drawer widget for settings menu
+// Replace your existing SettingsDrawer class with this:
 class SettingsDrawer extends StatelessWidget {
   const SettingsDrawer({super.key});
 
@@ -134,21 +129,32 @@ class SettingsDrawer extends StatelessWidget {
     return Drawer(
       child: ListView(
         padding: EdgeInsets.zero,
-        children: const <Widget>[
+        children: <Widget>[
           DrawerHeader(
             decoration: BoxDecoration(color: kPrimaryColor),
             child: Text(
-              'Settings',
+              AppLocalizations.of(context)!.settings,
               style: TextStyle(color: Colors.white, fontSize: 24),
             ),
           ),
           ListTile(
-            leading: Icon(Icons.settings), // General settings option
-            title: Text('General'),
+            leading: const Icon(Icons.settings),
+            title: Text(AppLocalizations.of(context)!.general_settings),
+            onTap: () {
+              Navigator.pop(context); // Close drawer first
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const SettingsPage()),
+              );
+            },
           ),
           ListTile(
-            leading: Icon(Icons.security), // Security settings option
-            title: Text('Security'),
+            leading: const Icon(Icons.security),
+            title: Text(AppLocalizations.of(context)!.security),
+            onTap: () {
+              Navigator.pop(context);
+              // Add security page later if needed
+            },
           ),
         ],
       ),
@@ -168,38 +174,32 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       leading: Builder(
         builder: (context) => IconButton(
-          icon: const Icon(Icons.settings, color: Colors.white), // Opens drawer
+          icon: const Icon(Icons.settings, color: Colors.white),
           onPressed: () {
             Scaffold.of(context).openDrawer();
           },
           tooltip: 'Open settings',
         ),
       ),
-      title: const Text(
-        'Airport Escape', // App title
+      title: Text(
+        AppLocalizations.of(context)!.airport_escape,
         style: TextStyle(fontWeight: FontWeight.bold),
       ),
       actions: [
+        const LiveTipButton(), // ← tiny lightbulb button
         PopupMenuButton<String>(
-          icon: const Icon(
-            Icons.account_circle,
-            color: Colors.white,
-          ), // Account icon
+          icon: const Icon(Icons.account_circle, color: Colors.white),
           onSelected: (String value) {
             // Handle account menu selection (Profile, Logout)
           },
           itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
-            const PopupMenuItem<String>(
+            PopupMenuItem<String>(
               value: 'Profile',
-              child: Text('Profile'), // Profile option
+              child: Text(AppLocalizations.of(context)!.profile),
             ),
-            const PopupMenuItem<String>(
-              value: 'Favorites',
-              child: Text('Favorite Locations'), // Favorites option
-            ),
-            const PopupMenuItem<String>(
+            PopupMenuItem<String>(
               value: 'Logout',
-              child: Text('Logout'), // Logout option
+              child: Text(AppLocalizations.of(context)!.logout),
             ),
           ],
         ),
