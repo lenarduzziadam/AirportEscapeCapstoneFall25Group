@@ -178,4 +178,13 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get reset_success_snackbar =>
       'تمت إعادة جميع الإعدادات إلى القيم الافتراضية';
+
+  @override
+  String get login => 'Login';
+
+  @override
+  String get username => 'Username';
+
+  @override
+  String get login_to_your_account => 'Login to your account';
 }

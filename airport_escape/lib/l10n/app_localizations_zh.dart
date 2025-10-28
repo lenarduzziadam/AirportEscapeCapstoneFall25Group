@@ -176,4 +176,13 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get reset_success_snackbar => '所有设置已重置为默认值';
+
+  @override
+  String get login => 'Login';
+
+  @override
+  String get username => 'Username';
+
+  @override
+  String get login_to_your_account => 'Login to your account';
 }

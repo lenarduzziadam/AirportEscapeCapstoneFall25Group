@@ -181,4 +181,13 @@ class AppLocalizationsHi extends AppLocalizations {
   @override
   String get reset_success_snackbar =>
       'सभी सेटिंग्स डिफ़ॉल्ट मानों पर रीसेट कर दी गईं';
+
+  @override
+  String get login => 'Login';
+
+  @override
+  String get username => 'Username';
+
+  @override
+  String get login_to_your_account => 'Login to your account';
 }
