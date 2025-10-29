@@ -52,5 +52,6 @@
   "reset_app_subtitle": "Restablecer la aplicación a la configuración predeterminada",
   "reset_dialog_content": "Esto restablecerá todas las configuraciones a sus valores predeterminados.\n\nEsta acción no se puede deshacer. ¿Estás seguro?",
   "reset_confirm_button": "Restablecer",
-  "reset_success_snackbar": "Todas las configuraciones restablecidas a los valores predeterminados"
+  "reset_success_snackbar": "Todas las configuraciones restablecidas a los valores predeterminados",
+  "favorites": "Favoritos"
 }

@@ -52,5 +52,6 @@
   "reset_app_subtitle": "App auf Standardeinstellungen zurücksetzen",
   "reset_dialog_content": "Dies setzt alle Einstellungen auf ihre Standardwerte zurück.\n\nDiese Aktion kann nicht rückgängig gemacht werden. Sind Sie sicher?",
   "reset_confirm_button": "Zurücksetzen",
-  "reset_success_snackbar": "Alle Einstellungen wurden auf die Standardwerte zurückgesetzt"
+  "reset_success_snackbar": "Alle Einstellungen wurden auf die Standardwerte zurückgesetzt",
+  "favorites": "Favoriten"
 }

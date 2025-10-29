@@ -193,4 +193,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get login_to_your_account => 'Login to your account';
+
+  @override
+  String get favorites => 'Favoritos';
 }

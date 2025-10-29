@@ -52,5 +52,6 @@
   "reset_app_subtitle": "Réinitialiser l'application aux paramètres par défaut",
   "reset_dialog_content": "Cela réinitialisera tous les paramètres à leurs valeurs par défaut.\n\nCette action est irréversible. Êtes-vous sûr ?",
   "reset_confirm_button": "Réinitialiser",
-  "reset_success_snackbar": "Tous les paramètres ont été réinitialisés aux valeurs par défaut"
+  "reset_success_snackbar": "Tous les paramètres ont été réinitialisés aux valeurs par défaut",
+  "favorites": "Favoris"
 }

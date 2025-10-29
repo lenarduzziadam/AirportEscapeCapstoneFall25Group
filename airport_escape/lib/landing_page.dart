@@ -1,4 +1,5 @@
 // Main landing page and widgets for Airport Escape app
+import 'package:airport_escape/favorites_page.dart';
 import 'package:airport_escape/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'settings_menu.dart';
@@ -173,6 +174,10 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                   ),
                 ),
               );
+            } else if (value == 'Favorites') {
+              Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => const FavoritesPage()),
+              );
             } else if (value == 'Logout') {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(content: Text(AppLocalizations.of(context)!.logout)),
@@ -183,6 +188,10 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             PopupMenuItem<String>(
               value: 'Profile',
               child: Text(AppLocalizations.of(context)!.profile),
+            ),
+            PopupMenuItem<String>(
+              value: 'Favorites',
+              child: Text(AppLocalizations.of(context)!.favorites),
             ),
             PopupMenuItem<String>(
               value: 'Logout',

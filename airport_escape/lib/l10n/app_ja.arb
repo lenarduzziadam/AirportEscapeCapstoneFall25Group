@@ -52,5 +52,6 @@
   "reset_app_subtitle": "アプリをデフォルト設定にリセット",
   "reset_dialog_content": "これにより、すべての設定がデフォルト値にリセットされます。\n\nこの操作は元に戻せません。本当に実行しますか？",
   "reset_confirm_button": "リセット",
-  "reset_success_snackbar": "すべての設定がデフォルトにリセットされました"
+  "reset_success_snackbar": "すべての設定がデフォルトにリセットされました",
+  "favorites": "お気に入り"
 }

@@ -52,5 +52,6 @@
   "reset_app_subtitle": "앱을 기본 설정으로 재설정",
   "reset_dialog_content": "모든 설정이 기본값으로 재설정됩니다.\n\n이 작업은 되돌릴 수 없습니다. 계속하시겠습니까?",
   "reset_confirm_button": "재설정",
-  "reset_success_snackbar": "모든 설정이 기본값으로 재설정되었습니다"
+  "reset_success_snackbar": "모든 설정이 기본값으로 재설정되었습니다",
+  "favorites": "즐겨찾기"
 }

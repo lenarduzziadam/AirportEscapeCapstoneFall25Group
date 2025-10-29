@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 import '../main.dart';
 import 'package:geolocator/geolocator.dart';
 
@@ -87,10 +88,33 @@ class ActivitiesList extends StatefulWidget {
 
 class ActivitiesListState extends State<ActivitiesList> {
   late Future<List<dynamic>> _activities;
+  Set<String> _favorites = {};
+
+
 
   @override
   void initState() {
     super.initState();
+    _loadFavorites(); 
+  }
+
+  Future<void> _loadFavorites() async {
+    final prefs = await SharedPreferences.getInstance();
+    setState(() {
+      _favorites = prefs.getStringList('favorites')?.toSet() ?? {};
+    });
+  }
+
+  Future<void> _toggleFavorite(String destination) async {
+    final prefs = await SharedPreferences.getInstance();
+    setState(() {
+      if (_favorites.contains(destination)) {
+        _favorites.remove(destination);
+      } else {
+        _favorites.add(destination);
+      }
+      prefs.setStringList('favorites', _favorites.toList());
+    });
   }
 
   @override
@@ -144,7 +168,21 @@ class ActivitiesListState extends State<ActivitiesList> {
                                 ' ${(distanceInMeters / 1000).toStringAsFixed(1)} km away' ??
                             "No address available",
                       ),
-                      trailing: Icon(Icons.place),
+                      trailing: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          IconButton(
+                            icon: Icon(
+                              _favorites.contains(activity["name"])
+                                  ? Icons.favorite
+                                  : Icons.favorite_border,
+                              color: _favorites.contains(activity["name"]) ? Colors.red : null,
+                            ),
+                            onPressed: () => _toggleFavorite(activity["name"]),
+                          ),
+                          const Icon(Icons.place),
+                        ],
+                      ),
                     ),
                   ),
                   ElevatedButton.icon(
