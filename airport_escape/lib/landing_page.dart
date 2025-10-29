@@ -2,7 +2,8 @@
 import 'package:airport_escape/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'settings_menu.dart';
-import 'notification_test_page.dart';import 'layover_page.dart';
+import 'notification_test_page.dart';
+import 'layover_page.dart';
 import 'widgets/live_tip_button.dart';
 
 // App-wide color constants
@@ -27,6 +28,7 @@ class MyHomePage extends StatelessWidget {
     final welcomeColor = isDark
         ? theme.colorScheme.onBackground.withOpacity(0.85) // off-gray in dark
         : kPrimaryColor;
+
     return Scaffold(
       drawer: const SettingsDrawer(),
       appBar: const CustomAppBar(),
@@ -40,14 +42,14 @@ class MyHomePage extends StatelessWidget {
                 color: isDark ? Colors.transparent : Colors.white,
                 borderRadius: BorderRadius.circular(16),
                 boxShadow: isDark
-                      ? []
-                      : [
-                          BoxShadow(
-                            color: Colors.black12,
-                            blurRadius: 8,
-                            offset: const Offset(0, 4),
-                          ),
-                        ],
+                    ? []
+                    : [
+                        BoxShadow(
+                          color: Colors.black12,
+                          blurRadius: 8,
+                          offset: const Offset(0, 4),
+                        ),
+                      ],
               ),
               child: Text(
                 AppLocalizations.of(context)!.welcome_message,
@@ -60,22 +62,30 @@ class MyHomePage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 30),
+
+            // Test Notifications button
             ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              backgroundColor: kPrimaryColor,
-              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: kPrimaryColor,
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+              ),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const NotificationTestPage()),
+                );
+              },
+              child: const Text(
+                "Test Notifications",
+                style: TextStyle(fontSize: 18, color: Colors.white),
+              ),
             ),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const NotificationTestPage()),
-              );
-            },
-            child: const Text(
-              "Test Notifications",
-              style: TextStyle(fontSize: 18, color: Colors.white),
-            ),
-          ),
+
+            const SizedBox(height: 20),
+
+            // Layover options
             ElevatedButton(
               onPressed: () => _openLayoverPage(
                 context,
@@ -83,22 +93,7 @@ class MyHomePage extends StatelessWidget {
               ),
               child: Text(AppLocalizations.of(context)!.restaurant),
             ),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const NotificationTestPage()),
-              );
-            },
-            child: const Text(
-              "Test Notifications",
-              style: TextStyle(fontSize: 18, color: Colors.white),
-            ),
-          ),
-          ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              backgroundColor: kPrimaryColor,
-              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-            ),
+            const SizedBox(height: 10),
             ElevatedButton(
               onPressed: () => _openLayoverPage(
                 context,
@@ -106,6 +101,7 @@ class MyHomePage extends StatelessWidget {
               ),
               child: Text(AppLocalizations.of(context)!.entertainment),
             ),
+            const SizedBox(height: 10),
             ElevatedButton(
               onPressed: () => _openLayoverPage(
                 context,
@@ -120,7 +116,7 @@ class MyHomePage extends StatelessWidget {
   }
 }
 
-// Replace your existing SettingsDrawer class with this:
+// Drawer for settings
 class SettingsDrawer extends StatelessWidget {
   const SettingsDrawer({super.key});
 
@@ -131,10 +127,10 @@ class SettingsDrawer extends StatelessWidget {
         padding: EdgeInsets.zero,
         children: <Widget>[
           DrawerHeader(
-            decoration: BoxDecoration(color: kPrimaryColor),
+            decoration: const BoxDecoration(color: kPrimaryColor),
             child: Text(
               AppLocalizations.of(context)!.settings,
-              style: TextStyle(color: Colors.white, fontSize: 24),
+              style: const TextStyle(color: Colors.white, fontSize: 24),
             ),
           ),
           ListTile(
@@ -183,10 +179,10 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
       title: Text(
         AppLocalizations.of(context)!.airport_escape,
-        style: TextStyle(fontWeight: FontWeight.bold),
+        style: const TextStyle(fontWeight: FontWeight.bold),
       ),
       actions: [
-        const LiveTipButton(), // ← tiny lightbulb button
+        const LiveTipButton(), // tiny lightbulb button
         PopupMenuButton<String>(
           icon: const Icon(Icons.account_circle, color: Colors.white),
           onSelected: (String value) {
