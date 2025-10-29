@@ -1,3 +1,4 @@
+import 'package:airport_escape/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'user_account.dart'; // Create this page if you don't have it
@@ -50,28 +51,28 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Login')),
+      appBar: AppBar(title: Text(AppLocalizations.of(context)!.login)),
       body: Padding(
         padding: const EdgeInsets.all(24.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text('Login to your account', style: TextStyle(fontSize: 20)),
+            Text(AppLocalizations.of(context)!.login_to_your_account, style: const TextStyle(fontSize: 20)),
             const SizedBox(height: 16),
             TextField(
               controller: _usernameController,
-              decoration: const InputDecoration(labelText: 'Username'),
+              decoration: InputDecoration(labelText: AppLocalizations.of(context)!.username),
             ),
             const SizedBox(height: 16),
             TextField(
               controller: _passwordController,
-              decoration: const InputDecoration(labelText: 'Password'),
+              decoration: InputDecoration(labelText: AppLocalizations.of(context)!.password),
               obscureText: true,
             ),
             const SizedBox(height: 16),
             ElevatedButton(
               onPressed: _handleLogin,
-              child: const Text('Login'),
+              child: Text(AppLocalizations.of(context)!.login),
             ),
           ],
         ),
