@@ -1,6 +1,9 @@
 // Main landing page and widgets for Airport Escape app
+import 'package:airport_escape/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
-import 'layover_page.dart'; // 👈 import the layover page
+import 'settings_menu.dart';
+import 'layover_page.dart';
+import 'widgets/live_tip_button.dart';
 
 // App-wide color constants
 const kPrimaryColor = Color.fromARGB(255, 18, 71, 156);
@@ -13,14 +16,17 @@ class MyHomePage extends StatelessWidget {
   void _openLayoverPage(BuildContext context, String category) {
     Navigator.push(
       context,
-      MaterialPageRoute(
-        builder: (context) => LayoverPage(category: category),
-      ),
+      MaterialPageRoute(builder: (context) => LayoverPage(category: category)),
     );
   }
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
+    final welcomeColor = isDark
+        ? theme.colorScheme.onBackground.withOpacity(0.85) // off-gray in dark
+        : kPrimaryColor;
     return Scaffold(
       drawer: const SettingsDrawer(),
       appBar: const CustomAppBar(),
@@ -31,38 +37,49 @@ class MyHomePage extends StatelessWidget {
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 32),
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: isDark ? Colors.transparent : Colors.white,
                 borderRadius: BorderRadius.circular(16),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black12,
-                    blurRadius: 8,
-                    offset: const Offset(0, 4),
-                  ),
-                ],
+                boxShadow: isDark
+                      ? []
+                      : [
+                          BoxShadow(
+                            color: Colors.black12,
+                            blurRadius: 8,
+                            offset: const Offset(0, 4),
+                          ),
+                        ],
               ),
-              child: const Text(
-                'Welcome to Airport Escape!',
+              child: Text(
+                AppLocalizations.of(context)!.welcome_message,
                 style: TextStyle(
                   fontSize: 26,
                   fontWeight: FontWeight.bold,
-                  color: kPrimaryColor,
+                  color: welcomeColor,
                 ),
                 textAlign: TextAlign.center,
               ),
             ),
             const SizedBox(height: 30),
             ElevatedButton(
-              onPressed: () => _openLayoverPage(context, "Restaurant"),
-              child: const Text("Restaurant"),
+              onPressed: () => _openLayoverPage(
+                context,
+                AppLocalizations.of(context)!.restaurant,
+              ),
+              child: Text(AppLocalizations.of(context)!.restaurant),
             ),
             ElevatedButton(
-              onPressed: () => _openLayoverPage(context, "Entertainment"),
-              child: const Text("Entertainment"),
+              onPressed: () => _openLayoverPage(
+                context,
+                AppLocalizations.of(context)!.entertainment,
+              ),
+              child: Text(AppLocalizations.of(context)!.entertainment),
             ),
             ElevatedButton(
-              onPressed: () => _openLayoverPage(context, "Shopping"),
-              child: const Text("Shopping"),
+              onPressed: () => _openLayoverPage(
+                context,
+                AppLocalizations.of(context)!.shopping,
+              ),
+              child: Text(AppLocalizations.of(context)!.shopping),
             ),
           ],
         ),
@@ -71,7 +88,7 @@ class MyHomePage extends StatelessWidget {
   }
 }
 
-// Drawer widget for settings menu
+// Replace your existing SettingsDrawer class with this:
 class SettingsDrawer extends StatelessWidget {
   const SettingsDrawer({super.key});
 
@@ -80,21 +97,32 @@ class SettingsDrawer extends StatelessWidget {
     return Drawer(
       child: ListView(
         padding: EdgeInsets.zero,
-        children: const <Widget>[
+        children: <Widget>[
           DrawerHeader(
-            decoration: BoxDecoration(
-              color: kPrimaryColor,
+            decoration: BoxDecoration(color: kPrimaryColor),
+            child: Text(
+              AppLocalizations.of(context)!.settings,
+              style: TextStyle(color: Colors.white, fontSize: 24),
             ),
-            child: Text('Settings',
-                style: TextStyle(color: Colors.white, fontSize: 24)),
           ),
           ListTile(
-            leading: Icon(Icons.settings),
-            title: Text('General'),
+            leading: const Icon(Icons.settings),
+            title: Text(AppLocalizations.of(context)!.general_settings),
+            onTap: () {
+              Navigator.pop(context); // Close drawer first
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const SettingsPage()),
+              );
+            },
           ),
           ListTile(
-            leading: Icon(Icons.security),
-            title: Text('Security'),
+            leading: const Icon(Icons.security),
+            title: Text(AppLocalizations.of(context)!.security),
+            onTap: () {
+              Navigator.pop(context);
+              // Add security page later if needed
+            },
           ),
         ],
       ),
@@ -121,24 +149,25 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           tooltip: 'Open settings',
         ),
       ),
-      title: const Text(
-        'Airport Escape',
+      title: Text(
+        AppLocalizations.of(context)!.airport_escape,
         style: TextStyle(fontWeight: FontWeight.bold),
       ),
       actions: [
+        const LiveTipButton(), // ← tiny lightbulb button
         PopupMenuButton<String>(
           icon: const Icon(Icons.account_circle, color: Colors.white),
           onSelected: (String value) {
             // Handle account menu selection (Profile, Logout)
           },
           itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
-            const PopupMenuItem<String>(
+            PopupMenuItem<String>(
               value: 'Profile',
-              child: Text('Profile'),
+              child: Text(AppLocalizations.of(context)!.profile),
             ),
-            const PopupMenuItem<String>(
+            PopupMenuItem<String>(
               value: 'Logout',
-              child: Text('Logout'),
+              child: Text(AppLocalizations.of(context)!.logout),
             ),
           ],
         ),
