@@ -187,13 +187,16 @@ class AppLocalizationsDe extends AppLocalizations {
       'Alle Einstellungen wurden auf die Standardwerte zurückgesetzt';
 
   @override
-  String get login => 'Login';
+  String get login => 'Anmelden';
 
   @override
-  String get username => 'Username';
+  String get username => 'Benutzername';
 
   @override
-  String get login_to_your_account => 'Login to your account';
+  String get password => 'Passwort';
+
+  @override
+  String get login_to_your_account => 'Melden Sie sich bei Ihrem Konto an';
 
   @override
   String get favorites => 'Favoriten';

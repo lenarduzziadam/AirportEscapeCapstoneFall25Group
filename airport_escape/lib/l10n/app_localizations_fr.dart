@@ -187,13 +187,16 @@ class AppLocalizationsFr extends AppLocalizations {
       'Tous les paramètres ont été réinitialisés aux valeurs par défaut';
 
   @override
-  String get login => 'Login';
+  String get login => 'Connexion';
 
   @override
-  String get username => 'Username';
+  String get username => 'Nom d\'utilisateur';
 
   @override
-  String get login_to_your_account => 'Login to your account';
+  String get password => 'Mot de passe';
+
+  @override
+  String get login_to_your_account => 'Connectez-vous à votre compte';
 
   @override
   String get favorites => 'Favoris';

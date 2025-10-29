@@ -185,13 +185,16 @@ class AppLocalizationsIt extends AppLocalizations {
       'Tutte le impostazioni sono state reimpostate ai valori predefiniti';
 
   @override
-  String get login => 'Login';
+  String get login => 'Accedi';
 
   @override
-  String get username => 'Username';
+  String get username => 'Nome utente';
 
   @override
-  String get login_to_your_account => 'Login to your account';
+  String get password => 'Password';
+
+  @override
+  String get login_to_your_account => 'Accedi al tuo account';
 
   @override
   String get favorites => 'Preferiti';

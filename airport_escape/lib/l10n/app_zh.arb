@@ -53,5 +53,9 @@
   "reset_dialog_content": "这将把所有设置重置为默认值。\n\n此操作无法撤销。确定要继续吗？",
   "reset_confirm_button": "重置",
   "reset_success_snackbar": "所有设置已重置为默认值",
+  "login": "登录",
+  "username": "用户名",
+  "password": "密码",
+  "login_to_your_account": "登录您的账户",
   "favorites": "收藏夹"
 }

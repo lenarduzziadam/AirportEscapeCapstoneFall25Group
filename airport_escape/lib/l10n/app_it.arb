@@ -53,5 +53,9 @@
   "reset_dialog_content": "Questo reimposterà tutte le impostazioni ai valori predefiniti.\n\nQuesta azione non può essere annullata. Sei sicuro?",
   "reset_confirm_button": "Reimposta",
   "reset_success_snackbar": "Tutte le impostazioni sono state reimpostate ai valori predefiniti",
+  "login": "Accedi",
+  "username": "Nome utente",
+  "password": "Password",
+  "login_to_your_account": "Accedi al tuo account",
   "favorites": "Preferiti"
 }

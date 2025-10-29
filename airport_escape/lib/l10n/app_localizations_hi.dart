@@ -183,13 +183,16 @@ class AppLocalizationsHi extends AppLocalizations {
       'सभी सेटिंग्स डिफ़ॉल्ट मानों पर रीसेट कर दी गईं';
 
   @override
-  String get login => 'Login';
+  String get login => 'लॉगिन';
 
   @override
-  String get username => 'Username';
+  String get username => 'उपयोगकर्ता नाम';
 
   @override
-  String get login_to_your_account => 'Login to your account';
+  String get password => 'पासवर्ड';
+
+  @override
+  String get login_to_your_account => 'अपने खाते में लॉग इन करें';
 
   @override
   String get favorites => 'पसंदीदा';

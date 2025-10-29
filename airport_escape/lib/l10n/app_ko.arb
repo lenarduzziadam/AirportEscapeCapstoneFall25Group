@@ -53,5 +53,9 @@
   "reset_dialog_content": "모든 설정이 기본값으로 재설정됩니다.\n\n이 작업은 되돌릴 수 없습니다. 계속하시겠습니까?",
   "reset_confirm_button": "재설정",
   "reset_success_snackbar": "모든 설정이 기본값으로 재설정되었습니다",
+  "login": "로그인",
+  "username": "사용자 이름",
+  "password": "비밀번호",
+  "login_to_your_account": "계정에 로그인",
   "favorites": "즐겨찾기"
 }

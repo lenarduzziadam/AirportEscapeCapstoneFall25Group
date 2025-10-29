@@ -55,6 +55,7 @@
   "reset_success_snackbar": "All settings reset to defaults",
   "login": "Login",
   "username": "Username",
+  "password": "Password",
   "login_to_your_account": "Login to your account",
   "favorites": "Favorites"
 }

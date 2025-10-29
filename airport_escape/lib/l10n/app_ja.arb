@@ -53,5 +53,9 @@
   "reset_dialog_content": "これにより、すべての設定がデフォルト値にリセットされます。\n\nこの操作は元に戻せません。本当に実行しますか？",
   "reset_confirm_button": "リセット",
   "reset_success_snackbar": "すべての設定がデフォルトにリセットされました",
+  "login": "ログイン",
+  "username": "ユーザー名",
+  "password": "パスワード",
+  "login_to_your_account": "アカウントにログイン",
   "favorites": "お気に入り"
 }

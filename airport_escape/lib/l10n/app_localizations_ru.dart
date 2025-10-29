@@ -185,13 +185,16 @@ class AppLocalizationsRu extends AppLocalizations {
       'Все настройки сброшены к значениям по умолчанию';
 
   @override
-  String get login => 'Login';
+  String get login => 'Войти';
 
   @override
-  String get username => 'Username';
+  String get username => 'Имя пользователя';
 
   @override
-  String get login_to_your_account => 'Login to your account';
+  String get password => 'Пароль';
+
+  @override
+  String get login_to_your_account => 'Войдите в свой аккаунт';
 
   @override
   String get favorites => 'Избранное';

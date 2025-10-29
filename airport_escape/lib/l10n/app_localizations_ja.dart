@@ -179,13 +179,16 @@ class AppLocalizationsJa extends AppLocalizations {
   String get reset_success_snackbar => 'すべての設定がデフォルトにリセットされました';
 
   @override
-  String get login => 'Login';
+  String get login => 'ログイン';
 
   @override
-  String get username => 'Username';
+  String get username => 'ユーザー名';
 
   @override
-  String get login_to_your_account => 'Login to your account';
+  String get password => 'パスワード';
+
+  @override
+  String get login_to_your_account => 'アカウントにログイン';
 
   @override
   String get favorites => 'お気に入り';

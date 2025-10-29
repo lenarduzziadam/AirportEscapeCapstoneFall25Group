@@ -53,5 +53,9 @@
   "reset_dialog_content": "Cela réinitialisera tous les paramètres à leurs valeurs par défaut.\n\nCette action est irréversible. Êtes-vous sûr ?",
   "reset_confirm_button": "Réinitialiser",
   "reset_success_snackbar": "Tous les paramètres ont été réinitialisés aux valeurs par défaut",
+  "login": "Connexion",
+  "username": "Nom d'utilisateur",
+  "password": "Mot de passe",
+  "login_to_your_account": "Connectez-vous à votre compte",
   "favorites": "Favoris"
 }

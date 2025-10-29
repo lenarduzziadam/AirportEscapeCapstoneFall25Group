@@ -53,5 +53,9 @@
   "reset_dialog_content": "Dies setzt alle Einstellungen auf ihre Standardwerte zurück.\n\nDiese Aktion kann nicht rückgängig gemacht werden. Sind Sie sicher?",
   "reset_confirm_button": "Zurücksetzen",
   "reset_success_snackbar": "Alle Einstellungen wurden auf die Standardwerte zurückgesetzt",
+  "login": "Anmelden",
+  "username": "Benutzername",
+  "password": "Passwort",
+  "login_to_your_account": "Melden Sie sich bei Ihrem Konto an",
   "favorites": "Favoriten"
 }

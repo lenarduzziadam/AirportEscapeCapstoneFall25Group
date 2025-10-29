@@ -186,13 +186,16 @@ class AppLocalizationsEs extends AppLocalizations {
       'Todas las configuraciones restablecidas a los valores predeterminados';
 
   @override
-  String get login => 'Login';
+  String get login => 'Iniciar sesión';
 
   @override
-  String get username => 'Username';
+  String get username => 'Nombre de usuario';
 
   @override
-  String get login_to_your_account => 'Login to your account';
+  String get password => 'Contraseña';
+
+  @override
+  String get login_to_your_account => 'Inicia sesión en tu cuenta';
 
   @override
   String get favorites => 'Favoritos';

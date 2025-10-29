@@ -178,13 +178,16 @@ class AppLocalizationsZh extends AppLocalizations {
   String get reset_success_snackbar => '所有设置已重置为默认值';
 
   @override
-  String get login => 'Login';
+  String get login => '登录';
 
   @override
-  String get username => 'Username';
+  String get username => '用户名';
 
   @override
-  String get login_to_your_account => 'Login to your account';
+  String get password => '密码';
+
+  @override
+  String get login_to_your_account => '登录您的账户';
 
   @override
   String get favorites => '收藏夹';

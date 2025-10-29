@@ -180,13 +180,16 @@ class AppLocalizationsAr extends AppLocalizations {
       'تمت إعادة جميع الإعدادات إلى القيم الافتراضية';
 
   @override
-  String get login => 'Login';
+  String get login => 'تسجيل الدخول';
 
   @override
-  String get username => 'Username';
+  String get username => 'اسم المستخدم';
 
   @override
-  String get login_to_your_account => 'Login to your account';
+  String get password => 'كلمة المرور';
+
+  @override
+  String get login_to_your_account => 'تسجيل الدخول إلى حسابك';
 
   @override
   String get favorites => 'المفضلة';

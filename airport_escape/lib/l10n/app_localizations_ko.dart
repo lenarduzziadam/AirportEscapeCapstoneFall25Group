@@ -179,13 +179,16 @@ class AppLocalizationsKo extends AppLocalizations {
   String get reset_success_snackbar => '모든 설정이 기본값으로 재설정되었습니다';
 
   @override
-  String get login => 'Login';
+  String get login => '로그인';
 
   @override
-  String get username => 'Username';
+  String get username => '사용자 이름';
 
   @override
-  String get login_to_your_account => 'Login to your account';
+  String get password => '비밀번호';
+
+  @override
+  String get login_to_your_account => '계정에 로그인';
 
   @override
   String get favorites => '즐겨찾기';
