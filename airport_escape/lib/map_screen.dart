@@ -55,7 +55,7 @@ class _MapScreenState extends State<MapScreen> {
   }
 
   Future<void> _getDirections()  async {
-    final String apiKeyFromFile = dotenv.env['API_KEY'] ?? "";
+    final String apiKeyFromFile = dotenv.env['GOOGLE_API_KEY'] ?? "";
     if (apiKeyFromFile.isEmpty) {
       print("API key not found — is .env loaded?");
       return;

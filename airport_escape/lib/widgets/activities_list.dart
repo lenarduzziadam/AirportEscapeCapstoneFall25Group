@@ -1,11 +1,10 @@
 import 'dart:convert';
 import 'package:airport_escape/l10n/app_localizations.dart';
-import 'package:airport_escape/map_screen.dart';
+import 'package:airport_escape/widgets/activity_suggestion_box.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:http/http.dart' as http;
-import '../main.dart';
 import 'package:geolocator/geolocator.dart';
 
 final double MILES_TO_METERS = 1609.344;
@@ -72,7 +71,7 @@ class ActivitiesListState extends State<ActivitiesList> {
     double duration,
   ) async {
     final distanceLimit = _getDistanceLimit(duration) * MILES_TO_METERS;
-    final apiKey = dotenv.env['API_KEY'];
+    final apiKey = dotenv.env['GOOGLE_API_KEY'];
     final types = _getTypeName(context, category);
     if (types.isEmpty) {
       throw Exception('$category is not fully added');
@@ -170,49 +169,11 @@ class ActivitiesListState extends State<ActivitiesList> {
                     activityLocation.longitude,
                   );
 
-                  return Column(
-                    children: [
-                      Card(
-                        margin: EdgeInsets.symmetric(
-                          horizontal: 12,
-                          vertical: 8,
-                        ),
-                        child: ListTile(
-                          title: Text(activity["name"] ?? "Unknown Place"),
-                          subtitle: Text(
-                            '${activity["vicinity"] ?? "No address"} ${(distanceInMeters / 1000).toStringAsFixed(1)} km away',
-                          ),
-                          trailing: Icon(Icons.place),
-                        ),
-                      ),
-                      ElevatedButton.icon(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: kPrimaryColor,
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 24,
-                            vertical: 12,
-                          ),
-                        ),
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) {
-                                return MapScreen(
-                                  startLocation: widget.airportCords,
-                                  endLocation: activityLocation,
-                                );
-                              },
-                            ),
-                          );
-                        },
-                        icon: const Icon(Icons.directions, color: Colors.white),
-                        label: Text(
-                          AppLocalizations.of(context)!.get_directions,
-                          style: TextStyle(fontSize: 18, color: Colors.white),
-                        ),
-                      ),
-                    ],
+                  return ActivitySuggestionBox(
+                    activity: activity,
+                    distanceInMeters: distanceInMeters,
+                    airportCords: widget.airportCords,
+                    activityLocation: activityLocation,
                   );
                 },
               );
