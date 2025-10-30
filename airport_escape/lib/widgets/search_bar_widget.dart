@@ -66,7 +66,7 @@ class _AirportSearchBarWidgetState extends State<AirportSearchBarWidget> {
       final response = await http.get(
         Uri.parse(
           'https://api.aviationstack.com/v1/airports?access_key=$apiKey'
-          '&limit=6711',
+          '&limit=30000',
         ),
       );
       if (response.statusCode == 200) {
