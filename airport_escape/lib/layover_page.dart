@@ -6,12 +6,12 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'widgets/search_bar_widget.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:async';
-import 'dart:math';
 
 class LayoverPage extends StatefulWidget {
   final String category; // passed from landing page
 
   const LayoverPage({super.key, required this.category});
+  @override
   State<LayoverPage> createState() => _LayoverPageState();
 }
 
