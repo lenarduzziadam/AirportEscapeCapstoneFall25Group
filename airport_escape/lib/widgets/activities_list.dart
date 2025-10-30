@@ -71,7 +71,7 @@ class ActivitiesListState extends State<ActivitiesList> {
     double duration,
   ) async {
     final distanceLimit = _getDistanceLimit(duration) * MILES_TO_METERS;
-    final apiKey = dotenv.env['API_KEY'];
+    final apiKey = dotenv.env['GOOGLE_API_KEY'];
     final types = _getTypeName(context, category);
     if (types.isEmpty) {
       throw Exception('$category is not fully added');
@@ -169,36 +169,14 @@ class ActivitiesListState extends State<ActivitiesList> {
                     activityLocation.longitude,
                   );
 
-                  return return Expanded(
-      child: FutureBuilder<List<dynamic>>(
-        future: _activities,
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
-          }
-          if (snapshot.hasError) {
-            return Center(child: SelectableText('Error: ${snapshot.error}'));
-          }
-          if (!snapshot.hasData || snapshot.data!.isEmpty) {
-            return Center(child: Text('No nearby activities found.'));
-          }
-
-          final activities = snapshot.data!;
-          return ListView.builder(
-            itemCount: activities.length,
-            itemBuilder: (context, index) {
-              var activity = activities[index];
-              var location = activity["geometry"]["location"];
-              var activityLocation = LatLng(location["lat"], location["lng"]);
-              double distanceInMeters = Geolocator.distanceBetween(
-                widget.airportCords.latitude,
-                widget.airportCords.longitude,
-                activityLocation.latitude,
-                activityLocation.longitude,
+                  return ActivitySuggestionBox(
+                    activity: activity,
+                    distanceInMeters: distanceInMeters,
+                    airportCords: widget.airportCords,
+                    activityLocation: activityLocation,
+                  );
+                },
               );
-            
-              return ActivitySuggestionBox(activity: activity, distanceInMeters: distanceInMeters, airportCords: widget.airportCords, activityLocation: activityLocation);
-
             },
           ),
         ),
