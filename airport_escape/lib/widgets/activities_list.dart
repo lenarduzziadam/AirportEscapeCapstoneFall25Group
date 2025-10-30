@@ -1,11 +1,10 @@
 import 'dart:convert';
 import 'package:airport_escape/l10n/app_localizations.dart';
-import 'package:airport_escape/map_screen.dart';
+import 'package:airport_escape/widgets/activity_suggestion_box.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:http/http.dart' as http;
-import '../main.dart';
 import 'package:geolocator/geolocator.dart';
 
 // returns the type name based on the category
@@ -89,12 +88,7 @@ class ActivitiesList extends StatefulWidget {
 
 class ActivitiesListState extends State<ActivitiesList> {
   late Future<List<dynamic>> _activities;
-
-  @override
-  void initState() {
-    super.initState();
-  }
-
+  
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
@@ -134,50 +128,8 @@ class ActivitiesListState extends State<ActivitiesList> {
                 activityLocation.latitude,
                 activityLocation.longitude,
               );
-
-              return Column(
-                children: [
-                  Card(
-                    margin: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                    child: ListTile(
-                      title: Text(activity["name"] ?? "Unknown Place"),
-                      subtitle: Text(
-                        activity["vicinity"] +
-                                ' ${(distanceInMeters / 1000).toStringAsFixed(1)} km away' ??
-                            "No address available",
-                      ),
-                      trailing: Icon(Icons.place),
-                    ),
-                  ),
-                  ElevatedButton.icon(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: kPrimaryColor,
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 24,
-                        vertical: 12,
-                      ),
-                    ),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) {
-                            return MapScreen(
-                              startLocation: widget.airportCords,
-                              endLocation: activityLocation,
-                            );
-                          },
-                        ),
-                      );
-                    },
-                    icon: const Icon(Icons.directions, color: Colors.white),
-                    label: Text(
-                      AppLocalizations.of(context)!.get_directions,
-                      style: TextStyle(fontSize: 18, color: Colors.white),
-                    ),
-                  ),
-                ],
-              );
+            
+              return ActivitySuggestionBox(activity: activity, distanceInMeters: distanceInMeters, airportCords: widget.airportCords, activityLocation: activityLocation);
             },
           );
         },

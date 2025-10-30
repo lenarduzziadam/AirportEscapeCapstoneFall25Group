@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:http/http.dart' as http;
 import 'package:searchfield/searchfield.dart';
 import 'package:flutter/material.dart';
 
@@ -18,6 +21,8 @@ class _AirportSearchBarWidgetState extends State<AirportSearchBarWidget> {
   // Controller for the search bar input field
   var _airports = <SearchFieldListItem<Airport>>[];
   SearchFieldListItem<Airport>? _selectedValue;
+  bool _loading = true;
+
   Widget _searchChild(Airport airport, {bool isSelected = false}) => ListTile(
     contentPadding: EdgeInsets.all(0),
     title: Text(
@@ -46,6 +51,41 @@ class _AirportSearchBarWidgetState extends State<AirportSearchBarWidget> {
             child: _searchChild(ap, isSelected: false),
           );
         }).toList();
+  }
+
+  Future<void> _fetchairports() async {
+    try {
+      final response = await http.get(
+        //TODO put in the correct 
+        Uri.parse('https://api.example.com/airports'), 
+      );
+      if (response.statusCode == 200) {
+        final List<dynamic> data = jsonDecode(response.body);
+        final airports = data.map((json) {
+          final airport = Airport(
+            "${json['name']} (${json['iata_code']})",
+            LatLng(json['lat'], json['lng']),
+          );
+          return SearchFieldListItem<Airport>(
+            airport.name,
+            item: airport,
+            child: _searchChild(airport, isSelected: false),
+          );
+        }).toList();
+
+        setState(() {
+          _airports = airports;
+          _loading = false;
+        });
+      } else {
+        throw Exception('Failed to load airports');
+      }
+    } catch (e) {
+      debugPrint('Error fetching airports: $e');
+      setState(() {
+        _loading = false;
+      });
+    }
   }
 
   @override
