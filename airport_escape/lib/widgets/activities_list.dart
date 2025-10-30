@@ -38,7 +38,7 @@ Future<List<dynamic>> _fetchNearbyActivities(
   LatLng selectedAirportLoc,
   String category,
 ) async {
-  final apiKey = dotenv.env['API_KEY'];
+  final apiKey = dotenv.env['GOOGLE_API_KEY'];
   final types = _getTypeName(context, category);
   if (types.isEmpty) {
     throw Exception('$category is not fully added');
@@ -50,7 +50,7 @@ Future<List<dynamic>> _fetchNearbyActivities(
     final url = Uri.parse(
       'https://maps.googleapis.com/maps/api/place/nearbysearch/json'
       '?location=${selectedAirportLoc.latitude},${selectedAirportLoc.longitude}'
-      '&radius=5000'
+      '&radius=999'
       '&type=$type'
       '&key=$apiKey',
     );

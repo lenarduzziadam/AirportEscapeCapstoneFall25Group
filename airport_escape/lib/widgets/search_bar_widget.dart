@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:http/http.dart' as http;
 import 'package:searchfield/searchfield.dart';
@@ -43,6 +44,10 @@ class _AirportSearchBarWidgetState extends State<AirportSearchBarWidget> {
             "Dallas-Fort Worth (DFW)",
             const LatLng(32.896801, -97.038002),
           ),
+          Airport(
+            "Paris Charles de Gaulle Airport (CDG)",
+            const LatLng(49.009592, -2.555675),
+          ),
         ].map((Airport ap) {
           return SearchFieldListItem<Airport>(
             ap.name,
@@ -55,16 +60,20 @@ class _AirportSearchBarWidgetState extends State<AirportSearchBarWidget> {
 
   Future<void> _fetchairports() async {
     try {
+      final apiKey = dotenv.env['AVIATIONSTACK_API_KEY'];
       final response = await http.get(
-        //TODO put in the correct 
-        Uri.parse('https://api.example.com/airports'), 
+        // TODO put in the correct link
+        Uri.parse(
+          'https://api.aviationstack.com/v1/airports?access_key=$apiKey',
+        ),
       );
       if (response.statusCode == 200) {
-        final List<dynamic> data = jsonDecode(response.body);
+        final responseList = json.decode(response.body);
+        final List<dynamic>data = responseList['data'];
         final airports = data.map((json) {
           final airport = Airport(
-            "${json['name']} (${json['iata_code']})",
-            LatLng(json['lat'], json['lng']),
+            "${json['airport_name']} (${json['iata_code']})",
+            LatLng(json['latitude'], json['longitude']),
           );
           return SearchFieldListItem<Airport>(
             airport.name,
@@ -90,6 +99,10 @@ class _AirportSearchBarWidgetState extends State<AirportSearchBarWidget> {
 
   @override
   Widget build(BuildContext context) {
+    /*
+    if (_loading) {
+      return const Center(child: CircularProgressIndicator());
+    }*/
     return SearchField(
       suggestionsDecoration: SuggestionDecoration(
         borderRadius: BorderRadius.all(Radius.circular(2)),
@@ -121,14 +134,22 @@ class _AirportSearchBarWidgetState extends State<AirportSearchBarWidget> {
         }
         // filter the list of cities by the search text
         final filter = List<SearchFieldListItem<Airport>>.from(_airports).where(
-          (city) {
-            return city.item!.name.toLowerCase().contains(
+          (airport) {
+            return airport.item!.name.toLowerCase().contains(
                   searchText.toLowerCase(),
                 ) ||
-                city.item!.location.toString().contains(searchText);
+                airport.item!.location.toString().contains(searchText);
           },
         ).toList();
         return filter;
+        /* future code once I get the API working
+        if (searchText.isEmpty) {
+          return _airports;
+        }
+        final filter = _airports.where((airport) {
+          return airport.item!.name.toLowerCase().contains(searchText.toLowerCase());
+        }).toList();
+        return filter;*/
       },
       selectedValue: _selectedValue,
       suggestions: _airports

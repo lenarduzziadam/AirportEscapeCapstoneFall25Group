@@ -7,7 +7,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:http/http.dart' as http;
 
 Future<Image> _getPlaceImage(dynamic activity) async {
-  final apiKey = dotenv.env['API_KEY'];
+  final apiKey = dotenv.env['GOOGLE_API_KEY'];
   final photoRef = activity["photos"][0]["photo_reference"];
   var blankImage = Image.asset(
     'assets/images/placeholder.png',
