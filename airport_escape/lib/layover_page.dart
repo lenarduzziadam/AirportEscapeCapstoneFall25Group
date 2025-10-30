@@ -187,7 +187,7 @@ class _LayoverPageState extends State<LayoverPage> {
                 if (_selectedAirport.isNotEmpty && _duration > 0)
                   Expanded(
                     child: ActivitiesList(
-                      key: ValueKey(_selectedAirport),
+                      key: ValueKey("${_selectedAirport}_$_duration"),
                       airportCords: _selectedAirportLoc,
                       duration: _duration,
                       category: widget.category,
