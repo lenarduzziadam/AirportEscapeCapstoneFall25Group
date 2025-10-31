@@ -83,7 +83,7 @@ class MyApp extends StatelessWidget {
             GlobalCupertinoLocalizations.delegate,
           ],
           supportedLocales: AppLocalizations.supportedLocales,
-          home: const MyHomePage(),
+          home: const _AuthGate(),
         );
       },
     );
