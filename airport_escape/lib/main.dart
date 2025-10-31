@@ -90,7 +90,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
-// auth gate: shows login if signed out
+// auth gate: waits for login, then checks roles/<uid>/isAdmin
 class _AuthGate extends StatelessWidget {
   const _AuthGate({super.key});
 
@@ -100,13 +100,26 @@ class _AuthGate extends StatelessWidget {
       stream: FirebaseAuth.instance.authStateChanges(),
       builder: (context, snap) {
         if (snap.connectionState == ConnectionState.waiting) {
-          return const Scaffold(
-            body: Center(child: CircularProgressIndicator()),
-          );
+          return const Scaffold(body: Center(child: CircularProgressIndicator()));
         }
         final user = snap.data;
-        if (user == null) return const _LoginPage(); // added
-        return const MyHomePage(); // existing home
+        if (user == null) return const _LoginPage(); // minimal login below
+
+        // fetch roles/<uid>/isAdmin once
+        return FutureBuilder<DataSnapshot>(
+          future: FirebaseDatabase.instance.ref('roles/${user.uid}/isAdmin').get(),
+          builder: (context, roleSnap) {
+            if (roleSnap.connectionState == ConnectionState.waiting) {
+              return const Scaffold(body: Center(child: CircularProgressIndicator()));
+            }
+            final isAdmin = (roleSnap.data?.value == true);
+            // ignore: avoid_print
+            print('isAdmin for ${user.uid}: $isAdmin'); // minimal log
+
+            // wrap existing home and add admin-only test button
+            return _Shell(isAdmin: isAdmin); // added
+          },
+        );
       },
     );
   }
@@ -191,6 +204,35 @@ class _LoginPageState extends State<_LoginPage> {
           ],
         ),
       ),
+    );
+  }
+}
+
+// wraps existing home and adds an admin-only test button
+class _Shell extends StatelessWidget {
+  final bool isAdmin;
+  const _Shell({super.key, required this.isAdmin});
+
+  Future<void> _saveAnnouncement() async {
+    final u = FirebaseAuth.instance.currentUser;
+    final ref = FirebaseDatabase.instance.ref('content/announcements');
+    await ref.update({
+      'text': 'Hello from Airport Escape!',
+      'updatedAt': DateTime.now().millisecondsSinceEpoch,
+      'updatedBy': u?.uid,
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: const MyHomePage(), // your existing home untouched
+      floatingActionButton: isAdmin
+          ? FloatingActionButton(
+              onPressed: _saveAnnouncement,
+              child: const Icon(Icons.save),
+            )
+          : null, // no button for non-admins
     );
   }
 }
