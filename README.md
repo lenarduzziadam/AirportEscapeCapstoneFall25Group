@@ -38,7 +38,7 @@ Airport Escape is designed to transform tedious layover waiting into exciting mi
 - **Storage**: SharedPreferences for local data persistence
 
 ## 📱 App Structure
-
+```
 AirportEscapeCapstoneFall25Group/
 ├── airport_escape/                # Main Flutter application
 │   ├── lib/
@@ -56,6 +56,7 @@ AirportEscapeCapstoneFall25Group/
 ├── videos/                       # Video content (relative path: '../videos/')
 ├── text_files/                   # Text documentation (relative path: '../text_files/')
 └── README.md                     # This file
+```
 
 
 
