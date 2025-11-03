@@ -42,7 +42,7 @@ Airport Escape is designed to transform tedious layover waiting into exciting mi
 AirportEscapeCapstoneFall25Group/
 ├── airport_escape/                # Main Flutter application
 │   ├── lib/
-│   │   ├── main.dart             # 🎯 Primary development file
+│   │   ├── main.dart             # PRIMARY DEVELOPMENT FILE
 │   │   ├── landing_page.dart     # Home screen with airport selection
 │   │   ├── layover_page.dart     # Main activity browsing interface
 │   │   ├── login_page.dart       # User authentication
@@ -89,6 +89,20 @@ AirportEscapeCapstoneFall25Group/
 GOOGLE_API_KEY=your_api_key_here
 ```
 
+4. **Firebase Configuration**
+```
+flutterfire configure
+```
+
+5. **Generate Localizations**
+```
+flutter gen-l10n
+```
+
+6. **Run Application**
+```
+flutter run
+```
 
 __Project access and key information:__
 
