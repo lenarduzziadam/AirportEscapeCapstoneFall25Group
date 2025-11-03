@@ -17,12 +17,17 @@ class ActivitiesList extends StatefulWidget {
   final double duration;
   final Function() onActivitiesChanged;
 
+  final List<String> favorites;
+  final Function(String) onFavorite;
+
   const ActivitiesList({
     super.key,
     required this.airportCords,
     required this.category,
     required this.duration,
     required this.onActivitiesChanged,
+    required this.favorites,
+    required this.onFavorite,
   });
 
   @override
@@ -174,6 +179,8 @@ class ActivitiesListState extends State<ActivitiesList> {
                     distanceInMeters: distanceInMeters,
                     airportCords: widget.airportCords,
                     activityLocation: activityLocation,
+                    isFavorite: widget.favorites.contains(activity["name"]),
+                    onFavorite: () => widget.onFavorite(activity["name"]),
                   );
                 },
               );

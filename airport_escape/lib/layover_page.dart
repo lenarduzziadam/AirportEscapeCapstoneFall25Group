@@ -194,6 +194,8 @@ class _LayoverPageState extends State<LayoverPage> {
                       onActivitiesChanged:(){
                         _startCountdown(_duration);
                       } ,
+                      favorites: _favorites,
+                      onFavorite: _saveFavorite,
                     ),
                   ),
               ],

@@ -42,12 +42,18 @@ class ActivitySuggestionBox extends StatefulWidget {
 
   final LatLng activityLocation;
 
+  final bool isFavorite;
+
+  final VoidCallback onFavorite;
+
   const ActivitySuggestionBox({
     super.key,
     required this.activity,
     required this.distanceInMeters,
     required this.airportCords,
     required this.activityLocation,
+    required this.isFavorite,
+    required this.onFavorite,
   });
 
   @override
@@ -117,7 +123,20 @@ class ActivitySuggestionBoxState extends State<ActivitySuggestionBox> {
                   ),
               ],
             ),
-            trailing: Icon(Icons.place),
+            trailing: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                IconButton(
+                  icon: Icon(
+                    widget.isFavorite ? Icons.favorite : Icons.favorite_border,
+                    color: widget.isFavorite ? Colors.red : null,
+                  ),
+                  onPressed: widget.onFavorite,
+                  tooltip: widget.isFavorite ? 'Remove from favorites' : 'Add to favorites',
+                ),
+                Icon(Icons.place),
+              ],
+            ),
             leading: ClipRRect(
               borderRadius: BorderRadius.circular(8),
               child: _isLoading
