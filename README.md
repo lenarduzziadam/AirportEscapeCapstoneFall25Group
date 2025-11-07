@@ -129,6 +129,7 @@ Brief Descriptions of changes wanted:
   - [ ] New feature
   - [ ] Documentation update
   - [ ] Performance improvement
+  
   ## Testing
   - [ ] Tested on Android
   - [ ] Tested on iOS
@@ -137,7 +138,8 @@ Brief Descriptions of changes wanted:
  
   ## Screenshots 
 
-   
+  ![Landing Page](images/screenshots_nov_sprints/landing_page_dm.png)
+
 __Project access and key information:__
 
 
