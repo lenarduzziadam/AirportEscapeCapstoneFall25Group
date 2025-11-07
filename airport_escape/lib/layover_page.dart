@@ -1,7 +1,6 @@
 import 'package:airport_escape/widgets/activities_list.dart';
 import 'package:airport_escape/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'widgets/search_bar_widget.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -151,7 +150,16 @@ class _LayoverPageState extends State<LayoverPage> {
     }
   }
 
-  // Fetch real-time flight info from AviationStack
+  // Cross-platform API key loader (env or dart-define)
+  String? _loadApiKey() {
+    try {
+      return dotenv.env['AVIATIONSTACK_KEY'] ??
+          const String.fromEnvironment('AVIATIONSTACK_KEY');
+    } catch (_) {
+      return const String.fromEnvironment('AVIATIONSTACK_KEY');
+    }
+  }
+
   Future<void> _fetchFlightInfo() async {
     final flightCode = _flightController.text.trim();
     if (flightCode.isEmpty) {
@@ -161,16 +169,22 @@ class _LayoverPageState extends State<LayoverPage> {
       return;
     }
 
-    final apiKey = dotenv.env['AVIATIONSTACK_KEY'];
-    print("🧩 Loaded API key: $apiKey");
-    print("✈️ Fetching flight info for: $flightCode");
+    final apiKey = _loadApiKey();
+    if (apiKey == null || apiKey.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("Missing API key. Provide with --dart-define or .env")),
+      );
+      return;
+    }
 
-    // Try HTTPS first, fallback to HTTP
+    print("Loaded API key: $apiKey");
+    print("Fetching flight info for: $flightCode");
+
     final url = Uri.parse(
       'https://api.aviationstack.com/v1/flights?access_key=$apiKey&flight_iata=$flightCode',
     );
 
-    print("🌍 Full request URL: $url");
+    print("Full request URL: $url");
 
     setState(() {
       _loadingFlight = true;
@@ -179,31 +193,31 @@ class _LayoverPageState extends State<LayoverPage> {
 
     try {
       final response = await http.get(url);
-      print("📡 Response status: ${response.statusCode}");
-      print("📦 Raw body: ${response.body}");
+      print("Response status: ${response.statusCode}");
+      print("Raw body: ${response.body}");
 
       if (response.statusCode == 200) {
         final data = json.decode(response.body);
         if (data['data'] != null && data['data'].isNotEmpty) {
           setState(() => _flightData = data['data'][0]);
-          print("✅ Successfully loaded flight data!");
+          print("Successfully loaded flight data!");
         } else {
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(content: Text("No flight data found.")),
           );
-          print("⚠️ No flight data found in response.");
+          print("No flight data found in response.");
         }
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text("Error ${response.statusCode}: ${response.reasonPhrase}")),
         );
-        print("❌ HTTP Error: ${response.statusCode} ${response.reasonPhrase}");
+        print("HTTP Error: ${response.statusCode} ${response.reasonPhrase}");
       }
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text("Failed to fetch flight info: $e")),
       );
-      print("💥 Exception: $e");
+      print("Exception: $e");
     } finally {
       setState(() => _loadingFlight = false);
     }
@@ -405,7 +419,7 @@ class _LayoverPageState extends State<LayoverPage> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     const Text(
-                      "⏰ Return Timer",
+                      "Return Timer",
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         color: Colors.black87,
