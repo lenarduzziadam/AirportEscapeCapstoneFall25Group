@@ -60,7 +60,7 @@ AirportEscapeCapstoneFall25Group/
 
 
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 - Flutter SDK (latest stable version)
@@ -71,39 +71,73 @@ AirportEscapeCapstoneFall25Group/
 
 ### Installation
 
-1. **Clone the repository**
+  **Clone the repository**
    ```
    git clone [repository-url]
    cd airport_escape
    ```
    
-2. **Install Dependencies**
+  **Install Dependencies**
    ```
    flutter pub get
    ```
 
-3. **Environment Setup**
+  **Environment Setup**
 - Create a .env in the root of your directory
 - Add your google API key
 ```
 GOOGLE_API_KEY=your_api_key_here
 ```
 
-4. **Firebase Configuration**
+ **Firebase Configuration**
 ```
 flutterfire configure
 ```
 
-5. **Generate Localizations**
+ **Generate Localizations**
 ```
 flutter gen-l10n
 ```
 
-6. **Run Application**
+ **Run Application**
 ```
 flutter run
 ```
 
+## ⚠️ MANDATORY REQUIREMENTS
+__Code Review Requirement__
+
+ALL pull requests MUST be reviewed and approved by at least ONE other team member
+No direct pushes to main or develop branches
+Self-merging is strictly prohibited
+Pre-PR Checklist
+
+ Code builds successfully (flutter build)
+ No analyzer warnings (flutter analyze)
+ All tests pass (flutter test)
+ Localization files updated if UI text changed
+ Documentation updated for new features
+ Screenshot/demo for UI changes
+
+
+## PR Description Template 
+
+Brief Descriptions of changes wanted:
+
+## Type of Change
+  - [ ] Bug fix
+  - [ ] New feature
+  - [ ] Documentation update
+  - [ ] Performance improvement
+  ## Testing
+  - [ ] Tested on Android
+  - [ ] Tested on iOS
+  - [ ] Tested in different languages
+  - [ ] Tested in dark/light mode
+ 
+  ## Screenshots 
+
+   
 __Project access and key information:__
 
 
