@@ -52,5 +52,22 @@
   "reset_app_subtitle": "Reset app to default settings",
   "reset_dialog_content": "This will reset all settings to their default values.\n\nThis action cannot be undone. Are you sure?",
   "reset_confirm_button": "Reset",
-  "reset_success_snackbar": "All settings reset to defaults"
+  "reset_success_snackbar": "All settings reset to defaults",
+  "signIn": "Sign In",
+  "register": "Register",
+  "email": "Email",
+  "password": "Password",
+  "emailAddress": "Email Address",
+  "enterPassword": "Enter Password",
+  "signInTitle": "Sign In to Airport Escape",
+  "registerTitle": "Create Account",
+  "alreadyHaveAccount": "Already have an account?",
+  "dontHaveAccount": "Don't have an account?",
+  "signInButton": "Sign In",
+  "registerButton": "Create Account",
+  "loggingIn": "Signing in...",
+  "creatingAccount": "Creating account...",
+  "authError": "Authentication Error",
+  "welcomeBack": "Welcome Back",
+  "joinAirportEscape": "Join Airport Escape"
 }
