@@ -31,7 +31,7 @@ function App() {
               transformed their capstone project into a solution that turns airport delays into adventures.
             </p>
             <div className="hero-buttons">
-              <button className="btn btn-primary">Download App</button>
+              <button className="btn btn-primary">Coming Soon!</button>
               <a href="#story" className="btn btn-secondary">Read Our Story</a>
             </div>
           </div>
@@ -61,8 +61,8 @@ function App() {
 
               <h3>💡 The "Aha!" Moment</h3>
               <p>
-                During a team brainstorming session, one of us mentioned being stuck at LAX for 6 hours with
-                absolutely nothing to do. That's when it clicked - what if we could create an app that not only
+                During a team brainstorming session, one of us mentioned being stuck at Harry Reid International Airport for 6 hours with
+                absolutely nothing to do. That's when we had our Eureka moment: what if we could create an app that not only
                 showed you what's around your airport, but actually calculated whether you have enough time to
                 visit based on your layover duration?
               </p>
@@ -194,7 +194,7 @@ function App() {
           </div>
 
           <div className="capstone-note">
-            <p><em>Proudly developed as our Computer Science Capstone Project</em></p>
+            <p><em>Proudly developed as our UWM Computer Science Capstone Project</em></p>
           </div>
         </div>
       </section>
