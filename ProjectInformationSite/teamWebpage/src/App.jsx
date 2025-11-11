@@ -38,7 +38,7 @@ function App() {
           <div className="hero-image">
             <div className="phone-mockup">
               📱<br />
-              <small>Available on<br />iOS & Android</small>
+              <small>Coming Soon to<br />iOS & Android</small>
             </div>
           </div>
         </div>
