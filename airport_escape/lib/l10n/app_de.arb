@@ -52,5 +52,22 @@
   "reset_app_subtitle": "App auf Standardeinstellungen zurücksetzen",
   "reset_dialog_content": "Dies setzt alle Einstellungen auf ihre Standardwerte zurück.\n\nDiese Aktion kann nicht rückgängig gemacht werden. Sind Sie sicher?",
   "reset_confirm_button": "Zurücksetzen",
-  "reset_success_snackbar": "Alle Einstellungen wurden auf die Standardwerte zurückgesetzt"
+  "reset_success_snackbar": "Alle Einstellungen wurden auf die Standardwerte zurückgesetzt",
+  "signIn": "Anmelden",
+  "register": "Registrieren",
+  "email": "E-Mail",
+  "password": "Passwort",
+  "emailAddress": "E-Mail-Adresse",
+  "enterPassword": "Passwort Eingeben",
+  "signInTitle": "Bei Airport Escape Anmelden",
+  "registerTitle": "Konto Erstellen",
+  "alreadyHaveAccount": "Haben Sie bereits ein Konto?",
+  "dontHaveAccount": "Haben Sie noch kein Konto?",
+  "signInButton": "Anmelden",
+  "registerButton": "Konto Erstellen",
+  "loggingIn": "Anmeldung läuft...",
+  "creatingAccount": "Konto wird erstellt...",
+  "authError": "Authentifizierungsfehler",
+  "welcomeBack": "Willkommen Zurück",
+  "joinAirportEscape": "Airport Escape Beitreten"
 }
