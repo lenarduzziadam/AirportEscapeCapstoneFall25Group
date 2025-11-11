@@ -62,7 +62,7 @@ class _AirportSearchBarWidgetState extends State<AirportSearchBarWidget> {
 
   Future<void> _fetchairports() async {
     try {
-      final apiKey = dotenv.env['AVIATIONSTACK_API_KEY'];
+      final apiKey = dotenv.env['AVIATIONSTACK_KEY'];
       final response = await http.get(
         Uri.parse(
           'https://api.aviationstack.com/v1/airports?access_key=$apiKey'
