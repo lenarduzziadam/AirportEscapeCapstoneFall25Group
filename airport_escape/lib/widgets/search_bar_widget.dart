@@ -35,6 +35,7 @@ class _AirportSearchBarWidgetState extends State<AirportSearchBarWidget> {
   @override
   void initState() {
     super.initState();
+    /*
     _airports =
         [
           Airport("Chicago O'Hare (ORD)", const LatLng(41.978600, -87.904800)),
@@ -55,32 +56,45 @@ class _AirportSearchBarWidgetState extends State<AirportSearchBarWidget> {
             item: ap,
             child: _searchChild(ap, isSelected: false),
           );
-        }).toList();
+        }).toList();*/
+    _fetchairports();
   }
 
   Future<void> _fetchairports() async {
     try {
-      final apiKey = dotenv.env['AVIATIONSTACK_API_KEY'];
+      final apiKey = dotenv.env['AVIATIONSTACK_KEY'];
       final response = await http.get(
-        // TODO put in the correct link
         Uri.parse(
-          'https://api.aviationstack.com/v1/airports?access_key=$apiKey',
+          'https://api.aviationstack.com/v1/airports?access_key=$apiKey'
+          '&limit=30000',
         ),
       );
       if (response.statusCode == 200) {
         final responseList = json.decode(response.body);
-        final List<dynamic>data = responseList['data'];
-        final airports = data.map((json) {
-          final airport = Airport(
-            "${json['airport_name']} (${json['iata_code']})",
-            LatLng(json['latitude'], json['longitude']),
-          );
-          return SearchFieldListItem<Airport>(
-            airport.name,
-            item: airport,
-            child: _searchChild(airport, isSelected: false),
-          );
-        }).toList();
+        final List<dynamic> data = responseList['data'];
+        final List<SearchFieldListItem<Airport>> airports = data
+            .where(
+              (json) =>
+                  json['latitude'] != null &&
+                  json['longitude'] != null &&
+                  json['latitude'].toString().isNotEmpty &&
+                  json['longitude'].toString().isNotEmpty,
+            )
+            .map((json) {
+              LatLng airportCords = LatLng(
+                double.parse(json['latitude']),
+                double.parse(json['longitude']),
+              );
+
+              var name = "${json['airport_name']} (${json['iata_code']})";
+              final airport = Airport(name, airportCords);
+              return SearchFieldListItem<Airport>(
+                airport.name,
+                item: airport,
+                child: _searchChild(airport, isSelected: false),
+              );
+            })
+            .toList();
 
         setState(() {
           _airports = airports;
@@ -99,10 +113,9 @@ class _AirportSearchBarWidgetState extends State<AirportSearchBarWidget> {
 
   @override
   Widget build(BuildContext context) {
-    /*
     if (_loading) {
       return const Center(child: CircularProgressIndicator());
-    }*/
+    }
     return SearchField(
       suggestionsDecoration: SuggestionDecoration(
         borderRadius: BorderRadius.all(Radius.circular(2)),
@@ -124,32 +137,14 @@ class _AirportSearchBarWidgetState extends State<AirportSearchBarWidget> {
       ),
       onSearchTextChanged: (searchText) {
         if (searchText.isEmpty) {
-          return _airports
-              .map(
-                (e) => e.copyWith(
-                  child: _searchChild(e.item!, isSelected: e == _selectedValue),
-                ),
-              )
-              .toList();
-        }
-        // filter the list of cities by the search text
-        final filter = List<SearchFieldListItem<Airport>>.from(_airports).where(
-          (airport) {
-            return airport.item!.name.toLowerCase().contains(
-                  searchText.toLowerCase(),
-                ) ||
-                airport.item!.location.toString().contains(searchText);
-          },
-        ).toList();
-        return filter;
-        /* future code once I get the API working
-        if (searchText.isEmpty) {
           return _airports;
         }
         final filter = _airports.where((airport) {
-          return airport.item!.name.toLowerCase().contains(searchText.toLowerCase());
+          return airport.item!.name.toLowerCase().contains(
+            searchText.toLowerCase(),
+          );
         }).toList();
-        return filter;*/
+        return filter;
       },
       selectedValue: _selectedValue,
       suggestions: _airports
