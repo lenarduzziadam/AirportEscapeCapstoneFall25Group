@@ -13,9 +13,8 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'widgets/search_bar_widget.dart';
 
 class LayoverPage extends StatefulWidget {
-  final String category;
 
-  const LayoverPage({super.key, required this.category});
+  const LayoverPage({super.key, });
 
   @override
   State<LayoverPage> createState() => _LayoverPageState();
@@ -26,16 +25,22 @@ class _LayoverPageState extends State<LayoverPage> {
   final _flightController = TextEditingController();
 
   String _selectedAirport = "";
-  late LatLng _selectedAirportLoc ;
+  late LatLng _selectedAirportLoc;
 
   double _duration = 0;
   Map<String, dynamic>? _flightData;
 
-  
   Duration _remainingTime = Duration.zero;
   Timer? _countdownTimer;
   bool _loadingFlight = false;
   List<String> _favorites = [];
+
+  String _selectedCategory = "";
+  List<String> get _categories => [
+    AppLocalizations.of(context)!.restaurant,
+    AppLocalizations.of(context)!.entertainment,
+    AppLocalizations.of(context)!.shopping,
+  ];
 
   // ============= FAVORITES =================
 
@@ -188,7 +193,6 @@ class _LayoverPageState extends State<LayoverPage> {
     }
   }
 
-
   // ============= UI BUILD =================
 
   @override
@@ -217,7 +221,7 @@ class _LayoverPageState extends State<LayoverPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          AppLocalizations.of(context)!.plan_your_layover(widget.category),
+          AppLocalizations.of(context)!.plan_your_layover,
         ),
         actions: [
           IconButton(
@@ -231,80 +235,108 @@ class _LayoverPageState extends State<LayoverPage> {
         children: [
           Padding(
             padding: const EdgeInsets.all(16.0),
-            child:  Column(
-                children: [
-                  TextField(
-                    controller: _durationController,
-                    decoration: InputDecoration(
-                      labelText: AppLocalizations.of(
-                        context,
-                      )!.layover_duration_label,
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(8)),
+            child: Column(
+              children: [
+                // 🔽 CATEGORY DROPDOWN
+                DropdownButtonFormField<String>(
+                  decoration: const InputDecoration(
+                    labelText: "Category",
+                    border: OutlineInputBorder(),
+                  ),
+                  items: _categories
+                      .map(
+                        (category) => DropdownMenuItem<String>(
+                          value: category,
+                          child: Text(category),
+                        ),
+                      )
+                      .toList(),
+                  onChanged: (value) {
+                    if (value != null) {
+                      setState(() => _selectedCategory = value);
+                    }
+                  },
+                ),
+                const SizedBox(height: 16),
+                TextField(
+                  controller: _durationController,
+                  decoration: InputDecoration(
+                    labelText: AppLocalizations.of(
+                      context,
+                    )!.layover_duration_label,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(8)),
+                    ),
+                  ),
+                  keyboardType: TextInputType.number,
+                  inputFormatters: [
+                    FilteringTextInputFormatter.digitsOnly,
+                  ], // Only numbers can be entered
+                  onChanged: (value) {
+                    if (value.isNotEmpty) {
+                      setState(() => _duration = double.parse(value));
+                    } else {
+                      setState(() => _duration = 0);
+                    }
+                  },
+                ),
+                const SizedBox(height: 16),
+                AirportSearchBarWidget(
+                  onAirportChanged: (newAirport, newAirportLoc) {
+                    setState(() {
+                      _selectedAirport = newAirport;
+                      _selectedAirportLoc = newAirportLoc;
+                    });
+                  },
+                ),
+
+                const SizedBox(height: 16),
+                // flight info box
+                const Text(
+                  "Check Flight Info",
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 8),
+                TextField(
+                  controller: _flightController,
+                  decoration: const InputDecoration(
+                    labelText: "Enter Flight Code (e.g. AA100)",
+                    border: OutlineInputBorder(),
+                  ),
+                ),
+                const SizedBox(height: 8),
+                ElevatedButton.icon(
+                  onPressed: _loadingFlight ? null : _fetchFlightInfo,
+                  icon: const Icon(Icons.flight_takeoff),
+                  label: const Text("Check Flight Status"),
+                ),
+                if (_loadingFlight) const CircularProgressIndicator(),
+                if (_flightData != null)
+                  FlightInfoBox(
+                    flightData: _flightData!,
+                  ),
+                const SizedBox(height: 16),
+                if (_selectedAirport.isNotEmpty &&
+                    _duration > 0 &&
+                    _selectedCategory.isNotEmpty)
+                  Expanded(
+                    child: ActivitiesList(
+                      key: ValueKey(
+                        "${_selectedAirport}_$_duration _$_selectedCategory",
                       ),
-                    ),
-                    keyboardType: TextInputType.number,
-                    inputFormatters: <TextInputFormatter>[
-                      FilteringTextInputFormatter.digitsOnly,
-                    ], // Only numbers can be entered
-                    onChanged: (value) {
-                      if (value.isNotEmpty) {
-                        setState(() {
-                          _duration = double.parse(value);
-                        });
-                      }
-                    },
-                  ),
-                  const SizedBox(height: 16),
-                  AirportSearchBarWidget(
-                    onAirportChanged: (newAirport, newAirportLoc) {
-                      setState(() {
-                        _selectedAirport = newAirport;
-                        _selectedAirportLoc = newAirportLoc;
-                      });
-                    },
-                  ),
-                  const SizedBox(height: 16),
-                  // flight info box
-                  const Text(
-                    "Check Flight Info",
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                  ),
-                  const SizedBox(height: 8),
-                  TextField(
-                    controller: _flightController,
-                    decoration: const InputDecoration(
-                      labelText: "Enter Flight Code (e.g. AA100)",
-                      border: OutlineInputBorder(),
+                      airportCords: _selectedAirportLoc,
+                      duration: double.parse(_durationController.text.trim()),
+                      category: _selectedCategory,
+                      onActivitiesChanged: () {
+                        _startCountdown(_duration);
+                      },
+                      favorites: _favorites,
+                      onFavorite: _saveFavorite,
                     ),
                   ),
-                  const SizedBox(height: 8),
-                  ElevatedButton.icon(
-                    onPressed: _loadingFlight ? null : _fetchFlightInfo,
-                    icon: const Icon(Icons.flight_takeoff),
-                    label: const Text("Check Flight Status"),
-                  ),
-                  if (_loadingFlight) const CircularProgressIndicator(),
-                  if (_flightData != null)
-                    FlightInfoBox(flightData: _flightData!,),
-                  const SizedBox(height: 16),
-                  if (_selectedAirport.isNotEmpty && _duration > 0)
-                    Expanded(
-                      child: ActivitiesList(
-                        key: ValueKey("${_selectedAirport}_$_duration"),
-                        airportCords: _selectedAirportLoc,
-                        duration: _duration,
-                        category: widget.category,
-                        onActivitiesChanged: () {
-                          _startCountdown(_duration);
-                        },
-                        favorites: _favorites,
-                        onFavorite: _saveFavorite,
-                      ),
-                    ),
-                ],
-              ),
+              ],
             ),
+          ),
           Positioned(
             right: 16,
             bottom: 16,

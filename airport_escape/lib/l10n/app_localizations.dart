@@ -215,8 +215,8 @@ abstract class AppLocalizations {
   /// No description provided for @plan_your_layover.
   ///
   /// In en, this message translates to:
-  /// **'Plan Your Layover: {category}'**
-  String plan_your_layover(Object category);
+  /// **'Plan Your Layover'**
+  String get plan_your_layover;
 
   /// No description provided for @layover_duration_label.
   ///

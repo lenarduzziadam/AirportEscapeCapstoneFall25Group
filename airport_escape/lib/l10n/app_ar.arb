@@ -16,7 +16,7 @@
   "security": "الأمان",
   "general_settings": "الإعدادات العامة",
   "airport_escape": "Airport Escape",
-  "plan_your_layover": "خطط لفترة التوقف: {category}",
+  "plan_your_layover": "خطط لفترة التوقف",
   "layover_duration_label": "مدة التوقف (ساعات)",
   "select_airport": "اختر المطار",
   "please_enter_duration": "يرجى إدخال مدة التوقف الخاصة بك.",

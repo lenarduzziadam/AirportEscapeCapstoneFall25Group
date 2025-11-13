@@ -57,9 +57,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get airport_escape => 'Airport Escape';
 
   @override
-  String plan_your_layover(Object category) {
-    return 'Планируйте свою пересадку: $category';
-  }
+  String get plan_your_layover => 'Планируйте свою пересадку';
 
   @override
   String get layover_duration_label => 'Длительность пересадки (часы)';

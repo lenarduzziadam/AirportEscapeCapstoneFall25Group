@@ -57,9 +57,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get airport_escape => 'Airport Escape';
 
   @override
-  String plan_your_layover(Object category) {
-    return 'Plan Your Layover: $category';
-  }
+  String get plan_your_layover => 'Plan Your Layover';
 
   @override
   String get layover_duration_label => 'Layover Duration (hours)';

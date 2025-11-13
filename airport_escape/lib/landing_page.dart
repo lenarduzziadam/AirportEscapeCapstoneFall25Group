@@ -13,10 +13,10 @@ const kBackgroundColor = Color(0xFFE0F7FA);
 class MyHomePage extends StatelessWidget {
   const MyHomePage({super.key});
 
-  void _openLayoverPage(BuildContext context, String category) {
+  void _openLayoverPage(BuildContext context) {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => LayoverPage(category: category)),
+      MaterialPageRoute(builder: (context) => LayoverPage()),
     );
   }
 
@@ -25,7 +25,7 @@ class MyHomePage extends StatelessWidget {
     final theme = Theme.of(context);
     final isDark = theme.brightness == Brightness.dark;
     final welcomeColor = isDark
-        ? theme.colorScheme.onBackground.withOpacity(0.85) // off-gray in dark
+        ? theme.colorScheme.onSurface.withOpacity(0.85) // off-gray in dark
         : kPrimaryColor;
     return Scaffold(
       drawer: const SettingsDrawer(),
@@ -40,14 +40,14 @@ class MyHomePage extends StatelessWidget {
                 color: isDark ? Colors.transparent : Colors.white,
                 borderRadius: BorderRadius.circular(16),
                 boxShadow: isDark
-                      ? []
-                      : [
-                          BoxShadow(
-                            color: Colors.black12,
-                            blurRadius: 8,
-                            offset: const Offset(0, 4),
-                          ),
-                        ],
+                    ? []
+                    : [
+                        BoxShadow(
+                          color: Colors.black12,
+                          blurRadius: 8,
+                          offset: const Offset(0, 4),
+                        ),
+                      ],
               ),
               child: Text(
                 AppLocalizations.of(context)!.welcome_message,
@@ -61,25 +61,8 @@ class MyHomePage extends StatelessWidget {
             ),
             const SizedBox(height: 30),
             ElevatedButton(
-              onPressed: () => _openLayoverPage(
-                context,
-                AppLocalizations.of(context)!.restaurant,
-              ),
-              child: Text(AppLocalizations.of(context)!.restaurant),
-            ),
-            ElevatedButton(
-              onPressed: () => _openLayoverPage(
-                context,
-                AppLocalizations.of(context)!.entertainment,
-              ),
-              child: Text(AppLocalizations.of(context)!.entertainment),
-            ),
-            ElevatedButton(
-              onPressed: () => _openLayoverPage(
-                context,
-                AppLocalizations.of(context)!.shopping,
-              ),
-              child: Text(AppLocalizations.of(context)!.shopping),
+              onPressed: () => _openLayoverPage(context),
+              child: Text(AppLocalizations.of(context)!.plan_your_layover),
             ),
           ],
         ),
