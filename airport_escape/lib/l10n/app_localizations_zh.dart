@@ -57,9 +57,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get airport_escape => 'Airport Escape';
 
   @override
-  String plan_your_layover(Object category) {
-    return '规划您的中转：$category';
-  }
+  String get plan_your_layover => '规划您的中转';
 
   @override
   String get layover_duration_label => '中转时长（小时）';

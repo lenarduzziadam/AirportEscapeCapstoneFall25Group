@@ -16,7 +16,7 @@
   "security": "보안",
   "general_settings": "일반 설정",
   "airport_escape": "Airport Escape",
-  "plan_your_layover": "환승 계획하기: {category}",
+  "plan_your_layover": "환승 계획하기",
   "layover_duration_label": "환승 시간 (시간)",
   "select_airport": "공항 선택",
   "please_enter_duration": "환승 시간을 입력하세요.",

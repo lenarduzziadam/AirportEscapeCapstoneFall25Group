@@ -16,7 +16,7 @@
   "security": "Sicherheit",
   "general_settings": "Allgemeine Einstellungen",
   "airport_escape": "Airport Escape",
-  "plan_your_layover": "Planen Sie Ihren Zwischenstopp: {category}",
+  "plan_your_layover": "Planen Sie Ihren Zwischenstopp",
   "layover_duration_label": "Zwischenstopp-Dauer (Stunden)",
   "select_airport": "Flughafen auswählen",
   "please_enter_duration": "Bitte geben Sie Ihre Zwischenstopp-Dauer ein.",

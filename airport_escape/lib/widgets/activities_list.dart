@@ -109,11 +109,6 @@ class ActivitiesListState extends State<ActivitiesList> {
   }
 
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   void didChangeDependencies() {
     super.didChangeDependencies();
     _activities = _fetchNearbyActivities(

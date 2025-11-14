@@ -16,7 +16,7 @@
   "security": "Безопасность",
   "general_settings": "Общие настройки",
   "airport_escape": "Airport Escape",
-  "plan_your_layover": "Планируйте свою пересадку: {category}",
+  "plan_your_layover": "Планируйте свою пересадку",
   "layover_duration_label": "Длительность пересадки (часы)",
   "select_airport": "Выберите аэропорт",
   "please_enter_duration": "Пожалуйста, введите длительность пересадки.",

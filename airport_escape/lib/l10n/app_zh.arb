@@ -16,7 +16,7 @@
   "security": "安全",
   "general_settings": "常规设置",
   "airport_escape": "Airport Escape",
-  "plan_your_layover": "规划您的中转：{category}",
+  "plan_your_layover": "规划您的中转",
   "layover_duration_label": "中转时长（小时）",
   "select_airport": "选择机场",
   "please_enter_duration": "请输入您的中转时长。",

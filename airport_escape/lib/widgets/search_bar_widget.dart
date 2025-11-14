@@ -35,28 +35,6 @@ class _AirportSearchBarWidgetState extends State<AirportSearchBarWidget> {
   @override
   void initState() {
     super.initState();
-    /*
-    _airports =
-        [
-          Airport("Chicago O'Hare (ORD)", const LatLng(41.978600, -87.904800)),
-          Airport("Denver (DEN)", const LatLng(39.861698, -104.672997)),
-          Airport("Atlanta (ATL)", const LatLng(33.636700, -84.428101)),
-          Airport(
-            "Dallas-Fort Worth (DFW)",
-            const LatLng(32.896801, -97.038002),
-          ),
-          Airport(
-            "Paris Charles de Gaulle Airport (CDG)",
-            const LatLng(49.009592, -2.555675),
-          ),
-        ].map((Airport ap) {
-          return SearchFieldListItem<Airport>(
-            ap.name,
-            value: ap.name,
-            item: ap,
-            child: _searchChild(ap, isSelected: false),
-          );
-        }).toList();*/
     _fetchairports();
   }
 

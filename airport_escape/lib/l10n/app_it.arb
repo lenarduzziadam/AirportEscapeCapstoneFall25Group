@@ -16,7 +16,7 @@
   "security": "Sicurezza",
   "general_settings": "Impostazioni generali",
   "airport_escape": "Airport Escape",
-  "plan_your_layover": "Pianifica il tuo scalo: {category}",
+  "plan_your_layover": "Pianifica il tuo scalo",
   "layover_duration_label": "Durata dello scalo (ore)",
   "select_airport": "Seleziona aeroporto",
   "please_enter_duration": "Inserisci la durata dello scalo.",

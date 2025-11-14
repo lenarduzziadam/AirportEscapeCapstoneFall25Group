@@ -16,7 +16,7 @@
   "security": "सुरक्षा",
   "general_settings": "सामान्य सेटिंग्स",
   "airport_escape": "Airport Escape",
-  "plan_your_layover": "अपनी लेओवर योजना बनाएं: {category}",
+  "plan_your_layover": "अपनी लेओवर योजना बनाएं",
   "layover_duration_label": "लेओवर अवधि (घंटे)",
   "select_airport": "हवाई अड्डा चुनें",
   "please_enter_duration": "कृपया अपनी लेओवर अवधि दर्ज करें।",

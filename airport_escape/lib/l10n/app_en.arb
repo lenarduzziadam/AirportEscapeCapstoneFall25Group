@@ -16,7 +16,7 @@
   "security": "Security",
   "general_settings": "General Settings",
   "airport_escape": "Airport Escape",
-  "plan_your_layover": "Plan Your Layover: {category}",
+  "plan_your_layover": "Plan Your Layover",
   "layover_duration_label": "Layover Duration (hours)",
   "select_airport": "Select Airport",
   "please_enter_duration": "Please enter your layover duration.",
