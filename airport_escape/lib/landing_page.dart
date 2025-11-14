@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'settings_menu.dart';
 import 'layover_page.dart';
 import 'widgets/live_tip_button.dart';
+import 'package:firebase_auth/firebase_auth.dart'; // <-- added for logout
 
 // App-wide color constants
 const kPrimaryColor = Color.fromARGB(255, 18, 71, 156);
@@ -40,14 +41,14 @@ class MyHomePage extends StatelessWidget {
                 color: isDark ? Colors.transparent : Colors.white,
                 borderRadius: BorderRadius.circular(16),
                 boxShadow: isDark
-                      ? []
-                      : [
-                          BoxShadow(
-                            color: Colors.black12,
-                            blurRadius: 8,
-                            offset: const Offset(0, 4),
-                          ),
-                        ],
+                    ? []
+                    : [
+                        BoxShadow(
+                          color: Colors.black12,
+                          blurRadius: 8,
+                          offset: const Offset(0, 4),
+                        ),
+                      ],
               ),
               child: Text(
                 AppLocalizations.of(context)!.welcome_message,
@@ -88,7 +89,7 @@ class MyHomePage extends StatelessWidget {
   }
 }
 
-// Replace your existing SettingsDrawer class with this:
+// Settings drawer with navigation to SettingsPage
 class SettingsDrawer extends StatelessWidget {
   const SettingsDrawer({super.key});
 
@@ -102,7 +103,7 @@ class SettingsDrawer extends StatelessWidget {
             decoration: BoxDecoration(color: kPrimaryColor),
             child: Text(
               AppLocalizations.of(context)!.settings,
-              style: TextStyle(color: Colors.white, fontSize: 24),
+              style: const TextStyle(color: Colors.white, fontSize: 24),
             ),
           ),
           ListTile(
@@ -151,14 +152,35 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
       title: Text(
         AppLocalizations.of(context)!.airport_escape,
-        style: TextStyle(fontWeight: FontWeight.bold),
+        style: const TextStyle(fontWeight: FontWeight.bold),
       ),
       actions: [
         const LiveTipButton(), // ← tiny lightbulb button
         PopupMenuButton<String>(
           icon: const Icon(Icons.account_circle, color: Colors.white),
-          onSelected: (String value) {
-            // Handle account menu selection (Profile, Logout)
+          onSelected: (String value) async {
+            if (value == 'Profile') {
+              // TODO: navigate to profile page later
+            } else if (value == 'Logout') {
+              try {
+                await FirebaseAuth.instance.signOut();
+                // _AuthGate in main.dart will pick this up via authStateChanges
+                // and automatically show the login page.
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(AppLocalizations.of(context)!.logout),
+                    duration: const Duration(seconds: 1),
+                  ),
+                );
+              } catch (e) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text('Logout failed: $e'),
+                    duration: const Duration(seconds: 2),
+                  ),
+                );
+              }
+            }
           },
           itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
             PopupMenuItem<String>(
