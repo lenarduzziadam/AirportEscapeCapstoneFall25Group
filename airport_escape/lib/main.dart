@@ -182,15 +182,15 @@ class _LoginPageState extends State<_LoginPage> {
         padding: const EdgeInsets.all(16),
         child: Column(
           children: [
-            TextField(controller: _email, keyboardType: TextInputType.emailAddress, decoration: const InputDecoration(labelText: 'Email')),
+            TextField(controller: _email, keyboardType: TextInputType.emailAddress, decoration: InputDecoration(labelText: AppLocalizations.of(context)!.email)),
             const SizedBox(height: 8),
-            TextField(controller: _pw, decoration: const InputDecoration(labelText: 'Password'), obscureText: true),
+            TextField(controller: _pw, decoration: InputDecoration(labelText: AppLocalizations.of(context)!.password), obscureText: true),
             const SizedBox(height: 12),
             Row(
               children: [
-                ElevatedButton(onPressed: _busy ? null : _signIn, child: const Text('Sign in')),
+                ElevatedButton(onPressed: _busy ? null : _signIn, child: Text(AppLocalizations.of(context)!.signIn)),
                 const SizedBox(width: 12),
-                OutlinedButton(onPressed: _busy ? null : _register, child: const Text('Register')),
+                OutlinedButton(onPressed: _busy ? null : _register, child: Text(AppLocalizations.of(context)!.register)),
               ],
             ),
             if (_error != null) ...[

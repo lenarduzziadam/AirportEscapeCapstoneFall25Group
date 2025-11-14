@@ -177,4 +177,55 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get reset_success_snackbar => '모든 설정이 기본값으로 재설정되었습니다';
+
+  @override
+  String get signIn => '로그인';
+
+  @override
+  String get register => '가입';
+
+  @override
+  String get email => '이메일';
+
+  @override
+  String get password => '비밀번호';
+
+  @override
+  String get emailAddress => '이메일 주소';
+
+  @override
+  String get enterPassword => '비밀번호 입력';
+
+  @override
+  String get signInTitle => 'Airport Escape 로그인';
+
+  @override
+  String get registerTitle => '계정 만들기';
+
+  @override
+  String get alreadyHaveAccount => '이미 계정이 있으신가요?';
+
+  @override
+  String get dontHaveAccount => '계정이 없으신가요?';
+
+  @override
+  String get signInButton => '로그인';
+
+  @override
+  String get registerButton => '계정 만들기';
+
+  @override
+  String get loggingIn => '로그인 중...';
+
+  @override
+  String get creatingAccount => '계정 생성 중...';
+
+  @override
+  String get authError => '인증 오류';
+
+  @override
+  String get welcomeBack => '다시 오신 것을 환영합니다';
+
+  @override
+  String get joinAirportEscape => 'Airport Escape 가입하기';
 }

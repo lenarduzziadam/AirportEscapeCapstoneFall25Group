@@ -178,4 +178,55 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get reset_success_snackbar =>
       'تمت إعادة جميع الإعدادات إلى القيم الافتراضية';
+
+  @override
+  String get signIn => 'تسجيل الدخول';
+
+  @override
+  String get register => 'التسجيل';
+
+  @override
+  String get email => 'البريد الإلكتروني';
+
+  @override
+  String get password => 'كلمة المرور';
+
+  @override
+  String get emailAddress => 'عنوان البريد الإلكتروني';
+
+  @override
+  String get enterPassword => 'أدخل كلمة المرور';
+
+  @override
+  String get signInTitle => 'تسجيل الدخول إلى Airport Escape';
+
+  @override
+  String get registerTitle => 'إنشاء حساب';
+
+  @override
+  String get alreadyHaveAccount => 'هل لديك حساب بالفعل؟';
+
+  @override
+  String get dontHaveAccount => 'ليس لديك حساب؟';
+
+  @override
+  String get signInButton => 'تسجيل الدخول';
+
+  @override
+  String get registerButton => 'إنشاء حساب';
+
+  @override
+  String get loggingIn => 'جاري تسجيل الدخول...';
+
+  @override
+  String get creatingAccount => 'جاري إنشاء الحساب...';
+
+  @override
+  String get authError => 'خطأ في المصادقة';
+
+  @override
+  String get welcomeBack => 'مرحبا بعودتك';
+
+  @override
+  String get joinAirportEscape => 'انضم إلى Airport Escape';
 }

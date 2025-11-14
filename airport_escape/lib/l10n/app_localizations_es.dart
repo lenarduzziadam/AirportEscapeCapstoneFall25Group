@@ -184,4 +184,55 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get reset_success_snackbar =>
       'Todas las configuraciones restablecidas a los valores predeterminados';
+
+  @override
+  String get signIn => 'Iniciar Sesión';
+
+  @override
+  String get register => 'Registrarse';
+
+  @override
+  String get email => 'Correo Electrónico';
+
+  @override
+  String get password => 'Contraseña';
+
+  @override
+  String get emailAddress => 'Dirección de Correo';
+
+  @override
+  String get enterPassword => 'Ingrese Contraseña';
+
+  @override
+  String get signInTitle => 'Iniciar Sesión en Airport Escape';
+
+  @override
+  String get registerTitle => 'Crear Cuenta';
+
+  @override
+  String get alreadyHaveAccount => '¿Ya tienes una cuenta?';
+
+  @override
+  String get dontHaveAccount => '¿No tienes una cuenta?';
+
+  @override
+  String get signInButton => 'Iniciar Sesión';
+
+  @override
+  String get registerButton => 'Crear Cuenta';
+
+  @override
+  String get loggingIn => 'Iniciando sesión...';
+
+  @override
+  String get creatingAccount => 'Creando cuenta...';
+
+  @override
+  String get authError => 'Error de Autenticación';
+
+  @override
+  String get welcomeBack => 'Bienvenido de Nuevo';
+
+  @override
+  String get joinAirportEscape => 'Únete a Airport Escape';
 }

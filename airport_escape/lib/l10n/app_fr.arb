@@ -52,5 +52,22 @@
   "reset_app_subtitle": "Réinitialiser l'application aux paramètres par défaut",
   "reset_dialog_content": "Cela réinitialisera tous les paramètres à leurs valeurs par défaut.\n\nCette action est irréversible. Êtes-vous sûr ?",
   "reset_confirm_button": "Réinitialiser",
-  "reset_success_snackbar": "Tous les paramètres ont été réinitialisés aux valeurs par défaut"
+  "reset_success_snackbar": "Tous les paramètres ont été réinitialisés aux valeurs par défaut",
+  "signIn": "Se Connecter",
+  "register": "S'inscrire",
+  "email": "E-mail",
+  "password": "Mot de Passe",
+  "emailAddress": "Adresse E-mail",
+  "enterPassword": "Entrez le Mot de Passe",
+  "signInTitle": "Se Connecter à Airport Escape",
+  "registerTitle": "Créer un Compte",
+  "alreadyHaveAccount": "Vous avez déjà un compte?",
+  "dontHaveAccount": "Vous n'avez pas de compte?",
+  "signInButton": "Se Connecter",
+  "registerButton": "Créer un Compte",
+  "loggingIn": "Connexion en cours...",
+  "creatingAccount": "Création du compte...",
+  "authError": "Erreur d'Authentification",
+  "welcomeBack": "Bon Retour",
+  "joinAirportEscape": "Rejoindre Airport Escape"
 }

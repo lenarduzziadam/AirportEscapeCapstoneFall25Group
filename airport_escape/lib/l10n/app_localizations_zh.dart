@@ -176,4 +176,55 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get reset_success_snackbar => '所有设置已重置为默认值';
+
+  @override
+  String get signIn => '登录';
+
+  @override
+  String get register => '注册';
+
+  @override
+  String get email => '电子邮件';
+
+  @override
+  String get password => '密码';
+
+  @override
+  String get emailAddress => '电子邮件地址';
+
+  @override
+  String get enterPassword => '输入密码';
+
+  @override
+  String get signInTitle => '登录 Airport Escape';
+
+  @override
+  String get registerTitle => '创建账户';
+
+  @override
+  String get alreadyHaveAccount => '已有账户？';
+
+  @override
+  String get dontHaveAccount => '还没有账户？';
+
+  @override
+  String get signInButton => '登录';
+
+  @override
+  String get registerButton => '创建账户';
+
+  @override
+  String get loggingIn => '登录中...';
+
+  @override
+  String get creatingAccount => '创建账户中...';
+
+  @override
+  String get authError => '认证错误';
+
+  @override
+  String get welcomeBack => '欢迎回来';
+
+  @override
+  String get joinAirportEscape => '加入 Airport Escape';
 }
