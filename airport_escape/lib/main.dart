@@ -137,6 +137,7 @@ class _LoginPageState extends State<_LoginPage> {
   final _pw = TextEditingController();
   bool _busy = false;
   String? _error;
+  bool _isSignIn = true; // toggle between sign in and register
 
   Future<void> _signIn() async {
     setState(() { _busy = true; _error = null; });
@@ -176,32 +177,43 @@ class _LoginPageState extends State<_LoginPage> {
 
   @override
   Widget build(BuildContext context) {
+    final localizations = AppLocalizations.of(context)!;
     return Scaffold(
-      appBar: AppBar(title: const Text('Sign in')),
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          children: [
-            TextField(controller: _email, keyboardType: TextInputType.emailAddress, decoration: InputDecoration(labelText: AppLocalizations.of(context)!.email)),
-            const SizedBox(height: 8),
-            TextField(controller: _pw, decoration: InputDecoration(labelText: AppLocalizations.of(context)!.password), obscureText: true),
-            const SizedBox(height: 12),
-            Row(
+      appBar: AppBar(
+        title: Text(_isSignIn ? localizations.signIn : localizations.register),
+        elevation: 0,
+        centerTitle: true,
+      ),
+      body: Center(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                ElevatedButton(onPressed: _busy ? null : _signIn, child: Text(AppLocalizations.of(context)!.signIn)),
-                const SizedBox(width: 12),
-                OutlinedButton(onPressed: _busy ? null : _register, child: Text(AppLocalizations.of(context)!.register)),
+                TextField(controller: _email, keyboardType: TextInputType.emailAddress, decoration: InputDecoration(labelText: AppLocalizations.of(context)!.email)),
+                const SizedBox(height: 8),
+                TextField(controller: _pw, decoration: InputDecoration(labelText: AppLocalizations.of(context)!.password), obscureText: true),
+                const SizedBox(height: 12),
+                Row(
+                  children: [
+                    ElevatedButton(onPressed: _busy ? null : _signIn, child: Text(AppLocalizations.of(context)!.signIn)),
+                    const SizedBox(width: 12),
+                    OutlinedButton(onPressed: _busy ? null : _register, child: Text(AppLocalizations.of(context)!.register)),
+                  ],
+                ),
+                if (_error != null) ...[
+                  const SizedBox(height: 12),
+                  Text(_error!, style: const TextStyle(color: Colors.red)),
+                ],
+                if (_busy) ...[
+                  const SizedBox(height: 12),
+                  const LinearProgressIndicator(),
+                ],
               ],
             ),
-            if (_error != null) ...[
-              const SizedBox(height: 12),
-              Text(_error!, style: const TextStyle(color: Colors.red)),
-            ],
-            if (_busy) ...[
-              const SizedBox(height: 12),
-              const LinearProgressIndicator(),
-            ],
-          ],
+          ),
         ),
       ),
     );
