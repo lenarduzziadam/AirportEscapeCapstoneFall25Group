@@ -13,8 +13,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'widgets/search_bar_widget.dart';
 
 class LayoverPage extends StatefulWidget {
-
-  const LayoverPage({super.key, });
+  const LayoverPage({super.key});
 
   @override
   State<LayoverPage> createState() => _LayoverPageState();
@@ -41,6 +40,8 @@ class _LayoverPageState extends State<LayoverPage> {
     AppLocalizations.of(context)!.entertainment,
     AppLocalizations.of(context)!.shopping,
   ];
+
+  bool _isOnlyInAirport = false;
 
   // ============= FAVORITES =================
 
@@ -220,9 +221,7 @@ class _LayoverPageState extends State<LayoverPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          AppLocalizations.of(context)!.plan_your_layover,
-        ),
+        title: Text(AppLocalizations.of(context)!.plan_your_layover),
         actions: [
           IconButton(
             icon: const Icon(Icons.star),
@@ -241,7 +240,9 @@ class _LayoverPageState extends State<LayoverPage> {
                 DropdownButtonFormField<String>(
                   decoration: const InputDecoration(
                     labelText: "Category",
-                    border: OutlineInputBorder(),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(8)),
+                    ),
                   ),
                   items: _categories
                       .map(
@@ -257,7 +258,10 @@ class _LayoverPageState extends State<LayoverPage> {
                     }
                   },
                 ),
-                const SizedBox(height: 16),
+
+                const SizedBox(height: 8),
+
+                //duration box
                 TextField(
                   controller: _durationController,
                   decoration: InputDecoration(
@@ -280,7 +284,9 @@ class _LayoverPageState extends State<LayoverPage> {
                     }
                   },
                 ),
-                const SizedBox(height: 16),
+                const SizedBox(height: 8),
+
+                // airport search and selection box
                 AirportSearchBarWidget(
                   onAirportChanged: (newAirport, newAirportLoc) {
                     setState(() {
@@ -290,7 +296,20 @@ class _LayoverPageState extends State<LayoverPage> {
                   },
                 ),
 
-                const SizedBox(height: 16),
+                const SizedBox(height: 8),
+
+                // is in only airport box
+                Text("Only in airport"),
+                Checkbox(
+                  value: _isOnlyInAirport,
+                  onChanged: (bool? value) {
+                    setState(() {
+                      _isOnlyInAirport = value!;
+                    });
+                  },
+                ),
+
+                //const SizedBox(height: 16),
                 // flight info box
                 const Text(
                   "Check Flight Info",
@@ -312,17 +331,15 @@ class _LayoverPageState extends State<LayoverPage> {
                 ),
                 if (_loadingFlight) const CircularProgressIndicator(),
                 if (_flightData != null)
-                  FlightInfoBox(
-                    flightData: _flightData!,
-                  ),
-                const SizedBox(height: 16),
+                  FlightInfoBox(flightData: _flightData!),
+                const SizedBox(height: 8),
                 if (_selectedAirport.isNotEmpty &&
                     _duration > 0 &&
                     _selectedCategory.isNotEmpty)
                   Expanded(
                     child: ActivitiesList(
                       key: ValueKey(
-                        "${_selectedAirport}_$_duration _$_selectedCategory",
+                        "$_selectedAirport _$_duration _$_selectedCategory _$_isOnlyInAirport",
                       ),
                       airportCords: _selectedAirportLoc,
                       duration: double.parse(_durationController.text.trim()),
@@ -332,6 +349,7 @@ class _LayoverPageState extends State<LayoverPage> {
                       },
                       favorites: _favorites,
                       onFavorite: _saveFavorite,
+                      isOnlyInAirport: _isOnlyInAirport,
                     ),
                   ),
               ],
