@@ -14,8 +14,12 @@ import 'package:url_launcher/url_launcher.dart';
 import 'widgets/search_bar_widget.dart';
 
 class LayoverPage extends StatefulWidget {
+  final String category;
 
-  const LayoverPage({super.key, });
+  const LayoverPage({
+    super.key,
+    required this.category,
+  });
 
   @override
   State<LayoverPage> createState() => _LayoverPageState();
@@ -26,7 +30,7 @@ class _LayoverPageState extends State<LayoverPage> {
   final _flightController = TextEditingController();
 
   String _selectedAirport = "";
-  late LatLng _selectedAirportLoc;
+  LatLng? _selectedAirportLoc;
 
   double _duration = 0;
   Map<String, dynamic>? _flightData;
@@ -37,7 +41,9 @@ class _LayoverPageState extends State<LayoverPage> {
 
   List<String> _favorites = [];
 
-  // ======================= FAVORITES =======================
+  // =========================================================
+  // FAVORITES
+  // =========================================================
 
   Future<void> _loadFavorites() async {
     final prefs = await SharedPreferences.getInstance();
@@ -51,6 +57,7 @@ class _LayoverPageState extends State<LayoverPage> {
     if (!_favorites.contains(place)) {
       setState(() => _favorites.add(place));
       await prefs.setStringList('favorites', _favorites);
+
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text('$place added to favorites')));
     }
@@ -98,7 +105,9 @@ class _LayoverPageState extends State<LayoverPage> {
     );
   }
 
-  // ======================= COUNTDOWN TIMER =======================
+  // =========================================================
+  // COUNTDOWN TIMER
+  // =========================================================
 
   void _startCountdown(double hours) {
     _countdownTimer?.cancel();
@@ -119,15 +128,12 @@ class _LayoverPageState extends State<LayoverPage> {
     });
   }
 
-  // ======================= FLIGHT API =======================
+  // =========================================================
+  // FLIGHT API
+  // =========================================================
 
   String? _loadApiKey() {
-    try {
-      return dotenv.env['AVIATIONSTACK_KEY'] ??
-          const String.fromEnvironment('AVIATIONSTACK_KEY');
-    } catch (_) {
-      return const String.fromEnvironment('AVIATIONSTACK_KEY');
-    }
+    return dotenv.env['AVIATIONSTACK_KEY'];
   }
 
   Future<void> _fetchFlightInfo() async {
@@ -147,7 +153,9 @@ class _LayoverPageState extends State<LayoverPage> {
     }
 
     final url = Uri.parse(
-        'https://api.aviationstack.com/v1/flights?access_key=$apiKey&flight_iata=$flightCode');
+      'https://api.aviationstack.com/v1/flights'
+      '?access_key=$apiKey&flight_iata=$flightCode',
+    );
 
     setState(() {
       _loadingFlight = true;
@@ -156,28 +164,32 @@ class _LayoverPageState extends State<LayoverPage> {
 
     try {
       final response = await http.get(url);
-      if (response.statusCode == 200) {
-        final data = json.decode(response.body);
 
-        if (data['data'] != null && data['data'].isNotEmpty) {
-          setState(() => _flightData = data['data'][0]);
+      if (response.statusCode == 200) {
+        final body = json.decode(response.body);
+
+        if (body['data'] != null && body['data'].isNotEmpty) {
+          setState(() {
+            _flightData = body['data'][0];
+          });
         } else {
           ScaffoldMessenger.of(context)
               .showSnackBar(const SnackBar(content: Text("No flight found.")));
         }
-      } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text("Error ${response.statusCode}")));
       }
     } catch (e) {
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text("Error: $e")));
-    } finally {
-      setState(() => _loadingFlight = false);
     }
+
+    setState(() {
+      _loadingFlight = false;
+    });
   }
 
-  // ======================= LIFECYCLE =======================
+  // =========================================================
+  // LIFECYCLE
+  // =========================================================
 
   @override
   void initState() {
@@ -198,31 +210,39 @@ class _LayoverPageState extends State<LayoverPage> {
 
     return _remainingTime == Duration.zero
         ? "Not set"
-        : "${h.toString().padLeft(2, '0')}:${m.toString().padLeft(2, '0')}:${s.toString().padLeft(2, '0')}";
+        : "${h.toString().padLeft(2, '0')}:"
+          "${m.toString().padLeft(2, '0')}:"
+          "${s.toString().padLeft(2, '0')}";
   }
 
-  // ======================= BUILD UI =======================
+  // =========================================================
+  // BUILD UI
+  // =========================================================
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title:
-            Text(AppLocalizations.of(context)!.plan_your_layover(widget.category)),
+        title: Text(
+          AppLocalizations.of(context)!.plan_your_layover(widget.category),
+        ),
         actions: [
           IconButton(
-              icon: const Icon(Icons.star),
-              tooltip: "Favorites",
-              onPressed: _showFavorites)
+            icon: const Icon(Icons.star),
+            onPressed: _showFavorites,
+          ),
         ],
       ),
+
       body: Stack(
         children: [
           Padding(
             padding: const EdgeInsets.all(16),
             child: Column(
               children: [
-                // ----- Duration Input -----
+                // ------------------------------
+                // Duration Input
+                // ------------------------------
                 TextField(
                   controller: _durationController,
                   decoration: InputDecoration(
@@ -241,7 +261,9 @@ class _LayoverPageState extends State<LayoverPage> {
 
                 const SizedBox(height: 16),
 
-                // ----- Airport Search -----
+                // ------------------------------
+                // Airport Search
+                // ------------------------------
                 AirportSearchBarWidget(
                   onAirportChanged: (airport, loc) {
                     setState(() {
@@ -253,40 +275,66 @@ class _LayoverPageState extends State<LayoverPage> {
 
                 const SizedBox(height: 20),
 
-                // ======================= UBER + LYFT BUTTONS =======================
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    ElevatedButton.icon(
-                      onPressed: () {
-                        launchUrl(Uri.parse("https://m.uber.com/ul/"),
-                            mode: LaunchMode.externalApplication);
-                      },
-                      icon: const Icon(Icons.local_taxi),
-                      label: const Text("Uber"),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.black,
-                        foregroundColor: Colors.white,
+                // =========================================================
+                // UBER + LYFT BUTTONS with auto-filled pickup
+                // =========================================================
+                if (_selectedAirportLoc != null)
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      ElevatedButton.icon(
+                        onPressed: () {
+                          final lat = _selectedAirportLoc!.latitude;
+                          final lng = _selectedAirportLoc!.longitude;
+                          final encoded = Uri.encodeComponent(_selectedAirport);
+
+                          final uberUrl = Uri.parse(
+                            "https://m.uber.com/ul/?action=setPickup"
+                            "&pickup[latitude]=$lat"
+                            "&pickup[longitude]=$lng"
+                            "&pickup[nickname]=$encoded",
+                          );
+
+                          launchUrl(uberUrl,
+                              mode: LaunchMode.externalApplication);
+                        },
+                        icon: const Icon(Icons.local_taxi),
+                        label: const Text("Uber"),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.black,
+                          foregroundColor: Colors.white,
+                        ),
                       ),
-                    ),
-                    ElevatedButton.icon(
-                      onPressed: () {
-                        launchUrl(Uri.parse("https://ride.lyft.com/"),
-                            mode: LaunchMode.externalApplication);
-                      },
-                      icon: const Icon(Icons.directions_car),
-                      label: const Text("Lyft"),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.purple,
-                        foregroundColor: Colors.white,
+
+                      ElevatedButton.icon(
+                        onPressed: () {
+                          final lat = _selectedAirportLoc!.latitude;
+                          final lng = _selectedAirportLoc!.longitude;
+
+                          final lyftUrl = Uri.parse(
+                            "https://ride.lyft.com/"
+                            "?pickup[latitude]=$lat"
+                            "&pickup[longitude]=$lng",
+                          );
+
+                          launchUrl(lyftUrl,
+                              mode: LaunchMode.externalApplication);
+                        },
+                        icon: const Icon(Icons.directions_car),
+                        label: const Text("Lyft"),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.purple,
+                          foregroundColor: Colors.white,
+                        ),
                       ),
-                    ),
-                  ],
-                ),
+                    ],
+                  ),
 
                 const SizedBox(height: 20),
 
-                // ----- Flight Input -----
+                // ------------------------------
+                // Flight Info
+                // ------------------------------
                 const Text(
                   "Check Flight Info",
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
@@ -312,18 +360,15 @@ class _LayoverPageState extends State<LayoverPage> {
 
                 if (_loadingFlight) const CircularProgressIndicator(),
                 if (_flightData != null)
-                  FlightInfoBox(
-                    flightData: _flightData!,
-                  ),
+                  FlightInfoBox(flightData: _flightData!),
 
                 const SizedBox(height: 16),
 
-                // ----- Activities List -----
                 if (_selectedAirport.isNotEmpty && _duration > 0)
                   Expanded(
                     child: ActivitiesList(
                       key: ValueKey("${_selectedAirport}_$_duration"),
-                      airportCords: _selectedAirportLoc,
+                      airportCords: _selectedAirportLoc!,
                       duration: _duration,
                       category: widget.category,
                       onActivitiesChanged: () => _startCountdown(_duration),
@@ -335,7 +380,9 @@ class _LayoverPageState extends State<LayoverPage> {
             ),
           ),
 
-          // ======================= RETURN TIMER FLOATING BOX =======================
+          // =========================================================
+          // Return Timer Bubble
+          // =========================================================
           Positioned(
             right: 16,
             bottom: 16,
@@ -357,9 +404,11 @@ class _LayoverPageState extends State<LayoverPage> {
                   const Text("⏰ Return Timer",
                       style: TextStyle(
                           fontWeight: FontWeight.bold, color: Colors.black87)),
-                  Text(_remainingTimeText,
-                      style:
-                          const TextStyle(fontSize: 18, color: Colors.black)),
+                  Text(
+                    _remainingTimeText,
+                    style:
+                        const TextStyle(fontSize: 18, color: Colors.black),
+                  ),
                 ],
               ),
             ),

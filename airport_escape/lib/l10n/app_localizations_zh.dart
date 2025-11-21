@@ -57,7 +57,9 @@ class AppLocalizationsZh extends AppLocalizations {
   String get airport_escape => 'Airport Escape';
 
   @override
-  String get plan_your_layover => '规划您的中转';
+  String plan_your_layover(String category) {
+    return '规划您的中转';
+  }
 
   @override
   String get layover_duration_label => '中转时长（小时）';
@@ -72,7 +74,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get could_not_launch_maps => '无法打开谷歌地图';
 
   @override
-  String suggested_activity_near(Object activity, Object airport) {
+  String suggested_activity_near(String airport, String activity) {
     return '$airport附近推荐活动：$activity';
   }
 
@@ -138,7 +140,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get cancel => '取消';
 
   @override
-  String adjust_screen_brightness(Object percent) {
+  String adjust_screen_brightness(int percent) {
     return '调整屏幕亮度：$percent%';
   }
 

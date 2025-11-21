@@ -1,21 +1,19 @@
 import 'dart:convert';
-import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:searchfield/searchfield.dart';
-
-// ==========================
-//  Airport Search Bar Widget
-// ==========================
 
 class AirportSearchBarWidget extends StatefulWidget {
   final Function(String, LatLng) onAirportChanged;
 
-  const AirportSearchBarWidget({super.key, required this.onAirportChanged});
+  const AirportSearchBarWidget({
+    super.key,
+    required this.onAirportChanged,
+  });
 
   @override
-  State<AirportSearchBarWidget> createState() =>
-      _AirportSearchBarWidgetState();
+  State<AirportSearchBarWidget> createState() => _AirportSearchBarWidgetState();
 }
 
 class _AirportSearchBarWidgetState extends State<AirportSearchBarWidget> {
@@ -26,48 +24,51 @@ class _AirportSearchBarWidgetState extends State<AirportSearchBarWidget> {
   @override
   void initState() {
     super.initState();
-    _fetchairports();
+    _loadAirportJson();
   }
 
-  // ==========================================
-  //   LOAD AIRPORTS FROM LOCAL JSON (NO API)
-  // ==========================================
-  Future<void> _fetchairports() async {
+  /// ===============================
+  /// LOAD JSON FROM assets/data/airports.json
+  /// ===============================
+  Future<void> _loadAirportJson() async {
     try {
-      final dataString =
+      // Correct path (you confirmed this)
+      final String jsonString =
           await rootBundle.loadString("assets/data/airports.json");
 
-      final Map<String, dynamic> jsonMap = json.decode(dataString);
-      final List<SearchFieldListItem<Airport>> airports = [];
+      // Your JSON is a MAP, not a LIST
+      final Map<String, dynamic> jsonMap = json.decode(jsonString);
 
-      jsonMap.forEach((code, ap) {
-        if (ap["lat"] != null && ap["lon"] != null) {
-          final airport = Airport(
-            "${ap["name"]} (${ap["iata"] ?? "N/A"})",
-            LatLng(
-              (ap["lat"]).toDouble(),
-              (ap["lon"]).toDouble(),
-            ),
-          );
+      final List<SearchFieldListItem<Airport>> loadedAirports =
+          jsonMap.entries.map((entry) {
+        final airport = entry.value;
 
-          airports.add(
-            SearchFieldListItem<Airport>(
-              airport.name,
-              item: airport,
-              child: ListTile(title: Text(airport.name)),
-            ),
-          );
-        }
-      });
+        final ap = Airport(
+          airport["name"],
+          LatLng(
+            (airport["lat"] as num).toDouble(),
+            (airport["lon"] as num).toDouble(),
+          ),
+        );
+
+        return SearchFieldListItem<Airport>(
+          ap.name,
+          value: ap.name,
+          item: ap,
+          child: ListTile(
+            dense: true,
+            contentPadding: EdgeInsets.zero,
+            title: Text(ap.name),
+          ),
+        );
+      }).toList();
 
       setState(() {
-        _airports = airports;
+        _airports = loadedAirports;
         _loading = false;
       });
-
-      debugPrint("✅ Loaded ${airports.length} airports from assets JSON");
     } catch (e) {
-      debugPrint("❌ Airport load ERROR: $e");
+      debugPrint("❌ Airport load error: $e");
       setState(() => _loading = false);
     }
   }
@@ -79,40 +80,51 @@ class _AirportSearchBarWidgetState extends State<AirportSearchBarWidget> {
     }
 
     return SearchField<Airport>(
-      suggestions: _airports,
-      suggestionState: Suggestion.expand,
-      maxSuggestionBoxHeight: 300,
-      onSuggestionTap: (item) {
-        setState(() => _selectedValue = item);
+      suggestions: _airports
+          .map(
+            (item) => item.copyWith(
+              value: item.value,
+              child: ListTile(
+                dense: true,
+                contentPadding: EdgeInsets.zero,
+                title: Text(item.item!.name),
+              ),
+            ),
+          )
+          .toList(),
 
-        final selectedAirport = item.item!;
-        widget.onAirportChanged(
-          selectedAirport.name,
-          selectedAirport.location,
-        );
-      },
+      selectedValue: _selectedValue,
+      suggestionState: Suggestion.expand,
+      maxSuggestionBoxHeight: 260,
+
       searchInputDecoration: SearchInputDecoration(
-        hintText: "Select an airport",
+        hintText: "Search airport",
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
         ),
         suffixIcon: const Icon(Icons.flight_takeoff),
       ),
-      itemHeight: 50,
-      // filtering logic
-      onSearchTextChanged: (query) {
+
+      onSuggestionTap: (SearchFieldListItem<Airport> item) {
+        setState(() => _selectedValue = item);
+
+        widget.onAirportChanged(
+          item.item!.name,
+          item.item!.location,
+        );
+      },
+
+      onSearchTextChanged: (text) {
+        if (text.isEmpty) return _airports;
+
         return _airports
-            .where((airport) =>
-                airport.item!.name.toLowerCase().contains(query.toLowerCase()))
+            .where((item) =>
+                item.item!.name.toLowerCase().contains(text.toLowerCase()))
             .toList();
       },
     );
   }
 }
-
-// ==========================
-//   Airport Model
-// ==========================
 
 class Airport {
   final String name;

@@ -57,7 +57,9 @@ class AppLocalizationsIt extends AppLocalizations {
   String get airport_escape => 'Airport Escape';
 
   @override
-  String get plan_your_layover => 'Pianifica il tuo scalo';
+  String plan_your_layover(String category) {
+    return 'Pianifica il tuo scalo';
+  }
 
   @override
   String get layover_duration_label => 'Durata dello scalo (ore)';
@@ -72,7 +74,7 @@ class AppLocalizationsIt extends AppLocalizations {
   String get could_not_launch_maps => 'Impossibile aprire Google Maps';
 
   @override
-  String suggested_activity_near(Object activity, Object airport) {
+  String suggested_activity_near(String airport, String activity) {
     return 'Attività suggerita vicino a $airport: $activity';
   }
 
@@ -138,7 +140,7 @@ class AppLocalizationsIt extends AppLocalizations {
   String get cancel => 'Annulla';
 
   @override
-  String adjust_screen_brightness(Object percent) {
+  String adjust_screen_brightness(int percent) {
     return 'Regola la luminosità dello schermo: $percent%';
   }
 

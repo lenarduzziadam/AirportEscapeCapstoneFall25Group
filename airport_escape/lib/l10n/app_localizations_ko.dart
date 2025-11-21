@@ -57,7 +57,9 @@ class AppLocalizationsKo extends AppLocalizations {
   String get airport_escape => 'Airport Escape';
 
   @override
-  String get plan_your_layover => '환승 계획하기';
+  String plan_your_layover(String category) {
+    return '환승 계획하기';
+  }
 
   @override
   String get layover_duration_label => '환승 시간 (시간)';
@@ -72,7 +74,7 @@ class AppLocalizationsKo extends AppLocalizations {
   String get could_not_launch_maps => 'Google 지도 실행에 실패했습니다';
 
   @override
-  String suggested_activity_near(Object activity, Object airport) {
+  String suggested_activity_near(String airport, String activity) {
     return '$airport 근처 추천 활동: $activity';
   }
 
@@ -138,7 +140,7 @@ class AppLocalizationsKo extends AppLocalizations {
   String get cancel => '취소';
 
   @override
-  String adjust_screen_brightness(Object percent) {
+  String adjust_screen_brightness(int percent) {
     return '화면 밝기 조정: $percent%';
   }
 

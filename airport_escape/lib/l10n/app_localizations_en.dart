@@ -57,7 +57,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get airport_escape => 'Airport Escape';
 
   @override
-  String get plan_your_layover => 'Plan Your Layover';
+  String plan_your_layover(String category) {
+    return 'Plan Your Layover: $category';
+  }
 
   @override
   String get layover_duration_label => 'Layover Duration (hours)';
@@ -72,7 +74,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get could_not_launch_maps => 'Could not launch Google Maps';
 
   @override
-  String suggested_activity_near(Object activity, Object airport) {
+  String suggested_activity_near(String airport, String activity) {
     return 'Suggested activity near $airport: $activity';
   }
 
@@ -118,11 +120,11 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get privacy_policy_content =>
-      'We collect location data to provide personalized layover suggestions.\n\nData is stored locally and not shared without consent.\n\nFor full policy, visit our website.';
+      'We collect location data to provide personalized layover suggestions.\n\nData is stored locally and not shared without consent.';
 
   @override
   String get terms_of_service_content =>
-      'By using this app you agree to our terms.\n\nThe app provides suggestions for entertainment during layovers.\n\nWe are not responsible for issues resulting from following suggestions.\n\nFor full terms, visit our website.';
+      'By using this app you agree to our terms.';
 
   @override
   String get about_content =>
@@ -138,7 +140,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get cancel => 'Cancel';
 
   @override
-  String adjust_screen_brightness(Object percent) {
+  String adjust_screen_brightness(int percent) {
     return 'Adjust screen brightness: $percent%';
   }
 
@@ -146,8 +148,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get enable_dark_theme_subtitle => 'Enable dark theme';
 
   @override
-  String get receive_suggestions_subtitle =>
-      'Receive layover suggestions and updates';
+  String get receive_suggestions_subtitle => 'Receive layover suggestions';
 
   @override
   String get allow_location_subtitle => 'Allow app to access your location';
@@ -156,8 +157,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get remember_searches_subtitle => 'Remember your recent searches';
 
   @override
-  String get auto_refresh_subtitle =>
-      'Automatically refresh activity suggestions';
+  String get auto_refresh_subtitle => 'Automatically refresh suggestions';
 
   @override
   String get view_privacy_policy_subtitle => 'View our privacy policy';

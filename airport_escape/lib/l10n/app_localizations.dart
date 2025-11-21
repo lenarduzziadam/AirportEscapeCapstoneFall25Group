@@ -215,8 +215,8 @@ abstract class AppLocalizations {
   /// No description provided for @plan_your_layover.
   ///
   /// In en, this message translates to:
-  /// **'Plan Your Layover'**
-  String get plan_your_layover;
+  /// **'Plan Your Layover: {category}'**
+  String plan_your_layover(String category);
 
   /// No description provided for @layover_duration_label.
   ///
@@ -246,7 +246,7 @@ abstract class AppLocalizations {
   ///
   /// In en, this message translates to:
   /// **'Suggested activity near {airport}: {activity}'**
-  String suggested_activity_near(Object activity, Object airport);
+  String suggested_activity_near(String airport, String activity);
 
   /// No description provided for @get_directions.
   ///
@@ -329,13 +329,13 @@ abstract class AppLocalizations {
   /// No description provided for @privacy_policy_content.
   ///
   /// In en, this message translates to:
-  /// **'We collect location data to provide personalized layover suggestions.\n\nData is stored locally and not shared without consent.\n\nFor full policy, visit our website.'**
+  /// **'We collect location data to provide personalized layover suggestions.\n\nData is stored locally and not shared without consent.'**
   String get privacy_policy_content;
 
   /// No description provided for @terms_of_service_content.
   ///
   /// In en, this message translates to:
-  /// **'By using this app you agree to our terms.\n\nThe app provides suggestions for entertainment during layovers.\n\nWe are not responsible for issues resulting from following suggestions.\n\nFor full terms, visit our website.'**
+  /// **'By using this app you agree to our terms.'**
   String get terms_of_service_content;
 
   /// No description provided for @about_content.
@@ -366,7 +366,7 @@ abstract class AppLocalizations {
   ///
   /// In en, this message translates to:
   /// **'Adjust screen brightness: {percent}%'**
-  String adjust_screen_brightness(Object percent);
+  String adjust_screen_brightness(int percent);
 
   /// No description provided for @enable_dark_theme_subtitle.
   ///
@@ -377,7 +377,7 @@ abstract class AppLocalizations {
   /// No description provided for @receive_suggestions_subtitle.
   ///
   /// In en, this message translates to:
-  /// **'Receive layover suggestions and updates'**
+  /// **'Receive layover suggestions'**
   String get receive_suggestions_subtitle;
 
   /// No description provided for @allow_location_subtitle.
@@ -395,7 +395,7 @@ abstract class AppLocalizations {
   /// No description provided for @auto_refresh_subtitle.
   ///
   /// In en, this message translates to:
-  /// **'Automatically refresh activity suggestions'**
+  /// **'Automatically refresh suggestions'**
   String get auto_refresh_subtitle;
 
   /// No description provided for @view_privacy_policy_subtitle.

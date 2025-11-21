@@ -4,20 +4,21 @@ import 'package:flutter/material.dart';
 import 'settings_menu.dart';
 import 'layover_page.dart';
 import 'widgets/live_tip_button.dart';
-import 'package:firebase_auth/firebase_auth.dart'; // <-- added for logout
+import 'package:firebase_auth/firebase_auth.dart';
 
 // App-wide color constants
 const kPrimaryColor = Color.fromARGB(255, 18, 71, 156);
 const kBackgroundColor = Color(0xFFE0F7FA);
 
-// Main landing page widget
 class MyHomePage extends StatelessWidget {
   const MyHomePage({super.key});
 
   void _openLayoverPage(BuildContext context) {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => LayoverPage()),
+      MaterialPageRoute(
+        builder: (context) => const LayoverPage(category: "general"),
+      ),
     );
   }
 
@@ -26,8 +27,9 @@ class MyHomePage extends StatelessWidget {
     final theme = Theme.of(context);
     final isDark = theme.brightness == Brightness.dark;
     final welcomeColor = isDark
-        ? theme.colorScheme.onSurface.withOpacity(0.85) // off-gray in dark
+        ? theme.colorScheme.onSurface.withOpacity(0.85)
         : kPrimaryColor;
+
     return Scaffold(
       drawer: const SettingsDrawer(),
       appBar: const CustomAppBar(),
@@ -35,6 +37,7 @@ class MyHomePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            // Welcome Header Box
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 32),
               decoration: BoxDecoration(
@@ -60,10 +63,15 @@ class MyHomePage extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
             ),
+
             const SizedBox(height: 30),
+
+            // --- PLAN LAYOVER BUTTON ---
             ElevatedButton(
               onPressed: () => _openLayoverPage(context),
-              child: Text(AppLocalizations.of(context)!.plan_your_layover),
+              child: Text(
+                AppLocalizations.of(context)!.plan_your_layover(""),
+              ),
             ),
           ],
         ),
@@ -72,7 +80,9 @@ class MyHomePage extends StatelessWidget {
   }
 }
 
-// Settings drawer with navigation to SettingsPage
+// ------------------------------------------------------------
+// Settings Drawer
+// ------------------------------------------------------------
 class SettingsDrawer extends StatelessWidget {
   const SettingsDrawer({super.key});
 
@@ -83,30 +93,29 @@ class SettingsDrawer extends StatelessWidget {
         padding: EdgeInsets.zero,
         children: <Widget>[
           DrawerHeader(
-            decoration: BoxDecoration(color: kPrimaryColor),
+            decoration: const BoxDecoration(color: kPrimaryColor),
             child: Text(
               AppLocalizations.of(context)!.settings,
               style: const TextStyle(color: Colors.white, fontSize: 24),
             ),
           ),
+
           ListTile(
             leading: const Icon(Icons.settings),
             title: Text(AppLocalizations.of(context)!.general_settings),
             onTap: () {
-              Navigator.pop(context); // Close drawer first
+              Navigator.pop(context);
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const SettingsPage()),
+                MaterialPageRoute(builder: (_) => const SettingsPage()),
               );
             },
           ),
+
           ListTile(
             leading: const Icon(Icons.security),
             title: Text(AppLocalizations.of(context)!.security),
-            onTap: () {
-              Navigator.pop(context);
-              // Add security page later if needed
-            },
+            onTap: () => Navigator.pop(context),
           ),
         ],
       ),
@@ -114,7 +123,9 @@ class SettingsDrawer extends StatelessWidget {
   }
 }
 
-// Custom app bar widget for top navigation
+// ------------------------------------------------------------
+// Custom App Bar
+// ------------------------------------------------------------
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({super.key});
 
@@ -127,9 +138,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       leading: Builder(
         builder: (context) => IconButton(
           icon: const Icon(Icons.settings, color: Colors.white),
-          onPressed: () {
-            Scaffold.of(context).openDrawer();
-          },
+          onPressed: () => Scaffold.of(context).openDrawer(),
           tooltip: 'Open settings',
         ),
       ),
@@ -138,17 +147,13 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         style: const TextStyle(fontWeight: FontWeight.bold),
       ),
       actions: [
-        const LiveTipButton(), // ← tiny lightbulb button
+        const LiveTipButton(),
         PopupMenuButton<String>(
           icon: const Icon(Icons.account_circle, color: Colors.white),
           onSelected: (String value) async {
-            if (value == 'Profile') {
-              // TODO: navigate to profile page later
-            } else if (value == 'Logout') {
+            if (value == 'Logout') {
               try {
                 await FirebaseAuth.instance.signOut();
-                // _AuthGate in main.dart will pick this up via authStateChanges
-                // and automatically show the login page.
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     content: Text(AppLocalizations.of(context)!.logout),
@@ -157,20 +162,17 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                 );
               } catch (e) {
                 ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text('Logout failed: $e'),
-                    duration: const Duration(seconds: 2),
-                  ),
+                  SnackBar(content: Text('Logout failed: $e')),
                 );
               }
             }
           },
-          itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
-            PopupMenuItem<String>(
+          itemBuilder: (BuildContext context) => [
+            PopupMenuItem(
               value: 'Profile',
               child: Text(AppLocalizations.of(context)!.profile),
             ),
-            PopupMenuItem<String>(
+            PopupMenuItem(
               value: 'Logout',
               child: Text(AppLocalizations.of(context)!.logout),
             ),

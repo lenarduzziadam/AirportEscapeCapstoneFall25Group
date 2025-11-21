@@ -1,5 +1,6 @@
 {
   "@@locale": "en",
+
   "settings": "Settings",
   "dark_mode": "Dark Mode",
   "language": "Language",
@@ -16,12 +17,29 @@
   "security": "Security",
   "general_settings": "General Settings",
   "airport_escape": "Airport Escape",
-  "plan_your_layover": "Plan Your Layover",
+
+  "plan_your_layover": "Plan Your Layover: {category}",
+  "@plan_your_layover": {
+    "placeholders": {
+      "category": {
+        "type": "String",
+        "example": "Restaurants"
+      }
+    }
+  },
+
   "layover_duration_label": "Layover Duration (hours)",
   "select_airport": "Select Airport",
   "please_enter_duration": "Please enter your layover duration.",
   "could_not_launch_maps": "Could not launch Google Maps",
   "suggested_activity_near": "Suggested activity near {airport}: {activity}",
+  "@suggested_activity_near": {
+    "placeholders": {
+      "airport": { "type": "String" },
+      "activity": { "type": "String" }
+    }
+  },
+
   "get_directions": "Get Directions",
   "save_search_history": "Save search history",
   "auto_refresh": "Auto refresh",
@@ -35,24 +53,37 @@
   "section_general": "General",
   "version": "Version",
   "version_info": "Version: 0.4.7\nBuild: 2025.10.20\nDeveloped by Team Airport Escape\n© 2025 All rights reserved",
-  "privacy_policy_content": "We collect location data to provide personalized layover suggestions.\n\nData is stored locally and not shared without consent.\n\nFor full policy, visit our website.",
-  "terms_of_service_content": "By using this app you agree to our terms.\n\nThe app provides suggestions for entertainment during layovers.\n\nWe are not responsible for issues resulting from following suggestions.\n\nFor full terms, visit our website.",
+
+  "privacy_policy_content": "We collect location data to provide personalized layover suggestions.\n\nData is stored locally and not shared without consent.",
+  "terms_of_service_content": "By using this app you agree to our terms.",
   "about_content": "Airport Escape helps passengers plan activities during layovers.\n\nBuilt by Team Airport Escape.\n\n© 2025 Team Airport Escape.",
+
   "ok": "OK",
   "close": "Close",
   "cancel": "Cancel",
+
   "adjust_screen_brightness": "Adjust screen brightness: {percent}%",
+  "@adjust_screen_brightness": {
+    "placeholders": {
+      "percent": {
+        "type": "int",
+        "example": "75"
+      }
+    }
+  },
+
   "enable_dark_theme_subtitle": "Enable dark theme",
-  "receive_suggestions_subtitle": "Receive layover suggestions and updates",
+  "receive_suggestions_subtitle": "Receive layover suggestions",
   "allow_location_subtitle": "Allow app to access your location",
   "remember_searches_subtitle": "Remember your recent searches",
-  "auto_refresh_subtitle": "Automatically refresh activity suggestions",
+  "auto_refresh_subtitle": "Automatically refresh suggestions",
   "view_privacy_policy_subtitle": "View our privacy policy",
   "view_terms_subtitle": "View terms and conditions",
   "reset_app_subtitle": "Reset app to default settings",
   "reset_dialog_content": "This will reset all settings to their default values.\n\nThis action cannot be undone. Are you sure?",
   "reset_confirm_button": "Reset",
   "reset_success_snackbar": "All settings reset to defaults",
+
   "signIn": "Sign In",
   "register": "Register",
   "email": "Email",
