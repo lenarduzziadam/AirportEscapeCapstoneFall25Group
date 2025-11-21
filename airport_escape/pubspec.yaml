@@ -94,6 +94,7 @@ flutter:
   assets:
     - .env
     - assets/images/placeholder.png
+    - assets/data/airports.json
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
@@ -120,4 +121,3 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
-
