@@ -1,7 +1,7 @@
 // Flutter app entry point and theme setup
 import 'package:airport_escape/l10n/app_localizations.dart';
 
-import 'settings/theme_toggle.dart'; 
+import 'settings/theme_toggle.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:firebase_database/firebase_database.dart';
@@ -12,7 +12,6 @@ import 'landing_page.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'settings/locale_provider.dart';
-// If you need AppLocalizations, enable Flutter's gen_l10n in pubspec.yaml and run `flutter gen-l10n`.
 
 // Import RTDB test page (dev only, not active by default)
 import 'database_test_page.dart';
@@ -25,15 +24,12 @@ const kBackgroundColor = Color(0xFFE0F7FA);
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   try {
-  await dotenv.load(fileName: ".env");
-} catch (e) {
-  debugPrint("No .env file found, skipping dotenv load");
-}
+    await dotenv.load(fileName: ".env");
+  } catch (e) {
+    debugPrint("No .env file found, skipping dotenv load");
+  }
 
-
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   // DEV ONLY: log RTDB connection status
   FirebaseDatabase.instance.ref('.info/connected').onValue.listen((e) {
@@ -51,7 +47,6 @@ Future<void> main() async {
     ),
   );
 }
-
 
 // Root widget: sets up MaterialApp and theme
 class MyApp extends StatelessWidget {
@@ -100,17 +95,23 @@ class _AuthGate extends StatelessWidget {
       stream: FirebaseAuth.instance.authStateChanges(),
       builder: (context, snap) {
         if (snap.connectionState == ConnectionState.waiting) {
-          return const Scaffold(body: Center(child: CircularProgressIndicator()));
+          return const Scaffold(
+            body: Center(child: CircularProgressIndicator()),
+          );
         }
         final user = snap.data;
         if (user == null) return const _LoginPage(); // minimal login below
 
         // fetch roles/<uid>/isAdmin once
         return FutureBuilder<DataSnapshot>(
-          future: FirebaseDatabase.instance.ref('roles/${user.uid}/isAdmin').get(),
+          future: FirebaseDatabase.instance
+              .ref('roles/${user.uid}/isAdmin')
+              .get(),
           builder: (context, roleSnap) {
             if (roleSnap.connectionState == ConnectionState.waiting) {
-              return const Scaffold(body: Center(child: CircularProgressIndicator()));
+              return const Scaffold(
+                body: Center(child: CircularProgressIndicator()),
+              );
             }
             final isAdmin = (roleSnap.data?.value == true);
             // ignore: avoid_print
@@ -140,7 +141,10 @@ class _LoginPageState extends State<_LoginPage> {
   bool _isSignIn = true; // toggle between sign in and register
 
   Future<void> _signIn() async {
-    setState(() { _busy = true; _error = null; });
+    setState(() {
+      _busy = true;
+      _error = null;
+    });
     try {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: _email.text.trim(),
@@ -154,7 +158,10 @@ class _LoginPageState extends State<_LoginPage> {
   }
 
   Future<void> _register() async {
-    setState(() { _busy = true; _error = null; });
+    setState(() {
+      _busy = true;
+      _error = null;
+    });
     try {
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: _email.text.trim(),
@@ -179,6 +186,7 @@ class _LoginPageState extends State<_LoginPage> {
   Widget build(BuildContext context) {
     final localizations = AppLocalizations.of(context)!;
     return Scaffold(
+
       appBar: AppBar(
         title: Text(_isSignIn ? localizations.signIn : localizations.register),
         elevation: 0,
@@ -203,6 +211,22 @@ class _LoginPageState extends State<_LoginPage> {
                     OutlinedButton(onPressed: _busy ? null : _register, child: Text(AppLocalizations.of(context)!.register)),
                   ],
                 ),
+                  Align(
+              alignment: Alignment.centerLeft,
+              child: TextButton(
+                onPressed: _busy
+                    ? null
+                    : () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const _ForgotPasswordPage(),
+                          ),
+                        );
+                      },
+                child: const Text('Forgot password?'),
+              ),
+            ),
                 if (_error != null) ...[
                   const SizedBox(height: 12),
                   Text(_error!, style: const TextStyle(color: Colors.red)),
@@ -214,6 +238,129 @@ class _LoginPageState extends State<_LoginPage> {
               ],
             ),
           ),
+
+        ),
+      ),
+    );
+  }
+}
+
+// simple password reset page
+class _ForgotPasswordPage extends StatefulWidget {
+  const _ForgotPasswordPage({super.key});
+
+  @override
+  State<_ForgotPasswordPage> createState() => _ForgotPasswordPageState();
+}
+
+class _ForgotPasswordPageState extends State<_ForgotPasswordPage> {
+  final TextEditingController _emailController = TextEditingController();
+  bool _isSending = false;
+  String? _errorMessage;
+  String? _successMessage;
+
+  Future<void> _sendResetEmail() async {
+    // close keyboard
+    FocusScope.of(context).unfocus();
+
+    final String email = _emailController.text.trim();
+
+    setState(() {
+      _errorMessage = null;
+      _successMessage = null;
+    });
+
+    if (email.isEmpty) {
+      setState(() {
+        _errorMessage = 'Please enter your email.';
+      });
+      return;
+    }
+
+    setState(() {
+      _isSending = true;
+    });
+
+    try {
+      await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
+
+      setState(() {
+        _successMessage =
+            'Password reset email sent. Check your inbox (and spam).';
+      });
+    } on FirebaseAuthException catch (e) {
+      String msg = 'Something went wrong. Please try again.';
+
+      if (e.code == 'invalid-email') {
+        msg = 'That email address is not valid.';
+      } else if (e.code == 'user-not-found') {
+        msg = 'No user found with that email.';
+      }
+
+      setState(() {
+        _errorMessage = msg;
+      });
+    } catch (_) {
+      setState(() {
+        _errorMessage = 'Unexpected error. Please try again.';
+      });
+    } finally {
+      if (mounted) {
+        setState(() {
+          _isSending = false;
+        });
+      }
+    }
+  }
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Reset password')),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            const Text(
+              'Enter the email you used for your account. '
+              'We will send you a link to reset your password.',
+            ),
+            const SizedBox(height: 16),
+            TextField(
+              controller: _emailController,
+              keyboardType: TextInputType.emailAddress,
+              decoration: const InputDecoration(
+                labelText: 'Email',
+                border: OutlineInputBorder(),
+              ),
+            ),
+            const SizedBox(height: 16),
+            ElevatedButton(
+              onPressed: _isSending ? null : _sendResetEmail,
+              child: _isSending
+                  ? const SizedBox(
+                      height: 18,
+                      width: 18,
+                      child: CircularProgressIndicator(strokeWidth: 2),
+                    )
+                  : const Text('Send reset link'),
+            ),
+            const SizedBox(height: 16),
+            if (_errorMessage != null)
+              Text(_errorMessage!, style: const TextStyle(color: Colors.red)),
+            if (_successMessage != null)
+              Text(
+                _successMessage!,
+                style: const TextStyle(color: Colors.green),
+              ),
+          ],
         ),
       ),
     );
