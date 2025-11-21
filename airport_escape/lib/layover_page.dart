@@ -14,8 +14,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'widgets/search_bar_widget.dart';
 
 class LayoverPage extends StatefulWidget {
-
-  const LayoverPage({super.key, });
+  const LayoverPage({super.key});
 
   @override
   State<LayoverPage> createState() => _LayoverPageState();
@@ -35,9 +34,20 @@ class _LayoverPageState extends State<LayoverPage> {
   Timer? _countdownTimer;
   bool _loadingFlight = false;
 
+
+  String _selectedCategory = "";
+  List<String> get _categories => [
+    AppLocalizations.of(context)!.restaurant,
+    AppLocalizations.of(context)!.entertainment,
+    AppLocalizations.of(context)!.shopping,
+  ];
   List<String> _favorites = [];
 
+
+  bool _isOnlyInAirport = false;
+
   // ======================= FAVORITES =======================
+
 
   Future<void> _loadFavorites() async {
     final prefs = await SharedPreferences.getInstance();
@@ -205,10 +215,13 @@ class _LayoverPageState extends State<LayoverPage> {
 
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
       appBar: AppBar(
+
         title:
-            Text(AppLocalizations.of(context)!.plan_your_layover(widget.category)),
+            Text(AppLocalizations.of(context)!.plan_your_layover),
+
         actions: [
           IconButton(
               icon: const Icon(Icons.star),
@@ -222,7 +235,34 @@ class _LayoverPageState extends State<LayoverPage> {
             padding: const EdgeInsets.all(16),
             child: Column(
               children: [
+
+                          // ----- Category Dropdown -----
+                DropdownButtonFormField<String>(
+                  decoration: const InputDecoration(
+                    labelText: "Category",
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(8)),
+                    ),
+                  ),
+                  items: _categories
+                      .map(
+                        (category) => DropdownMenuItem<String>(
+                          value: category,
+                          child: Text(category),
+                        ),
+                      )
+                      .toList(),
+                  onChanged: (value) {
+                    if (value != null) {
+                      setState(() => _selectedCategory = value);
+                    }
+                  },
+                ),
+
+                const SizedBox(height: 8),
+
                 // ----- Duration Input -----
+
                 TextField(
                   controller: _durationController,
                   decoration: InputDecoration(
@@ -239,9 +279,12 @@ class _LayoverPageState extends State<LayoverPage> {
                   },
                 ),
 
-                const SizedBox(height: 16),
+                const SizedBox(height: 8),
+
+
 
                 // ----- Airport Search -----
+
                 AirportSearchBarWidget(
                   onAirportChanged: (airport, loc) {
                     setState(() {
@@ -251,6 +294,21 @@ class _LayoverPageState extends State<LayoverPage> {
                   },
                 ),
 
+                const SizedBox(height: 8),
+
+                // is in only airport box
+                Text("Only in airport"),
+                Checkbox(
+                  value: _isOnlyInAirport,
+                  onChanged: (bool? value) {
+                    setState(() {
+                      _isOnlyInAirport = value!;
+                    });
+                  },
+                ),
+
+                //const SizedBox(height: 16),
+                // flight info box
                 const SizedBox(height: 20),
 
                 // ======================= UBER + LYFT BUTTONS =======================
@@ -312,23 +370,23 @@ class _LayoverPageState extends State<LayoverPage> {
 
                 if (_loadingFlight) const CircularProgressIndicator(),
                 if (_flightData != null)
-                  FlightInfoBox(
-                    flightData: _flightData!,
-                  ),
-
-                const SizedBox(height: 16),
-
-                // ----- Activities List -----
-                if (_selectedAirport.isNotEmpty && _duration > 0)
+                  FlightInfoBox(flightData: _flightData!),
+                const SizedBox(height: 8),
+                if (_selectedAirport.isNotEmpty &&
+                    _duration > 0 &&
+                    _selectedCategory.isNotEmpty)
                   Expanded(
                     child: ActivitiesList(
-                      key: ValueKey("${_selectedAirport}_$_duration"),
+                      key: ValueKey(
+                        "$_selectedAirport _$_duration _$_selectedCategory _$_isOnlyInAirport",
+                      ),
                       airportCords: _selectedAirportLoc,
                       duration: _duration,
-                      category: widget.category,
+                      category: _selectedCategory,
                       onActivitiesChanged: () => _startCountdown(_duration),
                       favorites: _favorites,
                       onFavorite: _saveFavorite,
+                      isOnlyInAirport: _isOnlyInAirport,
                     ),
                   ),
               ],
