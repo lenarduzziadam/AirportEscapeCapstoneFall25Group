@@ -65,6 +65,13 @@ class MyHomePage extends StatelessWidget {
               onPressed: () => _openLayoverPage(context),
               child: Text(AppLocalizations.of(context)!.plan_your_layover),
             ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/notification-test');
+              },
+              child: const Text("Open Notification Test Page"),
+            )
+
           ],
         ),
       ),
