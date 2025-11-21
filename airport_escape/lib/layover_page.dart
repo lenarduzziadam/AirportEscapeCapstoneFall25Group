@@ -34,6 +34,13 @@ class _LayoverPageState extends State<LayoverPage> {
   Timer? _countdownTimer;
   bool _loadingFlight = false;
 
+
+  String _selectedCategory = "";
+  List<String> get _categories => [
+    AppLocalizations.of(context)!.restaurant,
+    AppLocalizations.of(context)!.entertainment,
+    AppLocalizations.of(context)!.shopping,
+  ];
   List<String> _favorites = [];
 
 
@@ -208,11 +215,12 @@ class _LayoverPageState extends State<LayoverPage> {
 
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
       appBar: AppBar(
 
         title:
-            Text(AppLocalizations.of(context)!.plan_your_layover(widget.category)),
+            Text(AppLocalizations.of(context)!.plan_your_layover),
 
         actions: [
           IconButton(
@@ -374,7 +382,7 @@ class _LayoverPageState extends State<LayoverPage> {
                       ),
                       airportCords: _selectedAirportLoc,
                       duration: _duration,
-                      category: widget.category,
+                      category: _selectedCategory,
                       onActivitiesChanged: () => _startCountdown(_duration),
                       favorites: _favorites,
                       onFavorite: _saveFavorite,
