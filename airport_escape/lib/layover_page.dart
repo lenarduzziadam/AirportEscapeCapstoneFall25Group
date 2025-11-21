@@ -312,14 +312,27 @@ class _LayoverPageState extends State<LayoverPage> {
                 // flight info box
                 const SizedBox(height: 20),
 
-                // ======================= UBER + LYFT BUTTONS =======================
+                // =========================================================
+                // UBER + LYFT BUTTONS with auto-filled pickup
+                // =========================================================
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     ElevatedButton.icon(
                       onPressed: () {
+                        final lat = _selectedAirportLoc.latitude;
+                        final lng = _selectedAirportLoc.longitude;
+                        final encoded = Uri.encodeComponent(_selectedAirport);
+
+                        final uberUrl = Uri.parse(
+                          "https://m.uber.com/ul/?action=setPickup"
+                          "&pickup[latitude]=$lat"
+                          "&pickup[longitude]=$lng"
+                          "&pickup[nickname]=$encoded",
+                        );
+
                         launchUrl(
-                          Uri.parse("https://m.uber.com/ul/"),
+                          uberUrl,
                           mode: LaunchMode.externalApplication,
                         );
                       },
@@ -332,8 +345,17 @@ class _LayoverPageState extends State<LayoverPage> {
                     ),
                     ElevatedButton.icon(
                       onPressed: () {
+                        final lat = _selectedAirportLoc.latitude;
+                        final lng = _selectedAirportLoc.longitude;
+
+                        final lyftUrl = Uri.parse(
+                          "https://ride.lyft.com/"
+                          "?pickup[latitude]=$lat"
+                          "&pickup[longitude]=$lng",
+                        );
+
                         launchUrl(
-                          Uri.parse("https://ride.lyft.com/"),
+                          lyftUrl,
                           mode: LaunchMode.externalApplication,
                         );
                       },
