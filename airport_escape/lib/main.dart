@@ -186,7 +186,6 @@ class _LoginPageState extends State<_LoginPage> {
   Widget build(BuildContext context) {
     final localizations = AppLocalizations.of(context)!;
     return Scaffold(
-
       appBar: AppBar(
         title: Text(_isSignIn ? localizations.signIn : localizations.register),
         elevation: 0,
@@ -200,33 +199,52 @@ class _LoginPageState extends State<_LoginPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                TextField(controller: _email, keyboardType: TextInputType.emailAddress, decoration: InputDecoration(labelText: AppLocalizations.of(context)!.email)),
+                TextField(
+                  controller: _email,
+                  keyboardType: TextInputType.emailAddress,
+                  decoration: InputDecoration(
+                    labelText: AppLocalizations.of(context)!.email,
+                  ),
+                ),
                 const SizedBox(height: 8),
-                TextField(controller: _pw, decoration: InputDecoration(labelText: AppLocalizations.of(context)!.password), obscureText: true),
+                TextField(
+                  controller: _pw,
+                  decoration: InputDecoration(
+                    labelText: AppLocalizations.of(context)!.password,
+                  ),
+                  obscureText: true,
+                ),
                 const SizedBox(height: 12),
                 Row(
                   children: [
-                    ElevatedButton(onPressed: _busy ? null : _signIn, child: Text(AppLocalizations.of(context)!.signIn)),
+                    ElevatedButton(
+                      onPressed: _busy ? null : _signIn,
+                      child: Text(AppLocalizations.of(context)!.signIn),
+                    ),
                     const SizedBox(width: 12),
-                    OutlinedButton(onPressed: _busy ? null : _register, child: Text(AppLocalizations.of(context)!.register)),
+                    OutlinedButton(
+                      onPressed: _busy ? null : _register,
+                      child: Text(AppLocalizations.of(context)!.register),
+                    ),
                   ],
                 ),
-                  Align(
-              alignment: Alignment.centerLeft,
-              child: TextButton(
-                onPressed: _busy
-                    ? null
-                    : () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const _ForgotPasswordPage(),
-                          ),
-                        );
-                      },
-                child: const Text('Forgot password?'),
-              ),
-            ),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: TextButton(
+                    onPressed: _busy
+                        ? null
+                        : () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    const _ForgotPasswordPage(),
+                              ),
+                            );
+                          },
+                    child: const Text('Forgot password?'),
+                  ),
+                ),
                 if (_error != null) ...[
                   const SizedBox(height: 12),
                   Text(_error!, style: const TextStyle(color: Colors.red)),
@@ -238,7 +256,6 @@ class _LoginPageState extends State<_LoginPage> {
               ],
             ),
           ),
-
         ),
       ),
     );
