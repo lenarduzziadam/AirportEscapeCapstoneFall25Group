@@ -1,7 +1,6 @@
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:permission_handler/permission_handler.dart' as permission_handler;
 
-class NotificationService {
+class _NotificationServiceImpl {
   static final FlutterLocalNotificationsPlugin _plugin =
       FlutterLocalNotificationsPlugin();
 
@@ -15,24 +14,18 @@ class NotificationService {
     );
 
     await _plugin.initialize(initSettings);
-
-    // Request notification permission on Android 13+
-    if (await permission_handler.Permission.notification.isDenied) {
-      await permission_handler.Permission.notification.request();
-    }
-
-    // Android notification channel
-    const channel = AndroidNotificationChannel(
+    
+    // Android channel setup
+    const androidChannel = AndroidNotificationChannel(
       'basic_channel',
       'Basic Notifications',
       description: 'Used for important notifications',
       importance: Importance.high,
     );
 
-    await _plugin
-        .resolvePlatformSpecificImplementation<
-            AndroidFlutterLocalNotificationsPlugin>()
-        ?.createNotificationChannel(channel);
+    await _plugin.resolvePlatformSpecificImplementation<
+        AndroidFlutterLocalNotificationsPlugin>()
+      ?.createNotificationChannel(androidChannel);
   }
 
   static Future<void> showNotification({
@@ -50,6 +43,7 @@ class NotificationService {
 
     const details = NotificationDetails(android: androidDetails, iOS: iosDetails);
 
+    // Use a unique ID for each notification (milliseconds since epoch)
     final id = DateTime.now().millisecondsSinceEpoch ~/ 1000;
 
     await _plugin.show(id, title, body, details);

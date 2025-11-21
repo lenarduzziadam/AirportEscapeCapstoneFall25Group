@@ -379,29 +379,24 @@ Future<void> scheduleLocalNotification({
 }) async {
   final flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
 
-  // ensure timezone data is initialized before creating TZDateTime instances
-  tz.initializeTimeZones();
-
   final scheduledDate = tz.TZDateTime.from(
     DateTime.now().add(Duration(seconds: seconds)),
     tz.local,
   );
 
   await flutterLocalNotificationsPlugin.zonedSchedule(
-    DateTime.now().millisecondsSinceEpoch ~/ 1000, // unique ID
-    title,
-    body,
-    scheduledDate,
-    const NotificationDetails(
-      android: AndroidNotificationDetails(
-        "high_importance_channel",
-        "High Importance Notifications",
-        importance: Importance.high,
-      ),
+  DateTime.now().millisecondsSinceEpoch ~/ 1000, // unique ID
+  title,
+  body,
+  scheduledDate,
+  const NotificationDetails(
+    android: AndroidNotificationDetails(
+      "high_importance_channel",
+      "High Importance Notifications",
+      importance: Importance.high,
     ),
-    androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
-    uiLocalNotificationDateInterpretation:
-        UILocalNotificationDateInterpretation.absoluteTime,
-    matchDateTimeComponents: null,
-  );
+  ),
+  androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
+  matchDateTimeComponents: null, // optional
+);
 }
