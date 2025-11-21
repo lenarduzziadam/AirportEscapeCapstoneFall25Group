@@ -34,7 +34,6 @@ class _LayoverPageState extends State<LayoverPage> {
   Timer? _countdownTimer;
   bool _loadingFlight = false;
 
-
   String _selectedCategory = "";
   List<String> get _categories => [
     AppLocalizations.of(context)!.restaurant,
@@ -43,11 +42,9 @@ class _LayoverPageState extends State<LayoverPage> {
   ];
   List<String> _favorites = [];
 
-
   bool _isOnlyInAirport = false;
 
   // ======================= FAVORITES =======================
-
 
   Future<void> _loadFavorites() async {
     final prefs = await SharedPreferences.getInstance();
@@ -61,8 +58,9 @@ class _LayoverPageState extends State<LayoverPage> {
     if (!_favorites.contains(place)) {
       setState(() => _favorites.add(place));
       await prefs.setStringList('favorites', _favorites);
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text('$place added to favorites')));
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text('$place added to favorites')));
     }
   }
 
@@ -71,8 +69,9 @@ class _LayoverPageState extends State<LayoverPage> {
     setState(() => _favorites.remove(place));
     await prefs.setStringList('favorites', _favorites);
 
-    ScaffoldMessenger.of(context)
-        .showSnackBar(SnackBar(content: Text('$place removed')));
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(SnackBar(content: Text('$place removed')));
   }
 
   void _showFavorites() {
@@ -87,22 +86,23 @@ class _LayoverPageState extends State<LayoverPage> {
             children: _favorites.isEmpty
                 ? [const Text("No favorites yet.")]
                 : _favorites
-                    .map(
-                      (f) => ListTile(
-                        title: Text(f),
-                        trailing: IconButton(
-                          icon: const Icon(Icons.delete, color: Colors.red),
-                          onPressed: () => _removeFavorite(f),
+                      .map(
+                        (f) => ListTile(
+                          title: Text(f),
+                          trailing: IconButton(
+                            icon: const Icon(Icons.delete, color: Colors.red),
+                            onPressed: () => _removeFavorite(f),
+                          ),
                         ),
-                      ),
-                    )
-                    .toList(),
+                      )
+                      .toList(),
           ),
         ),
         actions: [
           TextButton(
-              onPressed: () => Navigator.pop(context),
-              child: const Text("Close"))
+            onPressed: () => Navigator.pop(context),
+            child: const Text("Close"),
+          ),
         ],
       ),
     );
@@ -120,7 +120,8 @@ class _LayoverPageState extends State<LayoverPage> {
       if (_remainingTime.inSeconds <= 0) {
         timer.cancel();
         ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text("Layover over! Time to head back.")));
+          const SnackBar(content: Text("Layover over! Time to head back.")),
+        );
       } else {
         setState(() {
           _remainingTime -= const Duration(seconds: 1);
@@ -145,19 +146,22 @@ class _LayoverPageState extends State<LayoverPage> {
 
     if (flightCode.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text("Enter a flight code (e.g. AA100)")));
+        const SnackBar(content: Text("Enter a flight code (e.g. AA100)")),
+      );
       return;
     }
 
     final apiKey = _loadApiKey();
     if (apiKey == null || apiKey.isEmpty) {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(const SnackBar(content: Text("Missing API key!")));
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text("Missing API key!")));
       return;
     }
 
     final url = Uri.parse(
-        'https://api.aviationstack.com/v1/flights?access_key=$apiKey&flight_iata=$flightCode');
+      'https://api.aviationstack.com/v1/flights?access_key=$apiKey&flight_iata=$flightCode',
+    );
 
     setState(() {
       _loadingFlight = true;
@@ -172,16 +176,19 @@ class _LayoverPageState extends State<LayoverPage> {
         if (data['data'] != null && data['data'].isNotEmpty) {
           setState(() => _flightData = data['data'][0]);
         } else {
-          ScaffoldMessenger.of(context)
-              .showSnackBar(const SnackBar(content: Text("No flight found.")));
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(const SnackBar(content: Text("No flight found.")));
         }
       } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text("Error ${response.statusCode}")));
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text("Error ${response.statusCode}")));
       }
     } catch (e) {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text("Error: $e")));
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text("Error: $e")));
     } finally {
       setState(() => _loadingFlight = false);
     }
@@ -215,18 +222,16 @@ class _LayoverPageState extends State<LayoverPage> {
 
   @override
   Widget build(BuildContext context) {
-    
     return Scaffold(
       appBar: AppBar(
-
-        title:
-            Text(AppLocalizations.of(context)!.plan_your_layover),
+        title: Text(AppLocalizations.of(context)!.plan_your_layover),
 
         actions: [
           IconButton(
-              icon: const Icon(Icons.star),
-              tooltip: "Favorites",
-              onPressed: _showFavorites)
+            icon: const Icon(Icons.star),
+            tooltip: "Favorites",
+            onPressed: _showFavorites,
+          ),
         ],
       ),
       body: Stack(
@@ -235,8 +240,7 @@ class _LayoverPageState extends State<LayoverPage> {
             padding: const EdgeInsets.all(16),
             child: Column(
               children: [
-
-                          // ----- Category Dropdown -----
+                // ----- Category Dropdown -----
                 DropdownButtonFormField<String>(
                   decoration: const InputDecoration(
                     labelText: "Category",
@@ -262,12 +266,12 @@ class _LayoverPageState extends State<LayoverPage> {
                 const SizedBox(height: 8),
 
                 // ----- Duration Input -----
-
                 TextField(
                   controller: _durationController,
                   decoration: InputDecoration(
-                    labelText:
-                        AppLocalizations.of(context)!.layover_duration_label,
+                    labelText: AppLocalizations.of(
+                      context,
+                    )!.layover_duration_label,
                     border: const OutlineInputBorder(),
                   ),
                   keyboardType: TextInputType.number,
@@ -281,10 +285,7 @@ class _LayoverPageState extends State<LayoverPage> {
 
                 const SizedBox(height: 8),
 
-
-
                 // ----- Airport Search -----
-
                 AirportSearchBarWidget(
                   onAirportChanged: (airport, loc) {
                     setState(() {
@@ -317,8 +318,10 @@ class _LayoverPageState extends State<LayoverPage> {
                   children: [
                     ElevatedButton.icon(
                       onPressed: () {
-                        launchUrl(Uri.parse("https://m.uber.com/ul/"),
-                            mode: LaunchMode.externalApplication);
+                        launchUrl(
+                          Uri.parse("https://m.uber.com/ul/"),
+                          mode: LaunchMode.externalApplication,
+                        );
                       },
                       icon: const Icon(Icons.local_taxi),
                       label: const Text("Uber"),
@@ -329,8 +332,10 @@ class _LayoverPageState extends State<LayoverPage> {
                     ),
                     ElevatedButton.icon(
                       onPressed: () {
-                        launchUrl(Uri.parse("https://ride.lyft.com/"),
-                            mode: LaunchMode.externalApplication);
+                        launchUrl(
+                          Uri.parse("https://ride.lyft.com/"),
+                          mode: LaunchMode.externalApplication,
+                        );
                       },
                       icon: const Icon(Icons.directions_car),
                       label: const Text("Lyft"),
@@ -404,20 +409,26 @@ class _LayoverPageState extends State<LayoverPage> {
                 borderRadius: BorderRadius.circular(12),
                 boxShadow: const [
                   BoxShadow(
-                      color: Colors.black26,
-                      blurRadius: 6,
-                      offset: Offset(0, 3))
+                    color: Colors.black26,
+                    blurRadius: 6,
+                    offset: Offset(0, 3),
+                  ),
                 ],
               ),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  const Text("⏰ Return Timer",
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold, color: Colors.black87)),
-                  Text(_remainingTimeText,
-                      style:
-                          const TextStyle(fontSize: 18, color: Colors.black)),
+                  const Text(
+                    "⏰ Return Timer",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black87,
+                    ),
+                  ),
+                  Text(
+                    _remainingTimeText,
+                    style: const TextStyle(fontSize: 18, color: Colors.black),
+                  ),
                 ],
               ),
             ),

@@ -29,9 +29,7 @@ Future<void> main() async {
     debugPrint("No .env file found, skipping dotenv load");
   }
 
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   // DEV ONLY: log RTDB connection status
   FirebaseDatabase.instance.ref('.info/connected').onValue.listen((e) {
@@ -106,12 +104,14 @@ class _AuthGate extends StatelessWidget {
 
         // fetch roles/<uid>/isAdmin once
         return FutureBuilder<DataSnapshot>(
-          future:
-              FirebaseDatabase.instance.ref('roles/${user.uid}/isAdmin').get(),
+          future: FirebaseDatabase.instance
+              .ref('roles/${user.uid}/isAdmin')
+              .get(),
           builder: (context, roleSnap) {
             if (roleSnap.connectionState == ConnectionState.waiting) {
               return const Scaffold(
-                  body: Center(child: CircularProgressIndicator()));
+                body: Center(child: CircularProgressIndicator()),
+              );
             }
             final isAdmin = (roleSnap.data?.value == true);
             // ignore: avoid_print
@@ -237,10 +237,7 @@ class _LoginPageState extends State<_LoginPage> {
             ),
             if (_error != null) ...[
               const SizedBox(height: 12),
-              Text(
-                _error!,
-                style: const TextStyle(color: Colors.red),
-              ),
+              Text(_error!, style: const TextStyle(color: Colors.red)),
             ],
             if (_busy) ...[
               const SizedBox(height: 12),
@@ -330,9 +327,7 @@ class _ForgotPasswordPageState extends State<_ForgotPasswordPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Reset password'),
-      ),
+      appBar: AppBar(title: const Text('Reset password')),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -364,10 +359,7 @@ class _ForgotPasswordPageState extends State<_ForgotPasswordPage> {
             ),
             const SizedBox(height: 16),
             if (_errorMessage != null)
-              Text(
-                _errorMessage!,
-                style: const TextStyle(color: Colors.red),
-              ),
+              Text(_errorMessage!, style: const TextStyle(color: Colors.red)),
             if (_successMessage != null)
               Text(
                 _successMessage!,
