@@ -57,9 +57,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get airport_escape => 'Airport Escape';
 
   @override
-  String plan_your_layover(Object category) {
-    return '乗り継ぎを計画する: $category';
-  }
+  String get plan_your_layover => '乗り継ぎを計画する';
 
   @override
   String get layover_duration_label => '乗り継ぎ時間（時間）';
@@ -177,4 +175,55 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get reset_success_snackbar => 'すべての設定がデフォルトにリセットされました';
+
+  @override
+  String get signIn => 'ログイン';
+
+  @override
+  String get register => '登録';
+
+  @override
+  String get email => 'メールアドレス';
+
+  @override
+  String get password => 'パスワード';
+
+  @override
+  String get emailAddress => 'メールアドレス';
+
+  @override
+  String get enterPassword => 'パスワードを入力';
+
+  @override
+  String get signInTitle => 'Airport Escapeにログイン';
+
+  @override
+  String get registerTitle => 'アカウント作成';
+
+  @override
+  String get alreadyHaveAccount => 'アカウントをお持ちですか？';
+
+  @override
+  String get dontHaveAccount => 'アカウントをお持ちでないですか？';
+
+  @override
+  String get signInButton => 'ログイン';
+
+  @override
+  String get registerButton => 'アカウント作成';
+
+  @override
+  String get loggingIn => 'ログイン中...';
+
+  @override
+  String get creatingAccount => 'アカウント作成中...';
+
+  @override
+  String get authError => '認証エラー';
+
+  @override
+  String get welcomeBack => 'お帰りなさい';
+
+  @override
+  String get joinAirportEscape => 'Airport Escapeに参加';
 }

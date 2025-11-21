@@ -215,8 +215,8 @@ abstract class AppLocalizations {
   /// No description provided for @plan_your_layover.
   ///
   /// In en, this message translates to:
-  /// **'Plan Your Layover: {category}'**
-  String plan_your_layover(Object category);
+  /// **'Plan Your Layover'**
+  String get plan_your_layover;
 
   /// No description provided for @layover_duration_label.
   ///
@@ -433,6 +433,108 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'All settings reset to defaults'**
   String get reset_success_snackbar;
+
+  /// No description provided for @signIn.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign In'**
+  String get signIn;
+
+  /// No description provided for @register.
+  ///
+  /// In en, this message translates to:
+  /// **'Register'**
+  String get register;
+
+  /// No description provided for @email.
+  ///
+  /// In en, this message translates to:
+  /// **'Email'**
+  String get email;
+
+  /// No description provided for @password.
+  ///
+  /// In en, this message translates to:
+  /// **'Password'**
+  String get password;
+
+  /// No description provided for @emailAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'Email Address'**
+  String get emailAddress;
+
+  /// No description provided for @enterPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter Password'**
+  String get enterPassword;
+
+  /// No description provided for @signInTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign In to Airport Escape'**
+  String get signInTitle;
+
+  /// No description provided for @registerTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Create Account'**
+  String get registerTitle;
+
+  /// No description provided for @alreadyHaveAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Already have an account?'**
+  String get alreadyHaveAccount;
+
+  /// No description provided for @dontHaveAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Don\'t have an account?'**
+  String get dontHaveAccount;
+
+  /// No description provided for @signInButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign In'**
+  String get signInButton;
+
+  /// No description provided for @registerButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Create Account'**
+  String get registerButton;
+
+  /// No description provided for @loggingIn.
+  ///
+  /// In en, this message translates to:
+  /// **'Signing in...'**
+  String get loggingIn;
+
+  /// No description provided for @creatingAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Creating account...'**
+  String get creatingAccount;
+
+  /// No description provided for @authError.
+  ///
+  /// In en, this message translates to:
+  /// **'Authentication Error'**
+  String get authError;
+
+  /// No description provided for @welcomeBack.
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome Back'**
+  String get welcomeBack;
+
+  /// No description provided for @joinAirportEscape.
+  ///
+  /// In en, this message translates to:
+  /// **'Join Airport Escape'**
+  String get joinAirportEscape;
 }
 
 class _AppLocalizationsDelegate

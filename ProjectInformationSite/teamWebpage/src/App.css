@@ -1,0 +1,703 @@
+/* Reset and Base Styles - Dark Mode */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  line-height: 1.6;
+  color: #e0e0e0;
+  background: #0a0a0a;
+  scroll-behavior: smooth;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Header - Dark with Airport Blue Accent */
+.header {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  box-shadow: 0 2px 20px rgba(102, 126, 234, 0.3);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  border-bottom: 1px solid #333;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+
+.nav-brand h2 {
+  color: #667eea;
+  font-weight: 700;
+  text-shadow: 0 2px 10px rgba(102, 126, 234, 0.5);
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #b0b0b0;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.nav-links a:hover {
+  color: #667eea;
+  text-shadow: 0 2px 10px rgba(102, 126, 234, 0.5);
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #667eea;
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* Hero Section - Dark Airport Terminal Feel */
+.hero {
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #667eea 100%);
+  color: white;
+  padding: 120px 0 80px;
+  margin-top: 70px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="%23333" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+  opacity: 0.3;
+}
+
+.hero .container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+
+.tagline {
+  font-size: 1.3rem;
+  font-style: italic;
+  margin-bottom: 1.5rem;
+  opacity: 0.9;
+  color: #b0b0b0;
+}
+
+.description {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  line-height: 1.7;
+  color: #d0d0d0;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.phone-mockup {
+  background: linear-gradient(145deg, #1a1a1a, #333);
+  color: #667eea;
+  padding: 60px 30px;
+  border-radius: 30px;
+  text-align: center;
+  font-size: 3rem;
+  margin: 0 auto;
+  max-width: 200px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5), 0 0 20px rgba(102, 126, 234, 0.3);
+  border: 2px solid #333;
+}
+
+/* Buttons - Airport Blue Theme */
+.btn {
+  padding: 14px 28px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s;
+}
+
+.btn:hover::before {
+  left: 100%;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: white;
+  border: 2px solid #667eea;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
+}
+
+.btn-secondary:hover {
+  background: #667eea;
+  color: white;
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+/* Story Section - Dark Terminal Atmosphere */
+.story {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+  position: relative;
+}
+
+.story::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(102, 126, 234, 0.05) 0%, transparent 70%);
+}
+
+.story .container {
+  position: relative;
+  z-index: 2;
+}
+
+.story h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  color: #667eea;
+  text-shadow: 0 2px 10px rgba(102, 126, 234, 0.3);
+}
+
+.story-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.story-text h3 {
+  color: #667eea;
+  margin: 2rem 0 1rem 0;
+  font-size: 1.3rem;
+  text-shadow: 0 2px 10px rgba(102, 126, 234, 0.3);
+}
+
+.story-text h3:first-child {
+  margin-top: 0;
+}
+
+.story-text p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #c0c0c0;
+  margin-bottom: 1.5rem;
+}
+
+.story-stats {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.stat-card {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  padding: 1.5rem;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  border: 1px solid #333;
+  transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+  border-color: #667eea;
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+  transform: translateY(-2px);
+}
+
+.stat-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #667eea;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 2px 10px rgba(102, 126, 234, 0.5);
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: #a0a0a0;
+  font-weight: 500;
+  font-style: italic;
+}
+
+/* Enhanced Story Elements - Dark Theme */
+.dialogue-box {
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+  color: #e0e0e0;
+  padding: 2rem;
+  border-radius: 12px;
+  margin: 1.5rem 0;
+  border-left: 4px solid #667eea;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.5), inset 0 1px 0 rgba(102, 126, 234, 0.1);
+  border: 1px solid #333;
+}
+
+.scene-setting {
+  font-style: italic;
+  color: #a0a0a0;
+  border-bottom: 1px solid #404040;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+}
+
+.dialogue {
+  margin: 0.8rem 0;
+  font-family: 'Courier New', monospace;
+  line-height: 1.6;
+}
+
+.dialogue strong {
+  color: #667eea;
+  font-weight: 700;
+  text-shadow: 0 1px 5px rgba(102, 126, 234, 0.3);
+}
+
+.prophecy-box {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  color: white;
+  padding: 2rem;
+  border-radius: 12px;
+  margin: 2rem 0;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+  border: 2px solid #667eea;
+}
+
+.prophecy-text {
+  font-style: italic;
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+/* Team Photo Section - Dark Airport Theme */
+.team-photo-section {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+}
+
+.team-photo-section h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #667eea;
+  text-shadow: 0 2px 10px rgba(102, 126, 234, 0.3);
+}
+
+.team-intro {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #a0a0a0;
+  margin-bottom: 3rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.team-photo-container {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.team-photo {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5), 0 0 20px rgba(102, 126, 234, 0.2);
+  margin-bottom: 1rem;
+  border: 2px solid #333;
+}
+
+.photo-caption {
+  color: #a0a0a0;
+  font-style: italic;
+  font-size: 0.9rem;
+}
+
+.team-values {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.value-card {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  border: 1px solid #333;
+  transition: all 0.3s ease;
+}
+
+.value-card:hover {
+  border-color: #667eea;
+  box-shadow: 0 5px 20px rgba(102, 126, 234, 0.3);
+  transform: translateY(-5px);
+}
+
+.value-card h4 {
+  color: #667eea;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.value-card p {
+  color: #c0c0c0;
+  line-height: 1.6;
+}
+
+.team-manifesto {
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+  padding: 2rem;
+  border-radius: 12px;
+  margin-top: 2rem;
+  border: 2px solid #667eea;
+  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+}
+
+.team-manifesto h4 {
+  color: #667eea;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.manifesto-text {
+  font-style: italic;
+  color: #d0d0d0;
+  line-height: 1.7;
+  text-align: center;
+}
+
+/* Features Section - Terminal Style */
+.features {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+}
+
+.features h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #667eea;
+  text-shadow: 0 2px 10px rgba(102, 126, 234, 0.3);
+}
+
+.features-intro {
+  text-align: center;
+  font-style: italic;
+  color: #a0a0a0;
+  margin-bottom: 3rem;
+  font-size: 1.1rem;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.feature-card {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+  border: 1px solid #333;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.feature-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #667eea, transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.feature-card:hover::before {
+  transform: translateX(100%);
+}
+
+.feature-card:hover {
+  border-color: #667eea;
+  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+  transform: translateY(-5px);
+}
+
+.feature-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.feature-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  color: #667eea;
+}
+
+.feature-card p {
+  color: #c0c0c0;
+  line-height: 1.6;
+}
+
+/* Download Section - Dark Airport Terminal */
+.download {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #667eea 100%);
+  color: white;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.download::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="%23333" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+  opacity: 0.2;
+}
+
+.download .container {
+  position: relative;
+  z-index: 2;
+}
+
+.download h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+
+.download-buttons {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  margin: 3rem 0;
+}
+
+.btn-download {
+  background: linear-gradient(135deg, rgba(26,26,26,0.8) 0%, rgba(45,45,45,0.8) 100%);
+  color: white;
+  border: 2px solid #667eea;
+  padding: 1.5rem 2rem;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+
+.btn-download:hover {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.3) 0%, rgba(118, 75, 162, 0.3) 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 35px rgba(102, 126, 234, 0.4);
+}
+
+.btn-outline {
+  background: transparent;
+  color: white;
+  border: 2px solid #667eea;
+  margin: 1rem;
+  transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+  background: #667eea;
+  color: white;
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+.capstone-note {
+  margin-top: 2rem;
+  font-style: italic;
+  opacity: 0.9;
+  color: #d0d0d0;
+}
+
+/* Footer - Dark Terminal Base */
+.footer {
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+  color: white;
+  padding: 3rem 0 1rem;
+  border-top: 1px solid #333;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.footer-section h4 {
+  margin-bottom: 1rem;
+  color: #667eea;
+  text-shadow: 0 1px 5px rgba(102, 126, 234, 0.3);
+}
+
+.footer-section p {
+  color: #b0b0b0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 2rem;
+  border-top: 1px solid #333;
+  color: #a0a0a0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero .container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+  
+  .nav-links {
+    display: none;
+  }
+  
+  .story-content {
+    grid-template-columns: 1fr;
+  }
+  
+  .download-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .footer-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .team-values {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #667eea;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #5a6cd8;
+}
+
+/* Selection Styling */
+::selection {
+  background: rgba(102, 126, 234, 0.3);
+  color: white;
+}
+
+::-moz-selection {
+  background: rgba(102, 126, 234, 0.3);
+  color: white;
+}

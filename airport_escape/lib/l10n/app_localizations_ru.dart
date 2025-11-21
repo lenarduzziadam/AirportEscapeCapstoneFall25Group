@@ -57,9 +57,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get airport_escape => 'Airport Escape';
 
   @override
-  String plan_your_layover(Object category) {
-    return 'Планируйте свою пересадку: $category';
-  }
+  String get plan_your_layover => 'Планируйте свою пересадку';
 
   @override
   String get layover_duration_label => 'Длительность пересадки (часы)';
@@ -183,4 +181,55 @@ class AppLocalizationsRu extends AppLocalizations {
   @override
   String get reset_success_snackbar =>
       'Все настройки сброшены к значениям по умолчанию';
+
+  @override
+  String get signIn => 'Войти';
+
+  @override
+  String get register => 'Регистрация';
+
+  @override
+  String get email => 'Электронная почта';
+
+  @override
+  String get password => 'Пароль';
+
+  @override
+  String get emailAddress => 'Адрес электронной почты';
+
+  @override
+  String get enterPassword => 'Введите пароль';
+
+  @override
+  String get signInTitle => 'Войти в Airport Escape';
+
+  @override
+  String get registerTitle => 'Создать аккаунт';
+
+  @override
+  String get alreadyHaveAccount => 'Уже есть аккаунт?';
+
+  @override
+  String get dontHaveAccount => 'Нет аккаунта?';
+
+  @override
+  String get signInButton => 'Войти';
+
+  @override
+  String get registerButton => 'Создать аккаунт';
+
+  @override
+  String get loggingIn => 'Вход...';
+
+  @override
+  String get creatingAccount => 'Создание аккаунта...';
+
+  @override
+  String get authError => 'Ошибка аутентификации';
+
+  @override
+  String get welcomeBack => 'Добро пожаловать';
+
+  @override
+  String get joinAirportEscape => 'Присоединиться к Airport Escape';
 }

@@ -57,9 +57,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get airport_escape => 'Airport Escape';
 
   @override
-  String plan_your_layover(Object category) {
-    return 'अपनी लेओवर योजना बनाएं: $category';
-  }
+  String get plan_your_layover => 'अपनी लेओवर योजना बनाएं';
 
   @override
   String get layover_duration_label => 'लेओवर अवधि (घंटे)';
@@ -181,4 +179,55 @@ class AppLocalizationsHi extends AppLocalizations {
   @override
   String get reset_success_snackbar =>
       'सभी सेटिंग्स डिफ़ॉल्ट मानों पर रीसेट कर दी गईं';
+
+  @override
+  String get signIn => 'साइन इन करें';
+
+  @override
+  String get register => 'रजिस्टर करें';
+
+  @override
+  String get email => 'ईमेल';
+
+  @override
+  String get password => 'पासवर्ड';
+
+  @override
+  String get emailAddress => 'ईमेल पता';
+
+  @override
+  String get enterPassword => 'पासवर्ड दर्ज करें';
+
+  @override
+  String get signInTitle => 'Airport Escape में साइन इन करें';
+
+  @override
+  String get registerTitle => 'खाता बनाएं';
+
+  @override
+  String get alreadyHaveAccount => 'क्या आपके पास पहले से खाता है?';
+
+  @override
+  String get dontHaveAccount => 'क्या आपके पास खाता नहीं है?';
+
+  @override
+  String get signInButton => 'साइन इन करें';
+
+  @override
+  String get registerButton => 'खाता बनाएं';
+
+  @override
+  String get loggingIn => 'साइन इन हो रहा है...';
+
+  @override
+  String get creatingAccount => 'खाता बनाया जा रहा है...';
+
+  @override
+  String get authError => 'प्रमाणीकरण त्रुटि';
+
+  @override
+  String get welcomeBack => 'वापसी पर स्वागत है';
+
+  @override
+  String get joinAirportEscape => 'Airport Escape में शामिल हों';
 }

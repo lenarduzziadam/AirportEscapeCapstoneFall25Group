@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class FlightInfoBox extends StatefulWidget {
-
   final Map<String, dynamic> flightData;
 
   const FlightInfoBox({super.key, required this.flightData});
@@ -32,10 +31,10 @@ class _FlightInfoBoxState extends State<FlightInfoBox> {
             Text("Status: ${_flightData['flight_status'] ?? 'Unknown'}"),
             Text("Airline: ${_flightData['airline']?['name'] ?? 'N/A'}"),
             Text(
-              "Departure: ${_flightData['departure']?['airport'] ?? 'N/A'} at ${_flightData['departure']?['estimated'] ?? 'N/A'}",
+              "Departure: ${_flightData['departure']?['airport'] + " (${_flightData['departure']?['iata']})" ?? 'N/A'} at ${_flightData['departure']?['estimated'] ?? 'N/A'}",
             ),
             Text(
-              "Arrival: ${_flightData['arrival']?['airport'] ?? 'N/A'} at ${_flightData['arrival']?['estimated'] ?? 'N/A'}",
+              "Arrival: ${_flightData['arrival']?['airport'] + " (${_flightData['arrival']?['iata']})" ?? 'N/A'} at ${_flightData['arrival']?['estimated'] ?? 'N/A'}",
             ),
           ],
         ),

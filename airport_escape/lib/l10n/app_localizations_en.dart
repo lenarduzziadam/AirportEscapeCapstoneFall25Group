@@ -57,9 +57,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get airport_escape => 'Airport Escape';
 
   @override
-  String plan_your_layover(Object category) {
-    return 'Plan Your Layover: $category';
-  }
+  String get plan_your_layover => 'Plan Your Layover';
 
   @override
   String get layover_duration_label => 'Layover Duration (hours)';
@@ -179,4 +177,55 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get reset_success_snackbar => 'All settings reset to defaults';
+
+  @override
+  String get signIn => 'Sign In';
+
+  @override
+  String get register => 'Register';
+
+  @override
+  String get email => 'Email';
+
+  @override
+  String get password => 'Password';
+
+  @override
+  String get emailAddress => 'Email Address';
+
+  @override
+  String get enterPassword => 'Enter Password';
+
+  @override
+  String get signInTitle => 'Sign In to Airport Escape';
+
+  @override
+  String get registerTitle => 'Create Account';
+
+  @override
+  String get alreadyHaveAccount => 'Already have an account?';
+
+  @override
+  String get dontHaveAccount => 'Don\'t have an account?';
+
+  @override
+  String get signInButton => 'Sign In';
+
+  @override
+  String get registerButton => 'Create Account';
+
+  @override
+  String get loggingIn => 'Signing in...';
+
+  @override
+  String get creatingAccount => 'Creating account...';
+
+  @override
+  String get authError => 'Authentication Error';
+
+  @override
+  String get welcomeBack => 'Welcome Back';
+
+  @override
+  String get joinAirportEscape => 'Join Airport Escape';
 }

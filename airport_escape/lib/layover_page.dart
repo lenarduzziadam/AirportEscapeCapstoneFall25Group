@@ -14,9 +14,8 @@ import 'package:url_launcher/url_launcher.dart';
 import 'widgets/search_bar_widget.dart';
 
 class LayoverPage extends StatefulWidget {
-  final String category;
 
-  const LayoverPage({super.key, required this.category});
+  const LayoverPage({super.key, });
 
   @override
   State<LayoverPage> createState() => _LayoverPageState();

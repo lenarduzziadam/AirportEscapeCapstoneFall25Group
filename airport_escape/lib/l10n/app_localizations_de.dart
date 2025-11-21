@@ -57,9 +57,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get airport_escape => 'Airport Escape';
 
   @override
-  String plan_your_layover(Object category) {
-    return 'Planen Sie Ihren Zwischenstopp: $category';
-  }
+  String get plan_your_layover => 'Planen Sie Ihren Zwischenstopp';
 
   @override
   String get layover_duration_label => 'Zwischenstopp-Dauer (Stunden)';
@@ -185,4 +183,55 @@ class AppLocalizationsDe extends AppLocalizations {
   @override
   String get reset_success_snackbar =>
       'Alle Einstellungen wurden auf die Standardwerte zurückgesetzt';
+
+  @override
+  String get signIn => 'Anmelden';
+
+  @override
+  String get register => 'Registrieren';
+
+  @override
+  String get email => 'E-Mail';
+
+  @override
+  String get password => 'Passwort';
+
+  @override
+  String get emailAddress => 'E-Mail-Adresse';
+
+  @override
+  String get enterPassword => 'Passwort Eingeben';
+
+  @override
+  String get signInTitle => 'Bei Airport Escape Anmelden';
+
+  @override
+  String get registerTitle => 'Konto Erstellen';
+
+  @override
+  String get alreadyHaveAccount => 'Haben Sie bereits ein Konto?';
+
+  @override
+  String get dontHaveAccount => 'Haben Sie noch kein Konto?';
+
+  @override
+  String get signInButton => 'Anmelden';
+
+  @override
+  String get registerButton => 'Konto Erstellen';
+
+  @override
+  String get loggingIn => 'Anmeldung läuft...';
+
+  @override
+  String get creatingAccount => 'Konto wird erstellt...';
+
+  @override
+  String get authError => 'Authentifizierungsfehler';
+
+  @override
+  String get welcomeBack => 'Willkommen Zurück';
+
+  @override
+  String get joinAirportEscape => 'Airport Escape Beitreten';
 }
