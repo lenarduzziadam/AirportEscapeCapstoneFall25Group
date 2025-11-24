@@ -370,46 +370,6 @@ class _LoginPageState extends State<_LoginPage> {
                 ],
               ],
             ),
-            const SizedBox(height: 8),
-            Align(
-              alignment: Alignment.centerLeft,
-              child: TextButton(
-                onPressed: _busy
-                    ? null
-                    : () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const _ForgotPasswordPage(),
-                          ),
-                        );
-                      },
-                child: const Text('Forgot password?'),
-              ),
-            )
-                if (_error != null)
-                  Text(_error!, style: const TextStyle(color: Colors.red)),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    ElevatedButton(
-                      onPressed: _busy ? null : _signIn,
-                      child: const Text('Sign In'),
-                    ),
-                    const SizedBox(width: 16),
-                    ElevatedButton(
-                      onPressed: _busy ? null : _register,
-                      child: const Text('Register'),
-                    ),
-                  ],
-                ),
-                if (_busy)
-                  const Padding(
-                    padding: EdgeInsets.only(top: 16.0),
-                    child: CircularProgressIndicator(),
-                  ),
-              ],
-            ),
           ),
 
         ),
