@@ -78,9 +78,7 @@ Future<void> main() async {
     debugPrint("No .env file found, skipping dotenv load");
   }
 
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   await NotificationService.initialize();
 
@@ -221,12 +219,14 @@ class _AuthGate extends StatelessWidget {
 
         // fetch roles/<uid>/isAdmin once
         return FutureBuilder<DataSnapshot>(
-          future:
-              FirebaseDatabase.instance.ref('roles/${user.uid}/isAdmin').get(),
+          future: FirebaseDatabase.instance
+              .ref('roles/${user.uid}/isAdmin')
+              .get(),
           builder: (context, roleSnap) {
             if (roleSnap.connectionState == ConnectionState.waiting) {
               return const Scaffold(
-                  body: Center(child: CircularProgressIndicator()));
+                body: Center(child: CircularProgressIndicator()),
+              );
             }
             final isAdmin = (roleSnap.data?.value == true);
             // ignore: avoid_print
@@ -253,6 +253,7 @@ class _LoginPageState extends State<_LoginPage> {
   final _pw = TextEditingController();
   bool _busy = false;
   String? _error;
+  bool _isSignIn = true; // toggle between sign in and register
 
   Future<void> _signIn() async {
     setState(() {
@@ -298,44 +299,75 @@ class _LoginPageState extends State<_LoginPage> {
 
   @override
   Widget build(BuildContext context) {
+    final localizations = AppLocalizations.of(context)!;
     return Scaffold(
-      body: Padding(
-
-        padding: const EdgeInsets.all(24.0),
-        child: Center(
-          child: SingleChildScrollView(
+      appBar: AppBar(
+        title: Text(_isSignIn ? localizations.signIn : localizations.register),
+        elevation: 0,
+        centerTitle: true,
+      ),
+      body: Center(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(16),
             child: Column(
-              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 TextField(
-              controller: _email,
-              keyboardType: TextInputType .emailAddress,
-              decoration: InputDecoration(
-                labelText: AppLocalizations.of(context)!.email,
-              ),
-            ),
+                  controller: _email,
+                  keyboardType: TextInputType.emailAddress,
+                  decoration: InputDecoration(
+                    labelText: AppLocalizations.of(context)!.email,
+                  ),
+                ),
+                const SizedBox(height: 8),
+                TextField(
+                  controller: _pw,
+                  decoration: InputDecoration(
+                    labelText: AppLocalizations.of(context)!.password,
+                  ),
+                  obscureText: true,
+                ),
                 const SizedBox(height: 12),
-                TextField(
-              controller: _pw,
-              decoration: InputDecoration(
-                labelText: AppLocalizations.of(context)!.password,
-              ),
-              obscureText: true,
-            ),
-                const SizedBox(height: 24),
-                
-                 const SizedBox(height: 12),
-            Row(
-              children: [
-                ElevatedButton(
-                  onPressed: _busy ? null : _signIn,
-                  child: Text(AppLocalizations.of(context)!.signIn),
+                Row(
+                  children: [
+                    ElevatedButton(
+                      onPressed: _busy ? null : _signIn,
+                      child: Text(AppLocalizations.of(context)!.signIn),
+                    ),
+                    const SizedBox(width: 12),
+                    OutlinedButton(
+                      onPressed: _busy ? null : _register,
+                      child: Text(AppLocalizations.of(context)!.register),
+                    ),
+                  ],
                 ),
-                const SizedBox(width: 12),
-                OutlinedButton(
-                  onPressed: _busy ? null : _register,
-                  child: Text(AppLocalizations.of(context)!.register),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: TextButton(
+                    onPressed: _busy
+                        ? null
+                        : () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    const _ForgotPasswordPage(),
+                              ),
+                            );
+                          },
+                    child: const Text('Forgot password?'),
+                  ),
                 ),
+                if (_error != null) ...[
+                  const SizedBox(height: 12),
+                  Text(_error!, style: const TextStyle(color: Colors.red)),
+                ],
+                if (_busy) ...[
+                  const SizedBox(height: 12),
+                  const LinearProgressIndicator(),
+                ],
               ],
             ),
             const SizedBox(height: 8),
@@ -463,9 +495,7 @@ class _ForgotPasswordPageState extends State<_ForgotPasswordPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Reset password'),
-      ),
+      appBar: AppBar(title: const Text('Reset password')),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -497,10 +527,7 @@ class _ForgotPasswordPageState extends State<_ForgotPasswordPage> {
             ),
             const SizedBox(height: 16),
             if (_errorMessage != null)
-              Text(
-                _errorMessage!,
-                style: const TextStyle(color: Colors.red),
-              ),
+              Text(_errorMessage!, style: const TextStyle(color: Colors.red)),
             if (_successMessage != null)
               Text(
                 _successMessage!,

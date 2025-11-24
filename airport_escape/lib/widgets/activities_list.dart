@@ -9,6 +9,8 @@ import 'package:geolocator/geolocator.dart';
 
 final double MILES_TO_METERS = 1609.344;
 
+final double IS_IN_AIRPORT_DISTANCE = 600;
+
 // returns the type name based on the category
 
 class ActivitiesList extends StatefulWidget {
@@ -16,6 +18,7 @@ class ActivitiesList extends StatefulWidget {
   final String category;
   final double duration;
   final Function() onActivitiesChanged;
+  final bool isOnlyInAirport;
 
   final List<String> favorites;
   final Function(String) onFavorite;
@@ -28,6 +31,7 @@ class ActivitiesList extends StatefulWidget {
     required this.onActivitiesChanged,
     required this.favorites,
     required this.onFavorite,
+    required this.isOnlyInAirport,
   });
 
   @override
@@ -75,7 +79,10 @@ class ActivitiesListState extends State<ActivitiesList> {
     String category,
     double duration,
   ) async {
-    final distanceLimit = _getDistanceLimit(duration) * MILES_TO_METERS;
+    final distanceLimit = widget.isOnlyInAirport
+        ? IS_IN_AIRPORT_DISTANCE
+        : _getDistanceLimit(duration) * MILES_TO_METERS;
+
     final apiKey = dotenv.env['GOOGLE_API_KEY'];
     final types = _getTypeName(context, category);
     if (types.isEmpty) {
@@ -118,7 +125,7 @@ class ActivitiesListState extends State<ActivitiesList> {
       widget.duration,
     );
     _distanceNote =
-        "Showing places within ${_getDistanceLimit(widget.duration)} miles for a ${widget.duration.toStringAsFixed(1)}-hour layover.";
+        "Showing places within ${widget.isOnlyInAirport ? IS_IN_AIRPORT_DISTANCE : _getDistanceLimit(widget.duration)} miles for a ${widget.duration.toStringAsFixed(1)}-hour layover.";
   }
 
   @override
@@ -168,7 +175,6 @@ class ActivitiesListState extends State<ActivitiesList> {
                     activityLocation.latitude,
                     activityLocation.longitude,
                   );
-
                   return ActivitySuggestionBox(
                     activity: activity,
                     distanceInMeters: distanceInMeters,
