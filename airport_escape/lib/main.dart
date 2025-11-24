@@ -13,12 +13,61 @@ import 'package:provider/provider.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'settings/locale_provider.dart';
 
+// Notification imports
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'dart:async';
+import 'package:timezone/data/latest_all.dart' as tz;
+import 'package:timezone/timezone.dart' as tz;
+
+import 'package:airport_escape/notification_test_page.dart';
+
 // Import RTDB test page (dev only, not active by default)
 import 'database_test_page.dart';
 
 // App-wide color constants
 const kPrimaryColor = Color.fromARGB(255, 18, 71, 156);
 const kBackgroundColor = Color(0xFFE0F7FA);
+
+// Simple NotificationService helper used during app startup
+class NotificationService {
+  static final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+      FlutterLocalNotificationsPlugin();
+
+  static Future<void> initialize() async {
+    // initialize timezone data (safe to call multiple times)
+    tz.initializeTimeZones();
+
+    const AndroidInitializationSettings androidInit =
+        AndroidInitializationSettings('@mipmap/ic_launcher');
+
+    const InitializationSettings initSettings =
+        InitializationSettings(android: androidInit);
+
+    await flutterLocalNotificationsPlugin.initialize(initSettings);
+
+    // Create an Android notification channel used by the app
+    const AndroidNotificationChannel channel = AndroidNotificationChannel(
+      "high_importance_channel",
+      "High Importance Notifications",
+      description: "Used for important notifications.",
+      importance: Importance.high,
+    );
+
+    await flutterLocalNotificationsPlugin
+        .resolvePlatformSpecificImplementation<
+            AndroidFlutterLocalNotificationsPlugin>()
+        ?.createNotificationChannel(channel);
+  }
+}
+
+// FCM background handler
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  // (Optional) You can also show a local notification here
+  print('Background message received: ${message.messageId}');
+}
+
 
 // Main function: initializes Firebase and loads tne .env file then launches the app
 Future<void> main() async {
@@ -31,10 +80,71 @@ Future<void> main() async {
 
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
-  // DEV ONLY: log RTDB connection status
-  FirebaseDatabase.instance.ref('.info/connected').onValue.listen((e) {
-    // ignore: avoid_print
-    print('RTDB connected: ${e.snapshot.value == true}');
+  await NotificationService.initialize();
+
+  // Register the FCM background handler
+  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+
+  // -------------------------------
+  // 🔔 LOCAL NOTIFICATIONS SETUP
+  // -------------------------------
+  final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+      FlutterLocalNotificationsPlugin();
+
+  const AndroidInitializationSettings androidInit =
+      AndroidInitializationSettings('@mipmap/ic_launcher');
+
+  const InitializationSettings initSettings =
+      InitializationSettings(android: androidInit);
+
+  await flutterLocalNotificationsPlugin.initialize(initSettings);
+
+  // Create Notification Channel for Android
+  const AndroidNotificationChannel channel = AndroidNotificationChannel(
+    "high_importance_channel",
+    "High Importance Notifications",
+    description: "Used for important notifications.",
+    importance: Importance.high,
+  );
+
+  await flutterLocalNotificationsPlugin
+      .resolvePlatformSpecificImplementation<
+          AndroidFlutterLocalNotificationsPlugin>()
+      ?.createNotificationChannel(channel);
+
+  // -------------------------------
+  // 📡 FCM PERMISSIONS (Android/Web)
+  // -------------------------------
+  final messaging = FirebaseMessaging.instance;
+
+  NotificationSettings settings = await messaging.requestPermission(
+    alert: true,
+    badge: true,
+    sound: true,
+  );
+
+  print("FCM Permission: ${settings.authorizationStatus}");
+
+  // Get FCM token (print it for testing)
+  final token = await messaging.getToken();
+  print("FCM Token: $token");
+
+  // Handle FCM foreground messages
+  FirebaseMessaging.onMessage.listen((RemoteMessage msg) {
+    print("FCM Foreground: ${msg.notification?.title}");
+
+    flutterLocalNotificationsPlugin.show(
+      msg.hashCode,
+      msg.notification?.title,
+      msg.notification?.body,
+      const NotificationDetails(
+        android: AndroidNotificationDetails(
+          "high_importance_channel",
+          "High Importance Notifications",
+          importance: Importance.high,
+        ),
+      ),
+    );
   });
 
   runApp(
@@ -78,6 +188,11 @@ class MyApp extends StatelessWidget {
             GlobalCupertinoLocalizations.delegate,
           ],
           supportedLocales: AppLocalizations.supportedLocales,
+          routes: {
+            '/notification-test': (context) => const NotificationTestPage(),
+          },
+
+
           home: const _AuthGate(), // added
         );
       },
@@ -255,7 +370,48 @@ class _LoginPageState extends State<_LoginPage> {
                 ],
               ],
             ),
+            const SizedBox(height: 8),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: TextButton(
+                onPressed: _busy
+                    ? null
+                    : () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const _ForgotPasswordPage(),
+                          ),
+                        );
+                      },
+                child: const Text('Forgot password?'),
+              ),
+            )
+                if (_error != null)
+                  Text(_error!, style: const TextStyle(color: Colors.red)),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ElevatedButton(
+                      onPressed: _busy ? null : _signIn,
+                      child: const Text('Sign In'),
+                    ),
+                    const SizedBox(width: 16),
+                    ElevatedButton(
+                      onPressed: _busy ? null : _register,
+                      child: const Text('Register'),
+                    ),
+                  ],
+                ),
+                if (_busy)
+                  const Padding(
+                    padding: EdgeInsets.only(top: 16.0),
+                    child: CircularProgressIndicator(),
+                  ),
+              ],
+            ),
           ),
+
         ),
       ),
     );
@@ -411,4 +567,34 @@ class _Shell extends StatelessWidget {
           : null, // no button for non-admins
     );
   }
+}
+
+// Top-level helper to schedule a local notification
+Future<void> scheduleLocalNotification({
+  required int seconds,
+  required String title,
+  required String body,
+}) async {
+  final flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
+
+  final scheduledDate = tz.TZDateTime.from(
+    DateTime.now().add(Duration(seconds: seconds)),
+    tz.local,
+  );
+
+  await flutterLocalNotificationsPlugin.zonedSchedule(
+  DateTime.now().millisecondsSinceEpoch ~/ 1000, // unique ID
+  title,
+  body,
+  scheduledDate,
+  const NotificationDetails(
+    android: AndroidNotificationDetails(
+      "high_importance_channel",
+      "High Importance Notifications",
+      importance: Importance.high,
+    ),
+  ),
+  androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
+  matchDateTimeComponents: null, // optional
+);
 }
