@@ -12,6 +12,7 @@ import 'landing_page.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'settings/locale_provider.dart';
+import 'set_timer_page.dart';
 
 // Notification imports
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -189,8 +190,9 @@ class MyApp extends StatelessWidget {
           ],
           supportedLocales: AppLocalizations.supportedLocales,
           routes: {
-            '/notification-test': (context) => const NotificationTestPage(),
+            '/set-timer': (context) => const SetTimerPage(),
           },
+
 
 
           home: const _AuthGate(), // added
@@ -202,7 +204,7 @@ class MyApp extends StatelessWidget {
 
 // auth gate: waits for login, then checks roles/<uid>/isAdmin
 class _AuthGate extends StatelessWidget {
-  const _AuthGate({super.key});
+  const _AuthGate();
 
   @override
   Widget build(BuildContext context) {
@@ -243,7 +245,7 @@ class _AuthGate extends StatelessWidget {
 
 // minimal email/password login
 class _LoginPage extends StatefulWidget {
-  const _LoginPage({super.key});
+  const _LoginPage();
   @override
   State<_LoginPage> createState() => _LoginPageState();
 }
@@ -253,7 +255,7 @@ class _LoginPageState extends State<_LoginPage> {
   final _pw = TextEditingController();
   bool _busy = false;
   String? _error;
-  bool _isSignIn = true; // toggle between sign in and register
+  final bool _isSignIn = true; // toggle between sign in and register
 
   Future<void> _signIn() async {
     setState(() {
@@ -380,7 +382,7 @@ class _LoginPageState extends State<_LoginPage> {
 
 // simple password reset page
 class _ForgotPasswordPage extends StatefulWidget {
-  const _ForgotPasswordPage({super.key});
+  const _ForgotPasswordPage();
 
   @override
   State<_ForgotPasswordPage> createState() => _ForgotPasswordPageState();
@@ -503,7 +505,7 @@ class _ForgotPasswordPageState extends State<_ForgotPasswordPage> {
 // wraps existing home and adds an admin-only test button
 class _Shell extends StatelessWidget {
   final bool isAdmin;
-  const _Shell({super.key, required this.isAdmin});
+  const _Shell({required this.isAdmin});
 
   Future<void> _saveAnnouncement() async {
     final u = FirebaseAuth.instance.currentUser;

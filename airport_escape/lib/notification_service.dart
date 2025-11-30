@@ -1,57 +1,48 @@
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:permission_handler/permission_handler.dart' as permission_handler;
+import 'package:timezone/data/latest.dart' as tz;
+import 'package:timezone/timezone.dart' as tz;
 
 class NotificationService {
   static final FlutterLocalNotificationsPlugin _plugin =
       FlutterLocalNotificationsPlugin();
 
+  // Call this from main.dart before runApp()
   static Future<void> initialize() async {
-    const androidSettings = AndroidInitializationSettings('@mipmap/ic_launcher');
-    const iosSettings = DarwinInitializationSettings();
+    // Timezone init
+    tz.initializeTimeZones();
 
-    const initSettings = InitializationSettings(
-      android: androidSettings,
-      iOS: iosSettings,
-    );
+    const android = AndroidInitializationSettings('@mipmap/ic_launcher');
+    const ios = DarwinInitializationSettings();
 
-    await _plugin.initialize(initSettings);
+    const settings = InitializationSettings(android: android, iOS: ios);
 
-    // Request notification permission on Android 13+
-    if (await permission_handler.Permission.notification.isDenied) {
-      await permission_handler.Permission.notification.request();
-    }
-
-    // Android notification channel
-    const channel = AndroidNotificationChannel(
-      'basic_channel',
-      'Basic Notifications',
-      description: 'Used for important notifications',
-      importance: Importance.high,
-    );
-
-    await _plugin
-        .resolvePlatformSpecificImplementation<
-            AndroidFlutterLocalNotificationsPlugin>()
-        ?.createNotificationChannel(channel);
+    await _plugin.initialize(settings);
   }
 
-  static Future<void> showNotification({
-    required String title,
-    required String body,
-  }) async {
-    const androidDetails = AndroidNotificationDetails(
-      'basic_channel',
-      'Basic Notifications',
-      importance: Importance.high,
-      priority: Priority.high,
-    );
-
-    const iosDetails = DarwinNotificationDetails();
-
-    const details = NotificationDetails(android: androidDetails, iOS: iosDetails);
-
+  // This is the function your timer calls
+  static Future<void> scheduleNotificationInSeconds({required int seconds}) async {
     final id = DateTime.now().millisecondsSinceEpoch ~/ 1000;
 
-    await _plugin.show(id, title, body, details);
+    const NotificationDetails details = NotificationDetails(
+      android: AndroidNotificationDetails(
+        'timer_channel',
+        'Timer Notifications',
+        importance: Importance.high,
+        priority: Priority.high,
+      ),
+      iOS: DarwinNotificationDetails(),
+    );
+
+    final scheduledDate =
+        tz.TZDateTime.now(tz.local).add(Duration(seconds: seconds));
+
+    await _plugin.zonedSchedule(
+      id,
+      'Timer Finished',
+      'Your countdown is complete.',
+      scheduledDate,
+      details,
+      androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
+    );
   }
 }
