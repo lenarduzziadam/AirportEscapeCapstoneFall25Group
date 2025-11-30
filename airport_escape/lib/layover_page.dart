@@ -1,4 +1,5 @@
 import 'package:airport_escape/l10n/app_localizations.dart';
+import 'package:airport_escape/timer_service.dart';
 import 'package:airport_escape/widgets/activities_list.dart';
 import 'package:airport_escape/widgets/flight_info_box.dart';
 import 'package:flutter/material.dart';
@@ -109,7 +110,7 @@ class _LayoverPageState extends State<LayoverPage> {
   }
 
   // ======================= COUNTDOWN TIMER =======================
-
+  /*
   void _startCountdown(double hours) {
     _countdownTimer?.cancel();
     setState(() {
@@ -129,6 +130,7 @@ class _LayoverPageState extends State<LayoverPage> {
       }
     });
   }
+  */
 
   // ======================= FLIGHT API =======================
 
@@ -410,7 +412,11 @@ class _LayoverPageState extends State<LayoverPage> {
                       airportCords: _selectedAirportLoc,
                       duration: _duration,
                       category: _selectedCategory,
-                      onActivitiesChanged: () => _startCountdown(_duration),
+                      onActivitiesChanged: () {
+                      TimerService().start(
+                        seconds: (_duration * 3600).toInt(),
+                      );
+                    },
                       favorites: _favorites,
                       onFavorite: _saveFavorite,
                       isOnlyInAirport: _isOnlyInAirport,
@@ -421,6 +427,7 @@ class _LayoverPageState extends State<LayoverPage> {
           ),
 
           // ======================= RETURN TIMER FLOATING BOX =======================
+          /*
           Positioned(
             right: 16,
             bottom: 16,
@@ -455,6 +462,7 @@ class _LayoverPageState extends State<LayoverPage> {
               ),
             ),
           ),
+          */
         ],
       ),
     );
