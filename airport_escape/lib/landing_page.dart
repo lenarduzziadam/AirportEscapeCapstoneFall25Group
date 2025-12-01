@@ -67,9 +67,10 @@ class MyHomePage extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () {
-                Navigator.pushNamed(context, '/notification-test');
+                Navigator.pushNamed(context, '/set-timer');
               },
-              child: const Text("Open Notification Test Page"),
+              child: const Text("Set a Timer Page"),
+
             )
 
           ],
