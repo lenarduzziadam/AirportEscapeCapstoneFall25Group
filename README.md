@@ -159,3 +159,39 @@ after this step to work on project code utilize the main.dart file in the lib fo
 
 **text_files**: meant to hold text files.  *relative path*: '../text_files/'
 
+
+## 📞 Contact & Support
+
+For questions, bug reports, or support, please contact:  
+**Adam Lenarduzzi**  
+✉️ [lenardu3@uwm.edu](mailto:lenardu3@uwm.edu)
+
+---
+
+## 🔒 Security & Privacy
+
+- All personal data and preferences are stored securely using **Firebase**.
+- Authentication is required to access personal features such as saving favorites and viewing personalized suggestions.
+- We use Firebase Authentication and Firestore Database to ensure your data is protected and only accessible to you.
+- Location data is used only to provide relevant layover suggestions and is never shared without your consent.
+
+For more details, see our in-app [Privacy Policy](#) and [Terms of Service](#).
+
+---
+
+## 🧑‍💻 Credits & Libraries
+
+This app uses several open-source libraries:
+
+- [`app_localizations`](https://docs.flutter.dev/ui/accessibility-and-internationalization/internationalization) — for multi-language support and easy localization.
+- [`intl`](https://pub.dev/packages/intl) — Dart package for internationalization and formatting.
+- [`firebase_auth`](https://pub.dev/packages/firebase_auth) — Secure authentication for user accounts.
+- [`cloud_firestore`](https://pub.dev/packages/cloud_firestore) — Real-time database for storing user data.
+
+Special thanks to the Flutter and Dart communities for their ongoing support and documentation.
+
+---
+
+## 🏷️ License
+
+© 2025 Team Airport Escape. All rights reserved.
