@@ -31,7 +31,6 @@ class _LayoverPageState extends State<LayoverPage> {
   double _duration = 0;
   Map<String, dynamic>? _flightData;
 
-  Duration _remainingTime = Duration.zero;
   Timer? _countdownTimer;
   bool _loadingFlight = false;
 
@@ -109,29 +108,6 @@ class _LayoverPageState extends State<LayoverPage> {
     );
   }
 
-  // ======================= COUNTDOWN TIMER =======================
-  /*
-  void _startCountdown(double hours) {
-    _countdownTimer?.cancel();
-    setState(() {
-      _remainingTime = Duration(hours: hours.floor());
-    });
-
-    _countdownTimer = Timer.periodic(const Duration(seconds: 1), (timer) {
-      if (_remainingTime.inSeconds <= 0) {
-        timer.cancel();
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text("Layover over! Time to head back.")),
-        );
-      } else {
-        setState(() {
-          _remainingTime -= const Duration(seconds: 1);
-        });
-      }
-    });
-  }
-  */
-
   // ======================= FLIGHT API =======================
 
   String? _loadApiKey() {
@@ -208,16 +184,6 @@ class _LayoverPageState extends State<LayoverPage> {
   void dispose() {
     _countdownTimer?.cancel();
     super.dispose();
-  }
-
-  String get _remainingTimeText {
-    final h = _remainingTime.inHours;
-    final m = _remainingTime.inMinutes.remainder(60);
-    final s = _remainingTime.inSeconds.remainder(60);
-
-    return _remainingTime == Duration.zero
-        ? "Not set"
-        : "${h.toString().padLeft(2, '0')}:${m.toString().padLeft(2, '0')}:${s.toString().padLeft(2, '0')}";
   }
 
   // ======================= BUILD UI =======================
@@ -300,19 +266,7 @@ class _LayoverPageState extends State<LayoverPage> {
                 const SizedBox(height: 8),
 
                 // is in only airport box
-                Text("Only in airport"),
-                Checkbox(
-                  value: _isOnlyInAirport,
-                  onChanged: (bool? value) {
-                    setState(() {
-                      _isOnlyInAirport = value!;
-                    });
-                  },
-                ),
-
-                //const SizedBox(height: 16),
-                // flight info box
-                const SizedBox(height: 20),
+                Text("Only in airport", textAlign: TextAlign.center),
 
                 // =========================================================
                 // UBER + LYFT BUTTONS with auto-filled pickup
@@ -320,6 +274,7 @@ class _LayoverPageState extends State<LayoverPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
+                    // Uber Button
                     ElevatedButton.icon(
                       onPressed: () {
                         final lat = _selectedAirportLoc.latitude;
@@ -345,6 +300,16 @@ class _LayoverPageState extends State<LayoverPage> {
                         foregroundColor: Colors.white,
                       ),
                     ),
+                    Checkbox(
+                      value: _isOnlyInAirport,
+                      onChanged: (bool? value) {
+                        setState(() {
+                          _isOnlyInAirport = value!;
+                        });
+                      },
+                    ),
+
+                    // Lyft Button
                     ElevatedButton.icon(
                       onPressed: () {
                         final lat = _selectedAirportLoc.latitude;
@@ -413,10 +378,10 @@ class _LayoverPageState extends State<LayoverPage> {
                       duration: _duration,
                       category: _selectedCategory,
                       onActivitiesChanged: () {
-                      TimerService().start(
-                        seconds: (_duration * 3600).toInt(),
-                      );
-                    },
+                        TimerService().start(
+                          seconds: (_duration * 3600).toInt(),
+                        );
+                      },
                       favorites: _favorites,
                       onFavorite: _saveFavorite,
                       isOnlyInAirport: _isOnlyInAirport,
