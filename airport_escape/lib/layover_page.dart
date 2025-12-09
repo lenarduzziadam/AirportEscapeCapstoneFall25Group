@@ -1,15 +1,11 @@
 import 'package:airport_escape/l10n/app_localizations.dart';
 import 'package:airport_escape/timer_service.dart';
 import 'package:airport_escape/widgets/activities_list.dart';
-import 'package:airport_escape/widgets/flight_info_box.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:async';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'widgets/search_bar_widget.dart';
@@ -23,16 +19,10 @@ class LayoverPage extends StatefulWidget {
 
 class _LayoverPageState extends State<LayoverPage> {
   final _durationController = TextEditingController();
-  final _flightController = TextEditingController();
+  double _duration = 0;
 
   String _selectedAirport = "";
   late LatLng _selectedAirportLoc;
-
-  double _duration = 0;
-  Map<String, dynamic>? _flightData;
-
-  Timer? _countdownTimer;
-  bool _loadingFlight = false;
 
   String _selectedCategory = "";
   List<String> get _categories => [
@@ -108,70 +98,6 @@ class _LayoverPageState extends State<LayoverPage> {
     );
   }
 
-  // ======================= FLIGHT API =======================
-
-  String? _loadApiKey() {
-    try {
-      return dotenv.env['AVIATIONSTACK_KEY'] ??
-          const String.fromEnvironment('AVIATIONSTACK_KEY');
-    } catch (_) {
-      return const String.fromEnvironment('AVIATIONSTACK_KEY');
-    }
-  }
-
-  Future<void> _fetchFlightInfo() async {
-    final flightCode = _flightController.text.trim();
-
-    if (flightCode.isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("Enter a flight code (e.g. AA100)")),
-      );
-      return;
-    }
-
-    final apiKey = _loadApiKey();
-    if (apiKey == null || apiKey.isEmpty) {
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(const SnackBar(content: Text("Missing API key!")));
-      return;
-    }
-
-    final url = Uri.parse(
-      'https://api.aviationstack.com/v1/flights?access_key=$apiKey&flight_iata=$flightCode',
-    );
-
-    setState(() {
-      _loadingFlight = true;
-      _flightData = null;
-    });
-
-    try {
-      final response = await http.get(url);
-      if (response.statusCode == 200) {
-        final data = json.decode(response.body);
-
-        if (data['data'] != null && data['data'].isNotEmpty) {
-          setState(() => _flightData = data['data'][0]);
-        } else {
-          ScaffoldMessenger.of(
-            context,
-          ).showSnackBar(const SnackBar(content: Text("No flight found.")));
-        }
-      } else {
-        ScaffoldMessenger.of(
-          context,
-        ).showSnackBar(SnackBar(content: Text("Error ${response.statusCode}")));
-      }
-    } catch (e) {
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text("Error: $e")));
-    } finally {
-      setState(() => _loadingFlight = false);
-    }
-  }
-
   // ======================= LIFECYCLE =======================
 
   @override
@@ -180,19 +106,16 @@ class _LayoverPageState extends State<LayoverPage> {
     _loadFavorites();
   }
 
-  @override
-  void dispose() {
-    _countdownTimer?.cancel();
-    super.dispose();
-  }
-
   // ======================= BUILD UI =======================
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(AppLocalizations.of(context)!.plan_your_layover),
+        title: Text(
+          AppLocalizations.of(context)!.plan_your_layover,
+          style: const TextStyle(fontWeight: FontWeight.bold),
+        ),
 
         actions: [
           IconButton(
@@ -338,35 +261,6 @@ class _LayoverPageState extends State<LayoverPage> {
                   ],
                 ),
 
-                const SizedBox(height: 20),
-
-                // ----- Flight Input -----
-                const Text(
-                  "Check Flight Info",
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                ),
-
-                const SizedBox(height: 8),
-
-                TextField(
-                  controller: _flightController,
-                  decoration: const InputDecoration(
-                    labelText: "Enter Flight Code (AA100)",
-                    border: OutlineInputBorder(),
-                  ),
-                ),
-
-                const SizedBox(height: 8),
-
-                ElevatedButton.icon(
-                  onPressed: _loadingFlight ? null : _fetchFlightInfo,
-                  icon: const Icon(Icons.flight_takeoff),
-                  label: const Text("Check Status"),
-                ),
-
-                if (_loadingFlight) const CircularProgressIndicator(),
-                if (_flightData != null)
-                  FlightInfoBox(flightData: _flightData!),
                 const SizedBox(height: 8),
                 if (_selectedAirport.isNotEmpty &&
                     _duration > 0 &&

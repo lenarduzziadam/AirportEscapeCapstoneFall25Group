@@ -1,4 +1,5 @@
 // Main landing page and widgets for Airport Escape app
+import 'package:airport_escape/flight_status_page.dart';
 import 'package:airport_escape/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'settings_menu.dart';
@@ -67,12 +68,19 @@ class MyHomePage extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => FlightStatusPage()),
+                );
+              },
+              child: const Text("Check Flight Info"),
+            ),
+            ElevatedButton(
+              onPressed: () {
                 Navigator.pushNamed(context, '/set-timer');
               },
-              child: const Text("Set a Timer Page"),
-
-            )
-
+              child: const Text("Set Timer"),
+            ),
           ],
         ),
       ),

@@ -44,8 +44,8 @@ class _SetTimerPageState extends State<SetTimerPage> {
     final minutes = (totalSeconds % 3600) ~/ 60;
     final seconds = totalSeconds % 60;
     return '${hours.toString().padLeft(2, '0')}:'
-           '${minutes.toString().padLeft(2, '0')}:'
-           '${seconds.toString().padLeft(2, '0')}';
+        '${minutes.toString().padLeft(2, '0')}:'
+        '${seconds.toString().padLeft(2, '0')}';
   }
 
   @override
@@ -59,7 +59,12 @@ class _SetTimerPageState extends State<SetTimerPage> {
     final isRunning = timerService.isRunning;
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Set Timer')),
+      appBar: AppBar(
+        title: const Text(
+          'Set Timer',
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
+      ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -71,10 +76,16 @@ class _SetTimerPageState extends State<SetTimerPage> {
                   height: 150,
                   width: 100,
                   child: CupertinoPicker(
-                    scrollController: FixedExtentScrollController(initialItem: _selectedHours),
+                    scrollController: FixedExtentScrollController(
+                      initialItem: _selectedHours,
+                    ),
                     itemExtent: 32,
-                    onSelectedItemChanged: (index) => setState(() => _selectedHours = index),
-                    children: List.generate(24, (i) => Center(child: Text('$i h'))),
+                    onSelectedItemChanged: (index) =>
+                        setState(() => _selectedHours = index),
+                    children: List.generate(
+                      24,
+                      (i) => Center(child: Text('$i h')),
+                    ),
                   ),
                 ),
                 const SizedBox(width: 20),
@@ -82,10 +93,16 @@ class _SetTimerPageState extends State<SetTimerPage> {
                   height: 150,
                   width: 100,
                   child: CupertinoPicker(
-                    scrollController: FixedExtentScrollController(initialItem: _selectedMinutes),
+                    scrollController: FixedExtentScrollController(
+                      initialItem: _selectedMinutes,
+                    ),
                     itemExtent: 32,
-                    onSelectedItemChanged: (index) => setState(() => _selectedMinutes = index),
-                    children: List.generate(60, (i) => Center(child: Text('$i m'))),
+                    onSelectedItemChanged: (index) =>
+                        setState(() => _selectedMinutes = index),
+                    children: List.generate(
+                      60,
+                      (i) => Center(child: Text('$i m')),
+                    ),
                   ),
                 ),
               ],
