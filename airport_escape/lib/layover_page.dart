@@ -300,6 +300,8 @@ class _LayoverPageState extends State<LayoverPage> {
                         foregroundColor: Colors.white,
                       ),
                     ),
+
+                    // is in only airport checkbox
                     Checkbox(
                       value: _isOnlyInAirport,
                       onChanged: (bool? value) {

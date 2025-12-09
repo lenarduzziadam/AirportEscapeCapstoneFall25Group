@@ -136,15 +136,22 @@ Future<void> main() async {
   });
   FirebaseMessaging.instance.getInitialMessage();
 
-  // Listen to token updates (works on iOS + Android)
+  // Listen for token updates (best practice)
   FirebaseMessaging.instance.onTokenRefresh.listen((token) {
     print("FCM Token (refreshed): $token");
   });
 
-  // Try getting token only when it's available
-  Future.delayed(const Duration(seconds: 1), () async {
-    final token = await FirebaseMessaging.instance.getToken();
-    print("FCM Token (when ready): $token");
+  // iOS: Wait until APNS is ready before calling getToken()
+  Future(() async {
+    String? apns = await FirebaseMessaging.instance.getAPNSToken();
+
+    if (apns == null) {
+      print("APNS token not ready yet — waiting…");
+      return;
+    }
+
+    final fcm = await FirebaseMessaging.instance.getToken();
+    print("FCM Token (via APNS readiness): $fcm");
   });
 
   // Run App
