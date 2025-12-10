@@ -98,7 +98,7 @@ class _FlightStatusPageState extends State<FlightStatusPage> {
                 TextField(
                   controller: _flightController,
                   decoration: const InputDecoration(
-                    labelText: "Enter Flight Code (AA100)",
+                    labelText: "Enter Flight Code (e.g. AA100)",
                     border: OutlineInputBorder(),
                   ),
                 ),
