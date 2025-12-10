@@ -125,7 +125,7 @@ class ActivitiesListState extends State<ActivitiesList> {
       widget.duration,
     );
     _distanceNote =
-        "Showing places within ${widget.isOnlyInAirport ? IS_IN_AIRPORT_DISTANCE : _getDistanceLimit(widget.duration)} miles for a ${widget.duration.toStringAsFixed(1)}-hour layover.";
+        "Showing places within ${widget.isOnlyInAirport ? "the airport" : "${_getDistanceLimit(widget.duration)}miles"} for a ${widget.duration.toStringAsFixed(1)}-hour layover.";
   }
 
   @override
