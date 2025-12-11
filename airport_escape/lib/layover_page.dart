@@ -133,8 +133,8 @@ class _LayoverPageState extends State<LayoverPage> {
               children: [
                 // ----- Category Dropdown -----
                 DropdownButtonFormField<String>(
-                  decoration: const InputDecoration(
-                    labelText: "Category",
+                  decoration: InputDecoration(
+                    labelText: AppLocalizations.of(context)!.category,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(8)),
                     ),
