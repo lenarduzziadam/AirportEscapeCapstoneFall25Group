@@ -595,6 +595,48 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Error'**
   String get error_snackbar;
+
+  /// No description provided for @running.
+  ///
+  /// In en, this message translates to:
+  /// **'Running...'**
+  String get running;
+
+  /// No description provided for @start_timer.
+  ///
+  /// In en, this message translates to:
+  /// **'Start Timer'**
+  String get start_timer;
+
+  /// No description provided for @timer_finished.
+  ///
+  /// In en, this message translates to:
+  /// **'Timer finished'**
+  String get timer_finished;
+
+  /// No description provided for @countdown_complete.
+  ///
+  /// In en, this message translates to:
+  /// **'Countdown is Complete'**
+  String get countdown_complete;
+
+  /// No description provided for @only_in_airport.
+  ///
+  /// In en, this message translates to:
+  /// **'Only in Airport'**
+  String get only_in_airport;
+
+  /// No description provided for @no_nearby_activities.
+  ///
+  /// In en, this message translates to:
+  /// **'No nearby activities found.'**
+  String get no_nearby_activities;
+
+  /// No description provided for @showing_places_within.
+  ///
+  /// In en, this message translates to:
+  /// **'Showing places within {area} for a {hours}-hour layover.'**
+  String showing_places_within(Object area, Object hours);
 }
 
 class _AppLocalizationsDelegate

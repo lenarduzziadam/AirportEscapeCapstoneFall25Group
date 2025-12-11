@@ -80,5 +80,14 @@
   "enter_flight_code_snackbar": "Введите код рейса (например, AA100)",
   "missing_api_key_snackbar": "Отсутствует ключ API!",
   "no_flight_found_snackbar": "Рейс не найден.",
-  "error_snackbar": "Ошибка"
+  "error_snackbar": "Ошибка",
+  "cancel": "Отмена",
+  "running": "Выполняется...",
+  "start_timer": "Запустить таймер",
+  "set_timer": "Установить таймер",
+  "timer_finished": "Таймер завершен",
+  "countdown_complete": "Обратный отсчет завершен",
+  "only_in_airport": "Только в аэропорту",
+  "no_nearby_activities": "Поблизости не найдено занятий.",
+  "showing_places_within": "Показаны места в пределах {area} для пересадки на {hours} часов."
 }

@@ -258,4 +258,27 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get error_snackbar => 'Error';
+
+  @override
+  String get running => 'Running...';
+
+  @override
+  String get start_timer => 'Start Timer';
+
+  @override
+  String get timer_finished => 'Timer finished';
+
+  @override
+  String get countdown_complete => 'Countdown is Complete';
+
+  @override
+  String get only_in_airport => 'Only in Airport';
+
+  @override
+  String get no_nearby_activities => 'No nearby activities found.';
+
+  @override
+  String showing_places_within(Object area, Object hours) {
+    return 'Showing places within $area for a $hours-hour layover.';
+  }
 }

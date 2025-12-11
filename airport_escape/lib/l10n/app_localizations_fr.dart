@@ -264,4 +264,27 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get error_snackbar => 'Erreur';
+
+  @override
+  String get running => 'En cours...';
+
+  @override
+  String get start_timer => 'Démarrer le minuteur';
+
+  @override
+  String get timer_finished => 'Minuteur terminé';
+
+  @override
+  String get countdown_complete => 'Compte à rebours terminé';
+
+  @override
+  String get only_in_airport => 'Uniquement à l\'aéroport';
+
+  @override
+  String get no_nearby_activities => 'Aucune activité à proximité trouvée.';
+
+  @override
+  String showing_places_within(Object area, Object hours) {
+    return 'Affichage des lieux dans $area pour une escale de $hours heures.';
+  }
 }

@@ -80,5 +80,14 @@
   "enter_flight_code_snackbar": "Inserisci un codice volo (es. AA100)",
   "missing_api_key_snackbar": "Chiave API mancante!",
   "no_flight_found_snackbar": "Nessun volo trovato.",
-  "error_snackbar": "Errore"
+  "error_snackbar": "Errore",
+  "cancel": "Annulla",
+  "running": "In esecuzione...",
+  "start_timer": "Avvia timer",
+  "set_timer": "Imposta timer",
+  "timer_finished": "Timer terminato",
+  "countdown_complete": "Conto alla rovescia completato",
+  "only_in_airport": "Solo in aeroporto",
+  "no_nearby_activities": "Nessuna attività trovata nelle vicinanze.",
+  "showing_places_within": "Mostrando luoghi entro {area} per uno scalo di {hours} ore."
 }

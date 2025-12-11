@@ -237,7 +237,7 @@ class AppLocalizationsIt extends AppLocalizations {
   String get check_flight_info => 'Vérifier les informations de vol';
 
   @override
-  String get set_timer => 'Définir le minuteur';
+  String get set_timer => 'Imposta timer';
 
   @override
   String get category => 'Catégorie';
@@ -263,4 +263,28 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get error_snackbar => 'Errore';
+
+  @override
+  String get running => 'In esecuzione...';
+
+  @override
+  String get start_timer => 'Avvia timer';
+
+  @override
+  String get timer_finished => 'Timer terminato';
+
+  @override
+  String get countdown_complete => 'Conto alla rovescia completato';
+
+  @override
+  String get only_in_airport => 'Solo in aeroporto';
+
+  @override
+  String get no_nearby_activities =>
+      'Nessuna attività trovata nelle vicinanze.';
+
+  @override
+  String showing_places_within(Object area, Object hours) {
+    return 'Mostrando luoghi entro $area per uno scalo di $hours ore.';
+  }
 }

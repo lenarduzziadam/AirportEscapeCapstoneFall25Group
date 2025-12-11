@@ -80,5 +80,14 @@
   "enter_flight_code_snackbar": "أدخل رمز الرحلة (مثال: AA100)",
   "missing_api_key_snackbar": "مفتاح API مفقود!",
   "no_flight_found_snackbar": "لم يتم العثور على رحلة.",
-  "error_snackbar": "خطأ"
+  "error_snackbar": "خطأ",
+  "cancel": "إلغاء",
+  "running": "جارٍ التشغيل...",
+  "start_timer": "بدء المؤقت",
+  "set_timer": "ضبط المؤقت",
+  "timer_finished": "انتهى المؤقت",
+  "countdown_complete": "اكتمل العد التنازلي",
+  "only_in_airport": "فقط في المطار",
+  "no_nearby_activities": "لم يتم العثور على أنشطة قريبة.",
+  "showing_places_within": "عرض الأماكن ضمن {area} لتوقف لمدة {hours} ساعة."
 }

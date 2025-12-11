@@ -256,4 +256,27 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get error_snackbar => 'エラー';
+
+  @override
+  String get running => '実行中...';
+
+  @override
+  String get start_timer => 'タイマー開始';
+
+  @override
+  String get timer_finished => 'タイマー終了';
+
+  @override
+  String get countdown_complete => 'カウントダウン完了';
+
+  @override
+  String get only_in_airport => '空港内のみ';
+
+  @override
+  String get no_nearby_activities => '近くにアクティビティが見つかりません。';
+
+  @override
+  String showing_places_within(Object area, Object hours) {
+    return '$hours時間の乗り継ぎで$area以内の場所を表示しています。';
+  }
 }

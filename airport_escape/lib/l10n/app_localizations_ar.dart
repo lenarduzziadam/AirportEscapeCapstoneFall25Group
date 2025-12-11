@@ -257,4 +257,27 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get error_snackbar => 'خطأ';
+
+  @override
+  String get running => 'جارٍ التشغيل...';
+
+  @override
+  String get start_timer => 'بدء المؤقت';
+
+  @override
+  String get timer_finished => 'انتهى المؤقت';
+
+  @override
+  String get countdown_complete => 'اكتمل العد التنازلي';
+
+  @override
+  String get only_in_airport => 'فقط في المطار';
+
+  @override
+  String get no_nearby_activities => 'لم يتم العثور على أنشطة قريبة.';
+
+  @override
+  String showing_places_within(Object area, Object hours) {
+    return 'عرض الأماكن ضمن $area لتوقف لمدة $hours ساعة.';
+  }
 }

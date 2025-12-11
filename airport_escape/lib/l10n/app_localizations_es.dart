@@ -265,4 +265,27 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get error_snackbar => 'Error';
+
+  @override
+  String get running => 'En ejecución...';
+
+  @override
+  String get start_timer => 'Iniciar temporizador';
+
+  @override
+  String get timer_finished => 'Temporizador finalizado';
+
+  @override
+  String get countdown_complete => 'Cuenta regresiva completada';
+
+  @override
+  String get only_in_airport => 'Solo en el aeropuerto';
+
+  @override
+  String get no_nearby_activities => 'No se encontraron actividades cercanas.';
+
+  @override
+  String showing_places_within(Object area, Object hours) {
+    return 'Mostrando lugares dentro de $area para una escala de $hours horas.';
+  }
 }

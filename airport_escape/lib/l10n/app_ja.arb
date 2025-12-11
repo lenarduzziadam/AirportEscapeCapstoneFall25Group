@@ -80,5 +80,14 @@
   "enter_flight_code_snackbar": "フライトコードを入力してください（例：AA100）",
   "missing_api_key_snackbar": "APIキーがありません！",
   "no_flight_found_snackbar": "フライトが見つかりません。",
-  "error_snackbar": "エラー"
+  "error_snackbar": "エラー",
+  "cancel": "キャンセル",
+  "running": "実行中...",
+  "start_timer": "タイマー開始",
+  "set_timer": "タイマーを設定",
+  "timer_finished": "タイマー終了",
+  "countdown_complete": "カウントダウン完了",
+  "only_in_airport": "空港内のみ",
+  "no_nearby_activities": "近くにアクティビティが見つかりません。",
+  "showing_places_within": "{hours}時間の乗り継ぎで{area}以内の場所を表示しています。"
 }

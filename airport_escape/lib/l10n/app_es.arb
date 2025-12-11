@@ -80,5 +80,14 @@
   "enter_flight_code_snackbar": "Ingrese un código de vuelo (ej. AA100)",
   "missing_api_key_snackbar": "¡Falta la clave API!",
   "no_flight_found_snackbar": "No se encontró el vuelo.",
-  "error_snackbar": "Error"
+  "error_snackbar": "Error",
+  "cancel": "Cancelar",
+  "running": "En ejecución...",
+  "start_timer": "Iniciar temporizador",
+  "set_timer": "Configurar temporizador",
+  "timer_finished": "Temporizador finalizado",
+  "countdown_complete": "Cuenta regresiva completada",
+  "only_in_airport": "Solo en el aeropuerto",
+  "no_nearby_activities": "No se encontraron actividades cercanas.",
+  "showing_places_within": "Mostrando lugares dentro de {area} para una escala de {hours} horas."
 }

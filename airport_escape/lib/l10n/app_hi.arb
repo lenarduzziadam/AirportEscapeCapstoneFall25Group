@@ -80,5 +80,14 @@
   "enter_flight_code_snackbar": "कृपया फ्लाइट कोड दर्ज करें (जैसे AA100)",
   "missing_api_key_snackbar": "API कुंजी गायब है!",
   "no_flight_found_snackbar": "कोई फ्लाइट नहीं मिली।",
-  "error_snackbar": "त्रुटि"
+  "error_snackbar": "त्रुटि",
+  "cancel": "रद्द करें",
+  "running": "चल रहा है...",
+  "start_timer": "टाइमर शुरू करें",
+  "set_timer": "टाइमर सेट करें",
+  "timer_finished": "टाइमर समाप्त",
+  "countdown_complete": "काउंटडाउन पूरा हुआ",
+  "only_in_airport": "केवल हवाई अड्डे में",
+  "no_nearby_activities": "कोई आस-पास की गतिविधियाँ नहीं मिलीं।",
+  "showing_places_within": "{hours} घंटे के लेओवर के लिए {area} के भीतर स्थान दिखा रहे हैं।"
 }

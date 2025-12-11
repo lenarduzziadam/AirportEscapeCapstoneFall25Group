@@ -263,4 +263,27 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get error_snackbar => 'Ошибка';
+
+  @override
+  String get running => 'Выполняется...';
+
+  @override
+  String get start_timer => 'Запустить таймер';
+
+  @override
+  String get timer_finished => 'Таймер завершен';
+
+  @override
+  String get countdown_complete => 'Обратный отсчет завершен';
+
+  @override
+  String get only_in_airport => 'Только в аэропорту';
+
+  @override
+  String get no_nearby_activities => 'Поблизости не найдено занятий.';
+
+  @override
+  String showing_places_within(Object area, Object hours) {
+    return 'Показаны места в пределах $area для пересадки на $hours часов.';
+  }
 }

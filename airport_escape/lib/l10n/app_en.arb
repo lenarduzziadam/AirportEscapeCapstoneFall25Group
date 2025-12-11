@@ -80,5 +80,14 @@
   "enter_flight_code_snackbar": "Enter a flight code (e.g. AA100)",
   "missing_api_key_snackbar": "Missing API key!",
   "no_flight_found_snackbar": "No flight found.",
-  "error_snackbar": "Error"
+  "error_snackbar": "Error",
+  "cancel": "Cancel",
+  "running": "Running...",
+  "start_timer": "Start Timer",
+  "set_timer": "Set Timer",
+  "timer_finished": "Timer finished",
+  "countdown_complete": "Countdown is Complete",
+  "only_in_airport": "Only in Airport",
+  "no_nearby_activities": "No nearby activities found.",
+  "showing_places_within": "Showing places within {area} for a {hours}-hour layover."
   }

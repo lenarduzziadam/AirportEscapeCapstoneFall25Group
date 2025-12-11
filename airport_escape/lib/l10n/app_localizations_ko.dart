@@ -256,4 +256,27 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get error_snackbar => '오류';
+
+  @override
+  String get running => '실행 중...';
+
+  @override
+  String get start_timer => '타이머 시작';
+
+  @override
+  String get timer_finished => '타이머 종료';
+
+  @override
+  String get countdown_complete => '카운트다운 완료';
+
+  @override
+  String get only_in_airport => '공항 내만';
+
+  @override
+  String get no_nearby_activities => '근처에 활동이 없습니다.';
+
+  @override
+  String showing_places_within(Object area, Object hours) {
+    return '$hours시간 환승을 위한 $area 내의 장소를 표시합니다.';
+  }
 }
