@@ -156,7 +156,7 @@ class ActivitiesListState extends State<ActivitiesList> {
                 );
               }
               if (!snapshot.hasData || snapshot.data!.isEmpty) {
-                return Center(child: Text('No nearby activities found.'));
+                return Center(child: Text(AppLocalizations.of(context)!.no_nearby_activities));
               }
 
               final activities = snapshot.data!;
