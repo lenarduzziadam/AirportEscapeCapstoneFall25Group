@@ -31,7 +31,7 @@ class _LoginPageState extends State<LoginPage> {
             ElevatedButton(
               onPressed: () {
                 widget.onLogin(_usernameController.text);
-                Navigator.pop(context); // Go back after login
+                Navigator.pop(context); // Go back after logi`n`
               },
               child: const Text('Login'),
             ),

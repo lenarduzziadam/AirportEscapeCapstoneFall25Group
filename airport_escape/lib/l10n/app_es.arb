@@ -69,5 +69,16 @@
   "creatingAccount": "Creando cuenta...",
   "authError": "Error de Autenticación",
   "welcomeBack": "Bienvenido de Nuevo",
-  "joinAirportEscape": "Únete a Airport Escape"
+  "joinAirportEscape": "Únete a Airport Escape",
+  "check_flight_info": "Consultar información de vuelo",
+  "set_timer": "Configurar temporizador",
+  "category": "Categoría",
+  "select_airport": "Selecciona un aeropuerto",
+  "check_flight_info_title": "Consultar información de vuelo",
+  "enter_flight_code_label": "Ingrese el código de vuelo (ej. AA100)",
+  "check_status": "Consultar estado",
+  "enter_flight_code_snackbar": "Ingrese un código de vuelo (ej. AA100)",
+  "missing_api_key_snackbar": "¡Falta la clave API!",
+  "no_flight_found_snackbar": "No se encontró el vuelo.",
+  "error_snackbar": "Error"
 }

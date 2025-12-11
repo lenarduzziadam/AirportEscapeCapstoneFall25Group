@@ -226,4 +226,34 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get joinAirportEscape => 'Airport Escape 가입하기';
+
+  @override
+  String get check_flight_info => '항공편 정보 확인';
+
+  @override
+  String get set_timer => '타이머 설정';
+
+  @override
+  String get category => '카테고리';
+
+  @override
+  String get check_flight_info_title => '항공편 정보 확인';
+
+  @override
+  String get enter_flight_code_label => '항공편 코드 입력 (예: AA100)';
+
+  @override
+  String get check_status => '상태 확인';
+
+  @override
+  String get enter_flight_code_snackbar => '항공편 코드를 입력하세요 (예: AA100)';
+
+  @override
+  String get missing_api_key_snackbar => 'API 키가 없습니다!';
+
+  @override
+  String get no_flight_found_snackbar => '항공편을 찾을 수 없습니다.';
+
+  @override
+  String get error_snackbar => '오류';
 }

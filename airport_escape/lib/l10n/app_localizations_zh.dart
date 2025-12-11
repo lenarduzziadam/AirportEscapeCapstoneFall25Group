@@ -225,4 +225,34 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get joinAirportEscape => '加入 Airport Escape';
+
+  @override
+  String get check_flight_info => '查看航班信息';
+
+  @override
+  String get set_timer => '设置计时器';
+
+  @override
+  String get category => '类别';
+
+  @override
+  String get check_flight_info_title => '查看航班信息';
+
+  @override
+  String get enter_flight_code_label => '输入航班号（如AA100）';
+
+  @override
+  String get check_status => '查询状态';
+
+  @override
+  String get enter_flight_code_snackbar => '请输入航班号（如AA100）';
+
+  @override
+  String get missing_api_key_snackbar => '缺少API密钥！';
+
+  @override
+  String get no_flight_found_snackbar => '未找到航班。';
+
+  @override
+  String get error_snackbar => '错误';
 }

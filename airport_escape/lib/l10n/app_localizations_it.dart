@@ -63,7 +63,7 @@ class AppLocalizationsIt extends AppLocalizations {
   String get layover_duration_label => 'Durata dello scalo (ore)';
 
   @override
-  String get select_airport => 'Seleziona aeroporto';
+  String get select_airport => 'Sélectionnez un aéroport';
 
   @override
   String get please_enter_duration => 'Inserisci la durata dello scalo.';
@@ -232,4 +232,35 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get joinAirportEscape => 'Unisciti a Airport Escape';
+
+  @override
+  String get check_flight_info => 'Vérifier les informations de vol';
+
+  @override
+  String get set_timer => 'Définir le minuteur';
+
+  @override
+  String get category => 'Catégorie';
+
+  @override
+  String get check_flight_info_title => 'Controlla informazioni volo';
+
+  @override
+  String get enter_flight_code_label => 'Inserisci il codice volo (es. AA100)';
+
+  @override
+  String get check_status => 'Controlla stato';
+
+  @override
+  String get enter_flight_code_snackbar =>
+      'Inserisci un codice volo (es. AA100)';
+
+  @override
+  String get missing_api_key_snackbar => 'Chiave API mancante!';
+
+  @override
+  String get no_flight_found_snackbar => 'Nessun volo trovato.';
+
+  @override
+  String get error_snackbar => 'Errore';
 }

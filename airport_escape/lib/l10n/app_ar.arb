@@ -69,5 +69,16 @@
   "creatingAccount": "جاري إنشاء الحساب...",
   "authError": "خطأ في المصادقة",
   "welcomeBack": "مرحبا بعودتك",
-  "joinAirportEscape": "انضم إلى Airport Escape"
+  "joinAirportEscape": "انضم إلى Airport Escape",
+  "check_flight_info": "تحقق من معلومات الرحلة",
+  "set_timer": "ضبط المؤقت",
+  "category": "الفئة",
+  "select_airport": "اختر مطارًا",
+  "check_flight_info_title": "تحقق من معلومات الرحلة",
+  "enter_flight_code_label": "أدخل رمز الرحلة (مثال: AA100)",
+  "check_status": "تحقق من الحالة",
+  "enter_flight_code_snackbar": "أدخل رمز الرحلة (مثال: AA100)",
+  "missing_api_key_snackbar": "مفتاح API مفقود!",
+  "no_flight_found_snackbar": "لم يتم العثور على رحلة.",
+  "error_snackbar": "خطأ"
 }

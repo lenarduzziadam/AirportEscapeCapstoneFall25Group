@@ -73,13 +73,13 @@ class MyHomePage extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => FlightStatusPage()),
                 );
               },
-              child: const Text("Check Flight Info"),
+              child: Text(AppLocalizations.of(context)!.check_flight_info),
             ),
             ElevatedButton(
               onPressed: () {
                 Navigator.pushNamed(context, '/set-timer');
               },
-              child: const Text("Set Timer"),
+              child: Text(AppLocalizations.of(context)!.set_timer),
             ),
           ],
         ),

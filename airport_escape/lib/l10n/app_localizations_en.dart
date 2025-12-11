@@ -63,7 +63,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get layover_duration_label => 'Layover Duration (hours)';
 
   @override
-  String get select_airport => 'Select Airport';
+  String get select_airport => 'Select an airport';
 
   @override
   String get please_enter_duration => 'Please enter your layover duration.';
@@ -228,4 +228,34 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get joinAirportEscape => 'Join Airport Escape';
+
+  @override
+  String get check_flight_info => 'Check Flight Info';
+
+  @override
+  String get set_timer => 'Set Timer';
+
+  @override
+  String get category => 'Category';
+
+  @override
+  String get check_flight_info_title => 'Check Flight Info';
+
+  @override
+  String get enter_flight_code_label => 'Enter Flight Code (e.g. AA100)';
+
+  @override
+  String get check_status => 'Check Status';
+
+  @override
+  String get enter_flight_code_snackbar => 'Enter a flight code (e.g. AA100)';
+
+  @override
+  String get missing_api_key_snackbar => 'Missing API key!';
+
+  @override
+  String get no_flight_found_snackbar => 'No flight found.';
+
+  @override
+  String get error_snackbar => 'Error';
 }

@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:airport_escape/l10n/app_localizations.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -92,7 +93,7 @@ class _AirportSearchBarWidgetState extends State<AirportSearchBarWidget> {
         );
       },
       searchInputDecoration: SearchInputDecoration(
-        hintText: "Select an airport",
+        hintText: AppLocalizations.of(context)!.select_airport,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
         ),

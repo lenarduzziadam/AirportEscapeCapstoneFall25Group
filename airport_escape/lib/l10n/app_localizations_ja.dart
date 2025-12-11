@@ -226,4 +226,34 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get joinAirportEscape => 'Airport Escapeに参加';
+
+  @override
+  String get check_flight_info => 'フライト情報を確認';
+
+  @override
+  String get set_timer => 'タイマーを設定';
+
+  @override
+  String get category => 'カテゴリー';
+
+  @override
+  String get check_flight_info_title => 'フライト情報を確認';
+
+  @override
+  String get enter_flight_code_label => 'フライトコードを入力（例：AA100）';
+
+  @override
+  String get check_status => 'ステータスを確認';
+
+  @override
+  String get enter_flight_code_snackbar => 'フライトコードを入力してください（例：AA100）';
+
+  @override
+  String get missing_api_key_snackbar => 'APIキーがありません！';
+
+  @override
+  String get no_flight_found_snackbar => 'フライトが見つかりません。';
+
+  @override
+  String get error_snackbar => 'エラー';
 }
