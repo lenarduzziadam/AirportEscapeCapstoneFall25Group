@@ -69,5 +69,9 @@
   "creatingAccount": "계정 생성 중...",
   "authError": "인증 오류",
   "welcomeBack": "다시 오신 것을 환영합니다",
-  "joinAirportEscape": "Airport Escape 가입하기"
+  "joinAirportEscape": "Airport Escape 가입하기",
+  "check_flight_info": "항공편 정보 확인",
+  "set_timer": "타이머 설정",
+  "category": "카테고리",
+  "select_airport": "공항 선택"
 }

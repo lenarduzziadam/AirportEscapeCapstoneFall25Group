@@ -69,5 +69,9 @@
   "creatingAccount": "खाता बनाया जा रहा है...",
   "authError": "प्रमाणीकरण त्रुटि",
   "welcomeBack": "वापसी पर स्वागत है",
-  "joinAirportEscape": "Airport Escape में शामिल हों"
+  "joinAirportEscape": "Airport Escape में शामिल हों",
+  "check_flight_info": "फ्लाइट जानकारी जांचें",
+  "set_timer": "टाइमर सेट करें",
+  "category": "श्रेणी",
+  "select_airport": "हवाई अड्डा चुनें"
 }

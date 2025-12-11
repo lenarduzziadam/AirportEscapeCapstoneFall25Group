@@ -69,5 +69,9 @@
   "creatingAccount": "Création du compte...",
   "authError": "Erreur d'Authentification",
   "welcomeBack": "Bon Retour",
-  "joinAirportEscape": "Rejoindre Airport Escape"
+  "joinAirportEscape": "Rejoindre Airport Escape",
+  "check_flight_info": "Vérifier les informations de vol",
+  "set_timer": "Définir le minuteur",
+  "category": "Catégorie",
+  "select_airport": "Sélectionnez un aéroport"
 }

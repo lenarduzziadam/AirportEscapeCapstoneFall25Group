@@ -69,5 +69,9 @@
   "creatingAccount": "Создание аккаунта...",
   "authError": "Ошибка аутентификации",
   "welcomeBack": "Добро пожаловать",
-  "joinAirportEscape": "Присоединиться к Airport Escape"
+  "joinAirportEscape": "Присоединиться к Airport Escape",
+  "check_flight_info": "Проверить информацию о рейсе",
+  "set_timer": "Установить таймер",
+  "category": "Категория",
+  "select_airport": "Выберите аэропорт"
 }
