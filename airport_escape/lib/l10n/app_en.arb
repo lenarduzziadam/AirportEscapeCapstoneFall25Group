@@ -73,5 +73,12 @@
   "check_flight_info": "Check Flight Info",
   "set_timer": "Set Timer",
   "category": "Category",
-  "select_airport": "Select an airport"
+  "select_airport": "Select an airport",
+  "check_flight_info_title": "Check Flight Info",
+  "enter_flight_code_label": "Enter Flight Code (e.g. AA100)",
+  "check_status": "Check Status",
+  "enter_flight_code_snackbar": "Enter a flight code (e.g. AA100)",
+  "missing_api_key_snackbar": "Missing API key!",
+  "no_flight_found_snackbar": "No flight found.",
+  "error_snackbar": "Error"
   }

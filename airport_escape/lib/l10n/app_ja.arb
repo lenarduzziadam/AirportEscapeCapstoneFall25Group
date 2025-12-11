@@ -73,5 +73,12 @@
   "check_flight_info": "フライト情報を確認",
   "set_timer": "タイマーを設定",
   "category": "カテゴリー",
-  "select_airport": "空港を選択"
+  "select_airport": "空港を選択",
+  "check_flight_info_title": "フライト情報を確認",
+  "enter_flight_code_label": "フライトコードを入力（例：AA100）",
+  "check_status": "ステータスを確認",
+  "enter_flight_code_snackbar": "フライトコードを入力してください（例：AA100）",
+  "missing_api_key_snackbar": "APIキーがありません！",
+  "no_flight_found_snackbar": "フライトが見つかりません。",
+  "error_snackbar": "エラー"
 }

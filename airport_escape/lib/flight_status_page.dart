@@ -1,3 +1,4 @@
+import 'package:airport_escape/l10n/app_localizations.dart';
 import 'package:airport_escape/widgets/flight_info_box.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
@@ -30,7 +31,7 @@ class _FlightStatusPageState extends State<FlightStatusPage> {
 
     if (flightCode.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("Enter a flight code (e.g. AA100)")),
+        SnackBar(content: Text(AppLocalizations.of(context)!.enter_flight_code_snackbar)),
       );
       return;
     }
@@ -39,7 +40,7 @@ class _FlightStatusPageState extends State<FlightStatusPage> {
     if (apiKey == null || apiKey.isEmpty) {
       ScaffoldMessenger.of(
         context,
-      ).showSnackBar(const SnackBar(content: Text("Missing API key!")));
+      ).showSnackBar(SnackBar(content: Text(AppLocalizations.of(context)!.missing_api_key_snackbar)));
       return;
     }
 
@@ -62,7 +63,7 @@ class _FlightStatusPageState extends State<FlightStatusPage> {
         } else {
           ScaffoldMessenger.of(
             context,
-          ).showSnackBar(const SnackBar(content: Text("No flight found.")));
+          ).showSnackBar(SnackBar(content: Text(AppLocalizations.of(context)!.no_flight_found_snackbar)));
         }
       } else {
         ScaffoldMessenger.of(
@@ -83,9 +84,9 @@ class _FlightStatusPageState extends State<FlightStatusPage> {
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          "Check Flight Info",
-          style: TextStyle(fontWeight: FontWeight.bold),
+        title: Text(
+          AppLocalizations.of(context)!.check_flight_info_title,
+          style: const TextStyle(fontWeight: FontWeight.bold),
         ),
       ),
       body: Stack(
@@ -97,8 +98,8 @@ class _FlightStatusPageState extends State<FlightStatusPage> {
                 // ----- Flight Input -----
                 TextField(
                   controller: _flightController,
-                  decoration: const InputDecoration(
-                    labelText: "Enter Flight Code (e.g. AA100)",
+                  decoration: InputDecoration(
+                    labelText: AppLocalizations.of(context)!.enter_flight_code_label,
                     border: OutlineInputBorder(),
                   ),
                 ),
@@ -108,7 +109,7 @@ class _FlightStatusPageState extends State<FlightStatusPage> {
                 ElevatedButton.icon(
                   onPressed: _loadingFlight ? null : _fetchFlightInfo,
                   icon: const Icon(Icons.flight_takeoff),
-                  label: const Text("Check Status"),
+                  label: Text(AppLocalizations.of(context)!.check_status),
                 ),
                 if (_loadingFlight) const CircularProgressIndicator(),
                 if (_flightData != null)

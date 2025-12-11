@@ -73,5 +73,12 @@
   "check_flight_info": "फ्लाइट जानकारी जांचें",
   "set_timer": "टाइमर सेट करें",
   "category": "श्रेणी",
-  "select_airport": "हवाई अड्डा चुनें"
+  "select_airport": "हवाई अड्डा चुनें",
+  "check_flight_info_title": "फ्लाइट जानकारी जांचें",
+  "enter_flight_code_label": "फ्लाइट कोड दर्ज करें (जैसे AA100)",
+  "check_status": "स्थिति जांचें",
+  "enter_flight_code_snackbar": "कृपया फ्लाइट कोड दर्ज करें (जैसे AA100)",
+  "missing_api_key_snackbar": "API कुंजी गायब है!",
+  "no_flight_found_snackbar": "कोई फ्लाइट नहीं मिली।",
+  "error_snackbar": "त्रुटि"
 }

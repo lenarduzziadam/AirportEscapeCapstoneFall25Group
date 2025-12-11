@@ -243,4 +243,26 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get category => 'Kategorie';
+
+  @override
+  String get check_flight_info_title => 'Fluginformationen prüfen';
+
+  @override
+  String get enter_flight_code_label => 'Flugcode eingeben (z.B. AA100)';
+
+  @override
+  String get check_status => 'Status prüfen';
+
+  @override
+  String get enter_flight_code_snackbar =>
+      'Bitte Flugcode eingeben (z.B. AA100)';
+
+  @override
+  String get missing_api_key_snackbar => 'API-Schlüssel fehlt!';
+
+  @override
+  String get no_flight_found_snackbar => 'Kein Flug gefunden.';
+
+  @override
+  String get error_snackbar => 'Fehler';
 }

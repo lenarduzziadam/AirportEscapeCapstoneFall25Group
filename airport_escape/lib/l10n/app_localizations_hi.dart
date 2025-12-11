@@ -239,4 +239,26 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get category => 'श्रेणी';
+
+  @override
+  String get check_flight_info_title => 'फ्लाइट जानकारी जांचें';
+
+  @override
+  String get enter_flight_code_label => 'फ्लाइट कोड दर्ज करें (जैसे AA100)';
+
+  @override
+  String get check_status => 'स्थिति जांचें';
+
+  @override
+  String get enter_flight_code_snackbar =>
+      'कृपया फ्लाइट कोड दर्ज करें (जैसे AA100)';
+
+  @override
+  String get missing_api_key_snackbar => 'API कुंजी गायब है!';
+
+  @override
+  String get no_flight_found_snackbar => 'कोई फ्लाइट नहीं मिली।';
+
+  @override
+  String get error_snackbar => 'त्रुटि';
 }

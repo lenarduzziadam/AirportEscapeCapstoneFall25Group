@@ -73,5 +73,12 @@
   "check_flight_info": "Проверить информацию о рейсе",
   "set_timer": "Установить таймер",
   "category": "Категория",
-  "select_airport": "Выберите аэропорт"
+  "select_airport": "Выберите аэропорт",
+  "check_flight_info_title": "Проверить информацию о рейсе",
+  "enter_flight_code_label": "Введите код рейса (например, AA100)",
+  "check_status": "Проверить статус",
+  "enter_flight_code_snackbar": "Введите код рейса (например, AA100)",
+  "missing_api_key_snackbar": "Отсутствует ключ API!",
+  "no_flight_found_snackbar": "Рейс не найден.",
+  "error_snackbar": "Ошибка"
 }

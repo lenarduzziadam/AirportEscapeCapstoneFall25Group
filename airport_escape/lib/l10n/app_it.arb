@@ -73,5 +73,12 @@
   "check_flight_info": "Vérifier les informations de vol",
   "set_timer": "Définir le minuteur",
   "category": "Catégorie",
-  "select_airport": "Sélectionnez un aéroport"
+  "select_airport": "Sélectionnez un aéroport",
+  "check_flight_info_title": "Controlla informazioni volo",
+  "enter_flight_code_label": "Inserisci il codice volo (es. AA100)",
+  "check_status": "Controlla stato",
+  "enter_flight_code_snackbar": "Inserisci un codice volo (es. AA100)",
+  "missing_api_key_snackbar": "Chiave API mancante!",
+  "no_flight_found_snackbar": "Nessun volo trovato.",
+  "error_snackbar": "Errore"
 }

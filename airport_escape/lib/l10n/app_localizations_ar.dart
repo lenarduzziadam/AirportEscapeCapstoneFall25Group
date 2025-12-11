@@ -236,4 +236,25 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get category => 'الفئة';
+
+  @override
+  String get check_flight_info_title => 'تحقق من معلومات الرحلة';
+
+  @override
+  String get enter_flight_code_label => 'أدخل رمز الرحلة (مثال: AA100)';
+
+  @override
+  String get check_status => 'تحقق من الحالة';
+
+  @override
+  String get enter_flight_code_snackbar => 'أدخل رمز الرحلة (مثال: AA100)';
+
+  @override
+  String get missing_api_key_snackbar => 'مفتاح API مفقود!';
+
+  @override
+  String get no_flight_found_snackbar => 'لم يتم العثور على رحلة.';
+
+  @override
+  String get error_snackbar => 'خطأ';
 }

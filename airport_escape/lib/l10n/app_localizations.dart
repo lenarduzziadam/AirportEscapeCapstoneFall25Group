@@ -553,6 +553,48 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Category'**
   String get category;
+
+  /// No description provided for @check_flight_info_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Check Flight Info'**
+  String get check_flight_info_title;
+
+  /// No description provided for @enter_flight_code_label.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter Flight Code (e.g. AA100)'**
+  String get enter_flight_code_label;
+
+  /// No description provided for @check_status.
+  ///
+  /// In en, this message translates to:
+  /// **'Check Status'**
+  String get check_status;
+
+  /// No description provided for @enter_flight_code_snackbar.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a flight code (e.g. AA100)'**
+  String get enter_flight_code_snackbar;
+
+  /// No description provided for @missing_api_key_snackbar.
+  ///
+  /// In en, this message translates to:
+  /// **'Missing API key!'**
+  String get missing_api_key_snackbar;
+
+  /// No description provided for @no_flight_found_snackbar.
+  ///
+  /// In en, this message translates to:
+  /// **'No flight found.'**
+  String get no_flight_found_snackbar;
+
+  /// No description provided for @error_snackbar.
+  ///
+  /// In en, this message translates to:
+  /// **'Error'**
+  String get error_snackbar;
 }
 
 class _AppLocalizationsDelegate
