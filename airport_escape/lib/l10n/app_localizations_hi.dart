@@ -230,4 +230,13 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get joinAirportEscape => 'Airport Escape में शामिल हों';
+
+  @override
+  String get check_flight_info => 'फ्लाइट जानकारी जांचें';
+
+  @override
+  String get set_timer => 'टाइमर सेट करें';
+
+  @override
+  String get category => 'श्रेणी';
 }

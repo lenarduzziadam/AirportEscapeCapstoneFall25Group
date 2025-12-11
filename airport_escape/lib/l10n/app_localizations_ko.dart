@@ -226,4 +226,13 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get joinAirportEscape => 'Airport Escape 가입하기';
+
+  @override
+  String get check_flight_info => '항공편 정보 확인';
+
+  @override
+  String get set_timer => '타이머 설정';
+
+  @override
+  String get category => '카테고리';
 }

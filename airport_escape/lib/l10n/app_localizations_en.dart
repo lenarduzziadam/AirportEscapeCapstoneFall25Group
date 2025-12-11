@@ -63,7 +63,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get layover_duration_label => 'Layover Duration (hours)';
 
   @override
-  String get select_airport => 'Select Airport';
+  String get select_airport => 'Select an airport';
 
   @override
   String get please_enter_duration => 'Please enter your layover duration.';
@@ -228,4 +228,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get joinAirportEscape => 'Join Airport Escape';
+
+  @override
+  String get check_flight_info => 'Check Flight Info';
+
+  @override
+  String get set_timer => 'Set Timer';
+
+  @override
+  String get category => 'Category';
 }

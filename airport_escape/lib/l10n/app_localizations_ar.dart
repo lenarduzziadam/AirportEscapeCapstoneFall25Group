@@ -63,7 +63,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get layover_duration_label => 'مدة التوقف (ساعات)';
 
   @override
-  String get select_airport => 'اختر المطار';
+  String get select_airport => 'اختر مطارًا';
 
   @override
   String get please_enter_duration => 'يرجى إدخال مدة التوقف الخاصة بك.';
@@ -227,4 +227,13 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get joinAirportEscape => 'انضم إلى Airport Escape';
+
+  @override
+  String get check_flight_info => 'تحقق من معلومات الرحلة';
+
+  @override
+  String get set_timer => 'ضبط المؤقت';
+
+  @override
+  String get category => 'الفئة';
 }

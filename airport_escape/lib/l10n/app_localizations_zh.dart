@@ -225,4 +225,13 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get joinAirportEscape => '加入 Airport Escape';
+
+  @override
+  String get check_flight_info => '查看航班信息';
+
+  @override
+  String get set_timer => '设置计时器';
+
+  @override
+  String get category => '类别';
 }

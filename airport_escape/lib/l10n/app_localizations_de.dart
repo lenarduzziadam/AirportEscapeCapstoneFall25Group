@@ -234,4 +234,13 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get joinAirportEscape => 'Airport Escape Beitreten';
+
+  @override
+  String get check_flight_info => 'Fluginformationen prüfen';
+
+  @override
+  String get set_timer => 'Timer einstellen';
+
+  @override
+  String get category => 'Kategorie';
 }

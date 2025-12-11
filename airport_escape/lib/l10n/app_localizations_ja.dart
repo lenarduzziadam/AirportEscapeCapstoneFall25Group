@@ -226,4 +226,13 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get joinAirportEscape => 'Airport Escapeに参加';
+
+  @override
+  String get check_flight_info => 'フライト情報を確認';
+
+  @override
+  String get set_timer => 'タイマーを設定';
+
+  @override
+  String get category => 'カテゴリー';
 }

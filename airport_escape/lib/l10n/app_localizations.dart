@@ -227,7 +227,7 @@ abstract class AppLocalizations {
   /// No description provided for @select_airport.
   ///
   /// In en, this message translates to:
-  /// **'Select Airport'**
+  /// **'Select an airport'**
   String get select_airport;
 
   /// No description provided for @please_enter_duration.
@@ -535,6 +535,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Join Airport Escape'**
   String get joinAirportEscape;
+
+  /// No description provided for @check_flight_info.
+  ///
+  /// In en, this message translates to:
+  /// **'Check Flight Info'**
+  String get check_flight_info;
+
+  /// No description provided for @set_timer.
+  ///
+  /// In en, this message translates to:
+  /// **'Set Timer'**
+  String get set_timer;
+
+  /// No description provided for @category.
+  ///
+  /// In en, this message translates to:
+  /// **'Category'**
+  String get category;
 }
 
 class _AppLocalizationsDelegate

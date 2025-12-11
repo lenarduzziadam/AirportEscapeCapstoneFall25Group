@@ -63,7 +63,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get layover_duration_label => 'Durée de l\'escale (heures)';
 
   @override
-  String get select_airport => 'Sélectionnez l\'aéroport';
+  String get select_airport => 'Sélectionnez un aéroport';
 
   @override
   String get please_enter_duration =>
@@ -234,4 +234,13 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get joinAirportEscape => 'Rejoindre Airport Escape';
+
+  @override
+  String get check_flight_info => 'Vérifier les informations de vol';
+
+  @override
+  String get set_timer => 'Définir le minuteur';
+
+  @override
+  String get category => 'Catégorie';
 }

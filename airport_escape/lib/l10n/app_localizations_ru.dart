@@ -232,4 +232,13 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get joinAirportEscape => 'Присоединиться к Airport Escape';
+
+  @override
+  String get check_flight_info => 'Проверить информацию о рейсе';
+
+  @override
+  String get set_timer => 'Установить таймер';
+
+  @override
+  String get category => 'Категория';
 }
