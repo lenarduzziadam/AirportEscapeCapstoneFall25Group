@@ -255,4 +255,27 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get error_snackbar => '错误';
+
+  @override
+  String get running => '运行中...';
+
+  @override
+  String get start_timer => '开始计时';
+
+  @override
+  String get timer_finished => '计时结束';
+
+  @override
+  String get countdown_complete => '倒计时完成';
+
+  @override
+  String get only_in_airport => '仅限机场内';
+
+  @override
+  String get no_nearby_activities => '未找到附近的活动。';
+
+  @override
+  String showing_places_within(Object area, Object hours) {
+    return '显示在$area范围内，适用于$hours小时的中转。';
+  }
 }

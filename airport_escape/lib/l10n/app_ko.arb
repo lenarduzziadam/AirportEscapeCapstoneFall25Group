@@ -80,5 +80,14 @@
   "enter_flight_code_snackbar": "항공편 코드를 입력하세요 (예: AA100)",
   "missing_api_key_snackbar": "API 키가 없습니다!",
   "no_flight_found_snackbar": "항공편을 찾을 수 없습니다.",
-  "error_snackbar": "오류"
+  "error_snackbar": "오류",
+  "cancel": "취소",
+  "running": "실행 중...",
+  "start_timer": "타이머 시작",
+  "set_timer": "타이머 설정",
+  "timer_finished": "타이머 종료",
+  "countdown_complete": "카운트다운 완료",
+  "only_in_airport": "공항 내만",
+  "no_nearby_activities": "근처에 활동이 없습니다.",
+  "showing_places_within": "{hours}시간 환승을 위한 {area} 내의 장소를 표시합니다."
 }

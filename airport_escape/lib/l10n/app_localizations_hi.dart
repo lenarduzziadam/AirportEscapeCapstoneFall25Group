@@ -261,4 +261,27 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get error_snackbar => 'त्रुटि';
+
+  @override
+  String get running => 'चल रहा है...';
+
+  @override
+  String get start_timer => 'टाइमर शुरू करें';
+
+  @override
+  String get timer_finished => 'टाइमर समाप्त';
+
+  @override
+  String get countdown_complete => 'काउंटडाउन पूरा हुआ';
+
+  @override
+  String get only_in_airport => 'केवल हवाई अड्डे में';
+
+  @override
+  String get no_nearby_activities => 'कोई आस-पास की गतिविधियाँ नहीं मिलीं।';
+
+  @override
+  String showing_places_within(Object area, Object hours) {
+    return '$hours घंटे के लेओवर के लिए $area के भीतर स्थान दिखा रहे हैं।';
+  }
 }

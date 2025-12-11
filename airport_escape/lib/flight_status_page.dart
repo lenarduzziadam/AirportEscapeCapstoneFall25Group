@@ -40,7 +40,8 @@ class _FlightStatusPageState extends State<FlightStatusPage> {
     if (apiKey == null || apiKey.isEmpty) {
       ScaffoldMessenger.of(
         context,
-      ).showSnackBar(SnackBar(content: Text(AppLocalizations.of(context)!.missing_api_key_snackbar)));
+      ).showSnackBar(SnackBar(content: Text(AppLocalizations.of(context)!.missing_api_key_snackbar
+      )));
       return;
     }
 

@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:airport_escape/l10n/app_localizations.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:airport_escape/notification_service.dart';
@@ -60,9 +61,9 @@ class _SetTimerPageState extends State<SetTimerPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Set Timer',
-          style: TextStyle(fontWeight: FontWeight.bold),
+        title: Text(
+          AppLocalizations.of(context)!.set_timer,
+          style: const TextStyle(fontWeight: FontWeight.bold),
         ),
       ),
       body: Column(
@@ -118,13 +119,13 @@ class _SetTimerPageState extends State<SetTimerPage> {
             children: [
               ElevatedButton(
                 onPressed: isRunning ? null : _startTimer,
-                child: Text(isRunning ? 'Running...' : 'Start Timer'),
+                child: Text(isRunning ? AppLocalizations.of(context)!.running : AppLocalizations.of(context)!.start_timer),
               ),
               const SizedBox(width: 20),
               if (isRunning)
                 ElevatedButton(
                   onPressed: _cancelTimer,
-                  child: const Text('Cancel'),
+                  child: Text(AppLocalizations.of(context)!.cancel),
                 ),
             ],
           ),

@@ -80,5 +80,14 @@
   "enter_flight_code_snackbar": "请输入航班号（如AA100）",
   "missing_api_key_snackbar": "缺少API密钥！",
   "no_flight_found_snackbar": "未找到航班。",
-  "error_snackbar": "错误"
+  "error_snackbar": "错误",
+  "cancel": "取消",
+  "running": "运行中...",
+  "start_timer": "开始计时",
+  "set_timer": "设置计时器",
+  "timer_finished": "计时结束",
+  "countdown_complete": "倒计时完成",
+  "only_in_airport": "仅限机场内",
+  "no_nearby_activities": "未找到附近的活动。",
+  "showing_places_within": "显示在{area}范围内，适用于{hours}小时的中转。"
 }

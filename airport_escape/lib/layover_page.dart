@@ -189,7 +189,7 @@ class _LayoverPageState extends State<LayoverPage> {
                 const SizedBox(height: 8),
 
                 // is in only airport box
-                Text("Only in airport", textAlign: TextAlign.center),
+                Text(AppLocalizations.of(context)!.only_in_airport, textAlign: TextAlign.center),
 
                 // =========================================================
                 // UBER + LYFT BUTTONS with auto-filled pickup
